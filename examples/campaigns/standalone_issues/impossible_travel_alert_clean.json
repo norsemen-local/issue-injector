@@ -1,0 +1,30 @@
+{
+  "vendor": "Cortex",
+  "product": "XDR Agent",
+  "severity": "High",
+  "category": "Credential Access",
+  "description": "Impossible Travel detected. User account flagged for geographically impossible login activity. Previous authenticated login from Cupertino California US (IP 104.196.188.170). Current suspicious login attempt from Bern Switzerland (IP 176.10.104.240). Physical distance between locations 4154 miles. Required travel time at maximum speed 8+ hours minimum. Actual time between logins 5 minutes (physically impossible). This pattern indicates potential account compromise, credential theft, or unauthorized access. User Karen Castro IT Department.",
+  "alert_name": "Impossible Travel - Account Compromise Risk",
+  "threat_name": "Impossible Travel Anomaly",
+  "user_name": [
+    "karen.castro@demistolab.com"
+  ],
+  "host_name": "KCASTRO-LT25778",
+  "host_ip": [
+    "176.10.104.240"
+  ],
+  "host_os": "AGENT_OS_WINDOWS",
+  "remote_ip": [
+    "176.10.104.240",
+    "104.196.188.170"
+  ],
+  "remote_host": [
+    "unknown-eu-host"
+  ],
+  "location": "Bern, Switzerland",
+  "city": "Bern",
+  "mitre_att&ck_tactic": "TA0006 - Credential Access",
+  "mitre_att&ck_technique": "T1078.001 - Valid Accounts: Default Accounts",
+  "verdict": "Suspicious",
+  "risk_score": "85"
+}

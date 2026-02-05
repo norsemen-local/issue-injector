@@ -1,0 +1,56 @@
+{
+  "vendor": "Cortex",
+  "product": "XDR Agent",
+  "severity": "High",
+  "category": "Malware",
+  "description": "Malicious macro-enabled document detected. User received email with attached Excel file (Invoice_Q4_2025.xlsm) containing obfuscated VBA macros. Document attempts to download and execute Qakbot trojan payload from compromised WordPress site. Macro attempts to disable security warnings, download secondary payload via PowerShell, establish persistence through scheduled task, and beacon to C2 server. File quarantined, macros blocked, user notified.",
+  "alert_name": "Malicious Macro Document - Qakbot Delivery",
+  "threat_name": "Qakbot Trojan",
+  "user_name": [
+    "accounting@company.com"
+  ],
+  "host_name": "ACCT-WS-042",
+  "host_ip": [
+    "192.168.1.142"
+  ],
+  "host_os": "AGENT_OS_WINDOWS",
+  "file_name": [
+    "Invoice_Q4_2025.xlsm"
+  ],
+  "file_path": [
+    "C:\\Users\\accounting\\Downloads\\Invoice_Q4_2025.xlsm"
+  ],
+  "file_sha256": [
+    "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  ],
+  "filesize": "87552",
+  "email_subject": [
+    "Q4 2025 Invoice - Payment Required"
+  ],
+  "email_sender": [
+    "billing@vendor-systems.com"
+  ],
+  "email_recipient": [
+    "accounting@company.com"
+  ],
+  "remote_ip": [
+    "203.0.113.45"
+  ],
+  "remote_port": [
+    443
+  ],
+  "remote_host": [
+    "compromised-wordpress-site.net"
+  ],
+  "local_ip": [
+    "192.168.1.142"
+  ],
+  "local_port": [
+    49823
+  ],
+  "domain": "compromised-wordpress-site.net",
+  "mitre_att&ck_tactic": "TA0002 - Execution",
+  "mitre_att&ck_technique": "T1204.002 - User Execution: Malicious File",
+  "verdict": "Malicious",
+  "risk_score": "88"
+}

@@ -1,0 +1,50 @@
+{
+  "vendor": "Palo Alto Networks",
+  "product": "Next-Generation Firewall",
+  "severity": "Critical",
+  "category": "Command and Control",
+  "alert_name": "AdaptixC2 Beacon Traffic to C2 Infrastructure",
+  "description": "Next-Generation Firewall detected encrypted C2 beacon communications from FIN-WKS-087 to known AdaptixC2 command-and-control server tech-system[.]online (104.21.78[.]134:443). Advanced Threat Prevention analysis identifies sophisticated C2 protocol mimicking legitimate HTTPS/TLS 1.3 traffic patterns to evade detection: (1) Valid SSL certificate for tech-system[.]online issued by Let's Encrypt, (2) HTTP/2 protocol with proper ALPN negotiation, (3) User-Agent spoofing mimicking 'Microsoft-Delivery-Optimization/10.1' (Windows Update component), (4) Traffic timing follows normal distribution with 60\u00b112 second intervals, (5) Request sizes randomized 1.2-3.8KB matching Windows telemetry patterns. Deep packet inspection despite encryption reveals behavioral signatures: (1) Consistent URI pattern /endpoint/api/v2/beacon with Base64-encoded POST data, (2) TLS session resumption preventing full handshake analysis, (3) Server responses 200-500 bytes containing encrypted taskings, (4) No bidirectional traffic outside beacon intervals (classic C2 pattern). SSL decryption analysis (enterprise proxy) decodes beacon structure: JSON-formatted heartbeat containing system information (hostname: FIN-WKS-087, username: rbrown, domain: financialcorp.com, OS: Windows 11 Enterprise 23H2, privileges: standard user, installed AV: Microsoft Defender + Cortex XDR, last activity timestamp, beacon ID: f47e9ac3-8b2d-4a1f-9e6c-3d5f8b2a7c9e). Threat intelligence correlation: tech-system[.]online registered 2025-05-07 (3 days before campaign), hosted on Cloudflare CDN for resilience and obfuscation, domain categorized as 'uncategorized' bypassing URL filtering, no passive DNS history indicating fresh infrastructure. Firewall policy matched rule 'Block-Unknown-C2' but allowed initial connection due to valid SSL and legitimate User-Agent before threat feed updated. Network flow analysis shows: 47 beacon exchanges over 48 minutes, total data exfiltrated 138KB, received tasking commands 23KB. Behavioral analysis suggests C2 implementing: system reconnaissance, credential harvesting preparation, lateral movement planning. AdaptixC2 framework documentation confirms beacon protocol designed specifically to evade SSL inspection and mimic Windows Update traffic.",
+  "relative_timestamp_hours": 95.18,
+  "campaign_name": "AdaptixC2-FinancialCorp",
+  "host_name": "FIN-WKS-087",
+  "host_ip": [
+    171540703
+  ],
+  "user_name": [
+    "rbrown@financialcorp.com"
+  ],
+  "domain": "financialcorp.com",
+  "local_ip": [
+    171540703
+  ],
+  "local_port": 54782,
+  "remote_ip": [
+    1756033670
+  ],
+  "remote_port": 443,
+  "fw_name": "PA-5220",
+  "fw_rule_name": "Block-Unknown-C2",
+  "fw_rule_id": "security-rule-847",
+  "fw_serial_number": "015351000012847",
+  "source_zone_name": "Internal-LAN",
+  "destination_zone_name": "Internet",
+  "url": "https://tech-system.online/endpoint/api/v2/beacon",
+  "dns_query_name": [
+    "tech-system.online"
+  ],
+  "threat_name": "AdaptixC2 Beacon Protocol",
+  "attack_mode": "C2 Communication",
+  "verdict": "Malicious",
+  "risk_score": "99",
+  "risk_rating": "Critical",
+  "policy_type": "Command and Control",
+  "policy_description": "Encrypted C2 beacon traffic mimicking Windows Update patterns",
+  "policy_severity": "Critical",
+  "policy_recommendation": "CRITICAL: Block tech-system[.]online via DNS sinkhole and firewall rule, terminate all connections from FIN-WKS-087 to 104.21.78[.]134, hunt for similar beacon patterns organization-wide (search: User-Agent contains 'Microsoft-Delivery-Optimization', SSL traffic to newly registered domains), implement SSL decryption for uncategorized domains, enable DNS security inline blocking for domains <14 days old, update threat intelligence feeds with AdaptixC2 IoCs, investigate FIN-WKS-087 for additional persistence mechanisms, consider network segmentation to contain compromise",
+  "log_source": "PA-5220 Threat Logs",
+  "event_id": "THREAT_C2_BEACON",
+  "external_link": "https://unit42.paloaltonetworks.com/adaptixc2-post-exploitation-framework/",
+  "mitre_att&ck_tactic": "TA0011 - Command and Control",
+  "mitre_att&ck_technique": "T1071.001 - Application Layer Protocol: Web Protocols"
+}

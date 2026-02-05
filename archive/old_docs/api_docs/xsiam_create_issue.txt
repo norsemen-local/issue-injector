@@ -1,0 +1,124 @@
+Hello! I'd be happy to provide a detailed description of the Cortex XSIAM "Create a Custom Alert" API, tailored for a developer audience.
+
+This API allows developers to programmatically insert custom security alerts into the Cortex XSIAM system.
+
+***
+
+## Cortex XSIAM: Create a Custom Alert API
+
+### I. API Endpoint and Method
+
+The operation for creating a custom alert uses the HTTP **POST** method.
+
+*   **Method:** `POST`
+*   **Endpoint:** `https://api-yourfqdn/pu…`
+
+### II. Authentication and Required Headers
+
+To execute the request, specific authentication headers are mandatory:
+
+| Header | Requirement | Type | Detail |
+| :--- | :--- | :--- | :--- |
+| `Authorization` | Required* | string | The API key (`{api_key}`). |
+| `x-xdr-auth-id` | Required* | string | The API key ID (`{api_key_id}`). |
+| `Content-Type` | Required | `application/json` | Implicit based on the body structure. |
+
+### III. Request Body Structure
+
+The request body is a JSON object that must contain the `request_data` object, which in turn holds the `alert` object. The `alert` object contains all the field definitions.
+
+A sample request structure starts with:
+```json
+{
+  "request_data": {
+    "alert": {
+      "vendor": ...,
+      "product": ...,
+      "severity": ...,
+      "category": ...
+    }
+  }
+}
+```
+*Note: This is based on the source excerpt ` "re quest _dat a": { "aler t": { "vend " ...` and the description of the `request_data` and `alert` objects.*
+
+### IV. Alert Fields (Mandatory and Optional)
+
+The `alert` object requires four mandatory fields, but can include many others.
+
+#### A. Mandatory Fields
+
+The following fields are required for creating a custom alert:
+
+1.  **`vendor`**: Required string, representing the vendor name.
+2.  **`product`**: Required string, representing the product name.
+3.  **`severity`**: Required string, defining the severity level of the alert. Allowed values are: **Informational**, **Low**, **Medium**, **High**, or **Critical**.
+4.  **`category`**: Required string. It can be one of the predefined options, or any string value. Predefined options include:
+    *   Collection
+    *   Credential Access
+    *   Discovery
+    *   Dropper
+    *   Evasion
+    *   Execution
+    *   Exfiltration
+    *   File Privilege Manipulation
+    *   File Type Obfuscation
+    *   Infiltration
+    *   Lateral Movement
+    *   Other
+    *   Persistence
+    *   Privilege Escalation
+    *   Reconnaissance
+    *   Tampering
+
+#### B. Using Fields from the Alert Table (Field Mapping)
+
+Any field that appears in the alert table can be used in the custom alert payload.
+
+**Key Conversion Rule:**
+Developers must use the **lower camel case representation** of the field name that appears in the alert table.
+
+*   **Example 1:** `Container ID` in the alert table is represented as `container_id` in the API request.
+*   **Hyphen Rule:** If the field in the alert table contains a hyphen, it must be replaced. For example, a field related to App - ID maps to `app_id`.
+
+#### C. Recommended Fields
+
+The sources recommend including the following fields when creating an alert:
+
+*   `remote_ip`
+*   `remote_host`
+*   `host_name`
+*   `group_id`
+*   `initiated_by`
+*   `initiator_sha256`
+*   `target_process_sha256`
+*   `cgo_sha256`
+*   `file_sha256`
+*   `os_parent_cmd`
+*   `os_parent_user_name`
+
+#### D. MITRE Definitions
+
+The `mitre_defs` object is a dictionary that represents the relationship between MITRE attack tactics and techniques.
+
+*   **Structure:** The tactic is used as a key, and the value is a list of associated techniques or sub-techniques.
+*   **Example:** `"mitre_defs": {"TA0007": ["T1007", "T1033"], "TA0002": ["T1037.001"]}`.
+
+### V. Operational Requirements and Limits
+
+For successful integration, developers should note the following constraints:
+
+*   **Required Role:** App Service Account.
+*   **Required Licenses:** Cortex XSIAM Enterprise or Cortex XSIAM Plus.
+*   **Rate Limit:** By using multiple calls of `create_alert`, you can send up to **600 alerts per minute**.
+
+### VI. Response
+
+A successful response (HTTP status 200) will contain a body that includes the reply object from the API call.
+
+*   **Response Content:** The body contains a required `data` string.
+*   **Data Value:** The `data` string contains the **alert external ID**.
+
+***
+
+**In essence, this API acts like a structured intake form:** Just as a system needs clearly defined labels (vendor, product) and classifications (severity, category) before accepting a new piece of evidence, this API requires those four core inputs, while allowing flexible, standardized mapping (lower camel case) for all other important evidence fields.

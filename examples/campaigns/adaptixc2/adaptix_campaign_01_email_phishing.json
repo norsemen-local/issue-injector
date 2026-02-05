@@ -1,0 +1,38 @@
+{
+  "vendor": "Proofpoint",
+  "product": "Email Protection",
+  "severity": "High",
+  "category": "Initial Access",
+  "alert_name": "Social Engineering Phishing - Fake Microsoft Teams Helpdesk Impersonation",
+  "description": "Proofpoint Email Protection detected sophisticated social engineering phishing email targeting employee rbrown@financialcorp.com impersonating Microsoft Teams IT helpdesk support. Email originated from external attacker-controlled domain teams-support[.]online with spoofed display name 'IT Support | Microsoft Teams' and subject line 'Help Desk (External) | Urgent: System Verification Required'. Email analysis reveals advanced social engineering tactics: legitimate Microsoft Teams visual branding, urgent language creating time pressure ('Your account shows suspicious activity - immediate verification required'), fake security alert claiming unauthorized access detected from foreign IP address. Email body contains single call-to-action: 'Click here to start secure verification session with IT Support' linking to legitimate Microsoft Quick Assist download page, instructing victim to share 6-digit code with 'support agent' waiting in Teams chat. Threat intelligence correlation: this attack pattern matches 2025 Unit 42 Global Incident Response Report identifying social engineering as most prevalent initial access vector, specifically targeting trust in legitimate remote assistance tools. Email headers reveal suspicious characteristics: originating IP 103.224.182[.]45 (bulletproof hosting, Singapore), SPF authentication failure (sender domain teams-support[.]online not authorized), mismatched Reply-To address (support@ms-teams-verify[.]com), timestamp 03:42 AM local time (outside normal business hours). Proofpoint Advanced Threat Protection scored email 94/100 risk based on: external sender impersonating internal IT, social engineering urgency indicators, newly registered domain (teams-support[.]online registered 2025-05-08, 2 days before campaign), known QuickAssist RMM abuse pattern. Email successfully delivered to user inbox due to legitimate Microsoft link bypassing URL filtering, however user reported email to security team triggering investigation. Attack vector confirms trend: attackers exploiting trust in Microsoft Teams external collaboration features, leveraging legitimate RMM tools (QuickAssist) for initial access instead of malware deployment, bypassing traditional perimeter defenses.",
+  "relative_timestamp_hours": 96.0,
+  "campaign_name": "AdaptixC2-FinancialCorp",
+  "host_name": "FIN-WKS-087",
+  "host_ip": [
+    171540703
+  ],
+  "user_name": [
+    "rbrown@financialcorp.com"
+  ],
+  "domain": "financialcorp.com",
+  "remote_ip": [
+    1742758957
+  ],
+  "dns_query_name": [
+    "teams-support.online"
+  ],
+  "threat_name": "Social Engineering - Fake IT Helpdesk",
+  "attack_mode": "Social Engineering Phishing",
+  "verdict": "Malicious",
+  "risk_score": "94",
+  "risk_rating": "High",
+  "policy_type": "Email Security",
+  "policy_description": "Fake Microsoft Teams helpdesk phishing targeting QuickAssist RMM abuse",
+  "policy_severity": "High",
+  "policy_recommendation": "HIGH: Block sender domain teams-support[.]online and ms-teams-verify[.]com, educate rbrown@financialcorp.com on social engineering indicators (external Teams contacts requesting RMM access, urgency tactics, off-hours contact), implement email banner warnings for external Teams messages, restrict Quick Assist usage via Group Policy (allow only IT-initiated sessions), enable MFA for all remote access tools, hunt for similar phishing emails across organization (search: subject contains 'Help Desk (External)'), deploy user awareness training on RMM tool abuse, monitor for QuickAssist.exe executions following external Teams messages",
+  "log_source": "Proofpoint Email Protection",
+  "event_id": "EMAIL_SOCIAL_ENGINEERING",
+  "external_link": "https://unit42.paloaltonetworks.com/adaptixc2-post-exploitation-framework/",
+  "mitre_att&ck_tactic": "TA0001 - Initial Access",
+  "mitre_att&ck_technique": "T1566.002 - Phishing: Spearphishing Link"
+}

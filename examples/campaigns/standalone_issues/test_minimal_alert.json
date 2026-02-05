@@ -1,0 +1,61 @@
+{
+  "vendor": "Test Vendor",
+  "product": "Test Product",
+  "name": "TEST ALERT - Comprehensive Field Mapping Test",
+  "rawName": "TEST ALERT - Comprehensive Field Mapping Test",
+  "issuename": "TEST ALERT - Comprehensive Field Mapping Test",
+  "details": "This is a comprehensive test alert to verify all field mappings are working correctly in XSIAM.",
+  "severity": "High",
+  "category": "Malware",
+  "categoryname": "Malware",
+  "action": "BLOCKED",
+  "alertid": "TEST-COMPREHENSIVE-002",
+  "sourcebrand": "XDR Agent",
+  "username": [
+    "testuser@agentix.ad.bakerstreetlabs.io"
+  ],
+  "hostname": "TEST-WORKSTATION-001",
+  "hostip": [
+    "10.100.99.99"
+  ],
+  "endpointid": "test1234567890abcdef",
+  "localip": [
+    "10.100.99.99"
+  ],
+  "localport": [
+    49999
+  ],
+  "remoteip": [
+    "185.234.219.99"
+  ],
+  "remoteport": [
+    443
+  ],
+  "country": [
+    "US"
+  ],
+  "filesha256": [
+    "1111111111111111111111111111111111111111111111111111111111111111"
+  ],
+  "filename": [
+    "test_malware.exe"
+  ],
+  "filepath": [
+    "C:\\Users\\testuser\\Downloads\\test_malware.exe"
+  ],
+  "mitreattcktactic": [
+    "TA0002 - Execution"
+  ],
+  "mitreattcktechnique": [
+    "T1204.002 - User Execution: Malicious File"
+  ],
+  "agentversion": [
+    "8.9.0.14028"
+  ],
+  "agentossubtype": "Windows 10 Pro [10.0 (Build 19045)]",
+  "domain": "DOMAIN_SECURITY",
+  "eventtype": [
+    "Process Execution"
+  ],
+  "tags": "DS:XDR Agent,DOM:Security,SEVERITY:High,TEST:Comprehensive"
+}

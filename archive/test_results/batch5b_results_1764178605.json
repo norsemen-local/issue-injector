@@ -1,0 +1,164 @@
+{
+  "working": [],
+  "failed": [
+    {
+      "field": "parent_process_ids",
+      "value": "12345",
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"An unexpected error occurred by XDR public API\", \"err_extra\": \"field parentprocessids should be type of List, got 12345\"}}",
+      "category": "Process Fields (String)"
+    },
+    {
+      "field": "parent_process_cmd",
+      "value": "C:\\Windows\\explorer.exe",
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"An unexpected error occurred by XDR public API\", \"err_extra\": \"field parentprocesscmd should be type of List, got C:\\\\Windows\\\\explorer.exe\"}}",
+      "category": "Process Fields (String)"
+    },
+    {
+      "field": "parent_process_file_path",
+      "value": "C:\\Windows\\explorer.exe",
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"An unexpected error occurred by XDR public API\", \"err_extra\": \"field parentprocessfilepath should be type of List, got C:\\\\Windows\\\\explorer.exe\"}}",
+      "category": "Process Fields (String)"
+    },
+    {
+      "field": "parent_process_md5",
+      "value": "d41d8cd98f00b204e9800998ecf8427e",
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"An unexpected error occurred by XDR public API\", \"err_extra\": \"field parentprocessmd5 should be type of List, got d41d8cd98f00b204e9800998ecf8427e\"}}",
+      "category": "Process Fields (String)"
+    },
+    {
+      "field": "parent_process_name",
+      "value": "explorer.exe",
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"An unexpected error occurred by XDR public API\", \"err_extra\": \"field parentprocessname should be type of List, got explorer.exe\"}}",
+      "category": "Process Fields (String)"
+    },
+    {
+      "field": "parent_process_path",
+      "value": "C:\\Windows",
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"An unexpected error occurred by XDR public API\", \"err_extra\": \"field parentprocesspath should be type of List, got C:\\\\Windows\"}}",
+      "category": "Process Fields (String)"
+    },
+    {
+      "field": "parent_process_sha256",
+      "value": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"An unexpected error occurred by XDR public API\", \"err_extra\": \"field parentprocesssha256 should be type of List, got e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"}}",
+      "category": "Process Fields (String)"
+    },
+    {
+      "field": "process_id",
+      "value": "1001",
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"An unexpected error occurred by XDR public API\", \"err_extra\": \"field processid should be type of List, got 1001\"}}",
+      "category": "Process Fields (String)"
+    },
+    {
+      "field": "process_cmd",
+      "value": "notepad.exe",
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"An unexpected error occurred by XDR public API\", \"err_extra\": \"field processcmd should be type of List, got notepad.exe\"}}",
+      "category": "Process Fields (String)"
+    },
+    {
+      "field": "process_md5",
+      "value": "abc123def456",
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"An unexpected error occurred by XDR public API\", \"err_extra\": \"field processmd5 should be type of List, got abc123def456\"}}",
+      "category": "Process Fields (String)"
+    },
+    {
+      "field": "user_groups",
+      "value": "Domain Users",
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"An unexpected error occurred by XDR public API\", \"err_extra\": \"field usergroups should be type of List, got Domain Users\"}}",
+      "category": "User Fields (String)"
+    },
+    {
+      "field": "user_sid",
+      "value": "S-1-5-21-123456789-123456789-123456789-1001",
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"An unexpected error occurred by XDR public API\", \"err_extra\": \"field usersid should be type of List, got S-1-5-21-123456789-123456789-123456789-1001\"}}",
+      "category": "User Fields (String)"
+    },
+    {
+      "field": "source_geolocation",
+      "value": "US",
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"An unexpected error occurred by XDR public API\", \"err_extra\": \"field sourcegeolocation should be type of List, got US\"}}",
+      "category": "Network Fields (String)"
+    },
+    {
+      "field": "destination_geolocation",
+      "value": "CN",
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"An unexpected error occurred by XDR public API\", \"err_extra\": \"field destinationgeolocation should be type of List, got CN\"}}",
+      "category": "Network Fields (String)"
+    },
+    {
+      "field": "destination_networks",
+      "value": "10.0.0.0/8",
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"An unexpected error occurred by XDR public API\", \"err_extra\": \"field destinationnetworks should be type of List, got 10.0.0.0/8\"}}",
+      "category": "Network Fields (String)"
+    },
+    {
+      "field": "source_networks",
+      "value": "192.168.0.0/16",
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"An unexpected error occurred by XDR public API\", \"err_extra\": \"field sourcenetworks should be type of List, got 192.168.0.0/16\"}}",
+      "category": "Network Fields (String)"
+    },
+    {
+      "field": "traffic_direction",
+      "value": "OUTBOUND",
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"An unexpected error occurred by XDR public API\", \"err_extra\": \"field trafficdirection should be type of List, got OUTBOUND\"}}",
+      "category": "Network Fields (String)"
+    },
+    {
+      "field": "protocol_names",
+      "value": "TCP",
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"An unexpected error occurred by XDR public API\", \"err_extra\": \"field protocolnames should be type of List, got TCP\"}}",
+      "category": "Network Fields (String)"
+    },
+    {
+      "field": "device_os_name",
+      "value": "Windows 10 Pro",
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"An unexpected error occurred by XDR public API\", \"err_extra\": \"field deviceosname should be type of List, got Windows 10 Pro\"}}",
+      "category": "Device Fields (Alternative)"
+    },
+    {
+      "field": "device_os_version",
+      "value": "10.0.19045",
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"An unexpected error occurred by XDR public API\", \"err_extra\": \"field deviceosversion should be type of List, got 10.0.19045\"}}",
+      "category": "Device Fields (Alternative)"
+    },
+    {
+      "field": "device_ou",
+      "value": "CN=Computers,DC=corp,DC=local",
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"An unexpected error occurred by XDR public API\", \"err_extra\": \"field deviceou should be type of List, got CN=Computers,DC=corp,DC=local\"}}",
+      "category": "Device Fields (Alternative)"
+    },
+    {
+      "field": "agent_id",
+      "value": [
+        "agent-uuid-12345"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"An unexpected error occurred by XDR public API\", \"err_extra\": \"field agent_id should NOT be type of List, got ['agent-uuid-12345']\"}}",
+      "category": "Device Fields (Alternative)"
+    },
+    {
+      "field": "agents_id",
+      "value": "agent-001",
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"An unexpected error occurred by XDR public API\", \"err_extra\": \"field agentsid should be type of List, got agent-001\"}}",
+      "category": "Device Fields (Alternative)"
+    },
+    {
+      "field": "log_source_name",
+      "value": "Firewall-PA-220",
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"An unexpected error occurred by XDR public API\", \"err_extra\": \"field logsourcename should be type of List, got Firewall-PA-220\"}}",
+      "category": "Detection Fields (String)"
+    },
+    {
+      "field": "log_source_type",
+      "value": "NGFW",
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"An unexpected error occurred by XDR public API\", \"err_extra\": \"field logsourcetype should be type of List, got NGFW\"}}",
+      "category": "Detection Fields (String)"
+    },
+    {
+      "field": "policy_actions",
+      "value": "ALERT",
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"An unexpected error occurred by XDR public API\", \"err_extra\": \"field policyactions should be type of List, got ALERT\"}}",
+      "category": "Policy Fields (String)"
+    }
+  ],
+  "errors": []
+}

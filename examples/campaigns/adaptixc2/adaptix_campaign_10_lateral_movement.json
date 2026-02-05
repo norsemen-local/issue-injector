@@ -1,0 +1,64 @@
+{
+  "vendor": "Microsoft",
+  "product": "Cortex XDR",
+  "severity": "Critical",
+  "category": "Lateral Movement",
+  "alert_name": "SMB-Based Lateral Movement to Finance File Server",
+  "description": "Cortex XDR detected AdaptixC2 beacon attempting lateral movement from compromised workstation FIN-WKS-087 to finance file server FS-PROD-01 via SMB protocol, representing post-exfiltration persistence and expansion phase. Network anomaly detection identified suspicious SMB traffic pattern inconsistent with normal user file access: (1) 06:24 AM - Initial SMB connection FIN-WKS-087 \u2192 FS-PROD-01:445 originating from malicious rundll32.exe process (PID 9156) rather than Windows Explorer, (2) Authentication using legitimate rbrown@financialcorp.com credentials (harvested during earlier credential theft phase), (3) SMB tree connect to hidden administrative share \\\\FS-PROD-01\\ADMIN$ (system administrators only - privilege escalation), (4) Remote service creation via Service Control Manager (SCM) protocol uploading malicious executable 'WindowsDefenderUpdate.exe' to C:\\Windows\\Temp\\, (5) Service registered as 'WDUpdateSvc' with auto-start configuration, (6) Remote service execution launching AdaptixC2 beacon on file server establishing independent C2 channel. EDR behavioral analysis on FS-PROD-01 detected beacon execution: WindowsDefenderUpdate.exe (45KB PE executable, hash: 9f3e7b5a1d8c4e2f6a9b0d3c5e7f1a4b) executed at 06:27 AM, process immediately connected to tech-system[.]online establishing C2 heartbeat, memory injection into legitimate svchost.exe process for stealth, registry persistence created (HKLM\\System\\CurrentControlSet\\Services\\WDUpdateSvc), beacon implemented named pipe communication \\\\pipe\\winsock_event_notifier for inter-process signaling. Attack analysis reveals sophisticated lateral movement technique: (1) Abuse of legitimate SMB administrative shares avoiding file copy detection, (2) Service creation mimics Windows Defender update process (naming convention, Temp directory location), (3) Rapid execution minimizing detection window (3-minute installation), (4) Independent beacon on file server provides redundancy if FIN-WKS-087 remediated, (5) File server compromise enables organization-wide data access (2.3TB financial archives, 847 users home directories). Threat intelligence confirms AdaptixC2 framework includes automated lateral movement module targeting administrative shares, service creation via SCM protocol, and multi-host beacon deployment for persistence. Impact assessment: CRITICAL - file server compromise provides attacker access to complete financial department data repository, ability to stage ransomware deployment across network, potential for domain-wide compromise if domain admin credentials harvested from FS-PROD-01 memory. EDR correlation shows attack progression: social engineering (T1566) \u2192 execution (T1059) \u2192 persistence (T1543) \u2192 credential access (T1003) \u2192 discovery (T1482) \u2192 collection (T1005) \u2192 exfiltration (T1041) \u2192 lateral movement (T1021.002) - complete MITRE ATT&CK kill chain executed.",
+  "relative_timestamp_hours": 93.6,
+  "campaign_name": "AdaptixC2-FinancialCorp",
+  "host_name": "FS-PROD-01",
+  "host_ip": [
+    171540862
+  ],
+  "user_name": [
+    "rbrown@financialcorp.com"
+  ],
+  "domain": "financialcorp.com",
+  "local_ip": [
+    171540862
+  ],
+  "local_port": 445,
+  "remote_ip": [
+    171540703
+  ],
+  "remote_port": 54891,
+  "process_name": "WindowsDefenderUpdate.exe",
+  "process_id": "5784",
+  "parent_process_name": "services.exe",
+  "parentprocessid": "624",
+  "process_cmd": "C:\\Windows\\Temp\\WindowsDefenderUpdate.exe",
+  "file_name": "WindowsDefenderUpdate.exe",
+  "file_path": [
+    "C:\\Windows\\Temp\\WindowsDefenderUpdate.exe"
+  ],
+  "file_hash": "83ac38fb389a56a6bd5eb39abf2ad81fab84a7382da296a855f62f3cdd9d629d",
+  "file_sha256": [
+    "83ac38fb389a56a6bd5eb39abf2ad81fab84a7382da296a855f62f3cdd9d629d"
+  ],
+  "file_hash_sha256": "83ac38fb389a56a6bd5eb39abf2ad81fab84a7382da296a855f62f3cdd9d629df8a0b2c4d6e8f0a2b4c6d8e0f2a4b6c8d0e2f4a6b8c0d2e4f6a8",
+  "filesize": "46080",
+  "initiator_sha256": [
+    "83ac38fb389a56a6bd5eb39abf2ad81fab84a7382da296a855f62f3cdd9d629d"
+  ],
+  "registry_key": "HKLM\\System\\CurrentControlSet\\Services\\WDUpdateSvc",
+  "registry_value_name": "ImagePath",
+  "registry_value_data": "C:\\Windows\\Temp\\WindowsDefenderUpdate.exe",
+  "dns_query_name": [
+    "tech-system.online"
+  ],
+  "threat_name": "SMB Lateral Movement",
+  "attack_mode": "Service-Based Lateral Movement",
+  "verdict": "Malicious",
+  "risk_score": "100",
+  "risk_rating": "Critical",
+  "policy_type": "Lateral Movement Prevention",
+  "policy_description": "SMB lateral movement to file server via administrative share with service persistence",
+  "policy_severity": "Critical",
+  "policy_recommendation": "CRITICAL: Isolate FS-PROD-01 immediately (network-level containment), stop WDUpdateSvc service and delete WindowsDefenderUpdate.exe, remove HKLM service registry key, terminate all SMB sessions from FIN-WKS-087, disable ADMIN$ share access for non-privileged users, reset rbrown@financialcorp.com credentials, hunt for additional lateral movement (search: SMB connections to ADMIN$ from non-admin accounts), deploy Group Policy: RestrictAnonymous=2, RequireSecuritySignature=enabled, enable SMB signing mandatory, implement privileged access management (PAM) for administrative share access, enable Microsoft Advanced Threat Analytics for lateral movement detection, forensically image FS-PROD-01 for incident response analysis, review all file server access logs for unauthorized data access post-compromise, consider domain-wide credential reset if domain admin credentials potentially compromised, engage external incident response for containment strategy",
+  "log_source": "Cortex XDR Agent",
+  "event_id": "BEHAVIOR_LATERAL_SMB",
+  "external_link": "https://unit42.paloaltonetworks.com/adaptixc2-post-exploitation-framework/",
+  "mitre_att&ck_tactic": "TA0008 - Lateral Movement",
+  "mitre_att&ck_technique": "T1021.002 - Remote Services: SMB/Windows Admin Shares"
+}

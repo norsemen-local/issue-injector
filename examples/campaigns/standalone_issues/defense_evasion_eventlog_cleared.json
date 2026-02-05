@@ -1,0 +1,49 @@
+{
+  "vendor": "Microsoft",
+  "product": "Microsoft Defender for Endpoint",
+  "severity": "High",
+  "category": "Defense Evasion",
+  "alert_name": "Windows Security Event Log Cleared Using Wevtutil",
+  "description": "Administrator account admin_helpdesk@company.local cleared the Windows Security Event Log on server WEB-PROD-03 (172.16.50.142) using wevtutil.exe command-line utility at 2024-11-22 16:34:29 UTC. The command executed was 'wevtutil.exe cl Security' which completely erased 48,573 security events including authentication logs, privilege use events, and audit policy changes. This action was performed 15 minutes after multiple failed privilege escalation attempts were recorded in the Security log. Clearing event logs is a common anti-forensics technique used by attackers to hide their tracks after successful compromise. The admin account was recently created 3 days ago and has no legitimate business need to clear event logs on production servers. Event ID 1102 (Security log was cleared) was generated immediately before log clearing, and no change management ticket exists for this maintenance activity.",
+  "host_name": "WEB-PROD-03",
+  "host_ip": [
+    2886732942
+  ],
+  "host_os": "AGENT_OS_WINDOWS",
+  "user_name": [
+    "admin_helpdesk@company.local"
+  ],
+  "account_id": "S-1-5-21-3623811015-3361044348-30300820-3847",
+  "account_status": "Active",
+  "domain": "company.local",
+  "cgo_name": [
+    "wevtutil.exe"
+  ],
+  "cgo_cmd": [
+    "wevtutil.exe cl Security"
+  ],
+  "cgo_path": [
+    "C:\\Windows\\System32\\wevtutil.exe"
+  ],
+  "os_parent_name": [
+    "cmd.exe"
+  ],
+  "os_parent_cmd": [
+    "cmd.exe /c wevtutil.exe cl Security"
+  ],
+  "threat_name": "Anti-Forensics",
+  "attack_mode": "Defense Evasion",
+  "verdict": "Malicious",
+  "risk_score": "88",
+  "risk_rating": "High",
+  "host_risk_level": "High",
+  "policy_type": "Audit Policy",
+  "policy_description": "Security event log tampering detected",
+  "policy_severity": "High",
+  "policy_recommendation": "Suspend admin account immediately, preserve memory dump, review backup event logs from SIEM, investigate privilege escalation attempts",
+  "log_source": "Windows Security Event Log",
+  "event_id": "1102",
+  "external_link": "https://security.microsoft.com/machines",
+  "mitre_att&ck_tactic": "TA0005 - Defense Evasion",
+  "mitre_att&ck_technique": "T1070 - Indicator Removal on Host"
+}

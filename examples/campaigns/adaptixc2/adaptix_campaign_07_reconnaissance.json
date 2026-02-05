@@ -1,0 +1,37 @@
+{
+  "vendor": "Microsoft",
+  "product": "Cortex XDR",
+  "severity": "High",
+  "category": "Discovery",
+  "alert_name": "Active Directory Reconnaissance and System Enumeration",
+  "description": "Cortex XDR detected systematic reconnaissance activity characteristic of post-exploitation enumeration phase, executed via AdaptixC2 beacon on compromised workstation FIN-WKS-087. Command sequence analysis reveals attacker methodically mapping Active Directory environment and network topology through native Windows utilities to evade EDR behavioral detection. Execution timeline and process tree: (1) 04:52 AM - nltest.exe /domain_trusts /all_trusts (parent: rundll32.exe PID 9156, child PID 10284) - enumerating domain trust relationships to identify lateral movement targets and forest architecture, output reveals FINANCIALCORP.COM domain with bidirectional trust to FINANCIALCORP-DEV.LOCAL, (2) 04:53 AM - nltest.exe /dclist:financialcorp.com (PID 10297) - identifying all domain controllers (DC01.financialcorp.com, DC02.financialcorp.com, DC03-DR.financialcorp.com) for potential Kerberoasting or DCSync attacks, (3) 04:54 AM - whoami.exe /all (PID 10312) - comprehensive privilege enumeration revealing rbrown is member of 'Domain Users' and 'Finance-Analysts' groups but lacking administrative privileges, identifying privilege escalation requirement, (4) 04:55 AM - ipconfig.exe /all (PID 10325) - network configuration discovery showing DHCP-assigned IP 10.45.67.87, subnet 10.45.64.0/20, default gateway 10.45.64.1, DNS servers DC01/DC02 confirming internal network position, (5) 04:56 AM - net.exe group 'Domain Admins' /domain (PID 10341) - enumerating high-privilege accounts for targeting (identified 5 domain admin accounts), (6) 04:57 AM - net.exe view \\\\DC01 /all (PID 10358) - SMB share enumeration on primary domain controller. All commands executed via cmd.exe spawned from malicious rundll32.exe process, output captured and exfiltrated via encrypted C2 channel to tech-system[.]online in 12KB compressed JSON payload. EDR behavioral analysis flags reconnaissance pattern: multiple native Windows binaries executed in rapid succession (6 commands, 5-minute window), all spawned from same suspicious parent process, command outputs redirected to temp files then immediately deleted (anti-forensics), timing correlation with C2 beacon traffic indicating automated tasking. Threat intelligence confirms AdaptixC2 framework includes built-in reconnaissance module executing standardized enumeration sequence. Attack progression indicates attacker completed initial reconnaissance phase, identifying lateral movement targets (domain controllers, trust relationships) and privilege escalation requirements (current user lacks admin rights).",
+  "relative_timestamp_hours": 94.87,
+  "campaign_name": "AdaptixC2-FinancialCorp",
+  "host_name": "FIN-WKS-087",
+  "host_ip": [
+    171540703
+  ],
+  "user_name": [
+    "rbrown@financialcorp.com"
+  ],
+  "domain": "financialcorp.com",
+  "process_name": "nltest.exe",
+  "process_id": "10284",
+  "parent_process_name": "rundll32.exe",
+  "parentprocessid": "9156",
+  "process_cmd": "nltest.exe /domain_trusts /all_trusts",
+  "threat_name": "Active Directory Reconnaissance",
+  "attack_mode": "System and Network Enumeration",
+  "verdict": "Suspicious",
+  "risk_score": "87",
+  "risk_rating": "High",
+  "policy_type": "Discovery Prevention",
+  "policy_description": "Systematic AD enumeration via nltest, whoami, net commands from malicious process",
+  "policy_severity": "High",
+  "policy_recommendation": "HIGH: Monitor for privilege escalation attempts by rbrown@financialcorp.com, restrict nltest.exe usage via AppLocker (allow only admin users), enable command-line logging organization-wide (ProcessCreationIncludeCmdLine_Enabled), hunt for similar reconnaissance patterns (multiple discovery commands within 10-minute window), protect Domain Admin accounts with MFA and privileged access workstations, enable Advanced Threat Analytics to detect DCSync/Kerberoasting attempts, implement honeypot accounts in 'Domain Admins' group for detection, review access to domain controllers DC01/DC02/DC03-DR from finance network segment",
+  "log_source": "Cortex XDR Agent",
+  "event_id": "BEHAVIOR_RECON_ACTIVITY",
+  "external_link": "https://unit42.paloaltonetworks.com/adaptixc2-post-exploitation-framework/",
+  "mitre_att&ck_tactic": "TA0007 - Discovery",
+  "mitre_att&ck_technique": "T1482 - Domain Trust Discovery"
+}

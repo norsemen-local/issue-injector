@@ -1,0 +1,82 @@
+{
+  "vendor": "Palo Alto Networks",
+  "product": "Cortex XDR",
+  "severity": "Critical",
+  "category": "Impact",
+  "alert_name": "Mass File Encryption Across Enterprise",
+  "description": "CRITICAL: Widespread ransomware deployment detected across VictimCorp infrastructure 43 minutes after data exfiltration completion. Medusa ransomware binary (medusa.exe, SHA256: 4d4df87cf8d8551d836f67fbde4337863bac3ff6b5cb324675054ea023b12ab6) executed simultaneously on 24 Windows servers including file servers, database servers, and domain controllers. Encryption started on FS-PROD-01 (10.50.20.10) and propagated via stolen Domain Admin credentials. The malware encrypted 15.7TB of data across 2,847,392 files with AES-256 encryption, appending .medusa extension to all encrypted files. Ransom note HOW_TO_RECOVER_FILES.txt deposited in every encrypted directory demanding 2.5 million USD in Bitcoin, with payment deadline of 72 hours before data publication on Medusa Blog leak site (medusakxxtp3uo7vusntvubnytaph4d3amxivbggl3hnhpk2nmus34yd.onion). The ransomware stopped 47 Windows services including SQL Server, Exchange, backup services, and VMware. Shadow copies were deleted using vssadmin.exe. All 24 affected systems displayed ransom wallpaper and locked workstations. Business operations completely halted. Total attack duration from initial RDP access to full encryption: 4 hours 16 minutes.",
+  "relative_timestamp_hours": 67.84,
+  "campaign_name": "Medusa-VictimCorp",
+  "host_name": "FS-PROD-01",
+  "host_ip": [
+    172305930
+  ],
+  "host_os": "AGENT_OS_WINDOWS",
+  "user_name": [
+    "jsmith@victimcorp.local",
+    "IT-Admin@victimcorp.local",
+    "SYSTEM"
+  ],
+  "account_id": "S-1-5-21-2847561234-9876543210-4567123890-5001",
+  "domain": "victimcorp.local",
+  "cgo_name": [
+    "medusa.exe",
+    "vssadmin.exe"
+  ],
+  "cgo_cmd": [
+    "C:\\Windows\\Temp\\medusa.exe --encrypt --path C:\\ --exclude system32",
+    "vssadmin.exe delete shadows /all /quiet"
+  ],
+  "cgo_path": [
+    "C:\\Windows\\Temp\\medusa.exe",
+    "C:\\Windows\\System32\\vssadmin.exe"
+  ],
+  "cgo_sha256": [
+    "4d4df87cf8d8551d836f67fbde4337863bac3ff6b5cb324675054ea023b12ab6"
+  ],
+  "cgo_pid": [
+    4521
+  ],
+  "initiator_sha256": [
+    "4d4df87cf8d8551d836f67fbde4337863bac3ff6b5cb324675054ea023b12ab6"
+  ],
+  "os_parent_name": [
+    "stage2.exe"
+  ],
+  "os_parent_cmd": [
+    "C:\\Windows\\Temp\\stage2.exe"
+  ],
+  "os_parent_pid": [
+    2341
+  ],
+  "file_name": [
+    "medusa.exe",
+    "HOW_TO_RECOVER_FILES.txt",
+    "medusa_wallpaper.bmp"
+  ],
+  "file_path": [
+    "C:\\Windows\\Temp\\medusa.exe",
+    "C:\\Users\\Public\\Documents\\HOW_TO_RECOVER_FILES.txt",
+    "C:\\Windows\\Temp\\medusa_wallpaper.bmp"
+  ],
+  "file_hash": "4d4df87cf8d8551d836f67fbde4337863bac3ff6b5cb324675054ea023b12ab6",
+  "file_sha256": [
+    "4d4df87cf8d8551d836f67fbde4337863bac3ff6b5cb324675054ea023b12ab6"
+  ],
+  "filesize": "3145728",
+  "threat_name": "Medusa Ransomware",
+  "attack_mode": "Ransomware Encryption - Double Extortion",
+  "verdict": "Malicious",
+  "risk_score": "100",
+  "risk_rating": "Critical",
+  "host_risk_level": "Critical",
+  "policy_type": "Ransomware Protection",
+  "policy_description": "Medusa ransomware mass encryption - enterprise-wide impact",
+  "policy_severity": "Critical",
+  "policy_recommendation": "IMMEDIATE ACTIONS: Isolate all 24 affected systems from network, do NOT pay ransom without legal/executive approval, contact FBI IC3 and local law enforcement, engage incident response team, assess backup integrity and restore from clean backups if available, notify cyber insurance carrier, prepare breach notification per regulatory requirements (GDPR/CCPA - 2.3M customer records exfiltrated), monitor Medusa Blog for data publication, consider engaging professional ransomware negotiators",
+  "log_source": "Cortex XDR Agent",
+  "event_id": "BEHAVIORAL_THREAT",
+  "external_link": "https://unit42.paloaltonetworks.com/medusa-ransomware-escalation-new-leak-site/",
+  "mitre_att&ck_tactic": "TA0040 - Impact",
+  "mitre_att&ck_technique": "T1486 - Data Encrypted for Impact"
+}

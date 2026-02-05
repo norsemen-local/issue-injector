@@ -1,0 +1,79 @@
+{
+  "vendor": "Palo Alto Networks",
+  "product": "Next-Generation Firewall",
+  "severity": "Medium",
+  "category": "Command and Control",
+  "alert_name": "Suspicious HTTPS Connection to Newly Registered CDN Domain",
+  "description": "Palo Alto Networks firewall PA-3220-FW01 detected suspicious HTTPS connection from internal workstation ACCT-WKS-047 (10.30.25.88) to newly registered domain cdn.contentdelivery[.]cloud (185.141.62.47) 5 minutes after PowerShell execution. The connection originated from user mthomas@techcorp.local attempting to download file 'banner_v2.gif' from suspicious CDN infrastructure. URL filtering analysis shows the domain was registered only 3 days ago with privacy protection enabled, flagged as 'newly-seen' with insufficient reputation. The HTTPS session (443/tcp) shows 47KB download from remote server, consistent with PhantomVAI Loader steganographic payload delivery documented by Unit 42. Traffic inspection reveals GIF file header but binary analysis shows embedded Base64 data with suspicious markers (<<sudo_png>>). Firewall rule 'Outbound-Internet-Access' permitted the connection but Advanced Threat Prevention flagged the session due to low domain reputation and behavioral anomalies. Session duration: 2.3 seconds. Source zone: Trust, Destination zone: Untrust.",
+  "relative_timestamp_hours": 47.75,
+  "campaign_name": "PhantomVAI-TechCorp",
+  "host_name": "ACCT-WKS-047",
+  "host_ip": [
+    171540568
+  ],
+  "user_name": [
+    "mthomas@techcorp.local"
+  ],
+  "domain": "techcorp.local",
+  "local_ip": [
+    171540568
+  ],
+  "remote_ip": [
+    3111387695
+  ],
+  "local_port": [
+    52341
+  ],
+  "remote_port": [
+    443
+  ],
+  "url": [
+    "https://cdn.contentdelivery.cloud/images/banner_v2.gif"
+  ],
+  "dns_query_name": [
+    "cdn.contentdelivery.cloud"
+  ],
+  "source_zone_name": [
+    "Trust"
+  ],
+  "destination_zone_name": [
+    "Untrust"
+  ],
+  "fw_name": [
+    "PA-3220-FW01"
+  ],
+  "fw_rule_name": [
+    "Outbound-Internet-Access"
+  ],
+  "fw_rule_id": [
+    "rule-587"
+  ],
+  "fw_serial_number": [
+    "015351000012345"
+  ],
+  "file_name": [
+    "banner_v2.gif"
+  ],
+  "filesize": "48128",
+  "file_hash": "e663916cc91b4285a1ee762716ff7ce4537153c7893e2d88c13c7e57bbb646a9",
+  "file_sha256": [
+    "e663916cc91b4285a1ee762716ff7ce4537153c7893e2d88c13c7e57bbb646a9"
+  ],
+  "initiator_sha256": [
+    "e663916cc91b4285a1ee762716ff7ce4537153c7893e2d88c13c7e57bbb646a9"
+  ],
+  "threat_name": "PhantomVAI Loader - CDN Download",
+  "attack_mode": "Steganographic Payload Download",
+  "verdict": "Malicious",
+  "risk_score": "76",
+  "risk_rating": "High",
+  "policy_type": "Network Security",
+  "policy_description": "Suspicious HTTPS to newly registered CDN - PhantomVAI Loader delivery",
+  "policy_severity": "High",
+  "policy_recommendation": "Block domain cdn.contentdelivery[.]cloud immediately, create URL filtering block policy for newly-registered domains (<7 days), investigate downloaded GIF payload on ACCT-WKS-047, enable DNS sinkholing for command-and-control domains, review firewall logs for additional connections to 185.141.62.47",
+  "log_source": "PA-3220 Firewall Traffic Log",
+  "event_id": "THREAT",
+  "external_link": "https://unit42.paloaltonetworks.com/phantomvai-loader-delivers-infostealers/",
+  "mitre_att&ck_tactic": "TA0011 - Command and Control",
+  "mitre_att&ck_technique": "T1105 - Ingress Tool Transfer"
+}

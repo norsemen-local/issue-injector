@@ -1,0 +1,57 @@
+{
+  "vendor": "Cortex XDR",
+  "product": "Endpoint Protection",
+  "severity": "Critical",
+  "category": "Credential Access",
+  "alert_name": "DeerStealer Credential Harvesting - Browser Password and Token Theft",
+  "description": "Cortex XDR detected DeerStealer infostealer actively harvesting credentials on workstation MKTG-WKS-024 where PowerShell process (PID 7452) executed in-memory payload accessing browser credential databases. Behavioral analysis identified suspicious file access patterns: PowerShell reading Chrome Login Data (C:\\Users\\jdavis\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Login Data - SQLite database containing 87 saved passwords), Firefox logins.json (C:\\Users\\jdavis\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\xk9f3m2s.default-release\\logins.json - 34 credentials), Edge Login Data (52 passwords), Chrome Cookies database (1,247 session cookies including authentication tokens for Office365, Salesforce, AWS Console). File forensics show PowerShell creating temporary copies with randomized names: AppData\\Local\\Temp\\tmp8F2A.db (Chrome passwords), tmp9C4B.json (Firefox credentials), enabling theft without triggering browser lock-file protections. Process telemetry reveals DeerStealer enumerating cryptocurrency wallets: searched directories %APPDATA%\\Exodus, %APPDATA%\\Electrum, %APPDATA%\\Atomic, found 2 Bitcoin Core wallet.dat files (total value unknown). EDR detected Discord token theft: PowerShell reading %APPDATA%\\discord\\Local Storage\\leveldb\\* extracting authentication tokens from LevelDB database, enabling account takeover. Memory forensics show DeerStealer collecting system reconnaissance: installed software list (WMIC product get name), network configuration (ipconfig /all output), screenshot capture (Windows.Graphics.Capture API), clipboard history (last 50 clipboard items). Behavioral Threat Protection flagged activity based on: (1) PowerShell process accessing browser credential files, (2) Creation of temporary database copies in %TEMP%, (3) Cryptocurrency wallet directory enumeration, (4) Discord token extraction from LevelDB, (5) Suspicious registry queries (HKLM\\SOFTWARE\\Microsoft\\Cryptography\\MachineGuid for device fingerprinting). Data staging detected: all stolen credentials compressed into C:\\ProgramData\\System32\\cache_tmp.zip (4.2MB) awaiting exfiltration.",
+  "relative_timestamp_hours": 70.75,
+  "campaign_name": "ClickFix-DeerStealer",
+  "host_name": "MKTG-WKS-024",
+  "host_ip": [
+    171540620
+  ],
+  "user_name": [
+    "jdavis@marketingcorp.com"
+  ],
+  "domain": "marketingcorp.com",
+  "process_name": [
+    "powershell.exe"
+  ],
+  "process_path": [
+    "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+  ],
+  "file_path": [
+    "C:\\Users\\jdavis\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Login Data",
+    "C:\\Users\\jdavis\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\xk9f3m2s.default-release\\logins.json",
+    "C:\\ProgramData\\System32\\cache_tmp.zip"
+  ],
+  "file_name": [
+    "Login Data",
+    "logins.json",
+    "cache_tmp.zip"
+  ],
+  "file_hash": "ead6b1f0add059261ac56e9453131184bc0ae2869f983b6a41a1abb167edf151",
+  "file_sha256": [
+    "ead6b1f0add059261ac56e9453131184bc0ae2869f983b6a41a1abb167edf151"
+  ],
+  "file_hash_sha256": "ead6b1f0add059261ac56e9453131184bc0ae2869f983b6a41a1abb167edf151",
+  "initiator_sha256": [
+    "ead6b1f0add059261ac56e9453131184bc0ae2869f983b6a41a1abb167edf151"
+  ],
+  "filesize": "4404019",
+  "threat_name": "DeerStealer - Credential Harvesting",
+  "attack_mode": "Browser Credential + Token Theft",
+  "verdict": "Malicious",
+  "risk_score": "100",
+  "risk_rating": "Critical",
+  "policy_type": "Behavioral Threat Protection",
+  "policy_description": "DeerStealer infostealer harvesting browser passwords, cookies, Discord tokens, cryptocurrency wallets",
+  "policy_severity": "Critical",
+  "policy_recommendation": "CRITICAL BREACH: Terminate powershell.exe PID 7452 immediately, delete C:\\ProgramData\\System32\\cache_tmp.zip, reset ALL user credentials (87 Chrome + 34 Firefox + 52 Edge passwords compromised), invalidate all browser session cookies (Office365, Salesforce, AWS Console tokens stolen), enable MFA on all accounts, contact Discord support for account token revocation, assess cryptocurrency wallet exposure (2 Bitcoin Core wallets accessed), monitor for fraudulent transactions, enable browser credential encryption (Chrome: OS-level encryption, Firefox: master password), deploy EDR behavioral rules blocking PowerShell access to browser databases, forensic imaging required for full compromise assessment",
+  "log_source": "Cortex XDR Agent - Behavioral Threat Protection",
+  "event_id": "BTP_CREDENTIAL_THEFT",
+  "external_link": "https://unit42.paloaltonetworks.com/clickfix-generator-first-of-its-kind/",
+  "mitre_att&ck_tactic": "TA0006 - Credential Access",
+  "mitre_att&ck_technique": "T1555.003 - Credentials from Password Stores: Credentials from Web Browsers"
+}

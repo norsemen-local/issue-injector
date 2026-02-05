@@ -1,0 +1,65 @@
+{
+  "vendor": "Palo Alto Networks",
+  "product": "Next-Generation Firewall",
+  "severity": "Critical",
+  "category": "Command and Control",
+  "alert_name": "Secondary C2 Server Communication - BadIIS Failover Infrastructure",
+  "description": "Palo Alto Networks firewall PA-5220-FW01 detected failover command-and-control communication from compromised web server WEB-PROD-03 (10.30.25.112) to secondary BadIIS C2 infrastructure at IP address 103.6.235[.]26:80 (AS-CHOOPA, Vultr hosting) after primary C2 domain 404.008php[.]com became unreachable. Traffic pattern analysis shows BadIIS module implementing redundant C2 architecture: initially contacting primary C2 (404.008php[.]com) \u2192 receiving connection timeout after 15 seconds \u2192 automatically failing over to hardcoded secondary IP (103.6.235[.]26) embedded in module's XOR-encrypted configuration. Network forensics reveal HTTP POST request to 103.6.235[.]26/api/v2/redirect with JSON payload: {'victim_domain': 'govagency.vn', 'referer': 'google.com.vn', 'user_agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)', 'victim_ip': '113.161.92.18', 'timestamp': 1711088340, 'campaign_id': 'operation_rewrite'}. Secondary C2 responded with alternate redirect target: HTTP 302 to casino88[.]asia/vn-live-betting instead of primary target bet365-vn[.]com, demonstrating load-balancing across multiple scam domains. Deep packet inspection flagged suspicious characteristics: (1) Direct IP connection instead of DNS resolution (IP hardcoded in malware), (2) Non-standard User-Agent header 'IIS-Module/8.5' matching primary C2 pattern, (3) JSON payload containing victim PII (IP address, browser fingerprint), (4) Response containing Vietnamese-language gambling site redirect. Threat intelligence analysis: IP 103.6.235[.]26 shares hosting infrastructure with known CL-UNK-1037 operations, registered to same Vultr account cluster as primary C2, geolocated to New Jersey datacenter despite targeting Southeast Asian victims. Firewall Advanced Threat Prevention detected C2 communication using behavioral signatures: unusual outbound HTTP from DMZ web server to cloud hosting provider, non-browser User-Agent patterns, JSON exfiltration of victim metadata. Traffic volume: 23 connections to secondary C2 in 90-minute window after primary C2 unreachability, indicating active fallback mechanism maintaining SEO poisoning operations during infrastructure disruption.",
+  "relative_timestamp_hours": 92.5,
+  "campaign_name": "OperationRewrite-GovEntity",
+  "host_name": "WEB-PROD-03",
+  "host_ip": [
+    171540592
+  ],
+  "user_name": [
+    "webadmin@govagency.vn"
+  ],
+  "domain": "govagency.vn",
+  "local_ip": [
+    171540592
+  ],
+  "remote_ip": [
+    1726594586
+  ],
+  "local_port": [
+    54789
+  ],
+  "remote_port": [
+    80
+  ],
+  "dns_query_name": [
+    "103.6.235.26"
+  ],
+  "source_zone_name": [
+    "DMZ"
+  ],
+  "destination_zone_name": [
+    "Untrust"
+  ],
+  "fw_name": [
+    "PA-5220-FW01"
+  ],
+  "fw_rule_name": [
+    "DMZ-to-Internet"
+  ],
+  "fw_rule_id": [
+    "rule-892"
+  ],
+  "fw_serial_number": [
+    "015351000067890"
+  ],
+  "threat_name": "BadIIS - Secondary C2",
+  "attack_mode": "C2 Failover Communication",
+  "verdict": "Malicious",
+  "risk_score": "98",
+  "risk_rating": "Critical",
+  "policy_type": "Network Security",
+  "policy_description": "BadIIS module failover to secondary C2 server - resilient SEO poisoning infrastructure",
+  "policy_severity": "Critical",
+  "policy_recommendation": "CRITICAL: Block IP 103.6.235[.]26 immediately at perimeter firewall, block entire Vultr AS-CHOOPA (AS20473) for DMZ servers to prevent future C2 infrastructure pivots, reset TCP sessions from WEB-PROD-03, remove BadIIS module from web server, review firewall logs for additional C2 IPs in Vultr IP space (103.6.235.0/24 subnet), analyze BadIIS DLL's .data section to extract all C2 infrastructure (primary + failover IPs/domains), implement egress filtering policy: DMZ web servers blocked from contacting cloud hosting providers (AWS, Azure, Vultr, DigitalOcean), enable DNS security to detect DGA domains, engage threat intelligence team to track CL-UNK-1037 infrastructure evolution and identify tertiary C2 servers",
+  "log_source": "PA-5220 Firewall Threat Log",
+  "event_id": "THREAT_C2_SECONDARY",
+  "external_link": "https://unit42.paloaltonetworks.com/operation-rewrite-seo-poisoning-campaign/",
+  "mitre_att&ck_tactic": "TA0011 - Command and Control",
+  "mitre_att&ck_technique": "T1008 - Fallback Channels"
+}

@@ -1,0 +1,474 @@
+{
+  "metadata": {
+    "extraction_date": "2025-11-26",
+    "source": "Real XSIAM incident exports (3 samples analyzed)",
+    "purpose": "Reference for creating custom XSIAM alerts/incidents with accurate field structure"
+  },
+  
+  "core_required_fields": {
+    "description": "Essential fields that should be present in every alert",
+    "fields": {
+      "name": {
+        "type": "string",
+        "required": true,
+        "description": "Alert name/title",
+        "example": "SSO with abnormal user agent"
+      },
+      "description": {
+        "type": "string",
+        "required": true,
+        "description": "Detailed alert description",
+        "example": "The user tsoperations\\admin successfully authenticated via SSO..."
+      },
+      "severity": {
+        "type": "string",
+        "required": true,
+        "enum": ["informational", "low", "medium", "high", "critical"],
+        "example": "critical"
+      },
+      "category": {
+        "type": "string",
+        "required": true,
+        "description": "Alert category",
+        "examples": ["VULNERABILITY", "Initial Access", "Spyware Detected via Anti-Spyware profile"]
+      },
+      "action": {
+        "type": "string",
+        "required": true,
+        "enum": ["DETECTED", "BLOCKED", "BLOCKED_2", "SCANNED", "PREVENTED"],
+        "example": "DETECTED"
+      },
+      "action_pretty": {
+        "type": "string",
+        "description": "Human-readable action description",
+        "examples": ["Detected", "Prevented (Dropped The Session)", "Detected (Scanned)"]
+      }
+    }
+  },
+
+  "identity_fields": {
+    "description": "User and host identification fields",
+    "fields": {
+      "user_name": {
+        "type": "string",
+        "description": "Username involved in the alert",
+        "example": "tsoperations\\admin"
+      },
+      "host_name": {
+        "type": "string",
+        "description": "Hostname where alert occurred",
+        "example": "xdrclient02"
+      },
+      "host_ip": {
+        "type": "string",
+        "format": "ipv4",
+        "description": "Host IP address",
+        "example": "13.52.38.137"
+      },
+      "host_ip_list": {
+        "type": "array",
+        "items": {"type": "string"},
+        "description": "List of host IP addresses",
+        "example": ["172.29.2.46"]
+      },
+      "endpoint_id": {
+        "type": "string",
+        "description": "Endpoint identifier",
+        "example": "48451bd4bfc441ec902304b01fe51e96"
+      }
+    }
+  },
+
+  "network_fields": {
+    "description": "Network-related alert data",
+    "fields": {
+      "action_local_ip": {
+        "type": "string",
+        "format": "ipv4",
+        "description": "Local IP address in the action",
+        "example": "13.52.38.137"
+      },
+      "action_local_port": {
+        "type": "integer",
+        "description": "Local port number",
+        "example": 60346
+      },
+      "action_remote_ip": {
+        "type": "string",
+        "format": "ipv4",
+        "description": "Remote IP address in the action",
+        "example": "172.29.4.65"
+      },
+      "action_remote_port": {
+        "type": "integer",
+        "description": "Remote port number",
+        "example": 53
+      },
+      "action_country": {
+        "type": "string",
+        "description": "Country code of action origin",
+        "example": "US"
+      },
+      "action_external_hostname": {
+        "type": "string",
+        "description": "External hostname involved",
+        "example": "RangeXDR-AD01.XDR.ad.bakerstreetlabs.io"
+      },
+      "dns_query_name": {
+        "type": "string",
+        "description": "DNS query that was made",
+        "example": "dl.steanpowered.ru"
+      }
+    }
+  },
+
+  "process_file_fields": {
+    "description": "Process and file execution details",
+    "fields": {
+      "actor_process_image_name": {
+        "type": "string",
+        "description": "Name of the process image",
+        "example": "msedge.exe"
+      },
+      "actor_process_image_path": {
+        "type": "string",
+        "description": "Full path to process executable",
+        "example": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"
+      },
+      "actor_process_command_line": {
+        "type": "string",
+        "description": "Command line used to execute process",
+        "example": "\"C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe\" --profile-directory=Default"
+      },
+      "actor_process_image_sha256": {
+        "type": "string",
+        "format": "sha256",
+        "description": "SHA256 hash of process executable",
+        "example": "e0f315a910252f094696b53060508656126829289b6a633683a48e0416007a09"
+      },
+      "actor_process_image_md5": {
+        "type": "string",
+        "format": "md5",
+        "description": "MD5 hash of process executable",
+        "example": "362c64dd47030e598714ae974524bfec"
+      },
+      "actor_process_signature_status": {
+        "type": "string",
+        "enum": ["Signed", "N/A", "SIGNATURE_UNAVAILABLE"],
+        "example": "Signed"
+      },
+      "actor_process_signature_vendor": {
+        "type": "string",
+        "description": "Vendor of process signature",
+        "example": "Microsoft Corporation"
+      },
+      "action_file_name": {
+        "type": "string",
+        "description": "File name involved in action"
+      },
+      "action_file_path": {
+        "type": "string",
+        "description": "File path involved in action"
+      },
+      "action_file_sha256": {
+        "type": "string",
+        "format": "sha256",
+        "description": "SHA256 of file involved"
+      },
+      "action_file_md5": {
+        "type": "string",
+        "format": "md5",
+        "description": "MD5 of file involved"
+      }
+    }
+  },
+
+  "mitre_attack_fields": {
+    "description": "MITRE ATT&CK framework mappings",
+    "fields": {
+      "mitre_tactic_id_and_name": {
+        "type": "string",
+        "description": "MITRE tactic with ID and name",
+        "example": "TA0001 - Initial Access"
+      },
+      "mitre_technique_id_and_name": {
+        "type": "string",
+        "description": "MITRE technique with ID and name",
+        "example": "T1078.002 - Valid Accounts: Domain Accounts"
+      }
+    }
+  },
+
+  "firewall_fields": {
+    "description": "Firewall-specific alert fields",
+    "fields": {
+      "fw_app_id": {
+        "type": "string",
+        "description": "Firewall application ID",
+        "example": "dns-base"
+      },
+      "fw_app_category": {
+        "type": "string",
+        "description": "Firewall application category",
+        "example": "networking"
+      },
+      "fw_app_subcategory": {
+        "type": "string",
+        "description": "Firewall application subcategory",
+        "example": "infrastructure"
+      },
+      "fw_app_technology": {
+        "type": "string",
+        "description": "Firewall application technology",
+        "example": "network-protocol"
+      },
+      "fw_device_name": {
+        "type": "string",
+        "description": "Firewall device name",
+        "example": "rangexdr"
+      },
+      "fw_rule": {
+        "type": "string",
+        "description": "Firewall rule name",
+        "example": "Lab Learning Policy"
+      },
+      "fw_rule_id": {
+        "type": "string",
+        "format": "uuid",
+        "description": "Firewall rule ID",
+        "example": "dcd1ce1d-b033-4f79-a86b-95e3d2d38fce"
+      },
+      "fw_serial_number": {
+        "type": "string",
+        "description": "Firewall serial number",
+        "example": "007900000716735"
+      },
+      "fw_interface_from": {
+        "type": "string",
+        "description": "Source firewall interface",
+        "example": "Users"
+      },
+      "fw_interface_to": {
+        "type": "string",
+        "description": "Destination firewall interface",
+        "example": "Infrastructure"
+      },
+      "fw_is_phishing": {
+        "type": "string",
+        "enum": ["Yes", "No", "N/A"],
+        "example": "No"
+      },
+      "fw_url_domain": {
+        "type": "string",
+        "description": "URL domain from firewall",
+        "example": "RangeXDR-AD01.XDR.ad.bakerstreetlabs.io"
+      },
+      "fw_vsys": {
+        "type": "string",
+        "description": "Firewall virtual system",
+        "example": "vsys1"
+      }
+    }
+  },
+
+  "cloud_container_fields": {
+    "description": "Cloud and container environment fields",
+    "fields": {
+      "cloud_provider": {
+        "type": "string",
+        "enum": ["AWS", "Azure", "GCP", null],
+        "description": "Cloud provider name"
+      },
+      "cluster_name": {
+        "type": "string",
+        "description": "Kubernetes cluster name"
+      },
+      "container_id": {
+        "type": "string",
+        "description": "Container ID"
+      },
+      "container_name": {
+        "type": "string",
+        "description": "Container name"
+      },
+      "namespace": {
+        "type": "string",
+        "description": "Kubernetes namespace"
+      },
+      "image_name": {
+        "type": "string",
+        "description": "Container image name"
+      },
+      "image_id": {
+        "type": "string",
+        "description": "Container image ID"
+      }
+    }
+  },
+
+  "agent_fields": {
+    "description": "XDR Agent information",
+    "fields": {
+      "agent_version": {
+        "type": "string",
+        "description": "XDR agent version",
+        "example": "8.9.0.14028"
+      },
+      "agent_os_type": {
+        "type": "string",
+        "enum": ["Windows", "Linux", "Mac", "NO_HOST"],
+        "example": "Windows"
+      },
+      "agent_os_sub_type": {
+        "type": "string",
+        "description": "Specific OS version",
+        "example": "Windows 10 [10.0 (Build 19045)]"
+      },
+      "agent_install_type": {
+        "type": "string",
+        "enum": ["STANDARD", "NA"],
+        "example": "STANDARD"
+      },
+      "agent_is_vdi": {
+        "type": "boolean",
+        "description": "Whether agent is on VDI",
+        "example": false
+      }
+    }
+  },
+
+  "metadata_fields": {
+    "description": "Alert metadata and timestamps",
+    "fields": {
+      "alert_id": {
+        "type": "string",
+        "description": "Unique alert identifier",
+        "example": "1201974687"
+      },
+      "external_id": {
+        "type": "string",
+        "format": "uuid",
+        "description": "External reference ID",
+        "example": "4d1003d08f9031d22c97acfd18dfe988|00000000-0000-0000-0000-000000000004"
+      },
+      "detection_timestamp": {
+        "type": "integer",
+        "format": "epoch_milliseconds",
+        "description": "Detection time in epoch milliseconds",
+        "example": 1763485262104
+      },
+      "source": {
+        "type": "string",
+        "description": "Alert source/detection method",
+        "examples": ["Vulnerability Policy", "XDR Analytics BIOC", "XDR Agent"]
+      },
+      "alert_domain": {
+        "type": "string",
+        "enum": ["DOMAIN_SECURITY", "DOMAIN_POSTURE"],
+        "description": "Alert domain classification",
+        "example": "DOMAIN_SECURITY"
+      },
+      "alert_type": {
+        "type": "string",
+        "description": "Type of alert",
+        "example": "Unclassified"
+      },
+      "tags": {
+        "type": "string",
+        "description": "Comma-separated alert tags",
+        "example": "DS:PANW/Vulnerability Policy,DOM:Posture"
+      },
+      "contains_featured_host": {
+        "type": "string",
+        "enum": ["YES", "NO"],
+        "example": "NO"
+      },
+      "contains_featured_ip": {
+        "type": "string",
+        "enum": ["YES", "NO"],
+        "example": "NO"
+      },
+      "contains_featured_user": {
+        "type": "string",
+        "enum": ["YES", "NO"],
+        "example": "NO"
+      }
+    }
+  },
+
+  "event_context_fields": {
+    "description": "Event-specific contextual information",
+    "fields": {
+      "event_type": {
+        "type": "string",
+        "description": "Type of event",
+        "examples": ["Network Connections", "Process Execution", "File Operation"]
+      },
+      "event_sub_type": {
+        "type": "integer",
+        "description": "Event subtype code",
+        "example": 11
+      },
+      "event_id": {
+        "type": "string",
+        "format": "base64",
+        "description": "Event ID (base64 encoded)",
+        "example": "MzYyNjI2Nzk1NTE5MzcyNzY2Ng=="
+      },
+      "event_timestamp": {
+        "type": "integer",
+        "format": "epoch_milliseconds",
+        "description": "Event timestamp",
+        "example": 1762960415102
+      },
+      "malicious_urls": {
+        "type": "array",
+        "items": {"type": "string"},
+        "description": "List of malicious URLs detected"
+      }
+    }
+  },
+
+  "usage_notes": {
+    "field_naming": "Use lowercase with underscores (snake_case)",
+    "timestamps": "Use epoch milliseconds for all timestamps",
+    "arrays": "Can be represented as arrays or comma-separated strings depending on API",
+    "null_values": "Use null for absent values, not empty strings",
+    "severity_mapping": {
+      "informational": "Lowest severity",
+      "low": "Minor issues",
+      "medium": "Moderate threats",
+      "high": "Serious threats",
+      "critical": "Highest severity"
+    },
+    "action_types": {
+      "DETECTED": "Threat detected but not blocked",
+      "BLOCKED": "Threat blocked",
+      "BLOCKED_2": "Threat blocked (session dropped)",
+      "SCANNED": "Asset/file scanned",
+      "PREVENTED": "Threat prevented"
+    }
+  },
+
+  "common_alert_scenarios": {
+    "vulnerability": {
+      "required": ["name", "description", "severity", "category", "source"],
+      "recommended": ["host_name", "host_ip", "agent_os_type", "detection_timestamp"],
+      "category_value": "VULNERABILITY"
+    },
+    "initial_access": {
+      "required": ["name", "description", "severity", "category", "user_name", "action"],
+      "recommended": ["host_name", "host_ip", "action_country", "mitre_tactic_id_and_name"],
+      "category_value": "Initial Access"
+    },
+    "malware_spyware": {
+      "required": ["name", "description", "severity", "category", "action"],
+      "recommended": ["host_name", "host_ip", "actor_process_image_name", "dns_query_name", "fw_rule"],
+      "category_value": "Spyware Detected via Anti-Spyware profile"
+    },
+    "network_threat": {
+      "required": ["name", "description", "severity", "category", "action"],
+      "recommended": ["action_local_ip", "action_remote_ip", "dns_query_name", "fw_app_id", "fw_device_name"]
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "vendor": "Microsoft",
+  "product": "Cortex XDR",
+  "severity": "Critical",
+  "category": "Collection",
+  "alert_name": "Sensitive Financial Data Collection and Staging for Exfiltration",
+  "description": "Cortex XDR detected automated sensitive data collection and staging operations on compromised workstation FIN-WKS-087, consistent with AdaptixC2 framework's built-in data harvesting module preparing for exfiltration. File system monitoring identified creation of staging directory C:\\Users\\rbrown\\AppData\\Local\\Temp\\.cache\\system\\ (hidden folder with system attributes to evade casual inspection) followed by systematic copying of high-value financial documents. Data collection sequence: (1) 05:15 AM - PowerShell script launched via AdaptixC2 beacon executing recursive file search across user profile and mapped network drives targeting financial file extensions (.xlsx, .xlsm, .csv, .pdf, .docx), (2) Search parameters: modified within last 90 days, filename contains keywords (budget, forecast, financial, revenue, earnings, salary, compensation, acquisition, merger, confidential, sensitive), file size <50MB (optimized for exfiltration), (3) 127 files identified matching criteria totaling 87.3MB: Q4 2025 financial forecasts, employee compensation spreadsheets, M&A due diligence documents, board presentation decks, customer payment data, (4) Files automatically copied to staging directory with original timestamps preserved (timestomping anti-forensics), (5) 7-Zip compression applied creating encrypted archive 'system_backup_20250510.7z' (password: recovered from memory as 'X9$mK2@pL7#qR'), compressed size 34.2MB (61% reduction). File content analysis reveals extremely sensitive data: unreleased quarterly earnings (Q4 2025 revenue $847M vs analyst estimates $792M - material non-public information), pending acquisition target 'DataSecure Inc' with $125M offer price, executive compensation adjustments including CEO bonus structure, Social Security numbers in payroll spreadsheets, customer credit card last-4 digits in payment reconciliation files. EDR behavioral triggers: (1) PowerShell executing file system recursion with sensitive keyword filters, (2) Mass file copying to hidden temp directory (127 file operations, 6-minute window), (3) 7-Zip encryption from suspicious parent process, (4) Archive creation immediately followed by C2 beacon traffic spike, (5) Original staging files deleted with SDelete secure wipe. Threat intelligence confirms AdaptixC2 includes automated data harvesting capabilities targeting document repositories. Attack impact assessment: CRITICAL - exfiltration of material non-public information (MNPI) creates SEC regulatory exposure, M&A data compromise threatens $125M acquisition, PII exposure creates GDPR/CCPA breach notification requirements.",
+  "relative_timestamp_hours": 94.5,
+  "campaign_name": "AdaptixC2-FinancialCorp",
+  "host_name": "FIN-WKS-087",
+  "host_ip": [
+    171540703
+  ],
+  "user_name": [
+    "rbrown@financialcorp.com"
+  ],
+  "domain": "financialcorp.com",
+  "process_name": "powershell.exe",
+  "process_id": "11247",
+  "parent_process_name": "rundll32.exe",
+  "parentprocessid": "9156",
+  "process_cmd": "powershell.exe -NoProfile -Command Get-ChildItem -Path C:\\Users\\rbrown,\\\\FS-PROD-01\\Finance$ -Recurse -Include *.xlsx,*.xlsm,*.csv,*.pdf,*.docx | Where-Object {$_.LastWriteTime -gt (Get-Date).AddDays(-90)}",
+  "file_name": "system_backup_20250510.7z",
+  "file_path": [
+    "C:\\Users\\rbrown\\AppData\\Local\\Temp\\.cache\\system\\system_backup_20250510.7z"
+  ],
+  "file_hash": "b81aa37867f0ec772951ac30a5616db4d23ea49f7fd1a07bb1f1f45e304fc625",
+  "file_sha256": [
+    "b81aa37867f0ec772951ac30a5616db4d23ea49f7fd1a07bb1f1f45e304fc625"
+  ],
+  "file_hash_sha256": "b81aa37867f0ec772951ac30a5616db4d23ea49f7fd1a07bb1f1f45e304fc625f5a7b9c1d3e5f7a9b1c3d5e7f9a1b3c5d7e9f1a3b5c7d9e1f3a5",
+  "filesize": "35897344",
+  "initiator_sha256": [
+    "b81aa37867f0ec772951ac30a5616db4d23ea49f7fd1a07bb1f1f45e304fc625"
+  ],
+  "threat_name": "Financial Data Theft",
+  "attack_mode": "Data Collection and Staging",
+  "verdict": "Malicious",
+  "risk_score": "99",
+  "risk_rating": "Critical",
+  "policy_type": "Data Loss Prevention",
+  "policy_description": "Automated collection and encryption of 127 sensitive financial documents (87.3MB)",
+  "policy_severity": "Critical",
+  "policy_recommendation": "CRITICAL: Immediately block all egress traffic from FIN-WKS-087, forensically preserve system_backup_20250510.7z before deletion, inventory all 127 collected files for breach notification assessment, notify Legal/Compliance teams regarding MNPI exposure and pending M&A compromise, engage incident response for full forensic investigation, hunt for similar staging activities organization-wide, implement DLP policies blocking encrypted archive creation in user temp directories, enable file access auditing on financial file shares (\\\\FS-PROD-01\\Finance$), review rbrown@financialcorp.com's legitimate access to M&A documents, consider SEC Form 8-K filing requirement for material cybersecurity incident, engage external counsel for privilege considerations",
+  "log_source": "Cortex XDR Agent",
+  "event_id": "BEHAVIOR_DATA_STAGING",
+  "external_link": "https://unit42.paloaltonetworks.com/adaptixc2-post-exploitation-framework/",
+  "mitre_att&ck_tactic": "TA0009 - Collection",
+  "mitre_att&ck_technique": "T1005 - Data from Local System"
+}

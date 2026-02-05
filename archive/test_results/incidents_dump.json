@@ -1,0 +1,165 @@
+[
+  {
+    "incident_id": "49",
+    "incident_name": null,
+    "creation_time": 1764172289000,
+    "modification_time": 1764172289000,
+    "detection_time": null,
+    "status": "new",
+    "severity": "high",
+    "description": "This alert tests the workflow of creating an alert and updating the resulting incident",
+    "assigned_user_mail": null,
+    "assigned_user_pretty_name": null,
+    "alert_count": 1,
+    "low_severity_alert_count": 0,
+    "med_severity_alert_count": 0,
+    "high_severity_alert_count": 1,
+    "critical_severity_alert_count": 0,
+    "user_count": 0,
+    "host_count": 0,
+    "notes": null,
+    "resolve_comment": null,
+    "resolved_timestamp": null,
+    "manual_severity": null,
+    "manual_description": null,
+    "xdr_url": "https://agent-maui.xdr.us.paloaltonetworks.com/incident-view?caseId=49",
+    "starred": false,
+    "starred_manually": false,
+    "hosts": null,
+    "users": [],
+    "incident_sources": [
+      "Custom Issue"
+    ],
+    "rule_based_score": null,
+    "predicted_score": null,
+    "manual_score": null,
+    "aggregated_score": null,
+    "wildfire_hits": 0,
+    "alerts_grouping_status": "Enabled",
+    "mitre_tactics_ids_and_names": null,
+    "mitre_techniques_ids_and_names": null,
+    "alert_categories": [
+      "Malware"
+    ],
+    "original_tags": [
+      "DS:Test Workflow/Alert to Incident Test",
+      "DOM:Security"
+    ],
+    "tags": [
+      "DOM:Security",
+      "DS:Test Workflow/Alert to Incident Test"
+    ],
+    "incident_domain": "DOMAIN_SECURITY",
+    "custom_fields": {}
+  },
+  {
+    "incident_id": "48",
+    "incident_name": null,
+    "creation_time": 1764172275000,
+    "modification_time": 1764172275000,
+    "detection_time": null,
+    "status": "new",
+    "severity": "high",
+    "description": "This alert tests the workflow of creating an alert and updating the resulting incident",
+    "assigned_user_mail": null,
+    "assigned_user_pretty_name": null,
+    "alert_count": 1,
+    "low_severity_alert_count": 0,
+    "med_severity_alert_count": 0,
+    "high_severity_alert_count": 1,
+    "critical_severity_alert_count": 0,
+    "user_count": 0,
+    "host_count": 0,
+    "notes": null,
+    "resolve_comment": null,
+    "resolved_timestamp": null,
+    "manual_severity": null,
+    "manual_description": null,
+    "xdr_url": "https://agent-maui.xdr.us.paloaltonetworks.com/incident-view?caseId=48",
+    "starred": false,
+    "starred_manually": false,
+    "hosts": null,
+    "users": [],
+    "incident_sources": [
+      "Custom Issue"
+    ],
+    "rule_based_score": null,
+    "predicted_score": null,
+    "manual_score": null,
+    "aggregated_score": null,
+    "wildfire_hits": 0,
+    "alerts_grouping_status": "Enabled",
+    "mitre_tactics_ids_and_names": null,
+    "mitre_techniques_ids_and_names": null,
+    "alert_categories": [
+      "Malware"
+    ],
+    "original_tags": [
+      "DS:Test Workflow/Alert to Incident Test",
+      "DOM:Security"
+    ],
+    "tags": [
+      "DOM:Security",
+      "DS:Test Workflow/Alert to Incident Test"
+    ],
+    "incident_domain": "DOMAIN_SECURITY",
+    "custom_fields": {}
+  },
+  {
+    "incident_id": "47",
+    "incident_name": "aaaaaa",
+    "creation_time": 1764171218000,
+    "modification_time": 1764171218000,
+    "detection_time": null,
+    "status": "new",
+    "severity": "medium",
+    "description": "aaaa",
+    "assigned_user_mail": null,
+    "assigned_user_pretty_name": null,
+    "alert_count": 1,
+    "low_severity_alert_count": 0,
+    "med_severity_alert_count": 1,
+    "high_severity_alert_count": 0,
+    "critical_severity_alert_count": 0,
+    "user_count": 1,
+    "host_count": 1,
+    "notes": null,
+    "resolve_comment": null,
+    "resolved_timestamp": null,
+    "manual_severity": null,
+    "manual_description": null,
+    "xdr_url": "https://agent-maui.xdr.us.paloaltonetworks.com/incident-view?caseId=47",
+    "starred": false,
+    "starred_manually": false,
+    "hosts": [
+      "dsadsa:null"
+    ],
+    "users": [
+      "aaa"
+    ],
+    "incident_sources": [
+      "Custom Issue"
+    ],
+    "rule_based_score": null,
+    "predicted_score": null,
+    "manual_score": null,
+    "aggregated_score": null,
+    "wildfire_hits": 0,
+    "alerts_grouping_status": "Disabled",
+    "mitre_tactics_ids_and_names": null,
+    "mitre_techniques_ids_and_names": null,
+    "alert_categories": [
+      "OTHER"
+    ],
+    "original_tags": [
+      "DOM:Security",
+      "DS:PANW/XSIAM Manual"
+    ],
+    "tags": [
+      "DS:PANW/XSIAM Manual",
+      "DOM:Security"
+    ],
+    "incident_domain": "DOMAIN_SECURITY",
+    "custom_fields": {}
+  }
+]

@@ -1,0 +1,31 @@
+{
+  "vendor": "Microsoft",
+  "product": "Microsoft Defender for Identity",
+  "severity": "Medium",
+  "category": "Identity Threat",
+  "alert_name": "Weakly-Encrypted Kerberos Ticket Requested",
+  "description": "User account svc_backup@company.local requested a Kerberos Ticket Granting Service (TGS) ticket encrypted with RC4-HMAC (weak encryption) from domain controller DC01.company.local at 2024-11-27 11:22:15 UTC. The service principal name (SPN) requested was 'MSSQLSvc/db-prod-01.company.local:1433'. RC4 encryption is considered cryptographically weak and susceptible to offline brute-force attacks. This activity may indicate a Kerberoasting attack where an attacker with valid domain credentials requests service tickets to crack service account passwords offline. The requesting host WORKSTATION-457 (192.168.10.245) is not typically associated with this service account. Investigation revealed 47 similar weak encryption requests in the past 10 minutes from the same source.",
+  "host_name": "WORKSTATION-457",
+  "host_ip": [
+    3232238325
+  ],
+  "host_os": "AGENT_OS_WINDOWS",
+  "user_name": [
+    "svc_backup@company.local"
+  ],
+  "account_id": "S-1-5-21-3623811015-3361044348-30300820-1457",
+  "domain": "company.local",
+  "threat_name": "Kerberoasting Attack",
+  "attack_mode": "Credential Access",
+  "verdict": "Suspicious",
+  "risk_score": "68",
+  "risk_rating": "Medium",
+  "policy_type": "Encryption Policy Violation",
+  "policy_description": "Weak Kerberos encryption (RC4) detected - AES-256 required",
+  "policy_severity": "Medium",
+  "policy_recommendation": "Enable AES encryption for Kerberos, disable RC4, rotate service account passwords",
+  "log_source": "Microsoft Defender for Identity",
+  "detection_url": "https://portal.atp.azure.com/alerts",
+  "mitre_att&ck_tactic": "TA0006 - Credential Access",
+  "mitre_att&ck_technique": "T1558.003 - Steal or Forge Kerberos Tickets: Kerberoasting"
+}

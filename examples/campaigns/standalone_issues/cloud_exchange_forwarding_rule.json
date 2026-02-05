@@ -1,0 +1,43 @@
+{
+  "vendor": "Microsoft",
+  "product": "Microsoft 365 Defender",
+  "severity": "High",
+  "category": "Policy Violation",
+  "alert_name": "Suspicious Email Forwarding Rule Created",
+  "description": "User melissa.rodriguez@company.com created an inbox forwarding rule 'Auto Forward Important' that automatically forwards all incoming emails containing keywords 'invoice', 'payment', 'contract', or 'confidential' to external email address attacker-collection@suspicious-domain.ru. The rule was created at 2024-11-27 08:15:42 UTC via Exchange Online PowerShell, which is unusual for this user who typically accesses Exchange via Outlook Web App. This activity pattern matches Business Email Compromise (BEC) tactics where attackers create forwarding rules to exfiltrate sensitive business communications. The external domain suspicious-domain.ru was registered 3 days ago and has no prior business relationship with the organization.",
+  "cloud_provider": [
+    "Microsoft"
+  ],
+  "cloud_service_name": "Exchange Online",
+  "cloud_operation_type": [
+    "Create"
+  ],
+  "cloud_resource_type": [
+    "Inbox Rule"
+  ],
+  "user_name": [
+    "melissa.rodriguez@company.com"
+  ],
+  "email": "melissa.rodriguez@company.com",
+  "department": "Legal",
+  "email_recipient": [
+    "attacker-collection@suspicious-domain.ru"
+  ],
+  "email_keywords": "invoice, payment, contract, confidential",
+  "rule_name": "Auto Forward Important",
+  "threat_name": "Business Email Compromise",
+  "campaign_name": "Email Forwarding Rule Abuse",
+  "verdict": "Suspicious",
+  "risk_score": "78",
+  "risk_rating": "High",
+  "policy_type": "Email Security",
+  "policy_description": "Suspicious email forwarding rule to external domain",
+  "policy_severity": "High",
+  "policy_recommendation": "Disable forwarding rule immediately and reset user credentials",
+  "domain": "suspicious-domain.ru",
+  "domain_updated_date": "2024-11-24",
+  "external_link": "https://security.microsoft.com/alerts",
+  "log_source": "Microsoft 365 Unified Audit Log",
+  "mitre_att&ck_tactic": "TA0009 - Collection",
+  "mitre_att&ck_technique": "T1114.003 - Email Collection: Email Forwarding Rule"
+}

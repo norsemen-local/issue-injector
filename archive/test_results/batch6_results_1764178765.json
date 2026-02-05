@@ -1,0 +1,335 @@
+{
+  "working": [
+    {
+      "field": "email_labels",
+      "value": "Important",
+      "type": "str",
+      "category": "More Email Fields"
+    },
+    {
+      "field": "email_keywords",
+      "value": "urgent payment",
+      "type": "str",
+      "category": "More Email Fields"
+    },
+    {
+      "field": "email_return_path",
+      "value": "bounce@example.com",
+      "type": "str",
+      "category": "More Email Fields"
+    },
+    {
+      "field": "email_source",
+      "value": "Gmail",
+      "type": "str",
+      "category": "More Email Fields"
+    },
+    {
+      "field": "email_body_format",
+      "value": "HTML",
+      "type": "str",
+      "category": "More Email Fields"
+    },
+    {
+      "field": "email_client_name",
+      "value": "Outlook",
+      "type": "str",
+      "category": "More Email Fields"
+    },
+    {
+      "field": "email_in_reply_to",
+      "value": "msg-original-12345",
+      "type": "str",
+      "category": "More Email Fields"
+    },
+    {
+      "field": "file_size",
+      "value": "1024000",
+      "type": "str",
+      "category": "File Fields"
+    },
+    {
+      "field": "file_creation_date",
+      "value": "2025-11-26T10:00:00Z",
+      "type": "str",
+      "category": "File Fields"
+    },
+    {
+      "field": "file_access_date",
+      "value": "2025-11-26T12:00:00Z",
+      "type": "str",
+      "category": "File Fields"
+    },
+    {
+      "field": "start_time",
+      "value": "2025-11-26T10:00:00Z",
+      "type": "str",
+      "category": "Event Fields"
+    },
+    {
+      "field": "close_time",
+      "value": "2025-11-26T12:00:00Z",
+      "type": "str",
+      "category": "Event Fields"
+    },
+    {
+      "field": "risk_score",
+      "value": "85",
+      "type": "str",
+      "category": "Risk Fields"
+    },
+    {
+      "field": "risk_rating",
+      "value": "High",
+      "type": "str",
+      "category": "Risk Fields"
+    },
+    {
+      "field": "exposure_level",
+      "value": "Critical",
+      "type": "str",
+      "category": "Risk Fields"
+    },
+    {
+      "field": "domain_updated_date",
+      "value": "2025-01-15",
+      "type": "str",
+      "category": "Network/URL Fields"
+    },
+    {
+      "field": "asn",
+      "value": "AS12345",
+      "type": "str",
+      "category": "Network/URL Fields"
+    },
+    {
+      "field": "asn_name",
+      "value": "Evil Hosting Corp",
+      "type": "str",
+      "category": "Network/URL Fields"
+    },
+    {
+      "field": "account_id",
+      "value": "ACC-12345",
+      "type": "str",
+      "category": "Account/User Fields"
+    },
+    {
+      "field": "employee_display_name",
+      "value": "John Doe",
+      "type": "str",
+      "category": "Account/User Fields"
+    },
+    {
+      "field": "employee_email",
+      "value": "john.doe@company.com",
+      "type": "str",
+      "category": "Account/User Fields"
+    },
+    {
+      "field": "manager_email_address",
+      "value": "jane.manager@company.com",
+      "type": "str",
+      "category": "Account/User Fields"
+    },
+    {
+      "field": "device_hash",
+      "value": "device-hash-abc123",
+      "type": "str",
+      "category": "Device/Endpoint Fields"
+    },
+    {
+      "field": "endpoint_isolation_status",
+      "value": "Isolated",
+      "type": "str",
+      "category": "Device/Endpoint Fields"
+    },
+    {
+      "field": "classification",
+      "value": "Malware",
+      "type": "str",
+      "category": "Classification Fields"
+    },
+    {
+      "field": "sub_category",
+      "value": "Trojan",
+      "type": "str",
+      "category": "Classification Fields"
+    },
+    {
+      "field": "subtype",
+      "value": "Backdoor",
+      "type": "str",
+      "category": "Classification Fields"
+    },
+    {
+      "field": "signature",
+      "value": "Malware.Generic",
+      "type": "str",
+      "category": "Classification Fields"
+    }
+  ],
+  "failed": [
+    {
+      "field": "registry_hive",
+      "value": [
+        "HKEY_LOCAL_MACHINE"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The registry_hive parameter value ['HKEY_LOCAL_MACHINE'] is invalid.\"}}",
+      "category": "Registry Fields"
+    },
+    {
+      "field": "registry_key",
+      "value": [
+        "Software\\Microsoft\\Windows"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The registry_key parameter value ['Software\\\\\\\\Microsoft\\\\\\\\Windows'] is invalid.\"}}",
+      "category": "Registry Fields"
+    },
+    {
+      "field": "registry_value",
+      "value": [
+        "test_value"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The registry_value parameter value ['test_value'] is invalid.\"}}",
+      "category": "Registry Fields"
+    },
+    {
+      "field": "registry_value_type",
+      "value": [
+        "REG_SZ"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The registry_value_type parameter value ['REG_SZ'] is invalid.\"}}",
+      "category": "Registry Fields"
+    },
+    {
+      "field": "file_sha1",
+      "value": [
+        "aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The file_sha1 parameter value ['aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d'] is invalid.\"}}",
+      "category": "File Fields"
+    },
+    {
+      "field": "event_action",
+      "value": "allow",
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The event_action parameter value allow is invalid.\"}}",
+      "category": "Event Fields"
+    },
+    {
+      "field": "event_names",
+      "value": [
+        "ProcessCreation",
+        "FileCreated"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The event_names parameter value ['ProcessCreation', 'FileCreated'] is invalid.\"}}",
+      "category": "Event Fields"
+    },
+    {
+      "field": "event_descriptions",
+      "value": [
+        "Process started",
+        "File written"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The event_descriptions parameter value ['Process started', 'File written'] is invalid.\"}}",
+      "category": "Event Fields"
+    },
+    {
+      "field": "host_risk_reasons",
+      "value": [
+        "Multiple failed logins",
+        "Suspicious process"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The host_risk_reasons parameter value ['Multiple failed logins', 'Suspicious process'] is invalid.\"}}",
+      "category": "Risk Fields"
+    },
+    {
+      "field": "user_risk_reasons",
+      "value": [
+        "Unusual login location",
+        "After hours access"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The user_risk_reasons parameter value ['Unusual login location', 'After hours access'] is invalid.\"}}",
+      "category": "Risk Fields"
+    },
+    {
+      "field": "domain_name",
+      "value": [
+        "malicious-site.com"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The domain_name parameter value ['malicious-site.com'] is invalid.\"}}",
+      "category": "Network/URL Fields"
+    },
+    {
+      "field": "urls",
+      "value": [
+        "http://evil.com",
+        "https://phishing.net"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The urls parameter value ['http://evil.com', 'https://phishing.net'] is invalid.\"}}",
+      "category": "Network/URL Fields"
+    },
+    {
+      "field": "mitre_tactic_id",
+      "value": [
+        "TA0001",
+        "TA0002"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The mitre_tactic_id parameter value ['TA0001', 'TA0002'] is invalid.\"}}",
+      "category": "MITRE Fields"
+    },
+    {
+      "field": "mitre_tactic_name",
+      "value": [
+        "Initial Access",
+        "Execution"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The mitre_tactic_name parameter value ['Initial Access', 'Execution'] is invalid.\"}}",
+      "category": "MITRE Fields"
+    },
+    {
+      "field": "mitre_technique_id",
+      "value": [
+        "T1078",
+        "T1059"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The mitre_technique_id parameter value ['T1078', 'T1059'] is invalid.\"}}",
+      "category": "MITRE Fields"
+    },
+    {
+      "field": "mitre_technique_name",
+      "value": [
+        "Valid Accounts",
+        "Command and Scripting Interpreter"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The mitre_technique_name parameter value ['Valid Accounts', 'Command and Scripting Interpreter'] is invalid.\"}}",
+      "category": "MITRE Fields"
+    },
+    {
+      "field": "account_member_of",
+      "value": [
+        "Domain Users",
+        "VPN Users"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The account_member_of parameter value ['Domain Users', 'VPN Users'] is invalid.\"}}",
+      "category": "Account/User Fields"
+    },
+    {
+      "field": "device_mac_address",
+      "value": [
+        "00:0a:95:9d:68:16"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The device_mac_address parameter value ['00:0a:95:9d:68:16'] is invalid.\"}}",
+      "category": "Device/Endpoint Fields"
+    },
+    {
+      "field": "device_time",
+      "value": [
+        "2025-11-26T10:00:00Z"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The device_time parameter value ['2025-11-26T10:00:00Z'] is invalid.\"}}",
+      "category": "Device/Endpoint Fields"
+    }
+  ],
+  "errors": []
+}

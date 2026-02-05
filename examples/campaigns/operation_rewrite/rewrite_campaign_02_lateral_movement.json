@@ -1,0 +1,63 @@
+{
+  "vendor": "Cortex XDR",
+  "product": "Endpoint Protection",
+  "severity": "Critical",
+  "category": "Lateral Movement",
+  "alert_name": "Remote Scheduled Task Creation for Lateral Movement to Domain Controller",
+  "description": "Cortex XDR detected sophisticated lateral movement activity where compromised web server WEB-PROD-03 (10.30.25.112) executed remote scheduled task creation targeting domain controller DC01.govagency.vn (10.30.1.10) using legitimate Windows Task Scheduler service. The attacker leveraged previously deployed web shell to execute schtasks.exe command with /S (remote system) and /U (domain admin credentials) parameters, creating scheduled task named 'SystemMaintenanceCheck' on DC01 configured to execute reconnaissance payload every 15 minutes. Command line analysis: 'schtasks.exe /Create /S DC01.govagency.vn /U govagency\\admin /P [REDACTED] /TN SystemMaintenanceCheck /TR \"cmd.exe /c whoami /all > C:\\ProgramData\\sys.log && net group \"Domain Admins\" /domain >> C:\\ProgramData\\sys.log && nltest /dclist:govagency.vn >> C:\\ProgramData\\sys.log\" /SC MINUTE /MO 15 /RU SYSTEM'. Network forensics show SMB (TCP 445) and RPC (TCP 135) connections from WEB-PROD-03 to DC01 using compromised domain admin account 'govagency\\admin'. Authentication logs reveal successful Kerberos TGT request from WEB-PROD-03 at 03:52 AM, followed by service ticket request for cifs/DC01.govagency.vn, indicating Pass-the-Hash or credential replay attack. The scheduled task payload performs Active Directory enumeration: whoami /all (privilege discovery), net group Domain Admins (admin account discovery), nltest /dclist (domain controller enumeration). Behavioral analysis flagged the activity as anomalous since web servers do not typically create remote scheduled tasks on domain controllers. EDR telemetry shows parent process w3wp.exe (IIS worker) spawning cmd.exe \u2192 schtasks.exe chain, direct indicator of web shell abuse. DC01 event logs (Event ID 4698) confirm scheduled task creation from remote source WEB-PROD-03 with SYSTEM-level privileges.",
+  "relative_timestamp_hours": 95.5,
+  "campaign_name": "OperationRewrite-GovEntity",
+  "host_name": "WEB-PROD-03",
+  "host_ip": [
+    171540592
+  ],
+  "user_name": [
+    "webadmin@govagency.vn",
+    "govagency\\admin"
+  ],
+  "domain": "govagency.vn",
+  "process_name": [
+    "schtasks.exe"
+  ],
+  "process_path": [
+    "C:\\Windows\\System32\\schtasks.exe"
+  ],
+  "process_cmd": [
+    "schtasks.exe /Create /S DC01.govagency.vn /U govagency\\admin /TN SystemMaintenanceCheck /TR \"cmd.exe /c whoami /all > C:\\ProgramData\\sys.log\" /SC MINUTE /MO 15 /RU SYSTEM"
+  ],
+  "parent_process_name": [
+    "cmd.exe"
+  ],
+  "parent_process_path": [
+    "C:\\Windows\\System32\\cmd.exe"
+  ],
+  "local_ip": [
+    171540592
+  ],
+  "remote_ip": [
+    171540170
+  ],
+  "local_port": [
+    54892
+  ],
+  "remote_port": [
+    445
+  ],
+  "dst_host_name": [
+    "DC01.govagency.vn"
+  ],
+  "threat_name": "Remote Scheduled Task - Lateral Movement",
+  "attack_mode": "Lateral Movement via Scheduled Tasks",
+  "verdict": "Malicious",
+  "risk_score": "95",
+  "risk_rating": "Critical",
+  "policy_type": "Behavioral Threat Protection",
+  "policy_description": "Web server creating remote scheduled tasks on domain controller - Active Directory reconnaissance",
+  "policy_severity": "Critical",
+  "policy_recommendation": "CRITICAL: Immediately disable scheduled task 'SystemMaintenanceCheck' on DC01, reset govagency\\admin password and force Kerberos ticket revocation, isolate WEB-PROD-03 from network, review DC01 logs for executed reconnaissance commands, delete C:\\ProgramData\\sys.log on DC01, audit all scheduled tasks on domain controllers for anomalies, enable Credential Guard on domain controllers, restrict SMB/RPC access from web servers to domain controllers via firewall rules, investigate how domain admin credentials were compromised, hunt for additional lateral movement using compromised credentials across environment",
+  "log_source": "Cortex XDR Agent - Behavioral Threat Protection",
+  "event_id": "BTP_LATERAL_MOVEMENT",
+  "external_link": "https://unit42.paloaltonetworks.com/operation-rewrite-seo-poisoning-campaign/",
+  "mitre_att&ck_tactic": "TA0008 - Lateral Movement",
+  "mitre_att&ck_technique": "T1053.005 - Scheduled Task/Job: Scheduled Task"
+}

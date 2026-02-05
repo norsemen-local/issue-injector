@@ -1,0 +1,59 @@
+{
+  "vendor": "Microsoft",
+  "product": "Cortex XDR",
+  "severity": "Critical",
+  "category": "Execution",
+  "alert_name": "AI-Generated Obfuscated PowerShell Loader Execution",
+  "description": "Cortex XDR detected execution of highly obfuscated AI-generated PowerShell loader script, signature characteristic of AdaptixC2 framework's automated code generation engine. Script launched by powershell.exe (PID 8724, parent: QuickAssist.exe PID 4892) with suspicious command-line: 'powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -EncodedCommand JABzAD0ATgBlAHcALQBPAGIAagBlAGMAdAAgAE4AZQB0AC4AVwBlAGIAQwBsAGkAZQBuAHQA...[truncated 4096 bytes]'. Base64-decoded payload reveals advanced obfuscation techniques: (1) Variable name randomization using entropy-maximized strings ($x4k9p2, $qw8z7j), (2) Dynamic string concatenation breaking static signatures, (3) Reflection-based API resolution to evade behavioral detection, (4) Integer arithmetic obfuscation (127*2-1 = 253), (5) Multiple layers of encoding (Base64 \u2192 GZip \u2192 AES), (6) Anti-analysis sleep jitter (Random 200-800ms delays). Script functionality analysis: Downloads secondary payload from cdn-legitimate-updates[.]com/payload/loader.txt (Base64-encoded shellcode), allocates executable memory via VirtualAlloc (PAGE_EXECUTE_READWRITE), copies shellcode to allocated region, creates new thread executing shellcode via CreateThread. Memory analysis reveals shellcode contains AdaptixC2 beacon stub implementing reflective DLL injection targeting legitimate msimg32.dll. EDR behavioral detection triggered on: (1) PowerShell execution from non-standard parent (QuickAssist.exe), (2) Network connection to newly registered domain, (3) Memory allocation with RWX permissions, (4) Reflective PE loading without disk writes, (5) API hooking detection (NtCreateThread, NtAllocateVirtualMemory). Static analysis impossible due to AI-generated polymorphic nature - each execution generates unique syntactically valid code achieving identical behavior. Threat intelligence confirms AdaptixC2's documented use of ChatGPT/Claude for automated loader generation, producing detection-resistant scripts. Execution timestamp 04:07 AM indicates 22-minute delay since initial phishing email, consistent with social engineering conversation duration.",
+  "relative_timestamp_hours": 95.38,
+  "campaign_name": "AdaptixC2-FinancialCorp",
+  "host_name": "FIN-WKS-087",
+  "host_ip": [
+    171540703
+  ],
+  "user_name": [
+    "rbrown@financialcorp.com"
+  ],
+  "domain": "financialcorp.com",
+  "local_ip": [
+    171540703
+  ],
+  "remote_ip": [
+    1756033670
+  ],
+  "process_name": "powershell.exe",
+  "process_id": "8724",
+  "parent_process_name": "QuickAssist.exe",
+  "parentprocessid": "4892",
+  "process_cmd": "powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -EncodedCommand JABzAD0ATgBlAHcALQBPAGIAagBlAGMAdAAgAE4AZQB0AC4AVwBlAGIAQwBsAGkAZQBuAHQA",
+  "file_name": "loader.txt",
+  "file_path": [
+    "C:\\Users\\rbrown\\AppData\\Local\\Temp\\loader.txt"
+  ],
+  "file_hash": "19c174f74b9de744502cdf47512ff10bba58248aa79a872ad64c23398e19580b",
+  "file_sha256": [
+    "19c174f74b9de744502cdf47512ff10bba58248aa79a872ad64c23398e19580b"
+  ],
+  "file_hash_sha256": "19c174f74b9de744502cdf47512ff10bba58248aa79a872ad64c23398e19580bd0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5",
+  "filesize": "4096",
+  "initiator_sha256": [
+    "19c174f74b9de744502cdf47512ff10bba58248aa79a872ad64c23398e19580b"
+  ],
+  "dns_query_name": [
+    "cdn-legitimate-updates.com"
+  ],
+  "threat_name": "AI-Generated PowerShell Loader",
+  "attack_mode": "Fileless Memory Execution",
+  "verdict": "Malicious",
+  "risk_score": "98",
+  "risk_rating": "Critical",
+  "policy_type": "Behavioral Prevention",
+  "policy_description": "AI-generated PowerShell loader with reflective shellcode injection",
+  "policy_severity": "Critical",
+  "policy_recommendation": "CRITICAL: Isolate FIN-WKS-087 immediately, terminate powershell.exe PID 8724 and all child processes, dump process memory for forensic analysis, hunt for VirtualAlloc/CreateThread API calls across environment, enable PowerShell constrained language mode via Group Policy, implement PowerShell logging (ScriptBlock + Module + Transcription), block cdn-legitimate-updates[.]com, investigate QuickAssist.exe parent process legitimacy, review all active QuickAssist sessions, notify incident response team for full endpoint forensic imaging",
+  "log_source": "Cortex XDR Agent",
+  "event_id": "BEHAVIOR_POWERSHELL_SUSPICIOUS",
+  "external_link": "https://unit42.paloaltonetworks.com/adaptixc2-post-exploitation-framework/",
+  "mitre_att&ck_tactic": "TA0002 - Execution",
+  "mitre_att&ck_technique": "T1059.001 - Command and Scripting Interpreter: PowerShell"
+}

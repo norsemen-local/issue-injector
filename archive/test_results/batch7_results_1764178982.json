@@ -1,0 +1,281 @@
+{
+  "working": [
+    {
+      "field": "region_id",
+      "value": "reg-12345",
+      "type": "str",
+      "category": "Location/Region Fields"
+    },
+    {
+      "field": "location_region",
+      "value": "North America",
+      "type": "str",
+      "category": "Location/Region Fields"
+    },
+    {
+      "field": "city",
+      "value": "New York",
+      "type": "str",
+      "category": "Location/Region Fields"
+    },
+    {
+      "field": "source_create_time",
+      "value": "2025-11-26T10:00:00Z",
+      "type": "str",
+      "category": "Detection/Source Fields"
+    },
+    {
+      "field": "source_created_by",
+      "value": "admin",
+      "type": "str",
+      "category": "Detection/Source Fields"
+    },
+    {
+      "field": "source_updated_by",
+      "value": "analyst",
+      "type": "str",
+      "category": "Detection/Source Fields"
+    },
+    {
+      "field": "source_urgency",
+      "value": "High",
+      "type": "str",
+      "category": "Detection/Source Fields"
+    },
+    {
+      "field": "detection_url",
+      "value": "https://xdr.example.com/alert/123",
+      "type": "str",
+      "category": "Detection/Source Fields"
+    },
+    {
+      "field": "detection_end_time",
+      "value": "2025-11-26T12:00:00Z",
+      "type": "str",
+      "category": "Detection/Source Fields"
+    },
+    {
+      "field": "state",
+      "value": "Active",
+      "type": "str",
+      "category": "Status/State Fields"
+    },
+    {
+      "field": "status_reason",
+      "value": "Under investigation",
+      "type": "str",
+      "category": "Status/State Fields"
+    },
+    {
+      "field": "closing_reason",
+      "value": "False positive",
+      "type": "str",
+      "category": "Status/State Fields"
+    },
+    {
+      "field": "closing_user",
+      "value": "analyst@company.com",
+      "type": "str",
+      "category": "Status/State Fields"
+    },
+    {
+      "field": "isolated",
+      "value": "true",
+      "type": "str",
+      "category": "Status/State Fields"
+    },
+    {
+      "field": "first_name",
+      "value": "John",
+      "type": "str",
+      "category": "User/Account Fields"
+    },
+    {
+      "field": "last_name",
+      "value": "Doe",
+      "type": "str",
+      "category": "User/Account Fields"
+    },
+    {
+      "field": "full_name",
+      "value": "John Doe",
+      "type": "str",
+      "category": "User/Account Fields"
+    },
+    {
+      "field": "email",
+      "value": "john.doe@company.com",
+      "type": "str",
+      "category": "User/Account Fields"
+    },
+    {
+      "field": "phone_number",
+      "value": [
+        "+1-555-0123"
+      ],
+      "type": "list",
+      "category": "User/Account Fields"
+    },
+    {
+      "field": "work_phone",
+      "value": "+1-555-0124",
+      "type": "str",
+      "category": "User/Account Fields"
+    },
+    {
+      "field": "src_os",
+      "value": "Windows",
+      "type": "str",
+      "category": "Network Protocol Fields"
+    },
+    {
+      "field": "dest_os",
+      "value": "Linux",
+      "type": "str",
+      "category": "Network Protocol Fields"
+    },
+    {
+      "field": "sensor_ip",
+      "value": "10.0.0.100",
+      "type": "str",
+      "category": "Network Protocol Fields"
+    },
+    {
+      "field": "unique_ports",
+      "value": "443,8443,22",
+      "type": "str",
+      "category": "Network Protocol Fields"
+    },
+    {
+      "field": "resource_url",
+      "value": "https://cloud.example.com/resource/123",
+      "type": "str",
+      "category": "Cloud/Resource Fields"
+    },
+    {
+      "field": "sku_name",
+      "value": "Premium",
+      "type": "str",
+      "category": "Cloud/Resource Fields"
+    },
+    {
+      "field": "last_update_time",
+      "value": "2025-11-26T15:00:00Z",
+      "type": "str",
+      "category": "Timestamp/Audit Fields"
+    },
+    {
+      "field": "last_modified_by",
+      "value": "analyst",
+      "type": "str",
+      "category": "Timestamp/Audit Fields"
+    },
+    {
+      "field": "last_modified_on",
+      "value": "2025-11-26T14:00:00Z",
+      "type": "str",
+      "category": "Timestamp/Audit Fields"
+    },
+    {
+      "field": "password_changed_date",
+      "value": "2025-01-15",
+      "type": "str",
+      "category": "Timestamp/Audit Fields"
+    },
+    {
+      "field": "user_creation_time",
+      "value": "2024-06-01T00:00:00Z",
+      "type": "str",
+      "category": "Timestamp/Audit Fields"
+    },
+    {
+      "field": "audit_logs",
+      "value": "Access granted to sensitive data",
+      "type": "str",
+      "category": "Compliance/Audit Fields"
+    },
+    {
+      "field": "approval_status",
+      "value": "Approved",
+      "type": "str",
+      "category": "Compliance/Audit Fields"
+    },
+    {
+      "field": "approver",
+      "value": "manager@company.com",
+      "type": "str",
+      "category": "Compliance/Audit Fields"
+    },
+    {
+      "field": "assigned_user",
+      "value": "analyst@company.com",
+      "type": "str",
+      "category": "Compliance/Audit Fields"
+    },
+    {
+      "field": "assignment_group",
+      "value": "Security Team",
+      "type": "str",
+      "category": "Compliance/Audit Fields"
+    },
+    {
+      "field": "caller",
+      "value": "user@company.com",
+      "type": "str",
+      "category": "Miscellaneous Fields"
+    },
+    {
+      "field": "rating",
+      "value": "5",
+      "type": "str",
+      "category": "Miscellaneous Fields"
+    }
+  ],
+  "failed": [
+    {
+      "field": "region",
+      "value": "us-east-1",
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"An unexpected error occurred by XDR public API\", \"err_extra\": \"field prisma_region should be type of List, got us-east-1\"}}",
+      "category": "Location/Region Fields"
+    },
+    {
+      "field": "country",
+      "value": "US",
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"Invalid parameter names: country\"}}",
+      "category": "Location/Region Fields"
+    },
+    {
+      "field": "project_id",
+      "value": [
+        "proj-12345"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The project_id parameter value ['proj-12345'] is invalid.\"}}",
+      "category": "Cloud/Resource Fields"
+    },
+    {
+      "field": "referenced_resource_id",
+      "value": [
+        "res-abc123"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The referenced_resource_id parameter value ['res-abc123'] is invalid.\"}}",
+      "category": "Cloud/Resource Fields"
+    },
+    {
+      "field": "referenced_resource_name",
+      "value": [
+        "MyResource"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The referenced_resource_name parameter value ['MyResource'] is invalid.\"}}",
+      "category": "Cloud/Resource Fields"
+    },
+    {
+      "field": "scenario",
+      "value": [
+        "Data Exfiltration"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The scenario parameter value ['Data Exfiltration'] is invalid.\"}}",
+      "category": "Miscellaneous Fields"
+    }
+  ],
+  "errors": []
+}

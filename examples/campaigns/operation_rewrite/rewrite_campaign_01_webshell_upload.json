@@ -1,0 +1,68 @@
+{
+  "vendor": "Cortex XDR",
+  "product": "Endpoint Protection",
+  "severity": "High",
+  "category": "Initial Access",
+  "alert_name": "Suspicious ASP.NET Web Shell Upload to IIS Server",
+  "description": "Cortex XDR detected suspicious file creation activity on production web server WEB-PROD-03 where an unknown attacker uploaded malicious ASP.NET web shell 'default.aspx' (SHA256: 01a616e25f1ac661a7a9c244fd31736188ceb5fce8c1a5738e807fdbef70fd60) to the publicly accessible directory C:\\inetpub\\wwwroot\\admin\\. The web shell was delivered via HTTP POST request exploiting a vulnerable file upload endpoint in the web application. File analysis reveals classic web shell indicators: embedded Base64-encoded PowerShell commands, eval() functions for arbitrary code execution, HttpRequest/HttpResponse manipulation, and obfuscated C# code using string concatenation. The shell provides comprehensive remote access capabilities including command execution (cmd.exe /c), file system operations (upload/download/delete), database query execution, and network reconnaissance. Behavioral analysis detected the file immediately establishing outbound HTTPS connection to known attacker infrastructure at update-cdn[.]net (185.220.101.45) for command-and-control communication. The web shell contains Chinese language comments in code (e.g., '\u91cd\u5199' meaning 'rewrite'), linguistic artifact indicating CL-UNK-1037 threat actor attribution. File metadata shows creation timestamp inconsistent with normal deployment procedures (03:47 AM local time, outside maintenance window). User-Agent from upload request: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36', originating from Vietnamese IP 113.161.87[.]24 (AS7552, Viettel). Web server access logs show successful 200 OK response after file upload, followed by immediate GET request to /admin/default.aspx confirming shell activation.",
+  "relative_timestamp_hours": 96.0,
+  "campaign_name": "OperationRewrite-GovEntity",
+  "host_name": "WEB-PROD-03",
+  "host_ip": [
+    171540592
+  ],
+  "user_name": [
+    "webadmin@govagency.vn"
+  ],
+  "domain": "govagency.vn",
+  "file_path": [
+    "C:\\inetpub\\wwwroot\\admin\\default.aspx"
+  ],
+  "file_name": [
+    "default.aspx"
+  ],
+  "file_hash": "01a616e25f1ac661a7a9c244fd31736188ceb5fce8c1a5738e807fdbef70fd60",
+  "file_sha256": [
+    "01a616e25f1ac661a7a9c244fd31736188ceb5fce8c1a5738e807fdbef70fd60"
+  ],
+  "file_hash_sha256": "01a616e25f1ac661a7a9c244fd31736188ceb5fce8c1a5738e807fdbef70fd60",
+  "initiator_sha256": [
+    "01a616e25f1ac661a7a9c244fd31736188ceb5fce8c1a5738e807fdbef70fd60"
+  ],
+  "filesize": "47823",
+  "process_name": [
+    "w3wp.exe"
+  ],
+  "process_path": [
+    "C:\\Windows\\System32\\inetsrv\\w3wp.exe"
+  ],
+  "process_cmd": [
+    "c:\\windows\\system32\\inetsrv\\w3wp.exe -ap \"DefaultAppPool\" -v \"v4.0\" -l \"webengine4.dll\" -a \\\\.\\pipe\\iisipm"
+  ],
+  "local_ip": [
+    171540592
+  ],
+  "remote_ip": [
+    1908113688
+  ],
+  "local_port": [
+    80
+  ],
+  "remote_port": [
+    54321
+  ],
+  "threat_name": "ASP.NET Web Shell - Operation Rewrite",
+  "attack_mode": "Web Shell Deployment",
+  "verdict": "Malicious",
+  "risk_score": "88",
+  "risk_rating": "High",
+  "policy_type": "File Protection",
+  "policy_description": "ASP.NET web shell uploaded to IIS production server - Operation Rewrite campaign",
+  "policy_severity": "High",
+  "policy_recommendation": "HIGH: Immediately delete C:\\inetpub\\wwwroot\\admin\\default.aspx, isolate WEB-PROD-03 from network, review IIS logs (%SystemDrive%\\inetpub\\logs\\LogFiles\\) for POST requests to vulnerable upload endpoint, identify and patch exploited vulnerability, reset webadmin@govagency.vn credentials, scan for additional web shells using IOC list (file patterns: *.aspx, *.ashx, *.asmx with eval/Base64), block IP 113.161.87[.]24 and 185.220.101.45, enable IIS request filtering to block suspicious extensions, engage forensics team for full compromise assessment",
+  "log_source": "Cortex XDR Agent - File Protection",
+  "event_id": "FILE_CREATE_WEBSHELL",
+  "external_link": "https://unit42.paloaltonetworks.com/operation-rewrite-seo-poisoning-campaign/",
+  "mitre_att&ck_tactic": "TA0001 - Initial Access",
+  "mitre_att&ck_technique": "T1190 - Exploit Public-Facing Application"
+}

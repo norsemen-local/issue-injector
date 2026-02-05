@@ -1,0 +1,65 @@
+{
+  "vendor": "Palo Alto Networks",
+  "product": "Next-Generation Firewall",
+  "severity": "Critical",
+  "category": "Command and Control",
+  "alert_name": "BadIIS Module C2 Communication - Fetching SEO Poisoned Payload",
+  "description": "Palo Alto Networks firewall PA-5220-FW01 detected command-and-control communication from compromised government web server WEB-PROD-03 (10.30.25.112) to known BadIIS C2 infrastructure 404.008php[.]com (103.6.235[.]26:80) for retrieving SEO poisoning payloads. Network behavior analysis identified suspicious HTTP POST request from WEB-PROD-03 with custom User-Agent header 'IIS-Module/8.5' (non-standard for legitimate web traffic) containing encoded victim information in request body: Base64-encoded JSON payload {'target': 'govagency.vn', 'requester': 'Googlebot/2.1', 'keywords': ['xoi lac tv', 'ca cuoc bong da'], 'timestamp': 1711084920}. C2 server 404.008php[.]com responded with HTTP 200 OK containing 47KB malicious HTML payload (Content-Type: text/html; charset=utf-8) designed for search engine indexing. Deep packet inspection revealed response body contains: 187 hyperlinks to gambling/scam domains, Vietnamese keyword stuffing (279 instances of illegal streaming terms), hidden iframe pointing to tracking pixel (hxxps://track.analytics-cdn[.]net/pixel.gif?cid=CL-UNK-1037), obfuscated JavaScript for browser fingerprinting. SSL/TLS analysis shows C2 connection using standard HTTPS (port 443 fallback) with valid Let's Encrypt certificate for 404.008php[.]com, domain registered 2025-02-14 via NameCheap with privacy protection (WHOIS hidden). Threat intelligence correlation: IP 103.6.235[.]26 hosted on AS-CHOOPA (Vultr cloud provider, U.S.) but known to host CL-UNK-1037 infrastructure for Southeast Asian targeting campaigns. C2 communication pattern: BadIIS module checks for search engine crawler \u2192 sends POST to C2 with victim metadata \u2192 receives customized HTML \u2192 serves to crawler \u2192 waits 60-120 seconds \u2192 repeats. Traffic volume analysis shows 47 C2 connections in 3-hour window, averaging 1 connection every 3.8 minutes, indicating active automated SEO poisoning campaign. Firewall Advanced Threat Prevention engine flagged traffic as 'badii' malware family with Critical severity based on C2 behavioral signatures.",
+  "relative_timestamp_hours": 93.3,
+  "campaign_name": "OperationRewrite-GovEntity",
+  "host_name": "WEB-PROD-03",
+  "host_ip": [
+    171540592
+  ],
+  "user_name": [
+    "webadmin@govagency.vn"
+  ],
+  "domain": "govagency.vn",
+  "local_ip": [
+    171540592
+  ],
+  "remote_ip": [
+    1726594586
+  ],
+  "local_port": [
+    54123
+  ],
+  "remote_port": [
+    80
+  ],
+  "dns_query_name": [
+    "404.008php.com"
+  ],
+  "source_zone_name": [
+    "DMZ"
+  ],
+  "destination_zone_name": [
+    "Untrust"
+  ],
+  "fw_name": [
+    "PA-5220-FW01"
+  ],
+  "fw_rule_name": [
+    "DMZ-to-Internet"
+  ],
+  "fw_rule_id": [
+    "rule-892"
+  ],
+  "fw_serial_number": [
+    "015351000067890"
+  ],
+  "threat_name": "BadIIS - C2 Communication",
+  "attack_mode": "C2 Payload Retrieval",
+  "verdict": "Malicious",
+  "risk_score": "96",
+  "risk_rating": "Critical",
+  "policy_type": "Network Security",
+  "policy_description": "Active C2 communication retrieving SEO poisoning payloads from 404.008php[.]com",
+  "policy_severity": "Critical",
+  "policy_recommendation": "CRITICAL: Block 404.008php[.]com and IP 103.6.235[.]26 immediately at perimeter firewall, reset TCP sessions from WEB-PROD-03, isolate server from DMZ, enable DNS sinkholing for .008php[.]com domain, create firewall policy blocking Vultr AS-CHOOPA (AS20473) for DMZ servers, review firewall logs for additional C2 connections (look for custom User-Agent 'IIS-Module/*'), analyze PCAP for exfiltrated metadata in POST bodies, hunt for additional BadIIS-infected servers using same C2 pattern, engage threat intelligence team to track 404.008php[.]com infrastructure evolution",
+  "log_source": "PA-5220 Firewall Threat Log",
+  "event_id": "THREAT_C2",
+  "external_link": "https://unit42.paloaltonetworks.com/operation-rewrite-seo-poisoning-campaign/",
+  "mitre_att&ck_tactic": "TA0011 - Command and Control",
+  "mitre_att&ck_technique": "T1071.001 - Application Layer Protocol: Web Protocols"
+}

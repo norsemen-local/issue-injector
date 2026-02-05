@@ -1,0 +1,45 @@
+{
+  "vendor": "Microsoft",
+  "product": "Microsoft Defender for Identity",
+  "severity": "High",
+  "category": "Privilege Escalation",
+  "alert_name": "User Added Member to Privileged Group for First Time",
+  "description": "User account helpdesk_tier1@company.local added user account temp_contractor@company.local to the Domain Admins privileged group on domain controller DC01.company.local at 2024-11-16 17:42:19 UTC. This is the first time in the account's 2-year history that helpdesk_tier1 has performed any privileged group membership modification. Helpdesk Tier 1 accounts typically have no permissions to modify Domain Admins membership and this action violates principle of least privilege. The temp_contractor account was created only 4 hours earlier and has no approval in the identity management system. Analysis shows helpdesk_tier1 account recently authenticated from two geographic locations simultaneously (New York and Moscow) indicating credential compromise. The group addition was performed using net.exe command-line utility rather than standard Active Directory Users and Computers MMC console. Event ID 4728 (Member added to security-enabled global group) was logged immediately before the action.",
+  "host_name": "DC01.company.local",
+  "host_ip": [
+    168430084
+  ],
+  "host_os": "AGENT_OS_WINDOWS",
+  "user_name": [
+    "helpdesk_tier1@company.local"
+  ],
+  "initiated_by": [
+    "helpdesk_tier1@company.local"
+  ],
+  "account_id": "S-1-5-21-3623811015-3361044348-30300820-5892",
+  "domain": "company.local",
+  "cgo_name": [
+    "net.exe"
+  ],
+  "cgo_cmd": [
+    "net group 'Domain Admins' temp_contractor /add /domain"
+  ],
+  "cgo_path": [
+    "C:\\Windows\\System32\\net.exe"
+  ],
+  "threat_name": "Unauthorized Privilege Escalation",
+  "attack_mode": "Privilege Escalation",
+  "verdict": "Malicious",
+  "risk_score": "87",
+  "risk_rating": "High",
+  "user_risk_level": "Critical",
+  "policy_type": "Privileged Access Management",
+  "policy_description": "Unauthorized addition to Domain Admins group by non-privileged account",
+  "policy_severity": "High",
+  "policy_recommendation": "Remove temp_contractor from Domain Admins immediately, suspend helpdesk_tier1 account, investigate account compromise, review all recent privileged group changes",
+  "log_source": "Windows Security Event Log",
+  "event_id": "4728",
+  "detection_url": "https://portal.atp.azure.com/alerts",
+  "mitre_att&ck_tactic": "TA0004 - Privilege Escalation",
+  "mitre_att&ck_technique": "T1098 - Account Manipulation"
+}

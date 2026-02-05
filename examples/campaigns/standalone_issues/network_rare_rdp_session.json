@@ -1,0 +1,44 @@
+{
+  "vendor": "Microsoft",
+  "product": "Microsoft Defender for Endpoint",
+  "severity": "Medium",
+  "category": "Lateral Movement",
+  "alert_name": "Rare RDP Session to Remote Host",
+  "description": "User emily.watson@company.com initiated a Remote Desktop Protocol (RDP) connection from workstation LAPTOP-HR-042 (10.50.20.135) to production database server DB-PROD-07 (172.16.88.251) at 2024-11-27 13:22:45 UTC. This RDP session is highly unusual as the user has never accessed this server in the past 180 days, and HR department employees typically do not have legitimate business need to access production database servers. The connection was established on TCP port 3389 and lasted 47 minutes. During the session, multiple PowerShell commands were executed including database query operations and file enumeration activities. The target server DB-PROD-07 contains sensitive customer payment information and personally identifiable information (PII). This activity may indicate lateral movement following initial compromise of the user's workstation or compromised credentials being used for reconnaissance.",
+  "host_name": "LAPTOP-HR-042",
+  "host_ip": [
+    169096327
+  ],
+  "host_os": "AGENT_OS_WINDOWS",
+  "user_name": [
+    "emily.watson@company.com"
+  ],
+  "email": "emily.watson@company.com",
+  "department": "Human Resources",
+  "remote_host": [
+    "DB-PROD-07"
+  ],
+  "remote_ip": [
+    2886795515
+  ],
+  "remote_port": [
+    3389
+  ],
+  "local_port": [
+    52847
+  ],
+  "threat_name": "Lateral Movement via RDP",
+  "verdict": "Suspicious",
+  "risk_score": "72",
+  "risk_rating": "Medium",
+  "user_risk_level": "Medium",
+  "policy_type": "Access Control Policy",
+  "policy_description": "Unauthorized RDP access to production database server",
+  "policy_severity": "Medium",
+  "policy_recommendation": "Investigate user account for compromise, review RDP session logs, implement Just-In-Time access for database servers",
+  "log_source": "Windows Security Event Log",
+  "event_id": "4624",
+  "external_link": "https://security.microsoft.com/machines",
+  "mitre_att&ck_tactic": "TA0008 - Lateral Movement",
+  "mitre_att&ck_technique": "T1021.001 - Remote Services: Remote Desktop Protocol"
+}

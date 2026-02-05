@@ -1,0 +1,38 @@
+{
+  "vendor": "Proofpoint",
+  "product": "Email Protection",
+  "severity": "High",
+  "category": "Initial Access",
+  "alert_name": "Phishing Email with ClickFix Social Engineering Technique Detected",
+  "description": "Proofpoint Email Protection detected sophisticated phishing email targeting employee jdavis@marketingcorp.com with ClickFix social engineering technique designed to trick victims into manually executing malware. Email originated from spoofed sender 'Microsoft Security Team <security@microsoft-verify[.]com>' with subject line 'Urgent: Browser Verification Required - Security Alert'. Email analysis reveals advanced social engineering tactics: professional Microsoft branding, urgent language creating time pressure ('Your account will be suspended in 24 hours'), fake security alert claiming browser tampering detected. Email body contains single call-to-action button 'Verify Browser Now' linking to attacker-controlled domain hxxps://browser-verification[.]live/auth/validate?session=a8f3e2c1. URL analysis shows newly registered domain (2025-11-20, 7 days old) using privacy protection service (Namecheap), hosted on Cloudflare infrastructure to evade takedowns. Threat intelligence correlation: domain browser-verification[.]live matches IUAM ClickFix Generator infrastructure patterns (subdomain structure /auth/validate, session parameter format). Email headers reveal suspicious characteristics: originating IP 185.220.101[.]67 (bulletproof hosting, Netherlands), SPF/DKIM authentication failures, mismatched Reply-To address (support@outlook-verify[.]net). Proofpoint's Advanced Threat Protection scored email 95/100 risk based on: URL reputation (newly registered domain), sender spoofing (fake Microsoft), social engineering indicators (urgency, fear tactics), and behavioral analysis (ClickFix technique fingerprinting). Email quarantined before reaching user inbox, however user accessed quarantine and manually released email citing 'legitimate Microsoft notification'. This represents classic ClickFix attack vector: phishing email \u2192 fake browser verification page \u2192 clipboard hijacking \u2192 PowerShell execution \u2192 infostealer deployment.",
+  "relative_timestamp_hours": 72.0,
+  "campaign_name": "ClickFix-DeerStealer",
+  "host_name": "MKTG-WKS-024",
+  "host_ip": [
+    171540620
+  ],
+  "user_name": [
+    "jdavis@marketingcorp.com"
+  ],
+  "domain": "marketingcorp.com",
+  "remote_ip": [
+    3119005031
+  ],
+  "dns_query_name": [
+    "browser-verification.live"
+  ],
+  "threat_name": "ClickFix Phishing - Email Vector",
+  "attack_mode": "ClickFix Social Engineering",
+  "verdict": "Malicious",
+  "risk_score": "95",
+  "risk_rating": "High",
+  "policy_type": "Email Security",
+  "policy_description": "ClickFix phishing email with fake Microsoft browser verification lure",
+  "policy_severity": "High",
+  "policy_recommendation": "HIGH: Quarantine email permanently, block sender domain microsoft-verify[.]com and outlook-verify[.]net at email gateway, add browser-verification[.]live to URL blocklist, educate jdavis@marketingcorp.com on ClickFix social engineering technique (never run PowerShell commands from websites), review user's quarantine release permissions, implement stricter email authentication policies (DMARC reject), hunt for similar emails with ClickFix patterns (subject: 'verification required', URLs: browser-verify/auth-check domains), enable Advanced Threat Protection for all users",
+  "log_source": "Proofpoint Email Protection",
+  "event_id": "EMAIL_PHISHING_CLICKFIX",
+  "external_link": "https://unit42.paloaltonetworks.com/clickfix-generator-first-of-its-kind/",
+  "mitre_att&ck_tactic": "TA0001 - Initial Access",
+  "mitre_att&ck_technique": "T1566.002 - Phishing: Spearphishing Link"
+}

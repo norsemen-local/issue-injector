@@ -1,0 +1,307 @@
+Total unique fields: 305
+================================================================================
+action|str
+action_country|str
+action_external_hostname|NoneType, str
+action_file_macro_sha256|NoneType
+action_file_md5|NoneType
+action_file_name|NoneType
+action_file_path|NoneType
+action_file_sha256|NoneType
+action_local_ip|NoneType, str
+action_local_ip_v6|NoneType
+action_local_port|NoneType, int
+action_pretty|str
+action_process_causality_id|NoneType
+action_process_image_command_line|NoneType
+action_process_image_name|NoneType
+action_process_image_sha256|NoneType
+action_process_instance_id|NoneType
+action_process_signature_status|str
+action_process_signature_vendor|NoneType
+action_registry_data|NoneType
+action_registry_full_key|NoneType
+action_registry_key_name|NoneType
+action_registry_value_name|NoneType
+action_remote_ip|NoneType, str
+action_remote_ip_v6|NoneType
+action_remote_port|NoneType, int
+actioncountry|str
+actionexternalhostname|NoneType, str
+actionfilemacrosha256|NoneType
+actionfilemd5|NoneType
+actionfilename|NoneType
+actionfilepath|NoneType
+actionfilesha256|NoneType
+actionlocalip|NoneType, str
+actionlocalipv6|NoneType
+actionlocalport|NoneType, int
+actionpretty|str
+actionprocesscausalityid|NoneType
+actionprocessimagecommandline|NoneType
+actionprocessimagename|NoneType
+actionprocessimagesha256|NoneType
+actionprocessinstanceid|NoneType
+actionprocesssignaturestatus|str
+actionprocesssignaturevendor|NoneType
+actionregistrydata|NoneType
+actionregistryfullkey|NoneType
+actionregistrykeyname|NoneType
+actionregistryvaluename|NoneType
+actionremoteip|NoneType, str
+actionremoteipv6|NoneType
+actionremoteport|NoneType, int
+actor_causality_id|NoneType, str
+actor_process_causality_id|NoneType, str
+actor_process_command_line|NoneType, str
+actor_process_image_md5|NoneType, str
+actor_process_image_name|NoneType, str
+actor_process_image_path|NoneType, str
+actor_process_image_sha256|NoneType, str
+actor_process_instance_id|NoneType, str
+actor_process_os_pid|NoneType, int
+actor_process_signature_status|str
+actor_process_signature_vendor|NoneType, str
+actor_thread_thread_id|NoneType, int
+actorcausalityid|NoneType, str
+actorprocesscausalityid|NoneType, str
+actorprocesscommandline|NoneType, str
+actorprocessimagemd5|NoneType, str
+actorprocessimagename|NoneType, str
+actorprocessimagepath|NoneType, str
+actorprocessimagesha256|NoneType, str
+actorprocessinstanceid|NoneType, str
+actorprocessospid|NoneType, int
+actorprocesssignaturestatus|str
+actorprocesssignaturevendor|NoneType, str
+actorthreadthreadid|NoneType, int
+agent_data_collection_status|NoneType
+agent_device_domain|NoneType
+agent_fqdn|NoneType
+agent_host_boot_time|NoneType, int
+agent_install_type|str
+agent_ip_addresses_v6|NoneType
+agent_is_vdi|NoneType, bool
+agent_os_sub_type|NoneType, str
+agent_os_type|str
+agent_version|NoneType, str
+agentdatacollectionstatus|NoneType
+agentdevicedomain|NoneType
+agentfqdn|NoneType
+agenthostboottime|NoneType, int
+agentinstalltype|str
+agentipaddressesv6|NoneType
+agentisvdi|NoneType, bool
+agentossubtype|NoneType, str
+agentostype|str
+agentversion|NoneType, str
+alert_domain|str
+alert_id|str
+alert_type|str
+alertdomain|str
+alertid|str
+alerttype|str
+association_strength|NoneType, int
+associationstrength|NoneType, int
+attempt_counter|int
+attemptcounter|int
+bioc_category_enum_key|NoneType
+bioc_indicator|NoneType
+bioccategoryenumkey|NoneType
+biocindicator|NoneType
+case_id|int
+caseid|int
+category|str
+causality_actor_causality_id|NoneType, str
+causality_actor_process_command_line|NoneType, str
+causality_actor_process_execution_time|NoneType, int
+causality_actor_process_image_md5|NoneType, str
+causality_actor_process_image_name|NoneType, str
+causality_actor_process_image_path|NoneType, str
+causality_actor_process_image_sha256|NoneType, str
+causality_actor_process_signature_status|str
+causality_actor_process_signature_vendor|NoneType, str
+causalityactorcausalityid|NoneType, str
+causalityactorprocesscommandline|NoneType, str
+causalityactorprocessexecutiontime|NoneType, int
+causalityactorprocessimagemd5|NoneType, str
+causalityactorprocessimagename|NoneType, str
+causalityactorprocessimagepath|NoneType, str
+causalityactorprocessimagesha256|NoneType, str
+causalityactorprocesssignaturestatus|str
+causalityactorprocesssignaturevendor|NoneType, str
+cloud_provider|NoneType
+cloudprovider|NoneType
+cluster_name|NoneType
+clustername|NoneType
+container_id|NoneType
+container_name|NoneType
+containerid|NoneType
+containername|NoneType
+contains_featured_host|str
+contains_featured_ip|str
+contains_featured_user|str
+containsfeaturedhost|str
+containsfeaturedip|str
+containsfeatureduser|str
+deduplicate_tokens|NoneType, str
+deduplicatetokens|NoneType, str
+description|str
+detection_timestamp|int
+detectiontimestamp|int
+dns_query_name|NoneType, str
+dnsqueryname|NoneType, str
+dst_action_country|NoneType, str
+dst_action_external_hostname|NoneType
+dst_action_external_port|NoneType
+dst_agent_id|NoneType, str
+dst_association_strength|NoneType, int
+dst_causality_actor_process_execution_time|NoneType
+dstactioncountry|NoneType, str
+dstactionexternalhostname|NoneType
+dstactionexternalport|NoneType
+dstagentid|NoneType, str
+dstassociationstrength|NoneType, int
+dstcausalityactorprocessexecutiontime|NoneType
+dynamic_fields|NoneType
+dynamicfields|NoneType
+end_match_attempt_ts|NoneType
+endmatchattemptts|NoneType
+endpoint_id|NoneType, str
+endpointid|NoneType, str
+event_id|NoneType, str
+event_sub_type|NoneType, int
+event_timestamp|NoneType, int
+event_type|NoneType, str
+eventid|NoneType, str
+events_length|int
+eventslength|int
+eventsubtype|NoneType, int
+eventtimestamp|NoneType, int
+eventtype|NoneType, str
+external_id|str
+externalid|str
+filter_rule_id|NoneType
+filterruleid|NoneType
+fw_app_category|NoneType, str
+fw_app_id|NoneType, str
+fw_app_subcategory|NoneType, str
+fw_app_technology|NoneType, str
+fw_device_name|NoneType, str
+fw_email_recipient|NoneType
+fw_email_sender|NoneType
+fw_email_subject|NoneType
+fw_interface_from|NoneType, str
+fw_interface_to|NoneType, str
+fw_is_phishing|str
+fw_misc|NoneType, str
+fw_rule|NoneType, str
+fw_rule_id|NoneType, str
+fw_serial_number|NoneType, str
+fw_url_domain|NoneType, str
+fw_vsys|NoneType, str
+fw_xff|NoneType
+fwappcategory|NoneType, str
+fwappid|NoneType, str
+fwappsubcategory|NoneType, str
+fwapptechnology|NoneType, str
+fwdevicename|NoneType, str
+fwemailrecipient|NoneType
+fwemailsender|NoneType
+fwemailsubject|NoneType
+fwinterfacefrom|NoneType, str
+fwinterfaceto|NoneType, str
+fwisphishing|str
+fwmisc|NoneType, str
+fwrule|NoneType, str
+fwruleid|NoneType, str
+fwserialnumber|NoneType, str
+fwurldomain|NoneType, str
+fwvsys|NoneType, str
+fwxff|NoneType
+host_ip|NoneType, str
+host_ip_list|list
+host_name|NoneType, str
+hostip|NoneType, str
+hostiplist|list
+hostname|NoneType, str
+identity_sub_type|NoneType
+identity_type|NoneType
+identitysubtype|NoneType
+identitytype|NoneType
+image_id|NoneType
+image_name|NoneType
+imageid|NoneType
+imagename|NoneType
+is_pcap|bool
+is_whitelisted|bool
+ispcap|bool
+iswhitelisted|bool
+last_modified_ts|NoneType
+lastmodifiedts|NoneType
+local_insert_ts|int
+localinsertts|int
+mac|NoneType, str
+malicious_urls|NoneType
+maliciousurls|NoneType
+matching_service_rule_id|NoneType, str
+matching_status|str
+matchingserviceruleid|NoneType, str
+matchingstatus|str
+mitre_tactic_id_and_name|NoneType, str
+mitre_technique_id_and_name|NoneType, str
+mitretacticidandname|NoneType, str
+mitretechniqueidandname|NoneType, str
+module_id|NoneType
+moduleid|NoneType
+name|str
+namespace|NoneType
+operation_name|NoneType
+operationname|NoneType
+original_tags|str
+originaltags|str
+os_actor_causality_id|NoneType
+os_actor_effective_username|NoneType
+os_actor_process_causality_id|NoneType, str
+os_actor_process_command_line|NoneType, str
+os_actor_process_image_name|NoneType, str
+os_actor_process_image_path|NoneType, str
+os_actor_process_image_sha256|NoneType, str
+os_actor_process_instance_id|NoneType, str
+os_actor_process_os_pid|NoneType, int
+os_actor_process_signature_status|str
+os_actor_process_signature_vendor|NoneType, str
+os_actor_thread_thread_id|NoneType, int
+osactorcausalityid|NoneType
+osactoreffectiveusername|NoneType
+osactorprocesscausalityid|NoneType, str
+osactorprocesscommandline|NoneType, str
+osactorprocessimagename|NoneType, str
+osactorprocessimagepath|NoneType, str
+osactorprocessimagesha256|NoneType, str
+osactorprocessinstanceid|NoneType, str
+osactorprocessospid|NoneType, int
+osactorprocesssignaturestatus|str
+osactorprocesssignaturevendor|NoneType, str
+osactorthreadthreadid|NoneType, int
+project|NoneType
+referenced_resource|NoneType
+referencedresource|NoneType
+resolution_comment|NoneType, str
+resolution_status|str
+resolutioncomment|NoneType, str
+resolutionstatus|str
+resource_sub_type|NoneType
+resource_type|NoneType
+resourcesubtype|NoneType
+resourcetype|NoneType
+severity|str
+source|str
+starred|bool
+story_id|NoneType, str
+storyid|NoneType, str
+tags|str
+user_agent|NoneType
+user_name|NoneType, str
+useragent|NoneType
+username|NoneType, str

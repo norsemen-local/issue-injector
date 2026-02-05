@@ -1,0 +1,499 @@
+Account ID	accountid	Short Text	Yes	Common Types		
+Account Member Of	accountmemberof	Multi Select	Yes	Common Types		
+Account Status	accountstatus	Short Text	Yes	Common Types		
+Acquisition Hire	acquisitionhire	Short Text	Yes	Common Types		
+Action	action	Single Select	Yes	Core Alert Fields		
+Action Process Instance ID	actionprocessinstanceid	Multi Select	Yes	Core Alert Fields		
+Actor Process Instance ID	actorprocessinstanceid	Multi Select	Yes	Core Alert Fields		
+Additional Data	additionaldata	Multi Select	Yes	Common Types		
+Additional Email Addresses	additionalemailaddresses	Multi Select	Yes	Common Types		
+Additional Indicators	additionalindicators	Short Text	Yes	Common Types		
+Agent Id	agentid	Short Text	Yes	Core Alert Fields		
+Agent OS Sub Type	agentossubtype	Short Text	Yes	Core Alert Fields		
+Agents ID	agentsid	Multi Select	Yes	Common Types		
+Agent Version	agentversion	Multi Select	Yes	Common Types		
+Alert Acknowledgement	alertacknowledgement	Short Text	Yes	Common Types		
+Alert Action	alertaction	Short Text	Yes	Common Types		
+Alert Malicious	alertmalicious	Short Text	Yes	Common Types		
+Alert Rules	alertrules	Markdown	Yes	Common Types		
+Alert Search Results	alertsearchresults	Grid	Yes	Core Alert Fields		
+Alert tags	alerttags	Short Text	Yes	Common Types		
+Alert Type ID	alerttypeid	Short Text	Yes	Common Types		
+App Category	appcategory	Multi Select	Yes	Core Alert Fields		
+app channel name	appchannelname	Short Text	Yes	Common Types		
+App-ID	appid	Multi Select	Yes	Core Alert Fields		
+Application Path	applicationpath	Short Text	Yes	Common Types		
+App message	appmessage	Long Text	Yes	Common Types		
+Approval Status	approvalstatus	Short Text	Yes	Common Types		
+Approver	approver	Short Text	Yes	Common Types		
+App Subcategory	appsubcategory	Multi Select	Yes	Core Alert Fields		
+App Technology	apptechnology	Multi Select	Yes	Core Alert Fields		
+ASN	asn	Short Text	Yes	Common Types		
+ASN Name	asnname	Short Text	Yes	Common Types		
+Asset ID	assetid	Short Text	Yes	Common Types		
+Asset Name	assetname	Short Text	Yes	Common Types		
+Assigned User	assigneduser	Short Text	Yes	Common Types		
+Assignment Group	assignmentgroup	Short Text	Yes	Common Types		
+Attachment Count	attachmentcount	Number	Yes	Phishing		
+Attachment Extension	attachmentextension	Short Text	Yes	Phishing		
+Attachment Hash	attachmenthash	Short Text	Yes	Phishing		
+Attachment ID	attachmentid	Short Text	Yes	Phishing		
+Attachment Name	attachmentname	Short Text	Yes	Phishing		
+Attachment size	attachmentsize	Short Text	Yes	Phishing		
+Attachment type	attachmenttype	Short Text	Yes	Phishing		
+Attack Mode	attackmode	Short Text	Yes	Common Types		
+Audit Logs	auditlogs	Short Text	Yes	Common Types		
+Birthday	birthday	Short Text	Yes	Common Types		
+Blocked Action	blockedaction	Short Text	Yes	Common Types		
+Block Indicators Status	blockindicatorsstatus	Short Text	Yes	Common Types		
+Bugtraq	bugtraq	Short Text	Yes	Common Types		
+Caller	caller	Short Text	Yes	Common Types		
+Campaign Name	campaignname	Markdown	Yes	Common Types		
+Category Count	categorycount	Number	Yes	Common Types		
+Category	categoryname	Short Text	Yes	Core Alert Fields		
+CGO CMD	cgocmd	Multi Select	Yes	Core Alert Fields		
+CGO MD5	cgomd5	Multi Select	Yes	Core Alert Fields		
+CGO name	cgoname	Multi Select	Yes	Core Alert Fields		
+CGO path	cgopath	Multi Select	Yes	Core Alert Fields		
+CGO SHA256	cgosha256	Multi Select	Yes	Core Alert Fields		
+CGO signature	cgosignature	Multi Select	Yes	Core Alert Fields		
+CGO signer	cgosigner	Multi Select	Yes	Core Alert Fields		
+Changed	changed	Short Text	Yes	Common Types		
+CID	cid	Multi Select	Yes	Core Alert Fields		
+CiscoESA Attachments	ciscoesaattachments	Short Text	Yes	Cisco Email Security Appliance (IronPort)		
+City	city	Short Text	Yes	Common Types		
+Classification	classification	Short Text	Yes	Common Types		
+Clicked URLs	clickedurls	Grid	Yes	Phishing		
+Close Time	closetime	Short Text	Yes	Common Types		
+Closing Reason	closingreason	Short Text	Yes	Common Types		
+Closing User	closinguser	Short Text	Yes	Common Types		
+Cloud Account ID	cloudaccountid	Multi Select	Yes	Common Types		
+Cloud Identity Sub-type	cloudidentitysubtype	Multi Select	Yes	Core Alert Fields		
+Cloud Identity Type	cloudidentitytype	Multi Select	Yes	Core Alert Fields		
+Cloud Instance ID	cloudinstanceid	Multi Select	Yes	Common Types		
+Cloud Operation Type	cloudoperationtype	Multi Select	Yes	Core Alert Fields		
+Cloud Project	cloudproject	Multi Select	Yes	Core Alert Fields		
+Cloud Provider	cloudprovider	Multi Select	Yes	Core Alert Fields		
+Cloud Referenced Resource	cloudreferencedresource	Multi Select	Yes	Core Alert Fields		
+Cloud Region List	cloudregionlist	Multi Select	Yes	Common Types		
+Cloud Resource List	cloudresourcelist	Multi Select	Yes	Common Types		
+Cloud Resource Sub-type	cloudresourcesubtype	Multi Select	Yes	Core Alert Fields		
+Cloud Resource Type	cloudresourcetype	Multi Select	Yes	Core Alert Fields		
+Cloud Service	cloudservice	Number	Yes	Common Types		
+Cluster Name	clustername	Multi Select	Yes	Core Alert Fields		
+Command Line Verdict	commandlineverdict	Short Text	Yes	Common Types		
+Comment	comment	Short Text	Yes	Common Types		
+Compliance Notes	compliancenotes	Multi Select	Yes	Common Types		
+Container ID	containerid	Multi Select	Yes	Core Alert Fields		
+Contains Featured Host	containsfeaturedhost	Multi Select	Yes	Core Alert Fields		
+Contains Featured IP Address	containsfeaturedipaddress	Multi Select	Yes	Core Alert Fields		
+Contains Featured User	containsfeatureduser	Multi Select	Yes	Core Alert Fields		
+Cost Center	costcenter	Short Text	Yes	Common Types		
+Cost Center Code	costcentercode	Short Text	Yes	Common Types		
+Country	country	Multi Select	Yes	Core Alert Fields		
+Country Code	countrycode	Short Text	Yes	Common Types		
+Country Code Number	countrycodenumber	Short Text	Yes	Common Types		
+Critical Assets	criticalassets	Grid	Yes	Common Types		
+Custom Query Results	customqueryresults	Markdown	Yes	Common Types		
+CVE	cve	Short Text	Yes	Common Types		
+CVE ID	cveid	Short Text	Yes	Common Types		
+CVE Published	cvepublished	Short Text	Yes	Common Types		
+CVSS	cvss	Short Text	Yes	Common Types		
+CVSS Availability Requirement	cvssavailabilityrequirement	Multi Select	Yes	Common Types		
+CVSS Collateral Damage Potential	cvsscollateraldamagepotential	Multi Select	Yes	Common Types		
+CVSS Confidentiality Requirement	cvssconfidentialityrequirement	Multi Select	Yes	Common Types		
+CVSS Integrity Requirement	cvssintegrityrequirement	Multi Select	Yes	Common Types		
+DBotPrediction	dbotprediction	Short Text	Yes	Phishing		
+DBotPredictionProbability	dbotpredictionprobability	Number	Yes	Phishing		
+DBotTextSuggestionHighlighted	dbottextsuggestionhighlighted	Markdown	Yes	Phishing		
+Department	department	Short Text	Yes	Common Types		
+Destination Geolocation	destinationgeolocation	Multi Select	Yes	Common Types		
+Destination IPV6	destinationipv6	Multi Select	Yes	Common Types		
+Destination Networks	destinationnetworks	Multi Select	Yes	Common Types		
+Destination Zone Name	destinationzonename	Multi Select	Yes	Core Alert Fields		
+Dest OS	destos	Short Text	Yes	Common Types		
+Detected Endpoints	detectedendpoints	Short Text	Yes	Common Types		
+Detected External IPs	detectedexternalips	Short Text	Yes	Common Types		
+Detected Internal Hosts	detectedinternalhosts	Short Text	Yes	Common Types		
+Detection End Time	detectionendtime	Date Picker	Yes	Common Types		
+Detection ID	detectionid	Number	Yes	Common Types		
+Detection URL	detectionurl	URL	Yes	Common Types		
+Device External IPs	deviceexternalips	Multi Select	Yes	Common Types		
+Device Hash	devicehash	Short Text	Yes	Common Types		
+Device Id	deviceid	Short Text	Yes	Common Types		
+Device Internal IPs	deviceinternalips	Multi Select	Yes	Common Types		
+Device MAC Address	devicemacaddress	Multi Select	Yes	Common Types		
+Device Model	devicemodel	Short Text	Yes	Common Types		
+Device Name	devicename	Short Text	Yes	Common Types		
+Device OS Name	deviceosname	Multi Select	Yes	Common Types		
+Device OS Version	deviceosversion	Multi Select	Yes	Common Types		
+Device OU	deviceou	Multi Select	Yes	Common Types		
+Device Status	devicestatus	Short Text	Yes	Common Types		
+Device Time	devicetime	Multi Select	Yes	Common Types		
+Display Name	displayname	Short Text	Yes	Common Types		
+DNS Query Name	dnsqueryname	Multi Select	Yes	Core Alert Fields		
+Domain	domain	Short Text	Yes	Core Alert Fields		
+Domain Name	domainname	Multi Select	Yes	Common Types		
+Domain Registrar Abuse Email	domainregistrarabuseemail	Short Text	Yes	Common Types		
+Domain Squatting Result	domainsquattingresult	Markdown	Yes	Common Types		
+Domain Updated Date	domainupdateddate	Short Text	Yes	Common Types		
+Dsts	dsts	Multi Select	Yes	Common Types		
+Duration	duration	Short Text	Yes	Common Types		
+Email	email	Short Text	Yes	Common Types		
+Email Authenticity Check	emailauthenticitycheck	Single Select	Yes	Phishing		
+Email BCC	emailbcc	Short Text	Yes	Phishing		
+Email Body	emailbody	Long Text	Yes	Phishing		
+Email Body Format	emailbodyformat	Short Text	Yes	Phishing		
+Email Body HTML	emailbodyhtml	HTML	Yes	Phishing		
+EmailCampaignCanvas	emailcampaigncanvas	Markdown	Yes	Common Types		
+EmailCampaignMutualIndicators	emailcampaignmutualindicators	Markdown	Yes	Common Types		
+EmailCampaignSnippets	emailcampaignsnippets	Markdown	Yes	Common Types		
+EmailCampaignSummary	emailcampaignsummary	Markdown	Yes	Common Types		
+Email CC	emailcc	Short Text	Yes	Phishing		
+Email Classification	emailclassification	Single Select	Yes	Phishing		
+Email Client Name	emailclientname	Short Text	Yes	Phishing		
+Email Delete From Brand	emaildeletefrombrand	Single Select	Yes	Phishing		
+Email Delete Reason	emaildeletereason	Short Text	Yes	Phishing		
+Email Delete Result	emaildeleteresult	Short Text	Yes	Phishing		
+Email Delete Type	emaildeletetype	Single Select	Yes	Phishing		
+Email Headers	emailheaders	Grid	Yes	Phishing		
+Email HTML	emailhtml	Long Text	Yes	Phishing		
+Email HTML Image	emailhtmlimage	Long Text	Yes	Phishing		
+Email In Reply To	emailinreplyto	Short Text	Yes	Phishing		
+Email Internal Message ID	emailinternalmessageid	Short Text	Yes	Phishing		
+Email Keywords	emailkeywords	Short Text	Yes	Phishing		
+Email Labels	emaillabels	Short Text	Yes	Phishing		
+Email Latest Message	emaillatestmessage	Short Text	Yes	Phishing		
+Email Message ID	emailmessageid	Short Text	Yes	Phishing		
+Email Received	emailreceived	Short Text	Yes	Phishing		
+Email Recipient	emailrecipient	Multi Select	Yes	Core Alert Fields		
+Email Recipients Count	emailrecipientscount	Number	Yes	Phishing		
+Email Reply To	emailreplyto	Short Text	Yes	Phishing		
+Email Return Path	emailreturnpath	Short Text	Yes	Phishing		
+Email Sender	emailsender	Multi Select	Yes	Core Alert Fields		
+Email Sender IP	emailsenderip	Short Text	Yes	Phishing		
+Email Sent Successfully	emailsentsuccessfully	Boolean	Yes	Common Types		
+Email Size	emailsize	Number	Yes	Phishing		
+Email Source	emailsource	Short Text	Yes	Phishing		
+Email Subject	emailsubject	Multi Select	Yes	Core Alert Fields		
+Email To Count	emailtocount	Short Text	Yes	Phishing		
+Email URL Clicked	emailurlclicked	Short Text	Yes	Phishing		
+Employee Display Name	employeedisplayname	Short Text	Yes	Common Types		
+Employee Email	employeeemail	Short Text	Yes	Common Types		
+Employee Manager Email	employeemanageremail	Short Text	Yes	Common Types		
+Endpoint Isolation Status	endpointisolationstatus	Short Text	Yes	Common Types		
+Endpoints Details	endpointsdetails	Markdown	Yes	Common Types		
+End Time	endtime	Short Text	Yes	Common Types		
+Error Code	errorcode	Short Text	Yes	Common Types		
+Error Message	errormessage	Long Text	Yes	Common Types		
+Escalation	escalation	Short Text	Yes	Common Types		
+Event Action	eventaction	Single Select	Yes	Common Types		
+Event Descriptions	eventdescriptions	Multi Select	Yes	Common Types		
+Event ID	eventid	Short Text	Yes	Common Types		
+Event Names	eventnames	Multi Select	Yes	Common Types		
+Event Type	eventtype	Multi Select	Yes	Core Alert Fields		
+Excluded	excluded	Boolean	Yes	Core Alert Fields		
+Exposure Level	exposurelevel	Short Text	Yes	Common Types		
+External Category ID	externalcategoryid	Multi Select	Yes	Common Types		
+External Category Name	externalcategoryname	Multi Select	Yes	Common Types		
+External Confidence	externalconfidence	Multi Select	Yes	Common Types		
+External End Time	externalendtime	Date Picker	Yes	Common Types		
+External Last Updated Time	externallastupdatedtime	Date Picker	Yes	Common Types		
+External Link	externallink	URL	Yes	Common Types		
+External Severity	externalseverity	Multi Select	Yes	Common Types		
+External Start Time	externalstarttime	Date Picker	Yes	Common Types		
+External Status	externalstatus	Multi Select	Yes	Common Types		
+External Sub Category ID	externalsubcategoryid	Multi Select	Yes	Common Types		
+External Sub Category Name	externalsubcategoryname	Multi Select	Yes	Common Types		
+External System ID	externalsystemid	Multi Select	Yes	Common Types		
+Failed Logon Events	failedlogonevents	Number	Yes	Common Types		
+Failed Logon Events Timeframe	failedlogoneventstimeframe	Short Text	Yes	Common Types		
+File Access Date	fileaccessdate	Short Text	Yes	Common Types		
+File Creation Date	filecreationdate	Short Text	Yes	Common Types		
+File Hash	filehash	Short Text	Yes	Common Types		
+File Macro SHA256	filemacrosha256	Multi Select	Yes	Core Alert Fields		
+File MD5	filemd5	Multi Select	Yes	Core Alert Fields		
+File name	filename	Multi Select	Yes	Core Alert Fields		
+File path	filepath	Multi Select	Yes	Core Alert Fields		
+File Relationships	filerelationships	Grid	Yes	Common Types		
+File SHA1	filesha1	Multi Select	Yes	Common Types		
+File SHA256	filesha256	Multi Select	Yes	Core Alert Fields		
+File Size	filesize	Short Text	Yes	Common Types		
+First Name	firstname	Short Text	Yes	Common Types		
+First Seen	firstseen	Short Text	Yes	Common Types		
+Follow Up	followup	Boolean	Yes	Common Types		
+Full Name	fullname	Short Text	Yes	Common Types		
+FW Name	fwname	Multi Select	Yes	Core Alert Fields		
+FW Rule ID	fwruleid	Multi Select	Yes	Core Alert Fields		
+FW Rule Name	fwrulename	Multi Select	Yes	Core Alert Fields		
+FW Serial Number	fwserialnumber	Multi Select	Yes	Core Alert Fields		
+Given Name	givenname	Short Text	Yes	Common Types		
+Group ID	groupid	Short Text	Yes	Common Types		
+Hello World ID	helloworldid	Short Text	Yes	HelloWorld		
+Hello World Status	helloworldstatus	Short Text	Yes	HelloWorld		
+Hello World Type	helloworldtype	Short Text	Yes	HelloWorld		
+High Risky Hosts	highriskyhosts	Multi Select	Yes	Common Types		
+High Risky Users	highriskyusers	Multi Select	Yes	Common Types		
+Host FQDN	hostfqdn	Short Text	Yes	Core Alert Fields		
+Host IP	hostip	Multi Select	Yes	Core Alert Fields		
+Host Mac Address	hostmacaddress	Short Text	Yes	Core Alert Fields		
+Host Name	hostname	Short Text	Yes	Core Alert Fields		
+Host OS	hostos	Single Select	Yes	Core Alert Fields		
+Host Risk Level	hostrisklevel	Short Text	Yes	Core Alert Fields		
+Host Risk Reasons	hostriskreasons	Multi Select	Yes	Core Alert Fields		
+Hunt Results Count	huntresultscount	Short Text	Yes	Common Types		
+Identity Type	identitytype	Multi Select	Yes	Common Types		
+Image Name	imagename	Multi Select	Yes	Core Alert Fields		
+Incident Link	incidentlink	URL	Yes	Common Types		
+IncomingMirrorError	incomingmirrorerror	Long Text	Yes	Common Types		
+Initiated By	initiatedby	Multi Select	Yes	Core Alert Fields		
+Initiator CMD	initiatorcmd	Multi Select	Yes	Core Alert Fields		
+Initiator MD5	initiatormd5	Multi Select	Yes	Core Alert Fields		
+Initiator path	initiatorpath	Multi Select	Yes	Core Alert Fields		
+Initiator PID	initiatorpid	Multi Select	Yes	Core Alert Fields		
+Initiator SHA256	initiatorsha256	Multi Select	Yes	Core Alert Fields		
+Initiator signature	initiatorsignature	Multi Select	Yes	Core Alert Fields		
+Initiator signer	initiatorsigner	Multi Select	Yes	Core Alert Fields		
+Initiator TID	initiatortid	Multi Select	Yes	Core Alert Fields		
+Internal Addresses	internaladdresses	Short Text	Yes	Common Types		
+Investigation Stage	investigationstage	Short Text	Yes	Common Types		
+IP Blocked Status	ipblockedstatus	Short Text	Yes	Common Types		
+IP Reputation	ipreputation	Short Text	Yes	Common Types		
+Is Active	isactive	Single Select	Yes	Common Types		
+Isolated	isolated	Short Text	Yes	Common Types		
+Is Phishing	isphishing	Multi Select	Yes	Core Alert Fields		
+Item Owner	itemowner	Short Text	Yes	Common Types		
+Item Owner Email	itemowneremail	Short Text	Yes	Common Types		
+Job Code	jobcode	Short Text	Yes	Common Types		
+Job Family	jobfamily	Short Text	Yes	Common Types		
+Job Function	jobfunction	Short Text	Yes	Common Types		
+Last Mirrored Time Stamp	lastmirroredtimestamp	Date Picker	Yes	Common Types		
+Last Modified By	lastmodifiedby	Short Text	Yes	Common Types		
+Last Modified On	lastmodifiedon	Short Text	Yes	Common Types		
+Last Name	lastname	Short Text	Yes	Common Types		
+Last Seen	lastseen	Short Text	Yes	Common Types		
+Last Update Time	lastupdatetime	Short Text	Yes	Common Types		
+Leadership	leadership	Short Text	Yes	Common Types		
+List Of Rules - Event	listofrulesevent	Multi Select	Yes	Common Types		
+Local IP	localip	Multi Select	Yes	Core Alert Fields		
+Local Port	localport	Multi Select	Yes	Core Alert Fields		
+Location	location	Short Text	Yes	Common Types		
+Location Region	locationregion	Short Text	Yes	Common Types		
+Log Source	logsource	Short Text	Yes	Common Types		
+Log Source Name	logsourcename	Multi Select	Yes	Common Types		
+Log Source Type	logsourcetype	Multi Select	Yes	Common Types		
+Low Level Categories Events	lowlevelcategoriesevents	Multi Select	Yes	Common Types		
+Macro Source Code	macrosourcecode	Long Text	Yes	Common Types		
+Malicious URL Clicked	maliciousurlclicked	Short Text	Yes	Phishing		
+Malicious URL Viewed	maliciousurlviewed	Short Text	Yes	Phishing		
+Manager Email Address	manageremailaddress	Short Text	Yes	Common Types		
+Manager Name	managername	Short Text	Yes	Common Types		
+Misc	misc	Multi Select	Yes	Core Alert Fields		
+Mitre ATT&CK Tactic	mitreattcktactic	Multi Select	Yes	Core Alert Fields		
+Mitre ATT&CK Technique	mitreattcktechnique	Multi Select	Yes	Core Alert Fields		
+MITRE Tactic ID	mitretacticid	Multi Select	Yes	Common Types		
+MITRE Tactic Name	mitretacticname	Multi Select	Yes	Common Types		
+MITRE Technique ID	mitretechniqueid	Multi Select	Yes	Common Types		
+MITRE Technique Name	mitretechniquename	Multi Select	Yes	Common Types		
+Mobile Device Model	mobiledevicemodel	Short Text	Yes	Common Types		
+Mobile Phone	mobilephone	Short Text	Yes	Common Types		
+Module	module	Multi Select	Yes	Core Alert Fields		
+NGFW Vsys Name	ngfwvsysname	Multi Select	Yes	Core Alert Fields		
+Number Of Found Related Alerts	numberoffoundrelatedalerts	Number	Yes	Common Types		
+Number Of Log Sources	numberoflogsources	Number	Yes	Common Types		
+Number of Related Incidents	numberofrelatedincidents	Number	Yes	Common Types		
+Number of similar files	numberofsimilarfiles	Number	Yes	Common Types		
+Objective	objective	Multi Select	Yes	Common Types		
+Operation Name	operationname	Multi Select	Yes	Common Types		
+Org Level 1	orglevel1	Short Text	Yes	Common Types		
+Org Level 2	orglevel2	Short Text	Yes	Common Types		
+Org Level 3	orglevel3	Short Text	Yes	Common Types		
+Org Unit	orgunit	Short Text	Yes	Common Types		
+Original Alert ID	originalalertid	Short Text	Yes	Common Types		
+Original Alert Name	originalalertname	Short Text	Yes	Common Types		
+Original Alert Source	originalalertsource	Short Text	Yes	Common Types		
+Original Description	originaldescription	Short Text	Yes	Common Types		
+Original Events	originalevents	Multi Select	Yes	Common Types		
+OS	os	Short Text	Yes	Common Types		
+OS Parent CMD	osparentcmd	Multi Select	Yes	Core Alert Fields		
+OS Parent TID	osparentid	Multi Select	Yes	Core Alert Fields		
+OS Parent Name	osparentname	Multi Select	Yes	Core Alert Fields		
+OS Parent PID	osparentpid	Multi Select	Yes	Core Alert Fields		
+OS Parent SHA256	osparentsha256	Multi Select	Yes	Core Alert Fields		
+OS Parent Signature	osparentsignature	Multi Select	Yes	Core Alert Fields		
+OS Parent Signer	osparentsigner	Multi Select	Yes	Core Alert Fields		
+OS Parent User Name	osparentusername	Multi Select	Yes	Core Alert Fields		
+OS Type	ostype	Short Text	Yes	Common Types		
+OutgoingMirrorError	outgoingmirrorerror	Long Text	Yes	Common Types		
+Parent Process CMD	parentprocesscmd	Multi Select	Yes	Common Types		
+Parent Process File Path	parentprocessfilepath	Multi Select	Yes	Common Types		
+Parent Process IDs	parentprocessids	Multi Select	Yes	Common Types		
+Parent Process MD5	parentprocessmd5	Multi Select	Yes	Common Types		
+Parent Process Name	parentprocessname	Multi Select	Yes	Common Types		
+Parent Process Path	parentprocesspath	Multi Select	Yes	Common Types		
+Parent Process SHA256	parentprocesssha256	Multi Select	Yes	Common Types		
+Part of Campaign	partofcampaign	Short Text	Yes	Common Types		
+Password Changed Date	passwordchangeddate	Short Text	Yes	Common Types		
+Password Reset Successfully	passwordresetsuccessfully	Boolean	Yes	Common Types		
+Personal Email	personalemail	Short Text	Yes	Common Types		
+Phishing BCL Score	phishingbclscore	Number	Yes	Phishing		
+Phishing PCL Score	phishingpclscore	Number	Yes	Phishing		
+Phishing Reporter Email Headers	phishingreporteremailheaders	Grid	Yes	Phishing		
+Phishing SCL Score	phishingsclscore	Number	Yes	Phishing		
+Phishing Sub-type	phishingsubtype	Multi Select	Yes	Phishing		
+Phone Number	phonenumber	Multi Select	Yes	Common Types		
+Policy Actions	policyactions	Multi Select	Yes	Common Types		
+Policy Deleted	policydeleted	Short Text	Yes	Common Types		
+Policy Description	policydescription	Long Text	Yes	Common Types		
+Policy Details	policydetails	Short Text	Yes	Common Types		
+Policy ID	policyid	Short Text	Yes	Common Types		
+Policy Recommendation	policyrecommendation	Long Text	Yes	Common Types		
+Policy Remediable	policyremediable	Short Text	Yes	Common Types		
+Policy Severity	policyseverity	Short Text	Yes	Common Types		
+Policy Type	policytype	Short Text	Yes	Common Types		
+Policy URI	policyuri	Short Text	Yes	Common Types		
+Post Nat Destination IP	postnatdestinationip	Multi Select	Yes	Common Types		
+Post Nat Destination Port	postnatdestinationport	Multi Select	Yes	Common Types		
+Post Nat Source IP	postnatsourceip	Multi Select	Yes	Common Types		
+Post Nat Source Port	postnatsourceport	Multi Select	Yes	Common Types		
+Pre Nat Destination Port	prenatdestinationport	Multi Select	Yes	Common Types		
+Pre Nat Source IP	prenatsourceip	Multi Select	Yes	Common Types		
+Pre Nat Source Port	prenatsourceport	Multi Select	Yes	Common Types		
+Process CMD	processcmd	Multi Select	Yes	Common Types		
+Process Creation Time	processcreationtime	Multi Select	Yes	Common Types		
+Process execution signature	processexecutionsignature	Multi Select	Yes	Core Alert Fields		
+Process execution signer	processexecutionsigner	Multi Select	Yes	Core Alert Fields		
+Process ID	processid	Multi Select	Yes	Common Types		
+Process MD5	processmd5	Multi Select	Yes	Common Types		
+Process Names	processnames	Multi Select	Yes	Common Types		
+Process Paths	processpaths	Multi Select	Yes	Common Types		
+Process SHA256	processsha256	Multi Select	Yes	Common Types		
+Project ID	projectid	Multi Select	Yes	Common Types		
+Protocol names	protocolnames	Multi Select	Yes	Common Types		
+Rating	rating	Short Text	Yes	Common Types		
+Raw Event	rawevent	Multi Select	Yes	Common Types		
+Referenced Resource ID	referencedresourceid	Multi Select	Yes	Common Types		
+Referenced Resource Name	referencedresourcename	Multi Select	Yes	Common Types		
+Region	region	Short Text	Yes	Common Types		
+Region ID	regionid	Short Text	Yes	Common Types		
+Registration Email	registrationemail	Short Text	Yes	Common Types		
+Registry data	registrydata	Multi Select	Yes	Core Alert Fields		
+Registry full key	registryfullkey	Multi Select	Yes	Core Alert Fields		
+Registry Hive	registryhive	Multi Select	Yes	Common Types		
+Registry Key	registrykey	Multi Select	Yes	Common Types		
+Registry Value	registryvalue	Multi Select	Yes	Common Types		
+Registry Value Type	registryvaluetype	Multi Select	Yes	Common Types		
+Related Alerts	relatedalerts	Markdown	Yes	Common Types		
+Related Campaign	relatedcampaign	Short Text	Yes	Common Types		
+Related Endpoints	relatedendpoints	Short Text	Yes	Common Types		
+Related Report	relatedreport	Short Text	Yes	Common Types		
+Remote Agent Hostname	remoteagenthostname	Multi Select	Yes	Core Alert Fields		
+Remote Host	remotehost	Multi Select	Yes	Core Alert Fields		
+Remote IP	remoteip	Multi Select	Yes	Core Alert Fields		
+Remote Port	remoteport	Multi Select	Yes	Core Alert Fields		
+RemovedFromCampaigns	removedfromcampaigns	Multi Select	Yes	Common Types		
+Rendered HTML	renderedhtml	HTML	Yes	Common Types		
+Reported Email CC	reportedemailcc	Short Text	Yes	Phishing		
+Reported Email From	reportedemailfrom	Short Text	Yes	Phishing		
+Reported Email Message ID	reportedemailmessageid	Short Text	Yes	Phishing		
+Reported Email Origin	reportedemailorigin	Single Select	Yes	Phishing		
+Reported Email Subject	reportedemailsubject	Short Text	Yes	Phishing		
+Reported Email To	reportedemailto	Short Text	Yes	Phishing		
+Reporter Email Address	reporteremailaddress	Short Text	Yes	Common Types		
+Report Name	reportname	Markdown	Yes	Common Types		
+Resource Name	resourcename	Short Text	Yes	Common Types		
+Resource Type	resourcetype	Short Text	Yes	Common Types		
+Resource URL	resourceurl	Short Text	Yes	Common Types		
+Risk Name	riskname	Short Text	Yes	Common Types		
+Risk Rating	riskrating	Short Text	Yes	Common Types		
+Risk Score	riskscore	Short Text	Yes	Common Types		
+Detection Rule ID	ruleid	Short Text	Yes	Core Alert Fields		
+Rule Name	rulename	Short Text	Yes	Common Types		
+sAMAccountName	samaccountname	Short Text	Yes	Common Types		
+Scenario	scenario	Multi Select	Yes	Common Types		
+Selected Indicators	selectedindicators	Multi Select	Yes	Common Types		
+Sensor IP	sensorip	Short Text	Yes	Common Types		
+SHA1	sha1	Short Text	Yes	Common Types		
+SHA512	sha512	Short Text	Yes	Common Types		
+Signature	signature	Short Text	Yes	Common Types		
+similarIncidents	similarincidents	Multi Select	Yes	Common Types		
+Similar incidents Dbot	similarincidentsdbot	Grid	Yes	Common Types		
+SKU Name	skuname	Short Text	Yes	Common Types		
+SKU TIER	skutier	Short Text	Yes	Common Types		
+Source Category	sourcecategory	Short Text	Yes	Common Types		
+Source Created By	sourcecreatedby	Short Text	Yes	Common Types		
+Source Create time	sourcecreatetime	Short Text	Yes	Common Types		
+Source External IPs	sourceexternalips	Multi Select	Yes	Common Types		
+Source Geolocation	sourcegeolocation	Multi Select	Yes	Common Types		
+Source Id	sourceid	Short Text	Yes	Common Types		
+Source Networks	sourcenetworks	Multi Select	Yes	Common Types		
+Source Priority	sourcepriority	Short Text	Yes	Common Types		
+Source Status	sourcestatus	Short Text	Yes	Common Types		
+Source Updated by	sourceupdatedby	Short Text	Yes	Common Types		
+Source Urgency	sourceurgency	Short Text	Yes	Common Types		
+Source Zone Name	sourcezonename	Multi Select	Yes	Core Alert Fields		
+Src OS	srcos	Short Text	Yes	Common Types		
+SSDeep	ssdeep	Short Text	Yes	Common Types		
+Starred	starred	Boolean	Yes	Core Alert Fields		
+Start Time	starttime	Short Text	Yes	Common Types		
+State	state	Short Text	Yes	Common Types		
+Status Reason	statusreason	Short Text	Yes	Common Types		
+Street Address	streetaddress	Short Text	Yes	Common Types		
+String Similarity Results	stringsimilarityresults	Markdown	Yes	Common Types		
+Sub Category	subcategory	Short Text	Yes	Common Types		
+Subtype	subtype	Short Text	Yes	Common Types		
+Surname	surname	Short Text	Yes	Common Types		
+Suspicious Executions	suspiciousexecutions	Grid	Yes	Common Types		
+Suspicious Executions Found	suspiciousexecutionsfound	Markdown	Yes	Common Types		
+Tactic	tactic	Multi Select	Yes	Common Types		
+Tactic ID	tacticid	Multi Select	Yes	Common Types		
+Target process CMD	targetprocesscmd	Multi Select	Yes	Core Alert Fields		
+Target process name	targetprocessname	Multi Select	Yes	Core Alert Fields		
+Target process SHA256	targetprocesssha256	Multi Select	Yes	Core Alert Fields		
+Team name	teamname	Short Text	Yes	Common Types		
+Technical Owner	technicalowner	Multi Select	Yes	Common Types		
+Technical Owner Contact	technicalownercontact	Multi Select	Yes	Common Types		
+Technical User	technicaluser	Multi Select	Yes	Common Types		
+Technique	technique	Multi Select	Yes	Common Types		
+Technique ID	techniqueid	Multi Select	Yes	Common Types		
+Tenant Name	tenantname	Short Text	Yes	Common Types		
+Threat Family Name	threatfamilyname	Short Text	Yes	Common Types		
+Threat Name	threatname	Short Text	Yes	Common Types		
+Ticket Acknowledged Date	ticketacknowledgeddate	Date Picker	Yes	Common Types		
+Ticket Closed Date	ticketcloseddate	Date Picker	Yes	Common Types		
+Ticket Number	ticketnumber	Short Text	Yes	Common Types		
+Timestamp	timestamp	Date Picker	Yes	Core Alert Fields		
+Timezone	timezone	Short Text	Yes	Common Types		
+Title	title	Short Text	Yes	Common Types		
+Total Malicious URLs Clicks	totalmaliciousurlsclicks	Number	Yes	Phishing		
+Traffic Direction	trafficdirection	Multi Select	Yes	Common Types		
+Triggered Security Profile	triggeredsecurityprofile	Short Text	Yes	Common Types		
+Unique Ports	uniqueports	Short Text	Yes	Common Types		
+URL	url	Multi Select	Yes	Core Alert Fields		
+URLs	urls	Multi Select	Yes	Common Types		
+URL SSL Verification	urlsslverification	Grid	Yes	Common Types		
+Use Case Description	usecasedescription	Markdown	Yes	Common Types		
+userAccountControl	useraccountcontrol	Short Text	Yes	Common Types		
+User Agent	useragent	Multi Select	Yes	Core Alert Fields		
+User Anomaly Count	useranomalycount	Short Text	Yes	Common Types		
+User Block Status	userblockstatus	Short Text	Yes	Common Types		
+User Creation Time	usercreationtime	Short Text	Yes	Common Types		
+User Engagement Response	userengagementresponse	Short Text	Yes	Common Types		
+User Groups	usergroups	Multi Select	Yes	Common Types		
+User Id	userid	Short Text	Yes	Common Types		
+User name	username	Multi Select	Yes	Core Alert Fields		
+User Risk Level	userrisklevel	Short Text	Yes	Core Alert Fields		
+User Risk Reasons	userriskreasons	Multi Select	Yes	Core Alert Fields		
+Users Details	usersdetails	Markdown	Yes	Common Types		
+User SID	usersid	Multi Select	Yes	Common Types		
+UUID	uuid	Short Text	Yes	Common Types		
+Vendor ID	vendorid	Short Text	Yes	Common Types		
+Vendor Product	vendorproduct	Short Text	Yes	Common Types		
+Verdict	verdict	Short Text	Yes	Common Types		
+Verification Method	verificationmethod	Short Text	Yes	Common Types		
+Verification Status	verificationstatus	Short Text	Yes	Common Types		
+Vulnerability Category	vulnerabilitycategory	Short Text	Yes	Common Types		
+Vulnerable Product	vulnerableproduct	Short Text	Yes	Common Types		
+Work Phone	workphone	Short Text	Yes	Common Types		
+XFF	xff	Multi Select	Yes	Core Alert Fields		
+Zip Code	zipcode	Short Text	Yes	Common Types		

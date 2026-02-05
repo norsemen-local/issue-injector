@@ -1,0 +1,13 @@
+{
+  "vendor": "TestVendor",
+  "product": "TestProduct",
+  "severity": "High",
+  "category": "Malware",
+  "name": "Field Naming Test Alert",
+  "details": "Testing which field naming convention XSIAM accepts",
+  "alert_id": "TEST-FIELD-NAMING-001",
+  "timestamp": "2025-11-26T16:00:00Z",
+  
+  "remote_ip": ["192.168.1.1"],
+  "host_name": "TEST-HOST-001"
+}

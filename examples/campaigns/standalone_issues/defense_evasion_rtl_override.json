@@ -1,0 +1,70 @@
+{
+  "vendor": "Palo Alto Networks",
+  "product": "Cortex XDR",
+  "severity": "High",
+  "category": "Defense Evasion",
+  "alert_name": "Unicode Right-to-Left Override Character in Filename",
+  "description": "A file with embedded Unicode Right-to-Left Override (RLO) character (U+202E) was detected on workstation WKS-MARKETING-12 (10.20.30.45) at 2024-11-10 09:23:17 UTC. The file 'Financial_Report\u202efdp.exe' was downloaded from external website hxxps://malicious-cdn.example[.]com/documents/ by user mjohnson@company.local via Google Chrome. The RLO character (U+202E) reverses the display order of characters, making the malicious executable 'exe.pdf' appear as innocent PDF 'Financial_Report.pdf' in Windows Explorer and email clients. When the user clicked the file at 09:24 UTC, it executed payload disguised as Adobe Reader update, establishing C2 connection to 185.220.101.58:443 (TOR exit node) and downloading additional malware stage 'svchost32.dll' to %APPDATA%\\Local\\Temp\\. The technique bypasses basic security awareness training and exploits human trust in file extensions. File analysis shows embedded XOR-encrypted shellcode with Cobalt Strike beacon signature. The user mjohnson previously received targeted spearphishing email with subject 'Q4 Financial Results - Urgent Review' containing this malicious attachment.",
+  "host_name": "WKS-MARKETING-12",
+  "host_ip": [
+    169100333
+  ],
+  "host_os": "AGENT_OS_WINDOWS",
+  "user_name": [
+    "mjohnson@company.local"
+  ],
+  "account_id": "S-1-5-21-3623811015-3361044348-30300820-8456",
+  "domain": "company.local",
+  "cgo_name": [
+    "Financial_Report\u202efdp.exe"
+  ],
+  "cgo_cmd": [
+    "\"C:\\Users\\mjohnson\\Downloads\\Financial_Report\u202efdp.exe\""
+  ],
+  "cgo_path": [
+    "C:\\Users\\mjohnson\\Downloads\\Financial_Report\u202efdp.exe"
+  ],
+  "cgo_pid": [
+    7821
+  ],
+  "os_parent_name": [
+    "explorer.exe"
+  ],
+  "os_parent_cmd": [
+    "C:\\Windows\\explorer.exe"
+  ],
+  "os_parent_pid": [
+    2344
+  ],
+  "file_name": [
+    "Financial_Report\u202efdp.exe",
+    "svchost32.dll"
+  ],
+  "file_path": [
+    "C:\\Users\\mjohnson\\Downloads\\Financial_Report\u202efdp.exe",
+    "C:\\Users\\mjohnson\\AppData\\Local\\Temp\\svchost32.dll"
+  ],
+  "file_hash": "8f3a2c91d7e4b5f6a1c2e3d4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4",
+  "file_sha256": [
+    "8f3a2c91d7e4b5f6a1c2e3d4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4"
+  ],
+  "initiator_sha256": [
+    "8f3a2c91d7e4b5f6a1c2e3d4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4"
+  ],
+  "filesize": "876544",
+  "threat_name": "RLO Character Masquerading",
+  "attack_mode": "Spearphishing with RLO Masquerading",
+  "verdict": "Malicious",
+  "risk_score": "88",
+  "risk_rating": "High",
+  "host_risk_level": "High",
+  "policy_type": "Endpoint Protection",
+  "policy_description": "File execution with Unicode RLO character masquerading",
+  "policy_severity": "High",
+  "policy_recommendation": "Quarantine file immediately, isolate affected workstation, scan for additional malware stages, block C2 IP address, review email gateway for similar attachments, implement file naming restrictions blocking Unicode directional characters",
+  "log_source": "Cortex XDR Agent",
+  "event_id": "PROCESS_EXECUTION",
+  "external_link": "https://attack.mitre.org/techniques/T1027/",
+  "mitre_att&ck_tactic": "TA0005 - Defense Evasion",
+  "mitre_att&ck_technique": "T1027 - Obfuscated Files or Information"
+}

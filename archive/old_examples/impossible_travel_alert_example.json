@@ -1,0 +1,30 @@
+{
+  "vendor": "Microsoft",
+  "product": "Azure AD Identity Protection",
+  "severity": "High",
+  "category": "Credential Access",
+  "title": "Impossible Travel Alert - Suspicious Account Activity",
+  "details": "User account detected logging in from geographically impossible locations within a very short time window. Previous authenticated login: Cupertino, California, US (104.196.188.170) on 2022-05-04 at 19:30:49 UTC. Current login attempt: Bern, Switzerland (176.10.104.240) on 2022-05-04 at 19:35:49 UTC. Physical distance: 4,154 miles in 5 minutes travel time (physically impossible). Risk assessment indicates potential account compromise, credential theft, or unauthorized access. User: Karen Castro (karen_castro), IT Department. Recommendation: Require multi-factor authentication challenge or reset user password.",
+  "alert_id": "AZURE-IMPOSSIBLE-TRAVEL-20220504-001",
+  "timestamp": "2022-05-04T19:35:49.587134Z",
+  "initiated_by": "karen_castro",
+  "host_name": "KCASTRO-LT25778",
+  "remote_ip": "176.10.104.240",
+  "remote_host": "unknown-eu-host",
+  "group_id": "it-department",
+  "source": "Microsoft Azure AD",
+  "status": 1,
+  "mitre_defs": {
+    "TA0006": ["T1110.004"],
+    "TA0005": ["T1078.001"]
+  },
+  "previous_ip": "104.196.188.170",
+  "previous_location": "Cupertino, California, US",
+  "previous_timestamp": "2022-05-04T19:30:49.587134Z",
+  "current_location": "Bern, Switzerland",
+  "distance_miles": 4154.08,
+  "travel_time_minutes": 5,
+  "risk_level": "High",
+  "authentication_method_previous": "Password",
+  "authentication_method_current": "Password"
+}

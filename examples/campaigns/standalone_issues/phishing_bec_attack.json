@@ -1,0 +1,38 @@
+{
+  "vendor": "Proofpoint",
+  "product": "Email Protection",
+  "severity": "High",
+  "category": "Business Email Compromise",
+  "alert_id": "BEC-WIRE-20251126-001",
+  "description": "Business Email Compromise (BEC) attack detected. Attacker spoofed executive email address to request fraudulent wire transfer. Email bypassed initial filters but was caught by behavioral analysis. Target user did not respond to the fraudulent request.",
+  "alert_name": "BEC - Executive Impersonation Wire Transfer Fraud",
+  "threat_name": "Business Email Compromise",
+  "email_subject": [
+    "Urgent: Wire Transfer Required - Confidential"
+  ],
+  "email_sender": [
+    "ceo@company-finance-dept.com"
+  ],
+  "email_recipient": [
+    "finance.manager@company.com"
+  ],
+  "emailbody": "This is urgent and confidential. Please process wire transfer of $450,000 to the following account immediately. I am in meetings all day and cannot be reached by phone. Account details: [REDACTED]. This needs to be completed before 5pm today. Do not discuss with anyone. -John CEO",
+  "sender_domain": "company-finance-dept.com",
+  "sender_ip": [
+    169094508
+  ],
+  "is_phishing": "YES",
+  "phishing_sub_type": "BEC/CEO Fraud",
+  "user_name": [
+    "finance.manager@company.com"
+  ],
+  "verdict": "Malicious",
+  "risk_score": "90",
+  "domain": "company-finance-dept.com",
+  "domain_registrar_abuse_email": "abuse@registrar.com",
+  "domain_updated_date": "2025-11-20",
+  "mitre_att&ck_tactic": "TA0001 - Initial Access",
+  "mitre_att&ck_technique": "T1566.002 - Phishing: Spearphishing Link",
+  "detection_url": "https://proofpoint.company.com/alert/bec-12345",
+  "tags": "bec, ceo-fraud, wire-transfer, email-spoofing, financial-fraud"
+}

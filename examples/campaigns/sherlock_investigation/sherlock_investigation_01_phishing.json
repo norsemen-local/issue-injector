@@ -1,0 +1,49 @@
+{
+  "vendor": "Proofpoint",
+  "product": "Email Security Gateway",
+  "severity": "High",
+  "category": "Phishing",
+  "alert_name": "Spear Phishing Email with Credential Harvesting Link",
+  "alert_id": "PROOFPOINT-PHISH-SH-001",
+  "description": "A sophisticated spear phishing email was detected targeting aisherlock@bakerstreetlabs.io, impersonating GitHub Security. The email claimed that the user's GitHub account required immediate verification due to 'suspicious activity' and contained a malicious link to a credential harvesting page hosted at github-security-verify[.]com. The email was crafted with high sophistication, including GitHub branding, legitimate-looking sender details (security@github-notifications[.]com), and personalized content referencing the user's recent repository activities. Proofpoint's URL defense identified the link as leading to a known phishing infrastructure associated with credential theft campaigns. The email was delivered to the inbox before detection, and email logs indicate the user clicked the malicious link approximately 4 minutes after receiving the message. This represents the initial compromise vector for what appears to be a targeted account takeover campaign. The threat actor demonstrated knowledge of the user's GitHub activity, suggesting either reconnaissance or prior data breach exposure. Immediate investigation recommended to determine if credentials were entered on the phishing page and to assess downstream compromise indicators.",
+  "relative_timestamp_hours": 168.0,
+  "campaign_name": "SH-UserInvestigation-Nov2025",
+  "user_name": [
+    "aisherlock@bakerstreetlabs.io"
+  ],
+  "domain": "bakerstreetlabs.io",
+  "email": "aisherlock@bakerstreetlabs.io",
+  "department": "Security Research",
+  "email_sender": [
+    "security@github-notifications.com"
+  ],
+  "email_recipient": [
+    "aisherlock@bakerstreetlabs.io"
+  ],
+  "email_subject": [
+    "[URGENT] GitHub Account Security Verification Required - Action Needed"
+  ],
+  "emailbody": "Dear GitHub User, We have detected unusual activity on your GitHub account (aisherlock) from an unrecognized device in Eastern Europe. To protect your account, please verify your identity immediately by clicking the link below. Failure to verify within 24 hours will result in temporary account suspension. [Verify Account Now] This is an automated security message from GitHub Security Team.",
+  "emailmessageid": "20251122104532.gh-security.001@github-notifications.com",
+  "email_sender_ip": "185.220.101.47",
+  "url": [
+    "https://github-security-verify.com/verify?user=aisherlock&token=a3f8d9e2"
+  ],
+  "malicious_url_clicked": "YES",
+  "email_url_clicked": "YES",
+  "is_phishing": [
+    "YES"
+  ],
+  "threat_name": "Credential Harvesting Campaign",
+  "malicious_urls": [
+    "https://github-security-verify.com/verify"
+  ],
+  "risk_score": "85",
+  "risk_rating": "High",
+  "verdict": "Malicious",
+  "log_source": "Proofpoint TAP",
+  "mitre_att&ck_tactic": "TA0001 - Initial Access",
+  "mitre_att&ck_technique": "T1566.002 - Phishing: Spearphishing Link",
+  "recommended_actions": "1. Reset user credentials immediately. 2. Check if user entered credentials on phishing site. 3. Review user account activity for signs of compromise. 4. Block domain github-security-verify.com at DNS/firewall level. 5. Conduct security awareness training with affected user. 6. Monitor for related phishing attempts targeting other users.",
+  "external_link": "https://threatconnect.proofpoint.com/phishing-campaign/github-impersonation"
+}

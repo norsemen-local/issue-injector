@@ -1,0 +1,52 @@
+{
+  "vendor": "Palo Alto Networks",
+  "product": "Next-Generation Firewall",
+  "severity": "Critical",
+  "category": "Exfiltration",
+  "alert_name": "Large-Scale Encrypted Data Exfiltration via C2 Channel",
+  "description": "Next-Generation Firewall detected massive encrypted data exfiltration from compromised workstation FIN-WKS-087 to AdaptixC2 command-and-control infrastructure tech-system[.]online, representing culmination of multi-stage attack campaign. Network traffic analysis identifies abnormal upload volume 34.2MB transmitted over 18-minute window (05:38 AM - 05:56 AM) via HTTPS POST requests to /endpoint/api/v2/upload URI, contrasting with normal beacon traffic baseline of 1-4KB per request. Deep packet inspection reveals sophisticated exfiltration protocol designed to evade DLP: (1) Data chunked into 2MB segments uploaded sequentially, (2) Each chunk wrapped in legitimate-appearing JSON structure mimicking Windows telemetry format, (3) Base64 encoding applied to encrypted 7z archive before transmission, (4) HTTP/2 multiplexing across 8 concurrent streams maximizing throughput, (5) Server ACK responses include next-chunk tokens maintaining session state, (6) Upload timing randomized with 30-90 second intervals between chunks preventing bandwidth spike detection, (7) Traffic pattern mimics Windows Update delta package uploads. Firewall threat intelligence correlation identified tech-system[.]online as known AdaptixC2 infrastructure during transfer (mid-session threat feed update), however SSL inspection bypass via certificate pinning prevented real-time blocking. Network flow metadata analysis: Source FIN-WKS-087:54782 \u2192 Destination 104.21.78[.]134:443 (Cloudflare CDN front-end), total uploaded 35.9MB (34.2MB payload + 1.7MB protocol overhead), 17 successful chunk transfers completed, connection maintained 18 minutes 42 seconds, average throughput 32.1 KB/s (throttled to avoid detection), bidirectional flow 36.1MB up / 187KB down. Threat intelligence indicates uploaded data staged at attacker-controlled exfiltration server behind Cloudflare infrastructure, likely immediate transfer to dark web marketplace or ransomware negotiation leverage. Data loss impact assessment based on staging alert correlation: 127 files containing material non-public information (unreleased Q4 2025 earnings: revenue $847M), merger/acquisition intelligence ($125M DataSecure acquisition), PII (employee SSNs, customer payment data), executive compensation details. Regulatory implications: SEC material cybersecurity incident disclosure requirement (4-day deadline), mandatory breach notification (GDPR Article 33: 72 hours, state breach laws), potential insider trading investigation if MNPI disclosed prior to earnings announcement. EDR correlation confirms exfiltration source as staged archive system_backup_20250510.7z, file deleted from FIN-WKS-087 immediately post-transfer using SDelete secure wipe (anti-forensics).",
+  "relative_timestamp_hours": 94.3,
+  "campaign_name": "AdaptixC2-FinancialCorp",
+  "host_name": "FIN-WKS-087",
+  "host_ip": [
+    171540703
+  ],
+  "user_name": [
+    "rbrown@financialcorp.com"
+  ],
+  "domain": "financialcorp.com",
+  "local_ip": [
+    171540703
+  ],
+  "local_port": 54782,
+  "remote_ip": [
+    1756033670
+  ],
+  "remote_port": 443,
+  "fw_name": "PA-5220",
+  "fw_rule_name": "Allow-HTTPS-Outbound",
+  "fw_rule_id": "security-rule-102",
+  "fw_serial_number": "015351000012847",
+  "source_zone_name": "Internal-LAN",
+  "destination_zone_name": "Internet",
+  "url": "https://tech-system.online/endpoint/api/v2/upload",
+  "bytes_sent": "37683200",
+  "bytes_received": "191488",
+  "dns_query_name": [
+    "tech-system.online"
+  ],
+  "threat_name": "Encrypted Data Exfiltration",
+  "attack_mode": "C2 Data Exfiltration",
+  "verdict": "Malicious",
+  "risk_score": "100",
+  "risk_rating": "Critical",
+  "policy_type": "Data Loss Prevention",
+  "policy_description": "Mass exfiltration of 34.2MB encrypted financial data via C2 channel",
+  "policy_severity": "Critical",
+  "policy_recommendation": "CRITICAL: Immediately activate incident response plan Level 1 (data breach), notify C-suite executives and board of directors within 24 hours, engage external breach counsel for legal privilege, contact cyber insurance carrier, initiate SEC 8-K filing process (4-business-day deadline from materiality determination), prepare mandatory breach notifications (GDPR 72 hours, state laws vary), block tech-system[.]online and 104.21.78[.]134 globally, implement egress filtering for Cloudflare IP ranges from sensitive networks, enable SSL decryption for all uncategorized domains, deploy network DLP to detect large outbound transfers, forensically preserve firewall logs and FIN-WKS-087 network traffic captures, engage threat intelligence team to locate exfiltrated data on dark web, consider proactive notification to affected individuals (employees, customers) pending legal review, coordinate with FBI Cyber Division if MNPI disclosure impacts securities markets",
+  "log_source": "PA-5220 Traffic Logs",
+  "event_id": "TRAFFIC_EXFIL_LARGE",
+  "external_link": "https://unit42.paloaltonetworks.com/adaptixc2-post-exploitation-framework/",
+  "mitre_att&ck_tactic": "TA0010 - Exfiltration",
+  "mitre_att&ck_technique": "T1041 - Exfiltration Over C2 Channel"
+}

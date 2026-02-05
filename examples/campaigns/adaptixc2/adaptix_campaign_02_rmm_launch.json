@@ -1,0 +1,56 @@
+{
+  "vendor": "Cortex XDR",
+  "product": "Endpoint Protection",
+  "severity": "Critical",
+  "category": "Execution",
+  "alert_name": "Suspicious Remote Assistance Tool Launch Following External Teams Contact",
+  "description": "Cortex XDR detected critical security incident on workstation FIN-WKS-087 where user rbrown@financialcorp.com launched Microsoft Quick Assist remote assistance tool (quickassist.exe) 8 minutes after receiving external Microsoft Teams message from unverified 'IT Support' contact. Process telemetry shows quickassist.exe (C:\\Windows\\System32\\quickassist.exe, PID 9247) launched via Windows Run dialog (parent process: explorer.exe PID 3891) at 03:58 AM, establishing outbound HTTPS connection to Microsoft Quick Assist relay servers (relay.support.services.microsoft.com, 20.190.160.1) for remote session initiation. Behavioral analysis identified suspicious session characteristics: (1) Launch timestamp 03:58 AM outside normal business hours, (2) No corresponding IT ticketing system entry for remote support request, (3) External Teams contact 'IT Support | External' not in corporate directory, (4) User manually entered 6-digit session code 734-892 received via Teams chat (clipboard monitoring detected code copy-paste from Teams.exe to quickassist.exe), (5) Session established with unknown remote party IP 103.224.182[.]45 (Singapore, bulletproof hosting ASN). EDR correlation shows temporal relationship: Teams message received 03:50 AM \u2192 User clicked phishing link 03:51 AM \u2192 QuickAssist downloaded 03:52 AM \u2192 Session code entered 03:58 AM \u2192 Remote connection established 03:59 AM. Quick Assist session granted attacker SYSTEM-level privileges via User Account Control (UAC) bypass (legitimate Quick Assist feature abuse), enabling full system control without additional exploits. Network forensics reveal session duration 47 minutes (03:59 AM - 04:46 AM), during which attacker downloaded multiple PowerShell scripts to %TEMP% directory. Behavioral Threat Protection flagged activity based on: RMM tool launch following external Teams contact, off-hours usage, lack of IT authorization, connection to suspicious foreign IP, unusual UAC elevation requests.",
+  "relative_timestamp_hours": 95.75,
+  "campaign_name": "AdaptixC2-FinancialCorp",
+  "host_name": "FIN-WKS-087",
+  "host_ip": [
+    171540703
+  ],
+  "user_name": [
+    "rbrown@financialcorp.com"
+  ],
+  "domain": "financialcorp.com",
+  "process_name": [
+    "quickassist.exe"
+  ],
+  "process_path": [
+    "C:\\Windows\\System32\\quickassist.exe"
+  ],
+  "process_cmd": [
+    "C:\\Windows\\System32\\quickassist.exe"
+  ],
+  "parent_process_name": [
+    "explorer.exe"
+  ],
+  "parent_process_path": [
+    "C:\\Windows\\explorer.exe"
+  ],
+  "local_ip": [
+    171540703
+  ],
+  "remote_ip": [
+    346988161
+  ],
+  "dns_query_name": [
+    "relay.support.services.microsoft.com"
+  ],
+  "threat_name": "RMM Tool Abuse - Quick Assist",
+  "attack_mode": "Legitimate RMM Abuse for Initial Access",
+  "verdict": "Malicious",
+  "risk_score": "96",
+  "risk_rating": "Critical",
+  "policy_type": "Behavioral Threat Protection",
+  "policy_description": "Quick Assist RMM launched following external Teams phishing - attacker gained remote SYSTEM access",
+  "policy_severity": "Critical",
+  "policy_recommendation": "CRITICAL: Terminate quickassist.exe PID 9247 immediately to end attacker session, isolate FIN-WKS-087 from network, force logout rbrown@financialcorp.com, review %TEMP% directory for attacker-dropped files (PowerShell scripts), check for persistence mechanisms (scheduled tasks, registry run keys, startup items), reset user credentials, implement Group Policy restricting Quick Assist to IT-only usage, enable logging for all RMM tool executions, hunt for similar Quick Assist launches following external Teams messages (XDR query: Teams.exe \u2192 quickassist.exe within 30 minutes), deploy behavioral rule detecting RMM tools launched outside IT-approved processes, forensic imaging required for full attack timeline reconstruction",
+  "log_source": "Cortex XDR Agent - Behavioral Threat Protection",
+  "event_id": "BTP_RMM_ABUSE",
+  "external_link": "https://unit42.paloaltonetworks.com/adaptixc2-post-exploitation-framework/",
+  "mitre_att&ck_tactic": "TA0002 - Execution",
+  "mitre_att&ck_technique": "T1219 - Remote Access Tools"
+}

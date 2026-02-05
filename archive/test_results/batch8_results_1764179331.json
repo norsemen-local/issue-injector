@@ -1,0 +1,675 @@
+{
+  "working": [
+    {
+      "field": "attachment_extension",
+      "value": "pdf",
+      "type": "str",
+      "category": "Email/Phishing Extended"
+    },
+    {
+      "field": "attachment_hash",
+      "value": "abc123hash",
+      "type": "str",
+      "category": "Email/Phishing Extended"
+    },
+    {
+      "field": "attachment_id",
+      "value": "attach-12345",
+      "type": "str",
+      "category": "Email/Phishing Extended"
+    },
+    {
+      "field": "attachment_type",
+      "value": "application/pdf",
+      "type": "str",
+      "category": "Email/Phishing Extended"
+    },
+    {
+      "field": "email_received",
+      "value": "2025-11-26T10:00:00Z",
+      "type": "str",
+      "category": "Email/Phishing Extended"
+    },
+    {
+      "field": "email_url_clicked",
+      "value": "http://phishing.com",
+      "type": "str",
+      "category": "Email/Phishing Extended"
+    },
+    {
+      "field": "malicious_url_clicked",
+      "value": "Yes",
+      "type": "str",
+      "category": "Email/Phishing Extended"
+    },
+    {
+      "field": "malicious_url_viewed",
+      "value": "Yes",
+      "type": "str",
+      "category": "Email/Phishing Extended"
+    },
+    {
+      "field": "reported_email_cc",
+      "value": "cc@example.com",
+      "type": "str",
+      "category": "Email/Phishing Extended"
+    },
+    {
+      "field": "reported_email_from",
+      "value": "phisher@evil.com",
+      "type": "str",
+      "category": "Email/Phishing Extended"
+    },
+    {
+      "field": "reported_email_message_id",
+      "value": "msg-phish-123",
+      "type": "str",
+      "category": "Email/Phishing Extended"
+    },
+    {
+      "field": "reported_email_subject",
+      "value": "Urgent: Update your password",
+      "type": "str",
+      "category": "Email/Phishing Extended"
+    },
+    {
+      "field": "reported_email_to",
+      "value": "victim@company.com",
+      "type": "str",
+      "category": "Email/Phishing Extended"
+    },
+    {
+      "field": "reporter_email_address",
+      "value": "reporter@company.com",
+      "type": "str",
+      "category": "Email/Phishing Extended"
+    },
+    {
+      "field": "mobile_device_model",
+      "value": "iPhone 14",
+      "type": "str",
+      "category": "Device/Hardware"
+    },
+    {
+      "field": "mobile_phone",
+      "value": "+1-555-0199",
+      "type": "str",
+      "category": "Device/Hardware"
+    },
+    {
+      "field": "detected_endpoints",
+      "value": "DESKTOP-ABC123",
+      "type": "str",
+      "category": "Device/Hardware"
+    },
+    {
+      "field": "detected_external_ips",
+      "value": "203.0.113.75",
+      "type": "str",
+      "category": "Device/Hardware"
+    },
+    {
+      "field": "detected_internal_hosts",
+      "value": "workstation-001",
+      "type": "str",
+      "category": "Device/Hardware"
+    },
+    {
+      "field": "remote_host",
+      "value": [
+        "remote-server-01"
+      ],
+      "type": "list",
+      "category": "Device/Hardware"
+    },
+    {
+      "field": "street_address",
+      "value": "123 Main St",
+      "type": "str",
+      "category": "Device/Hardware"
+    },
+    {
+      "field": "zip_code",
+      "value": "10001",
+      "type": "str",
+      "category": "Device/Hardware"
+    },
+    {
+      "field": "related_campaign",
+      "value": "APT-Campaign-2024",
+      "type": "str",
+      "category": "Threat/Malware"
+    },
+    {
+      "field": "part_of_campaign",
+      "value": "Yes",
+      "type": "str",
+      "category": "Threat/Malware"
+    },
+    {
+      "field": "threat_family_name",
+      "value": "Emotet",
+      "type": "str",
+      "category": "Threat/Malware"
+    },
+    {
+      "field": "related_report",
+      "value": "Threat-Report-2024-001",
+      "type": "str",
+      "category": "Threat/Malware"
+    },
+    {
+      "field": "related_endpoints",
+      "value": "DESKTOP-001, LAPTOP-002",
+      "type": "str",
+      "category": "Threat/Malware"
+    },
+    {
+      "field": "suspicious_executions_found",
+      "value": "3 suspicious processes detected",
+      "type": "str",
+      "category": "Threat/Malware"
+    },
+    {
+      "field": "command_line_verdict",
+      "value": "Malicious",
+      "type": "str",
+      "category": "Threat/Malware"
+    },
+    {
+      "field": "blocked_action",
+      "value": "File execution blocked",
+      "type": "str",
+      "category": "Threat/Malware"
+    },
+    {
+      "field": "attack_mode",
+      "value": "Automated",
+      "type": "str",
+      "category": "Threat/Malware"
+    },
+    {
+      "field": "triggered_security_profile",
+      "value": "Anti-Malware",
+      "type": "str",
+      "category": "Threat/Malware"
+    },
+    {
+      "field": "number_of_similar_files",
+      "value": 5,
+      "type": "int",
+      "category": "File/Hash Extended"
+    },
+    {
+      "field": "macro_source_code",
+      "value": "Sub AutoOpen()...",
+      "type": "str",
+      "category": "File/Hash Extended"
+    },
+    {
+      "field": "application_path",
+      "value": "C:\\Program Files\\App\\app.exe",
+      "type": "str",
+      "category": "File/Hash Extended"
+    },
+    {
+      "field": "birthday",
+      "value": "1990-01-15",
+      "type": "str",
+      "category": "User/Identity Extended"
+    },
+    {
+      "field": "cost_center",
+      "value": "IT-001",
+      "type": "str",
+      "category": "User/Identity Extended"
+    },
+    {
+      "field": "cost_center_code",
+      "value": "CC-IT-001",
+      "type": "str",
+      "category": "User/Identity Extended"
+    },
+    {
+      "field": "job_code",
+      "value": "ENG-001",
+      "type": "str",
+      "category": "User/Identity Extended"
+    },
+    {
+      "field": "job_family",
+      "value": "Engineering",
+      "type": "str",
+      "category": "User/Identity Extended"
+    },
+    {
+      "field": "job_function",
+      "value": "Software Engineer",
+      "type": "str",
+      "category": "User/Identity Extended"
+    },
+    {
+      "field": "leadership",
+      "value": "Senior Engineer",
+      "type": "str",
+      "category": "User/Identity Extended"
+    },
+    {
+      "field": "org_level_1",
+      "value": "Technology",
+      "type": "str",
+      "category": "User/Identity Extended"
+    },
+    {
+      "field": "org_level_2",
+      "value": "Engineering",
+      "type": "str",
+      "category": "User/Identity Extended"
+    },
+    {
+      "field": "org_level_3",
+      "value": "Backend",
+      "type": "str",
+      "category": "User/Identity Extended"
+    },
+    {
+      "field": "org_unit",
+      "value": "Platform Team",
+      "type": "str",
+      "category": "User/Identity Extended"
+    },
+    {
+      "field": "team_name",
+      "value": "Infrastructure",
+      "type": "str",
+      "category": "User/Identity Extended"
+    },
+    {
+      "field": "hunt_results_count",
+      "value": "15",
+      "type": "str",
+      "category": "Detection/Hunting"
+    },
+    {
+      "field": "number_of_found_related_alerts",
+      "value": 7,
+      "type": "int",
+      "category": "Detection/Hunting"
+    },
+    {
+      "field": "number_of_log_sources",
+      "value": 3,
+      "type": "int",
+      "category": "Detection/Hunting"
+    },
+    {
+      "field": "number_of_related_incidents",
+      "value": 2,
+      "type": "int",
+      "category": "Detection/Hunting"
+    },
+    {
+      "field": "policy_deleted",
+      "value": "No",
+      "type": "str",
+      "category": "Policy/Compliance Extended"
+    },
+    {
+      "field": "policy_recommendation",
+      "value": "Enable MFA for all users",
+      "type": "str",
+      "category": "Policy/Compliance Extended"
+    },
+    {
+      "field": "policy_remediable",
+      "value": "Yes",
+      "type": "str",
+      "category": "Policy/Compliance Extended"
+    },
+    {
+      "field": "policy_uri",
+      "value": "https://policies.company.com/pol-001",
+      "type": "str",
+      "category": "Policy/Compliance Extended"
+    },
+    {
+      "field": "use_case_description",
+      "value": "Detect unauthorized data access",
+      "type": "str",
+      "category": "Policy/Compliance Extended"
+    },
+    {
+      "field": "verification_method",
+      "value": "Manual Review",
+      "type": "str",
+      "category": "Policy/Compliance Extended"
+    },
+    {
+      "field": "verification_status",
+      "value": "Verified",
+      "type": "str",
+      "category": "Policy/Compliance Extended"
+    },
+    {
+      "field": "investigation_stage",
+      "value": "Analysis",
+      "type": "str",
+      "category": "Incident Management"
+    },
+    {
+      "field": "escalation",
+      "value": "Level 2",
+      "type": "str",
+      "category": "Incident Management"
+    },
+    {
+      "field": "incident_link",
+      "value": "https://xdr.company.com/incident/123",
+      "type": "str",
+      "category": "Incident Management"
+    },
+    {
+      "field": "number_of_related_incidents",
+      "value": 3,
+      "type": "int",
+      "category": "Incident Management"
+    },
+    {
+      "field": "changed",
+      "value": "2025-11-26T15:00:00Z",
+      "type": "str",
+      "category": "Incident Management"
+    },
+    {
+      "field": "item_owner",
+      "value": "analyst@company.com",
+      "type": "str",
+      "category": "Incident Management"
+    },
+    {
+      "field": "cve_published",
+      "value": "2024-01-15",
+      "type": "str",
+      "category": "CVE/Vulnerability"
+    },
+    {
+      "field": "cvss",
+      "value": "9.8",
+      "type": "str",
+      "category": "CVE/Vulnerability"
+    },
+    {
+      "field": "vulnerability_category",
+      "value": "Remote Code Execution",
+      "type": "str",
+      "category": "CVE/Vulnerability"
+    },
+    {
+      "field": "vulnerable_product",
+      "value": "Apache Log4j",
+      "type": "str",
+      "category": "CVE/Vulnerability"
+    },
+    {
+      "field": "exposure_level",
+      "value": "Critical",
+      "type": "str",
+      "category": "CVE/Vulnerability"
+    }
+  ],
+  "failed": [
+    {
+      "field": "phishing_sub_type",
+      "value": [
+        "Spear Phishing"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The phishing_sub_type parameter value ['Spear Phishing'] is invalid.\"}}",
+      "category": "Email/Phishing Extended"
+    },
+    {
+      "field": "device_external_ips",
+      "value": [
+        "203.0.113.50"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The device_external_ips parameter value ['203.0.113.50'] is invalid.\"}}",
+      "category": "Device/Hardware"
+    },
+    {
+      "field": "device_internal_ips",
+      "value": [
+        "192.168.1.100"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The device_internal_ips parameter value ['192.168.1.100'] is invalid.\"}}",
+      "category": "Device/Hardware"
+    },
+    {
+      "field": "objective",
+      "value": [
+        "Data Theft",
+        "Lateral Movement"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The objective parameter value ['Data Theft', 'Lateral Movement'] is invalid.\"}}",
+      "category": "Threat/Malware"
+    },
+    {
+      "field": "tactic",
+      "value": [
+        "Initial Access",
+        "Execution"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The tactic parameter value ['Initial Access', 'Execution'] is invalid.\"}}",
+      "category": "Threat/Malware"
+    },
+    {
+      "field": "file_relationships",
+      "value": "parent: explorer.exe",
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"An unexpected error occurred by XDR public API\", \"err_extra\": \"field filerelationships should be type of List, got parent: explorer.exe\"}}",
+      "category": "File/Hash Extended"
+    },
+    {
+      "field": "ss_deep",
+      "value": "ssdeep-hash-value",
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"Invalid parameter names: ss_deep\"}}",
+      "category": "File/Hash Extended"
+    },
+    {
+      "field": "process_names",
+      "value": [
+        "chrome.exe",
+        "firefox.exe"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The process_names parameter value ['chrome.exe', 'firefox.exe'] is invalid.\"}}",
+      "category": "File/Hash Extended"
+    },
+    {
+      "field": "process_paths",
+      "value": [
+        "C:\\Program Files\\Chrome",
+        "C:\\Program Files\\Firefox"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The process_paths parameter value ['C:\\\\\\\\Program Files\\\\\\\\Chrome', 'C:\\\\\\\\Program Files\\\\\\\\Firefox'] is invalid.\"}}",
+      "category": "File/Hash Extended"
+    },
+    {
+      "field": "process_sha256",
+      "value": [
+        "abc123",
+        "def456"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The process_sha256 parameter value ['abc123', 'def456'] is invalid.\"}}",
+      "category": "File/Hash Extended"
+    },
+    {
+      "field": "destination_ipv6",
+      "value": [
+        "2001:0db8:85a3::8a2e:0370:7334"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The destination_ipv6 parameter value ['2001:0db8:85a3::8a2e:0370:7334'] is invalid.\"}}",
+      "category": "Network Extended"
+    },
+    {
+      "field": "post_nat_destination_ip",
+      "value": [
+        "192.168.1.200"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The post_nat_destination_ip parameter value ['192.168.1.200'] is invalid.\"}}",
+      "category": "Network Extended"
+    },
+    {
+      "field": "post_nat_destination_port",
+      "value": [
+        "8080"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The post_nat_destination_port parameter value ['8080'] is invalid.\"}}",
+      "category": "Network Extended"
+    },
+    {
+      "field": "post_nat_source_ip",
+      "value": [
+        "10.0.0.50"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The post_nat_source_ip parameter value ['10.0.0.50'] is invalid.\"}}",
+      "category": "Network Extended"
+    },
+    {
+      "field": "post_nat_source_port",
+      "value": [
+        "55000"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The post_nat_source_port parameter value ['55000'] is invalid.\"}}",
+      "category": "Network Extended"
+    },
+    {
+      "field": "pre_nat_destination_port",
+      "value": [
+        "443"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The pre_nat_destination_port parameter value ['443'] is invalid.\"}}",
+      "category": "Network Extended"
+    },
+    {
+      "field": "pre_nat_source_ip",
+      "value": [
+        "172.16.0.100"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The pre_nat_source_ip parameter value ['172.16.0.100'] is invalid.\"}}",
+      "category": "Network Extended"
+    },
+    {
+      "field": "pre_nat_source_port",
+      "value": [
+        "60000"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The pre_nat_source_port parameter value ['60000'] is invalid.\"}}",
+      "category": "Network Extended"
+    },
+    {
+      "field": "source_external_ips",
+      "value": [
+        "203.0.113.100"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The source_external_ips parameter value ['203.0.113.100'] is invalid.\"}}",
+      "category": "Network Extended"
+    },
+    {
+      "field": "device_external_ips",
+      "value": [
+        "203.0.113.101"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The device_external_ips parameter value ['203.0.113.101'] is invalid.\"}}",
+      "category": "Network Extended"
+    },
+    {
+      "field": "list_of_rules_event",
+      "value": [
+        "Rule-001",
+        "Rule-002"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The list_of_rules_event parameter value ['Rule-001', 'Rule-002'] is invalid.\"}}",
+      "category": "Detection/Hunting"
+    },
+    {
+      "field": "low_level_categories_events",
+      "value": [
+        "ProcessCreation",
+        "NetworkConnection"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The low_level_categories_events parameter value ['ProcessCreation', 'NetworkConnection'] is invalid.\"}}",
+      "category": "Detection/Hunting"
+    },
+    {
+      "field": "operation_name",
+      "value": [
+        "CreateFile",
+        "DeleteFile"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The operation_name parameter value ['CreateFile', 'DeleteFile'] is invalid.\"}}",
+      "category": "Detection/Hunting"
+    },
+    {
+      "field": "raw_event",
+      "value": [
+        "Raw log data here"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The raw_event parameter value ['Raw log data here'] is invalid.\"}}",
+      "category": "Detection/Hunting"
+    },
+    {
+      "field": "compliance_notes",
+      "value": [
+        "Compliant with SOC2",
+        "PCI-DSS requirements met"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The compliance_notes parameter value ['Compliant with SOC2', 'PCI-DSS requirements met'] is invalid.\"}}",
+      "category": "Policy/Compliance Extended"
+    },
+    {
+      "field": "follow_up",
+      "value": "true",
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"An unexpected error occurred by XDR public API\", \"err_extra\": \"field followup should be type of boolean, got true\"}}",
+      "category": "Incident Management"
+    },
+    {
+      "field": "similar_incidents",
+      "value": [
+        "INC-001",
+        "INC-002"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"Invalid parameter names: similar_incidents\"}}",
+      "category": "Incident Management"
+    },
+    {
+      "field": "cvss_availability_requirement",
+      "value": [
+        "High"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The cvss_availability_requirement parameter value ['High'] is invalid.\"}}",
+      "category": "CVE/Vulnerability"
+    },
+    {
+      "field": "cvss_collateral_damage_potential",
+      "value": [
+        "Medium"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The cvss_collateral_damage_potential parameter value ['Medium'] is invalid.\"}}",
+      "category": "CVE/Vulnerability"
+    },
+    {
+      "field": "cvss_confidentiality_requirement",
+      "value": [
+        "High"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The cvss_confidentiality_requirement parameter value ['High'] is invalid.\"}}",
+      "category": "CVE/Vulnerability"
+    },
+    {
+      "field": "cvss_integrity_requirement",
+      "value": [
+        "High"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The cvss_integrity_requirement parameter value ['High'] is invalid.\"}}",
+      "category": "CVE/Vulnerability"
+    }
+  ],
+  "errors": []
+}

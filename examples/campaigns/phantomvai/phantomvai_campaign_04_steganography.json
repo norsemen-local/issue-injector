@@ -1,0 +1,72 @@
+{
+  "vendor": "Palo Alto Networks",
+  "product": "Cortex XDR",
+  "severity": "High",
+  "category": "Defense Evasion",
+  "alert_name": "Steganographic Payload Extraction from GIF Image File",
+  "description": "Advanced steganography technique detected on workstation ACCT-WKS-047 (10.30.25.88) where PowerShell process extracted hidden malicious payload from seemingly benign GIF image file. The file 'banner_v2.gif' downloaded from cdn.contentdelivery[.]cloud contains embedded Base64-encoded DLL payload concealed between steganographic markers <<sudo_png>> and <<sudo_odt>>. PowerShell script parsed the GIF file (48KB), extracted 41KB of hidden Base64 data, decoded it to produce PhantomVAI Loader DLL 'PhantomCore.dll' (SHA256: 45fddf55acb50df5b027701073dee604b4135f750c585b29d6dcac824f26ae00) and wrote it to C:\\Users\\mthomas\\AppData\\Local\\Temp\\. This sophisticated evasion technique bypasses traditional antivirus scanning which only analyzes the GIF header and visible image data. The extracted DLL is a C# .NET loader implementing VM detection checks using VMDetector project techniques, persistence mechanisms via scheduled tasks, and process hollowing capabilities for final payload injection. File analysis shows the GIF displays a 1x1 pixel transparent image when viewed normally, masking the malicious payload. This matches PhantomVAI Loader TTP documented in Unit 42 threat research.",
+  "relative_timestamp_hours": 47.58,
+  "campaign_name": "PhantomVAI-TechCorp",
+  "host_name": "ACCT-WKS-047",
+  "host_ip": [
+    171540568
+  ],
+  "host_os": "AGENT_OS_WINDOWS",
+  "user_name": [
+    "mthomas@techcorp.local"
+  ],
+  "account_id": "S-1-5-21-4567891234-1234567890-0987654321-2145",
+  "domain": "techcorp.local",
+  "cgo_name": [
+    "powershell.exe"
+  ],
+  "cgo_cmd": [
+    "powershell.exe -WindowStyle Hidden [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String((Get-Content banner_v2.gif -Raw | Select-String -Pattern '<<sudo_png>>(.*?)<<sudo_odt>>' -AllMatches).Matches.Groups[1].Value))"
+  ],
+  "cgo_path": [
+    "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+  ],
+  "cgo_pid": [
+    9127
+  ],
+  "os_parent_name": [
+    "wscript.exe"
+  ],
+  "os_parent_cmd": [
+    "C:\\Windows\\System32\\wscript.exe C:\\Users\\mthomas\\Downloads\\Invoice_8821_Details.js"
+  ],
+  "os_parent_pid": [
+    8234
+  ],
+  "file_name": [
+    "banner_v2.gif",
+    "PhantomCore.dll"
+  ],
+  "file_path": [
+    "C:\\Users\\mthomas\\AppData\\Local\\Temp\\banner_v2.gif",
+    "C:\\Users\\mthomas\\AppData\\Local\\Temp\\PhantomCore.dll"
+  ],
+  "file_sha256": [
+    "45fddf55acb50df5b027701073dee604b4135f750c585b29d6dcac824f26ae00"
+  ],
+  "file_hash": "45fddf55acb50df5b027701073dee604b4135f750c585b29d6dcac824f26ae00",
+  "initiator_sha256": [
+    "45fddf55acb50df5b027701073dee604b4135f750c585b29d6dcac824f26ae00"
+  ],
+  "filesize": "41984",
+  "threat_name": "PhantomVAI Loader - Steganography",
+  "attack_mode": "Steganographic Payload Delivery",
+  "verdict": "Malicious",
+  "risk_score": "91",
+  "risk_rating": "Critical",
+  "host_risk_level": "Critical",
+  "policy_type": "Endpoint Protection",
+  "policy_description": "Steganographic malware extraction from GIF - PhantomVAI Loader core module",
+  "policy_severity": "Critical",
+  "policy_recommendation": "Quarantine PhantomCore.dll immediately, delete banner_v2.gif, kill PowerShell process tree, isolate ACCT-WKS-047 from network, implement file reputation checks for image downloads, enable behavioral analysis for steganography detection, scan for persistence mechanisms (scheduled tasks, registry Run keys)",
+  "log_source": "Cortex XDR Agent",
+  "event_id": "BEHAVIORAL_THREAT",
+  "external_link": "https://unit42.paloaltonetworks.com/phantomvai-loader-delivers-infostealers/",
+  "mitre_att&ck_tactic": "TA0005 - Defense Evasion",
+  "mitre_att&ck_technique": "T1027.003 - Obfuscated Files or Information: Steganography"
+}

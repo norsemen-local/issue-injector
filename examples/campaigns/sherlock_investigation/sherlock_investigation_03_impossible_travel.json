@@ -1,0 +1,45 @@
+{
+  "vendor": "Microsoft",
+  "product": "Microsoft Sentinel",
+  "severity": "High",
+  "category": "Identity",
+  "alert_name": "Impossible Travel: User Login from Russia After USA Access",
+  "description": "Microsoft Sentinel detected an impossible travel scenario for user aisherlock@bakerstreetlabs.io. The user successfully authenticated to Azure AD from San Francisco, California (IP: 198.51.100.42) at 2025-11-25 14:23:17 UTC, followed by another successful login from Moscow, Russia (IP: 91.203.5.146) at 2025-11-25 14:51:33 UTC - a time difference of only 28 minutes. The geographic distance between these two locations is approximately 5,871 miles (9,447 kilometers), making it physically impossible for the same user to travel between these locations in the observed timeframe. The Moscow authentication was performed using the same user agent (Mozilla/5.0 Windows NT 10.0) and accessed Microsoft 365 services including Outlook Web Access and OneDrive. Risk indicators include: 1) Authentication from known TOR/VPN infrastructure in Russia (ASN: AS201011), 2) No prior authentication history from Russian IP ranges for this user, 3) Temporal correlation with recent credential compromise indicators (password change from TOR network 24h prior), 4) Access to sensitive SharePoint repositories immediately following Russian login. The California session remained active during the Moscow authentication, suggesting credential sharing or session hijacking. Device fingerprinting shows different hardware profiles between the two sessions. This represents confirmed malicious activity consistent with account takeover and unauthorized access. The threat actor is actively using the compromised credentials to access corporate resources from a foreign adversary nation.",
+  "relative_timestamp_hours": 120.0,
+  "campaign_name": "SH-UserInvestigation-Nov2025",
+  "user_name": [
+    "aisherlock@bakerstreetlabs.io"
+  ],
+  "domain": "bakerstreetlabs.io",
+  "email": "aisherlock@bakerstreetlabs.io",
+  "department": "Security Research",
+  "cloud_provider": [
+    "Azure"
+  ],
+  "cloud_service_name": "Microsoft 365",
+  "cloud_operation_type": [
+    "Authentication"
+  ],
+  "cloud_identity_type": [
+    "User Account"
+  ],
+  "remote_ip": [
+    1542793618
+  ],
+  "asn": "AS201011",
+  "asn_name": "CORE-BACKBONE",
+  "src_os": "Windows",
+  "source_location": "Moscow, Russia",
+  "geo_coordinates": "55.7558, 37.6173",
+  "threat_name": "Impossible Travel - Account Takeover",
+  "attack_mode": "Valid Account Abuse",
+  "risk_score": "90",
+  "risk_rating": "High",
+  "verdict": "Malicious",
+  "log_source": "Microsoft Sentinel Analytics",
+  "mitre_att&ck_tactic": "TA0001 - Initial Access",
+  "mitre_att&ck_technique": "T1078 - Valid Accounts",
+  "recommended_actions": "1. Immediately revoke all active sessions for aisherlock@bakerstreetlabs.io. 2. Force password reset with mandatory MFA enrollment. 3. Review all data access from Russian IP (91.203.5.146) since authentication. 4. Check for data exfiltration from OneDrive and SharePoint. 5. Implement conditional access policy to block Russian IP ranges. 6. Analyze authentication logs for additional compromised accounts with similar patterns. 7. Enable Azure AD Identity Protection risk-based policies. 8. Conduct forensic review of accessed files and emails.",
+  "external_link": "https://portal.azure.com/#view/Microsoft_Azure_Sentinel/IncidentDetailsPage",
+  "related_campaign": "AZUREAD-CRED-SH-002"
+}

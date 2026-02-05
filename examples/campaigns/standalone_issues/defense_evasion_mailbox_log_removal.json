@@ -1,0 +1,49 @@
+{
+  "vendor": "Microsoft",
+  "product": "Microsoft 365 Defender",
+  "severity": "Medium",
+  "category": "Defense Evasion",
+  "alert_name": "PowerShell Used to Remove Mailbox Export Request Logs",
+  "description": "Administrator account it_admin@company.com executed PowerShell command Remove-MailboxExportRequest to delete mailbox export request logs from Exchange Online at 2024-11-20 08:15:22 UTC. The command 'Remove-MailboxExportRequest -Identity \"CEO Mailbox Export\" -Confirm:$false' was executed via Exchange Online PowerShell module to remove evidence of a previous mailbox data export operation. The original export request extracted 4.2 GB of email data from the CEO's mailbox to a PST file 3 hours earlier. Removing mailbox export logs is suspicious as it eliminates audit trail of data exfiltration activities. The IT admin account accessed Exchange from IP address 91.219.29.150 (Ukraine) which is outside normal operational geography. No legitimate change request or compliance requirement exists for removing these export logs. This activity pattern is consistent with insider threats attempting to cover tracks after unauthorized data access.",
+  "cloud_provider": [
+    "Microsoft"
+  ],
+  "cloud_service_name": "Exchange Online",
+  "cloud_operation_type": [
+    "Delete"
+  ],
+  "cloud_resource_type": [
+    "Mailbox Export Request"
+  ],
+  "user_name": [
+    "it_admin@company.com"
+  ],
+  "email": "it_admin@company.com",
+  "department": "IT",
+  "cgo_name": [
+    "powershell.exe"
+  ],
+  "cgo_cmd": [
+    "powershell.exe -Command Remove-MailboxExportRequest -Identity 'CEO Mailbox Export' -Confirm:$false"
+  ],
+  "cgo_path": [
+    "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+  ],
+  "remote_ip": [
+    1538359702
+  ],
+  "threat_name": "Anti-Forensics",
+  "attack_mode": "Defense Evasion",
+  "verdict": "Suspicious",
+  "risk_score": "76",
+  "risk_rating": "Medium",
+  "policy_type": "Data Protection",
+  "policy_description": "Mailbox export audit log deletion",
+  "policy_severity": "Medium",
+  "policy_recommendation": "Suspend admin account, investigate mailbox export activity, review Exchange audit logs before deletion, identify PST file location",
+  "log_source": "Microsoft 365 Unified Audit Log",
+  "event_id": "Remove-MailboxExportRequest",
+  "external_link": "https://security.microsoft.com/alerts",
+  "mitre_att&ck_tactic": "TA0005 - Defense Evasion",
+  "mitre_att&ck_technique": "T1070 - Indicator Removal on Host"
+}

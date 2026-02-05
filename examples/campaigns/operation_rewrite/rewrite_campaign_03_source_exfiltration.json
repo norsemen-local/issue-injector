@@ -1,0 +1,74 @@
+{
+  "vendor": "Cortex XDR",
+  "product": "Endpoint Protection",
+  "severity": "High",
+  "category": "Collection",
+  "alert_name": "Mass Source Code Archive Creation and Staging for Web-Based Exfiltration",
+  "description": "Cortex XDR detected data exfiltration preparation activity on compromised web server WEB-PROD-03 where attacker used deployed web shell to compress entire web application source code directory into ZIP archives and move them to publicly accessible web paths for HTTP-based exfiltration. Process telemetry shows w3wp.exe (IIS worker) spawning PowerShell.exe executing compression command: 'powershell.exe -Command \"Compress-Archive -Path C:\\inetpub\\wwwroot\\GovPortal\\* -DestinationPath C:\\inetpub\\wwwroot\\admin\\backup_20250322.zip -CompressionLevel Optimal\"'. The archive 'backup_20250322.zip' (473MB) contains sensitive application source code including: database connection strings with plaintext credentials, API keys for third-party services, authentication logic, business logic implementation, internal documentation, and configuration files revealing network architecture. File system monitoring detected the ZIP archive being moved to web-accessible directory C:\\inetpub\\wwwroot\\admin\\ at 04:15 AM, making it retrievable via HTTP GET request to hxxp://govagency[.]vn/admin/backup_20250322.zip. Web server access logs show immediate outbound DNS query for govagency[.]vn from external IP 113.161.87[.]24 (Vietnamese IP, AS7552 Viettel) followed by successful HTTP 200 response with 473MB transfer, confirming exfiltration completion within 8 minutes. Archive metadata analysis reveals compressed files include: 2,847 .aspx/.cs files (application code), 156 .config files (sensitive configurations), 89 .sql files (database schemas/queries), 45 .txt/.md files (documentation). The stolen source code enables attacker to: identify additional vulnerabilities in application logic, harvest hardcoded credentials, understand authentication/authorization mechanisms, discover internal API endpoints, and plan future targeted attacks. Behavioral analysis flagged PowerShell compression activity from web worker process as anomalous - legitimate deployments use CI/CD pipelines, not manual compression. Temporal correlation shows this activity occurred 28 minutes after initial web shell deployment and 13 minutes after lateral movement to DC01.",
+  "relative_timestamp_hours": 94.8,
+  "campaign_name": "OperationRewrite-GovEntity",
+  "host_name": "WEB-PROD-03",
+  "host_ip": [
+    171540592
+  ],
+  "user_name": [
+    "webadmin@govagency.vn"
+  ],
+  "domain": "govagency.vn",
+  "file_path": [
+    "C:\\inetpub\\wwwroot\\admin\\backup_20250322.zip"
+  ],
+  "file_name": [
+    "backup_20250322.zip"
+  ],
+  "file_hash": "bc3bba91572379e81919b9e4d2cbe3b0aa658a97af116e2385b99b610c22c08c",
+  "file_sha256": [
+    "bc3bba91572379e81919b9e4d2cbe3b0aa658a97af116e2385b99b610c22c08c"
+  ],
+  "file_hash_sha256": "bc3bba91572379e81919b9e4d2cbe3b0aa658a97af116e2385b99b610c22c08c",
+  "initiator_sha256": [
+    "bc3bba91572379e81919b9e4d2cbe3b0aa658a97af116e2385b99b610c22c08c"
+  ],
+  "filesize": "496435200",
+  "process_name": [
+    "powershell.exe"
+  ],
+  "process_path": [
+    "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+  ],
+  "process_cmd": [
+    "powershell.exe -Command \"Compress-Archive -Path C:\\inetpub\\wwwroot\\GovPortal\\* -DestinationPath C:\\inetpub\\wwwroot\\admin\\backup_20250322.zip -CompressionLevel Optimal\""
+  ],
+  "parent_process_name": [
+    "w3wp.exe"
+  ],
+  "parent_process_path": [
+    "C:\\Windows\\System32\\inetsrv\\w3wp.exe"
+  ],
+  "local_ip": [
+    171540592
+  ],
+  "remote_ip": [
+    1908113688
+  ],
+  "local_port": [
+    80
+  ],
+  "remote_port": [
+    54987
+  ],
+  "threat_name": "Source Code Exfiltration - Operation Rewrite",
+  "attack_mode": "Data Staging for Exfiltration",
+  "verdict": "Malicious",
+  "risk_score": "90",
+  "risk_rating": "High",
+  "policy_type": "Data Loss Prevention",
+  "policy_description": "Web application source code compressed and staged for HTTP exfiltration - 473MB stolen",
+  "policy_severity": "High",
+  "policy_recommendation": "HIGH: Immediately delete C:\\inetpub\\wwwroot\\admin\\backup_20250322.zip, block HTTP access to /admin/ directory, rotate all credentials found in source code (database passwords, API keys, service accounts), review IIS logs for successful download (HTTP 200 with 473MB transfer), identify and revoke any API keys/tokens in stolen code, conduct source code review for additional hardcoded secrets, implement DLP policies to detect large file creation in web directories, enable egress filtering to block large HTTP uploads, assess impact of stolen authentication logic, plan emergency security patch for vulnerabilities exposed in source code, engage legal/compliance for breach notification assessment",
+  "log_source": "Cortex XDR Agent - Data Loss Prevention",
+  "event_id": "DLP_SOURCE_CODE_EXFIL",
+  "external_link": "https://unit42.paloaltonetworks.com/operation-rewrite-seo-poisoning-campaign/",
+  "mitre_att&ck_tactic": "TA0009 - Collection",
+  "mitre_att&ck_technique": "T1560.001 - Archive Collected Data: Archive via Utility"
+}

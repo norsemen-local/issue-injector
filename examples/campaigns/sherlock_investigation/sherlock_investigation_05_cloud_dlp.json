@@ -1,0 +1,44 @@
+{
+  "vendor": "Microsoft",
+  "product": "Defender for Cloud Apps",
+  "severity": "High",
+  "category": "Data Loss Prevention",
+  "alert_name": "Mass File Download from SharePoint - Potential Data Exfiltration",
+  "description": "Microsoft Defender for Cloud Apps detected an unusual mass file download activity from SharePoint Online by user aisherlock@bakerstreetlabs.io. Within a 2-hour window (2025-11-27 16:30:00 UTC to 18:30:00 UTC), the user downloaded 487 files totaling 2.3GB from the 'Security Research - Confidential' SharePoint site. This activity represents a 950% increase compared to the user's normal behavior baseline (average: 8 files per day). The downloaded files included highly sensitive content: 1) Client penetration test reports (143 files), 2) Vulnerability research documentation (89 files), 3) Internal security tools and scripts (67 files), 4) Customer security assessments (112 files), 5) Proprietary threat intelligence reports (76 files). Cloud App Security policy 'Mass Download Detection' triggered this alert based on anomalous volume, velocity, and sensitivity classification. Risk indicators include: 1) Downloads initiated from previously compromised session (Moscow IP: 91.203.5.146), 2) Use of SharePoint API for bulk download rather than typical web interface, 3) Downloads occurred outside business hours (EST timezone), 4) Files accessed span multiple restricted SharePoint libraries requiring elevated permissions, 5) Download pattern suggests automated scripting rather than manual user activity. The compromised account maintained valid authentication tokens from the impossible travel incident (120h ago), allowing persistent access to cloud resources. File sensitivity analysis shows 94% of downloaded content classified as 'Highly Confidential' or 'Restricted' under corporate DLP policies. This represents the largest unauthorized data access event in company history and confirms active data exfiltration by threat actor. Estimated business impact: exposure of client confidential information, potential compliance violations (NDA breaches), competitive intelligence loss.",
+  "relative_timestamp_hours": 72.0,
+  "campaign_name": "SH-UserInvestigation-Nov2025",
+  "user_name": [
+    "aisherlock@bakerstreetlabs.io"
+  ],
+  "domain": "bakerstreetlabs.io",
+  "email": "aisherlock@bakerstreetlabs.io",
+  "department": "Security Research",
+  "cloud_provider": [
+    "Microsoft"
+  ],
+  "cloud_service_name": "SharePoint Online",
+  "cloud_operation_type": [
+    "Download"
+  ],
+  "cloud_resource_type": [
+    "File"
+  ],
+  "remote_ip": [
+    1542793618
+  ],
+  "asn": "AS201011",
+  "asn_name": "CORE-BACKBONE",
+  "policy_type": "Data Loss Prevention",
+  "policy_description": "Mass file download exceeding baseline threshold with sensitive content classification",
+  "policy_severity": "High",
+  "threat_name": "Data Exfiltration from Cloud Storage",
+  "risk_score": "92",
+  "risk_rating": "High",
+  "verdict": "Malicious",
+  "log_source": "Microsoft Defender for Cloud Apps",
+  "mitre_att&ck_tactic": "TA0010 - Exfiltration",
+  "mitre_att&ck_technique": "T1213 - Data from Information Repositories",
+  "recommended_actions": "1. Immediately revoke all SharePoint access for aisherlock@bakerstreetlabs.io. 2. Revoke OAuth tokens and active sessions for compromised account. 3. Conduct forensic analysis of downloaded files to assess exposure scope. 4. Notify affected clients whose data was accessed (143 penetration test reports). 5. Review audit logs for unauthorized sharing or external forwarding of downloaded files. 6. Implement conditional access policy requiring MFA for SharePoint access. 7. Enable enhanced DLP policies with real-time blocking for mass download attempts. 8. Assess legal/compliance obligations (NDA breach notifications, regulatory reporting). 9. Monitor dark web and paste sites for leaked confidential data. 10. Conduct incident response including legal counsel engagement.",
+  "external_link": "https://portal.cloudappsecurity.com/#/alerts",
+  "related_campaign": "Impossible Travel Moscow"
+}

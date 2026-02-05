@@ -1,0 +1,14 @@
+{
+  "vendor": "[REQUIRED] e.g., Proofpoint, Microsoft, CrowdStrike, Palo Alto Networks",
+  "product": "[REQUIRED] e.g., Email Security Gateway, Azure AD, Falcon Platform",
+  "severity": "[REQUIRED] High",
+  "category": "[REQUIRED] e.g., Phishing, Lateral Movement, Malware",
+  "title": "[RECOMMENDED] Brief, descriptive title of the alert",
+  "details": "[RECOMMENDED] Detailed description of what triggered the alert and why it matters",
+  "alert_id": "[OPTIONAL] External/source alert identifier e.g., PROOFPOINT-PHISHING-20251123-001",
+  "timestamp": "[OPTIONAL] ISO 8601 e.g., 2025-11-23T10:30:00.000Z",
+  "initiated_by": "[OPTIONAL] Username of the user involved",
+  "host_name": "[OPTIONAL] Hostname of target system",
+  "remote_ip": "[OPTIONAL] IP address of source or attacker",
+  "mitre_defs": "[OPTIONAL] MITRE tactics e.g., {\"TA0001\": [\"T1598.003\"]}"
+}

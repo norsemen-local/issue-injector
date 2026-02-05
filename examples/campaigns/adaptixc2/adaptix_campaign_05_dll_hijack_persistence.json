@@ -1,0 +1,62 @@
+{
+  "vendor": "Microsoft",
+  "product": "Cortex XDR",
+  "severity": "Critical",
+  "category": "Persistence",
+  "alert_name": "DLL Search Order Hijacking with Registry Persistence Mechanism",
+  "description": "Cortex XDR detected sophisticated DLL search order hijacking attack targeting legitimate Windows system library msimg32.dll, combined with registry-based persistence mechanism characteristic of AdaptixC2 framework deployment. File system monitoring identified creation of malicious msimg32.dll (64-bit PE DLL, 147KB) in user-writable directory C:\\Users\\rbrown\\AppData\\Local\\Microsoft\\WindowsApps\\, positioned to hijack legitimate applications loading graphics library. DLL analysis reveals: (1) Valid PE signature structure bypassing basic validation, (2) Exported functions matching legitimate msimg32.dll API surface (GradientFill, TransparentBlt, AlphaBlend), (3) DllMain entry point contains obfuscated shellcode loader, (4) Embedded encrypted payload section (.rsrc) containing AdaptixC2 beacon, (5) Anti-debugging techniques (IsDebuggerPresent, NtQueryInformationProcess checks). Concurrent registry modification detected: HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run created value 'GraphicsComponent' = 'rundll32.exe C:\\Users\\rbrown\\AppData\\Local\\Microsoft\\WindowsApps\\msimg32.dll,ServiceMain' establishing boot persistence. DLL hijacking succeeds when legitimate applications (Microsoft Edge, Windows Explorer, Paint) load graphics functions - hijacked DLL intercepts calls, executes malicious payload, then proxies to legitimate system DLL maintaining application stability. Behavioral analysis shows DLL establishing encrypted C2 channel to tech-system[.]online via HTTPS on port 443, mimicking legitimate Windows Update traffic patterns. Memory forensics reveals beacon implements: encrypted heartbeat beacons (60-second intervals with 20% jitter), command execution via WMI, screenshot capture, keylogging via SetWindowsHookEx, credential harvesting from LSASS process memory. EDR triggered on: (1) DLL creation in non-standard system path, (2) Registry Run key modification, (3) Outbound HTTPS to newly registered domain, (4) Credential access attempts. Attack timeline: DLL written 04:12 AM (5 minutes post-PowerShell execution), registry key created 04:13 AM, first C2 beacon observed 04:14 AM. Threat intelligence confirms AdaptixC2's documented DLL hijacking preference for msimg32.dll due to widespread legitimate usage with minimal security scrutiny.",
+  "relative_timestamp_hours": 95.2,
+  "campaign_name": "AdaptixC2-FinancialCorp",
+  "host_name": "FIN-WKS-087",
+  "host_ip": [
+    171540703
+  ],
+  "user_name": [
+    "rbrown@financialcorp.com"
+  ],
+  "domain": "financialcorp.com",
+  "local_ip": [
+    171540703
+  ],
+  "remote_ip": [
+    1746892112
+  ],
+  "process_name": "rundll32.exe",
+  "process_id": "9156",
+  "parent_process_name": "explorer.exe",
+  "parentprocessid": "2348",
+  "process_cmd": "rundll32.exe C:\\Users\\rbrown\\AppData\\Local\\Microsoft\\WindowsApps\\msimg32.dll,ServiceMain",
+  "file_name": "msimg32.dll",
+  "file_path": [
+    "C:\\Users\\rbrown\\AppData\\Local\\Microsoft\\WindowsApps\\msimg32.dll"
+  ],
+  "file_hash": "bdb1b9e37f6467b5f98d151a43f280f319bacf18198b22f55722292a832933ab",
+  "file_sha256": [
+    "bdb1b9e37f6467b5f98d151a43f280f319bacf18198b22f55722292a832933ab"
+  ],
+  "file_hash_sha256": "bdb1b9e37f6467b5f98d151a43f280f319bacf18198b22f55722292a832933abf8a9c3b6d2e7f1a4c5d8e9b3f6a2c5d7e1f4a8b9c6d3e2f5a7",
+  "filesize": "147456",
+  "initiator_sha256": [
+    "bdb1b9e37f6467b5f98d151a43f280f319bacf18198b22f55722292a832933ab"
+  ],
+  "registry_key": "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run",
+  "registry_value_name": "GraphicsComponent",
+  "registry_value_data": "rundll32.exe C:\\Users\\rbrown\\AppData\\Local\\Microsoft\\WindowsApps\\msimg32.dll,ServiceMain",
+  "dns_query_name": [
+    "tech-system.online"
+  ],
+  "threat_name": "DLL Hijacking with Persistence",
+  "attack_mode": "DLL Search Order Hijacking",
+  "verdict": "Malicious",
+  "risk_score": "97",
+  "risk_rating": "Critical",
+  "policy_type": "Behavioral Prevention",
+  "policy_description": "Malicious DLL hijacking targeting msimg32.dll with registry persistence",
+  "policy_severity": "Critical",
+  "policy_recommendation": "CRITICAL: Delete malicious msimg32.dll from C:\\Users\\rbrown\\AppData\\Local\\Microsoft\\WindowsApps\\, remove registry persistence key HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\GraphicsComponent, hunt for similar DLL files in user-writable directories (AppData, Temp, Public), block tech-system[.]online via firewall, enable DLL signature verification via Group Policy (Safe DLL Search Mode), implement application whitelisting to prevent rundll32.exe from loading user-writable DLLs, audit all Run key modifications organization-wide, deploy Yara rule for AdaptixC2 DLL artifacts, reimage FIN-WKS-087 following forensic preservation",
+  "log_source": "Cortex XDR Agent",
+  "event_id": "BEHAVIOR_DLL_HIJACK",
+  "external_link": "https://unit42.paloaltonetworks.com/adaptixc2-post-exploitation-framework/",
+  "mitre_att&ck_tactic": "TA0003 - Persistence",
+  "mitre_att&ck_technique": "T1574 - Hijack Execution Flow"
+}

@@ -1,0 +1,47 @@
+{
+  "vendor": "Okta",
+  "product": "Okta Identity Cloud",
+  "severity": "High",
+  "category": "Identity Threat",
+  "alert_name": "Successful SSO Sign-In from TOR Exit Node",
+  "description": "User account jennifer.lee@company.com successfully authenticated via Single Sign-On (SSO) from a known TOR exit node IP address 185.220.101.15 at 2024-11-25 14:23:47 UTC. The authentication was successful despite conditional access policies requiring trusted network locations. The TOR exit node is located in Netherlands and is listed in public TOR exit node databases. The user accessed multiple applications including Salesforce, GitHub Enterprise, and AWS Console during this session. This activity indicates potential account compromise where an attacker is using TOR to anonymize their location while accessing corporate resources. The user's previous sign-in 2 hours earlier was from corporate IP address 203.0.113.50 (San Francisco, CA), suggesting credential theft. No MFA challenge was triggered due to a remembered device token.",
+  "cloud_provider": [
+    "Okta"
+  ],
+  "cloud_service_name": "Okta SSO",
+  "cloud_operation_type": [
+    "Authentication"
+  ],
+  "cloud_identity_type": [
+    "Standard User"
+  ],
+  "user_name": [
+    "jennifer.lee@company.com"
+  ],
+  "email": "jennifer.lee@company.com",
+  "department": "Sales",
+  "account_status": "Active",
+  "remote_ip": [
+    3116969231
+  ],
+  "city": "Amsterdam",
+  "region": [
+    "Netherlands"
+  ],
+  "location": "Netherlands",
+  "threat_name": "Anonymous Network Access",
+  "attack_mode": "Defense Evasion",
+  "verdict": "Suspicious",
+  "risk_score": "84",
+  "risk_rating": "High",
+  "user_risk_level": "High",
+  "policy_type": "Conditional Access Policy",
+  "policy_description": "Authentication from TOR network detected",
+  "policy_severity": "High",
+  "policy_recommendation": "Terminate active sessions, reset user credentials, re-enable MFA enforcement, investigate recent user activity",
+  "log_source": "Okta System Log",
+  "event_id": "user.session.start",
+  "external_link": "https://company-admin.okta.com/admin/reports/system-log",
+  "mitre_att&ck_tactic": "TA0005 - Defense Evasion",
+  "mitre_att&ck_technique": "T1090.003 - Proxy: Multi-hop Proxy"
+}

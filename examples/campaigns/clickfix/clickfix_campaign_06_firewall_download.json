@@ -1,0 +1,77 @@
+{
+  "vendor": "Palo Alto Networks",
+  "product": "Next-Generation Firewall",
+  "severity": "Critical",
+  "category": "Command and Control",
+  "alert_name": "DeerStealer Infostealer Download via ClickFix PowerShell",
+  "description": "Palo Alto Networks firewall PA-3220-FW01 detected malicious file download from workstation MKTG-WKS-024 (10.30.35.148) where PowerShell process retrieved DeerStealer infostealer payload from cdn-updates[.]live (185.220.102[.]43, Cloudflare). Network forensics show HTTPS GET request to hxxps://cdn-updates[.]live/dl/payload.ps1 at 14:24:03 UTC, server responding with HTTP 200 OK and 23KB PowerShell script. Deep packet inspection flagged multiple risk indicators: (1) User-Agent header 'Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell/5.1.19041.4355' revealing PowerShell client instead of browser, (2) TLS SNI extension 'cdn-updates.live' to newly registered domain (2025-11-19, 8 days old), (3) Response Content-Type: text/plain (script download), (4) Unusual traffic pattern: single GET request followed by connection termination (no browsing behavior). SSL decryption and WildFire analysis identified payload.ps1 as DeerStealer variant: credential harvesting functions (Get-BrowserPasswords, Get-CryptoWallets, Get-DiscordTokens), anti-VM checks (WMIC queries for virtualization indicators), Base64-encoded C2 configuration embedded in script, data exfiltration via HTTPS POST to exfil-api[.]live. Threat intelligence correlation: cdn-updates[.]live shares infrastructure with browser-verification[.]live (both registered via Namecheap same day, hosted on Cloudflare), confirming coordinated ClickFix campaign infrastructure. File hash SHA256: 7765e5e0a7622ff69bd2cee0a75f2aae05643179b4dd333d0e75f98a42894065 matched WildFire signature for DeerStealer family (signatures updated 2025-11-22). Advanced Threat Prevention engine scored traffic 98/100 malicious based on behavioral analysis: PowerShell download, newly registered domain, WildFire verdict, C2 communication pattern. Firewall allowed download to complete (inline blocking disabled for forensics) but logged full PCAP for incident response.",
+  "relative_timestamp_hours": 71.0,
+  "campaign_name": "ClickFix-DeerStealer",
+  "host_name": "MKTG-WKS-024",
+  "host_ip": [
+    171540620
+  ],
+  "user_name": [
+    "jdavis@marketingcorp.com"
+  ],
+  "domain": "marketingcorp.com",
+  "local_ip": [
+    171540620
+  ],
+  "remote_ip": [
+    3119005227
+  ],
+  "local_port": [
+    54933
+  ],
+  "remote_port": [
+    443
+  ],
+  "dns_query_name": [
+    "cdn-updates.live"
+  ],
+  "source_zone_name": [
+    "Trust"
+  ],
+  "destination_zone_name": [
+    "Untrust"
+  ],
+  "fw_name": [
+    "PA-3220-FW01"
+  ],
+  "fw_rule_name": [
+    "Outbound-Internet-Access"
+  ],
+  "fw_rule_id": [
+    "rule-102"
+  ],
+  "fw_serial_number": [
+    "015351000023456"
+  ],
+  "file_hash": "7765e5e0a7622ff69bd2cee0a75f2aae05643179b4dd333d0e75f98a42894065",
+  "file_sha256": [
+    "7765e5e0a7622ff69bd2cee0a75f2aae05643179b4dd333d0e75f98a42894065"
+  ],
+  "file_hash_sha256": "7765e5e0a7622ff69bd2cee0a75f2aae05643179b4dd333d0e75f98a42894065",
+  "initiator_sha256": [
+    "7765e5e0a7622ff69bd2cee0a75f2aae05643179b4dd333d0e75f98a42894065"
+  ],
+  "filesize": "23552",
+  "file_name": [
+    "payload.ps1"
+  ],
+  "threat_name": "DeerStealer Download",
+  "attack_mode": "Infostealer Download",
+  "verdict": "Malicious",
+  "risk_score": "98",
+  "risk_rating": "Critical",
+  "policy_type": "Network Security",
+  "policy_description": "DeerStealer infostealer downloaded via ClickFix PowerShell - WildFire malware verdict",
+  "policy_severity": "Critical",
+  "policy_recommendation": "CRITICAL: Block cdn-updates[.]live and IP 185.220.102[.]43 immediately, enable inline blocking for WildFire malware verdicts, isolate MKTG-WKS-024 from network, hunt for PowerShell processes with User-Agent 'WindowsPowerShell/*', analyze PCAP for payload.ps1 script content, extract C2 domains from DeerStealer configuration (exfil-api[.]live), reset all user credentials, scan for credential theft indicators (browser database access, Discord token files), enable SSL decryption for all PowerShell traffic, deploy custom IPS signatures detecting ClickFix patterns",
+  "log_source": "PA-3220 Firewall Threat Log",
+  "event_id": "THREAT_MALWARE_DOWNLOAD",
+  "external_link": "https://unit42.paloaltonetworks.com/clickfix-generator-first-of-its-kind/",
+  "mitre_att&ck_tactic": "TA0011 - Command and Control",
+  "mitre_att&ck_technique": "T1105 - Ingress Tool Transfer"
+}

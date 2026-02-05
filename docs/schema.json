@@ -1,0 +1,618 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "XSIAM Custom Alert Schema - Complete",
+  "description": "Comprehensive schema with 318 validated custom alert fields for Cortex XSIAM Public API",
+  "version": "3.0.0",
+  "generated": "2026-01-19",
+  "breaking_change": "Field names no longer use underscores - use camelCase format (e.g., emailbody, not email_body)",
+  
+  "api_endpoint": "/public_api/v1/alerts/create_alert",
+  "api_method": "POST",
+  "api_payload_structure": {
+    "request_data": {
+      "alert": "{ required_fields + custom_fields }"
+    }
+  },
+  
+  "required_fields": {
+    "vendor": {
+      "type": "string",
+      "description": "Alert vendor/source (e.g., Microsoft, Proofpoint, CrowdStrike)",
+      "required": true
+    },
+    "product": {
+      "type": "string",
+      "description": "Product name (e.g., Azure AD, Email Security Gateway)",
+      "required": true
+    },
+    "severity": {
+      "type": "string",
+      "enum": ["Low", "Medium", "High", "Critical"],
+      "description": "Alert severity level",
+      "required": true
+    },
+    "category": {
+      "type": "string",
+      "description": "Alert category (e.g., Phishing, Malware, Identity)",
+      "required": true
+    },
+    "alert_id": {
+      "type": "string",
+      "description": "Unique alert identifier - OPTIONAL: XSIAM auto-generates this if not provided",
+      "required": false,
+      "note": "Can be omitted, XSIAM will create it automatically"
+    },
+    "timestamp": {
+      "type": "integer",
+      "description": "Milliseconds since epoch (e.g., 1732644000000)",
+      "transform": "int(time.time() * 1000)",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "description": "Alert description/summary",
+      "required": true
+    }
+  },
+  
+  "custom_fields": {
+    "core_alert_fields": {
+      "alert_name": {"type": "string", "description": "Name of the alert - works well in UI"},
+      "alert_domain": {"type": "string", "note": "VALIDATION WARNING: Value 'Endpoint Security' was rejected by API"},
+      "alert_type": {"type": "string"},
+      "alert_type_id": {"type": "string"},
+      "alert_action": {"type": "string"},
+      "title": {"type": "string"},
+      "issue_name": {"type": "string"},
+      "rule_name": {"type": "string"},
+      "original_alert_name": {"type": "string"},
+      "threat_name": {"type": "string"},
+      "malwarename": {"type": "string", "description": "Malware name - NO UNDERSCORES (was malware_name)"},
+      "signature": {"type": "string"},
+      "excluded": {"type": "boolean"},
+      "starred": {"type": "boolean"}
+    },
+    
+    "host_device_fields": {
+      "host_name": {"type": "string", "description": "Hostname of the device"},
+      "host_fqdn": {"type": "string", "description": "Fully qualified domain name"},
+      "host_mac_address": {"type": "string"},
+      "host_ip": {"type": "array", "items": {"type": "integer"}, "transform": "IP must be converted to integer", "note": "Use struct.unpack('!I', socket.inet_aton(ip))[0]"},
+      "host_os": {"type": "string", "enum": ["AGENT_OS_WINDOWS", "AGENT_OS_LINUX", "AGENT_OS_MAC"], "description": "Operating system type"},
+      "host_risk_level": {"type": "string"},
+      "asset_id": {"type": "string"},
+      "asset_name": {"type": "string"},
+      "device_id": {"type": "array"},
+      "device_name": {"type": "string"},
+      "device_model": {"type": "string"},
+      "device_status": {"type": "string"},
+      "device_hash": {"type": "string"},
+      "endpoint_isolation_status": {"type": "string"},
+      "cid": {"type": "array"},
+      "remote_agent_hostname": {"type": "array"}
+    },
+    
+    "user_identity_fields": {
+      "user_name": {"type": "array", "description": "Username(s) - Multi Select field"},
+      "user_id": {"type": "string"},
+      "user_risk_level": {"type": "string"},
+      "initiated_by": {"type": "array"},
+      "display_name": {"type": "string"},
+      "department": {"type": "string"},
+      "given_name": {"type": "string"},
+      "surname": {"type": "string"},
+      "first_name": {"type": "string"},
+      "last_name": {"type": "string"},
+      "full_name": {"type": "string"},
+      "email": {"type": "string"},
+      "manager_name": {"type": "string"},
+      "manager_email_address": {"type": "string"},
+      "employee_display_name": {"type": "string"},
+      "employee_email": {"type": "string"},
+      "account_id": {"type": "string"},
+      "account_status": {"type": "string"},
+      "birthday": {"type": "string"},
+      "cost_center": {"type": "string"},
+      "cost_center_code": {"type": "string"},
+      "job_code": {"type": "string"},
+      "job_family": {"type": "string"},
+      "job_function": {"type": "string"},
+      "leadership": {"type": "string"},
+      "org_level_1": {"type": "string"},
+      "org_level_2": {"type": "string"},
+      "org_level_3": {"type": "string"},
+      "org_unit": {"type": "string"},
+      "team_name": {"type": "string"},
+      "phone_number": {"type": "array"},
+      "work_phone": {"type": "string"},
+      "mobile_phone": {"type": "string"},
+      "password_changed_date": {"type": "string"},
+      "user_creation_time": {"type": "string"}
+    },
+    
+    "process_fields": {
+      "cgo_cmd": {"type": "array", "description": "Causality Group Owner command"},
+      "cgo_md5": {"type": "array"},
+      "cgo_name": {"type": "array"},
+      "cgo_path": {"type": "array"},
+      "cgo_sha256": {"type": "array"},
+      "cgo_signer": {"type": "array"},
+      "initiator_cmd": {"type": "array"},
+      "initiator_md5": {"type": "array"},
+      "initiator_path": {"type": "array"},
+      "initiator_pid": {"type": "array"},
+      "initiator_sha256": {"type": "array"},
+      "initiator_signer": {"type": "array"},
+      "initiator_tid": {"type": "array"},
+      "os_parent_cmd": {"type": "array"},
+      "os_parent_name": {"type": "array"},
+      "os_parent_pid": {"type": "array"},
+      "os_parent_sha256": {"type": "array"},
+      "os_parent_signer": {"type": "array"},
+      "os_parent_user_name": {"type": "array"},
+      "os_actor_process_image_md5": {"type": "array"},
+      "target_process_cmd": {"type": "array"},
+      "target_process_name": {"type": "array"},
+      "target_process_sha256": {"type": "array"},
+      "parent_process_id": {"type": "string"},
+      "process_execution_signer": {"type": "array"},
+      "application_path": {"type": "string"},
+      "command_line_verdict": {"type": "string"},
+      "misc": {"type": "array"}
+    },
+    
+    "network_fields": {
+      "remote_ip": {"type": "array", "items": {"type": "integer"}, "transform": "IP to integer conversion required"},
+      "local_ip": {"type": "array", "items": {"type": "integer"}, "transform": "IP to integer conversion required"},
+      "remote_ipv6": {"type": "array"},
+      "local_ipv6": {"type": "array"},
+      "remote_port": {"type": "array"},
+      "local_port": {"type": "array"},
+      "domain": {"type": "string"},
+      "dns_query_name": {"type": "array"},
+      "domain_registrar_abuse_email": {"type": "string"},
+      "domain_updated_date": {"type": "string"},
+      "url": {"type": "array"},
+      "malicious_urls": {"type": "array"},
+      "destination_zone_name": {"type": "array"},
+      "source_zone_name": {"type": "array"},
+      "asn": {"type": "string"},
+      "asn_name": {"type": "string"},
+      "xff": {"type": "array", "description": "X-Forwarded-For header"},
+      "src_os": {"type": "string"},
+      "dest_os": {"type": "string"},
+      "sensor_ip": {"type": "string"},
+      "unique_ports": {"type": "string"},
+      "remote_host": {"type": "array"}
+    },
+    
+    "firewall_fields": {
+      "fw_name": {"type": "array"},
+      "fw_rule_name": {"type": "array"},
+      "fw_rule_id": {"type": "array"},
+      "fw_serial_number": {"type": "array"},
+      "ngfw_vsys_name": {"type": "array"}
+    },
+    
+    "email_phishing_fields": {
+      "email_subject": {"type": "array"},
+      "email_sender": {"type": "array"},
+      "email_recipient": {"type": "array"},
+      "emailbody": {"type": "string", "description": "Email body content - NO UNDERSCORES (was email_body)"},
+      "email_cc": {"type": "string"},
+      "email_bcc": {"type": "string"},
+      "emailmessageid": {"type": "string", "description": "Email message ID - NO UNDERSCORES (was email_message_id)"},
+      "email_reply_to": {"type": "string"},
+      "email_sender_ip": {"type": "string", "note": "Can also be integer if converted"},
+      "email_size": {"type": "number"},
+      "email_internal_message_id": {"type": "string"},
+      "email_recipients_count": {"type": "number"},
+      "email_to_count": {"type": "string"},
+      "email_labels": {"type": "string"},
+      "email_keywords": {"type": "string"},
+      "email_return_path": {"type": "string"},
+      "email_source": {"type": "string"},
+      "email_body_format": {"type": "string"},
+      "email_client_name": {"type": "string"},
+      "email_in_reply_to": {"type": "string"},
+      "attachment_count": {"type": "number"},
+      "attachment_name": {"type": "string"},
+      "attachment_size": {"type": "string"},
+      "attachment_extension": {"type": "string"},
+      "attachment_hash": {"type": "string"},
+      "attachment_id": {"type": "string"},
+      "attachment_type": {"type": "string"},
+      "email_received": {"type": "string"},
+      "email_url_clicked": {"type": "string"},
+      "malicious_url_clicked": {"type": "string"},
+      "malicious_url_viewed": {"type": "string"},
+      "reported_email_cc": {"type": "string"},
+      "reported_email_from": {"type": "string"},
+      "reported_email_message_id": {"type": "string"},
+      "reported_email_subject": {"type": "string"},
+      "reported_email_to": {"type": "string"},
+      "reporter_email_address": {"type": "string"},
+      "is_phishing": {"type": "array", "enum": ["YES", "NO"]}
+    },
+    
+    "file_hash_fields": {
+      "file_name": {"type": "array"},
+      "file_path": {"type": "array"},
+      "file_sha256": {"type": "array"},
+      "file_md5": {"type": "array"},
+      "file_macro_sha256": {"type": "array"},
+      "file_hash": {"type": "string"},
+      "file_size": {"type": "string"},
+      "file_creation_date": {"type": "string"},
+      "file_access_date": {"type": "string"},
+      "sha1": {"type": "string"},
+      "sha512": {"type": "string"},
+      "number_of_similar_files": {"type": "number"},
+      "macro_source_code": {"type": "string"}
+    },
+    
+    "cloud_container_fields": {
+      "cloud_project": {"type": "array"},
+      "cloud_provider": {"type": "array"},
+      "cloud_service_name": {"type": "string"},
+      "cloud_provider_account_id": {"type": "string"},
+      "cloud_identity_sub_type": {"type": "array"},
+      "cloud_identity_type": {"type": "array"},
+      "cloud_operation_type": {"type": "array"},
+      "cloud_referenced_resource": {"type": "array"},
+      "cloud_resource_sub_type": {"type": "array"},
+      "cloud_resource_type": {"type": "array"},
+      "container_name": {"type": "array"},
+      "container_id": {"type": "array"},
+      "cluster_name": {"type": "array"},
+      "namespace": {"type": "array"},
+      "image_name": {"type": "array"},
+      "resource_url": {"type": "string"},
+      "sku_name": {"type": "string"},
+      "resource_name": {"type": "string"},
+      "resource_type": {"type": "string"}
+    },
+    
+    "detection_source_fields": {
+      "log_source": {"type": "string"},
+      "module": {"type": "array"},
+      "source_instance": {"type": "string"},
+      "source_id": {"type": "string"},
+      "source_status": {"type": "string"},
+      "source_category": {"type": "string"},
+      "source_priority": {"type": "string"},
+      "detection_id": {"type": "number"},
+      "detection_url": {"type": "string"},
+      "detection_end_time": {"type": "string"},
+      "detectiontimestamp": {"type": "string", "description": "Detection timestamp - NO UNDERSCORES (was detection_timestamp)"},
+      "detectionsource": {"type": "string", "description": "Detection source - NO UNDERSCORES (was detection_source)"},
+      "source_create_time": {"type": "string"},
+      "source_created_by": {"type": "string"},
+      "source_updated_by": {"type": "string"},
+      "source_urgency": {"type": "string"}
+    },
+    
+    "threat_intelligence_fields": {
+      "campaign_name": {"type": "string"},
+      "threat_family_name": {"type": "string"},
+      "malwarefamily": {"type": "string", "description": "Malware family - NO UNDERSCORES (was malware_family)"},
+      "threatactor": {"type": "string", "description": "Threat actor name - NO UNDERSCORES (was threat_actor)"},
+      "bugtraq": {"type": "string"},
+      "cve": {"type": "string"},
+      "cve_id": {"type": "string"},
+      "cve_published": {"type": "string"},
+      "cvss": {"type": "string"},
+      "vulnerability_category": {"type": "string"},
+      "vulnerable_product": {"type": "string"},
+      "risk_score": {"type": "string"},
+      "risk_rating": {"type": "string"},
+      "risk_name": {"type": "string"},
+      "exposure_level": {"type": "string"},
+      "related_campaign": {"type": "string"},
+      "part_of_campaign": {"type": "string"},
+      "related_report": {"type": "string"},
+      "related_endpoints": {"type": "string"},
+      "suspicious_executions_found": {"type": "string"},
+      "blocked_action": {"type": "string"},
+      "attack_mode": {"type": "string"},
+      "triggered_security_profile": {"type": "string"}
+    },
+    
+    "policy_compliance_fields": {
+      "policy_id": {"type": "string"},
+      "policy_details": {"type": "string"},
+      "policy_description": {"type": "string"},
+      "policy_severity": {"type": "string"},
+      "policy_type": {"type": "string"},
+      "policy_deleted": {"type": "string"},
+      "policy_recommendation": {"type": "string"},
+      "policy_remediable": {"type": "string"},
+      "policy_uri": {"type": "string"},
+      "use_case_description": {"type": "string"},
+      "verification_method": {"type": "string"},
+      "verification_status": {"type": "string"},
+      "audit_logs": {"type": "string"}
+    },
+    
+    "timestamps_events_fields": {
+      "occurred": {"type": "string"},
+      "start_time": {"type": "string"},
+      "end_time": {"type": "string"},
+      "close_time": {"type": "string"},
+      "event_id": {"type": "string"},
+      "last_seen": {"type": "string"},
+      "first_seen": {"type": "string"},
+      "last_update_time": {"type": "string"},
+      "last_modified_by": {"type": "string"},
+      "last_modified_on": {"type": "string"}
+    },
+    
+    "risk_assessment_fields": {
+      "contains_featured_host": {"type": "array", "enum": ["YES", "NO"]},
+      "contains_featured_user": {"type": "array", "enum": ["YES", "NO"]},
+      "contains_featured_ip_address": {"type": "string"}
+    },
+    
+    "resolution_status_fields": {
+      "resolution_status": {"type": "string"},
+      "resolution_comment": {"type": "string"},
+      "verdict": {"type": "string"},
+      "state": {"type": "string"},
+      "status_reason": {"type": "string"},
+      "closing_reason": {"type": "string"},
+      "closing_user": {"type": "string"},
+      "isolated": {"type": "string"}
+    },
+    
+    "external_integration_fields": {
+      "external_id": {"type": "string"},
+      "external_link": {"type": "string"},
+      "ticket_number": {"type": "string"}
+    },
+    
+    "mitre_attack_fields": {
+      "mitre_att&ck_tactic": {"type": "string", "description": "MITRE tactic with ID and name", "format": "ID - Name (e.g., 'TA0040 - Impact')", "note": "MUST include tactic ID prefix. Simple names like 'Impact' are rejected by API"},
+      "mitre_att&ck_technique": {"type": "string", "description": "MITRE technique name (e.g., Phishing)", "note": "Use string name, NOT ID"}
+    },
+    
+    "registry_fields": {
+      "registry_data": {"type": "array"},
+      "registry_full_key": {"type": "array"}
+    },
+    
+    "incident_management_fields": {
+      "approval_status": {"type": "string"},
+      "approver": {"type": "string"},
+      "assigned_user": {"type": "string"},
+      "assignment_group": {"type": "string"},
+      "caller": {"type": "string"},
+      "escalation": {"type": "string"},
+      "incident_link": {"type": "string"},
+      "investigation_stage": {"type": "string"},
+      "changed": {"type": "string"},
+      "item_owner": {"type": "string"}
+    },
+    
+    "detection_hunting_fields": {
+      "hunt_results_count": {"type": "string"},
+      "number_of_found_related_alerts": {"type": "number"},
+      "number_of_log_sources": {"type": "number"},
+      "number_of_related_incidents": {"type": "number"}
+    },
+    
+    "location_region_fields": {
+      "location": {"type": "string"},
+      "city": {"type": "string"},
+      "location_region": {"type": "string"},
+      "region_id": {"type": "string"},
+      "street_address": {"type": "string"},
+      "zip_code": {"type": "string"}
+    },
+    
+    "device_hardware_fields": {
+      "mobile_device_model": {"type": "string"},
+      "detected_endpoints": {"type": "string"},
+      "detected_external_ips": {"type": "string"},
+      "detected_internal_hosts": {"type": "string"}
+    },
+    
+    "classification_action_fields": {
+      "action": {"type": "string"},
+      "classification": {"type": "string"},
+      "sub_category": {"type": "string"},
+      "subtype": {"type": "string"},
+      "rating": {"type": "string"}
+    },
+    
+    "miscellaneous_fields": {
+      "tags": {"type": "string"},
+      "original_tags": {"type": "string"},
+      "agent_os_sub_type": {"type": "string"},
+      "user_agent": {"type": "array"},
+      "app_category": {"type": "array"},
+      "app_id": {"type": "array"},
+      "app_subcategory": {"type": "array"},
+      "app_technology": {"type": "array"}
+    }
+  },
+  
+  "transformation_rules": {
+    "ip_to_integer": {
+      "description": "IP addresses must be converted to 32-bit integers for host_ip, remote_ip, local_ip fields",
+      "python_code": "import struct, socket\nip_int = struct.unpack('!I', socket.inet_aton('192.168.1.1'))[0]",
+      "example": "192.168.1.1 -> 3232235777"
+    },
+    "timestamp_format": {
+      "description": "Timestamps must be milliseconds since epoch",
+      "python_code": "import time\ntimestamp = int(time.time() * 1000)",
+      "example": "1732644000000"
+    },
+    "multi_select_arrays": {
+      "description": "Multi Select UI fields must be sent as arrays",
+      "examples": {
+        "user_name": ["user1@company.com", "user2@company.com"],
+        "file_name": ["malware.exe", "trojan.dll"],
+        "email_recipient": ["recipient1@company.com", "recipient2@company.com"]
+      }
+    },
+    "enum_values": {
+      "description": "Some fields require specific enum values",
+      "examples": {
+        "host_os": ["AGENT_OS_WINDOWS", "AGENT_OS_LINUX", "AGENT_OS_MAC"],
+        "is_phishing": ["YES", "NO"],
+        "contains_featured_host": ["YES", "NO"]
+      }
+    }
+  },
+  
+  "known_limitations": {
+    "unsupported_fields": [
+      "protocol - Not supported by XSIAM API",
+      "mitre_tactic_id - Use mitre_att&ck_tactic (string name) instead",
+      "mitre_technique_id - Use mitre_att&ck_technique (string name) instead",
+      "country - All formats tested, not supported by API",
+      "parent_process_ids - Process ID arrays not supported",
+      "process_names - Process name arrays not supported",
+      "process_paths - Process path arrays not supported",
+      "post_nat_* - NAT fields not supported",
+      "pre_nat_* - NAT fields not supported",
+      "registry_hive - Use registry_full_key instead",
+      "registry_key - Use registry_full_key instead"
+    ],
+    "breaking_changes_jan_2026": [
+      "CRITICAL: All field names with underscores must now use camelCase format",
+      "email_body → emailbody",
+      "email_message_id → emailmessageid",
+      "threat_actor → threatactor",
+      "malware_family → malwarefamily",
+      "malware_name → malwarename",
+      "detection_timestamp → detectiontimestamp",
+      "detection_source → detectionsource",
+      "This change affects ~96 fields across all alert categories"
+    ],
+    "notes": [
+      "Total validated fields: 318",
+      "Discovery method: Systematic API testing",
+      "Success rate on valuable fields: ~65%",
+      "API endpoint: /public_api/v1/alerts/create_alert"
+    ]
+  },
+  
+  "usage_examples": {
+    "minimal_alert": {
+      "description": "Minimal alert with only required fields",
+      "alert": {
+        "vendor": "Microsoft",
+        "product": "Azure AD Identity Protection",
+        "severity": "High",
+        "category": "Identity",
+        "alert_id": "AZURE-IMPOSSIBLE-TRAVEL-001",
+        "timestamp": 1732644000000,
+        "description": "Impossible travel detected for user account"
+      }
+    },
+    
+    "phishing_alert": {
+      "description": "Comprehensive phishing alert with custom fields",
+      "alert": {
+        "vendor": "Proofpoint",
+        "product": "Email Security Gateway",
+        "severity": "Critical",
+        "category": "Phishing",
+        "alert_id": "PROOFPOINT-PHISH-20251126-001",
+        "timestamp": 1732644000000,
+        "description": "Malicious phishing email with credential harvesting detected",
+        "email_sender": ["attacker@evil-domain.com"],
+        "email_recipient": ["victim@company.com"],
+        "email_subject": ["Urgent: Verify Your Account"],
+        "email_body": "Phishing content attempting credential theft",
+        "attachment_name": "invoice.pdf",
+        "attachment_hash": "abc123def456...",
+        "user_name": ["victim@company.com"],
+        "host_name": "DESKTOP-VICTIM-001",
+        "file_sha256": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"],
+        "url": ["https://evil-domain.com/phishing"],
+        "mitre_att&ck_tactic": "Initial Access",
+        "mitre_att&ck_technique": "Phishing",
+        "is_phishing": ["YES"],
+        "verdict": "Malicious"
+      }
+    },
+    
+    "malware_alert": {
+      "description": "Malware detection alert with process and file details",
+      "alert": {
+        "vendor": "CrowdStrike",
+        "product": "Falcon Endpoint Protection",
+        "severity": "Critical",
+        "category": "Malware",
+        "alert_id": "CROWDSTRIKE-MALWARE-20251126-001",
+        "timestamp": 1732644000000,
+        "description": "Banking trojan Emotet detected on endpoint",
+        "host_name": "DESKTOP-INFECTED-001",
+        "host_ip": [3232235777],
+        "user_name": ["compromised.user@company.com"],
+        "process_execution_signer": ["Unsigned"],
+        "file_name": ["emotet.exe"],
+        "file_path": ["C:\\Users\\Public\\Documents\\emotet.exe"],
+        "file_sha256": ["a1b2c3d4e5f6..."],
+        "file_md5": ["098f6bcd4621..."],
+        "malware_family": "Emotet",
+        "threat_name": "Banking Trojan",
+        "cgo_name": ["powershell.exe"],
+        "cgo_cmd": ["powershell.exe -enc <base64>"],
+        "mitre_att&ck_tactic": "Execution",
+        "mitre_att&ck_technique": "PowerShell",
+        "verdict": "Malicious"
+      }
+    }
+  },
+  
+  "field_count_summary": {
+    "total_custom_fields": 318,
+    "required_base_fields": 7,
+    "categories": {
+      "core_alert": 14,
+      "host_device": 16,
+      "user_identity": 26,
+      "process": 26,
+      "network": 22,
+      "firewall": 5,
+      "email_phishing": 37,
+      "file_hash": 14,
+      "cloud_container": 19,
+      "detection_source": 14,
+      "threat_intelligence": 23,
+      "policy_compliance": 13,
+      "timestamps_events": 10,
+      "risk_assessment": 3,
+      "resolution_status": 8,
+      "external_integration": 3,
+      "mitre_attack": 2,
+      "registry": 2,
+      "incident_management": 10,
+      "detection_hunting": 4,
+      "location_region": 6,
+      "device_hardware": 4,
+      "classification_action": 5,
+      "miscellaneous": 7
+    }
+  },
+  
+  "metadata": {
+    "version": "3.0.0",
+    "last_updated": "2026-01-19",
+    "breaking_change_date": "2026-01-19",
+    "breaking_change_summary": "Field naming convention changed from snake_case with underscores to camelCase without underscores",
+    "discovery_timeline": {
+      "batch_1_4": "159 fields (baseline)",
+      "batch_5": "183 fields (+24)",
+      "batch_6": "211 fields (+28)",
+      "batch_7": "249 fields (+38)",
+      "batch_8": "318 fields (+69)"
+    },
+    "testing_methodology": "Systematic API testing with real XSIAM tenant",
+    "success_rate": "~65% on valuable fields",
+    "api_authentication": "x-xdr-auth-id and Authorization headers required"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "vendor": "Cortex",
+  "product": "XDR Agent",
+  "severity": "High",
+  "category": "Authentication",
+  "alert_id": "AUTH-BF-20251126-001",
+  "description": "User account 'admin@company.com' experienced 47 failed authentication attempts from multiple suspicious IP addresses within 5 minutes. The attack originated from known VPN exit nodes (185.220.101.45) in different geographic locations (Russia). Account lockout policy triggered after 5 failed attempts, but attacker continued with credential stuffing attempts using different user agents (Mozilla, curl, python-requests). Known credential stuffing infrastructure detected.",
+  "alert_name": "Multiple Failed Login Attempts - Brute Force Attack Detected",
+  "threat_name": "Brute Force Authentication Attack",
+  "user_name": [
+    "admin@company.com"
+  ],
+  "host_name": "auth-gateway-prod-01",
+  "host_ip": [
+    "10.50.1.15"
+  ],
+  "local_ip": [
+    "10.50.1.15"
+  ],
+  "local_port": [
+    443
+  ],
+  "remote_ip": [
+    "185.220.101.45"
+  ],
+  "remote_port": [
+    52341
+  ],
+  "location": "Russia",
+  "city": "Moscow",
+  "mitre_att&ck_tactic": "TA0001 - Initial Access",
+  "mitre_att&ck_technique": "T1110.001 - Brute Force: Password Guessing",
+  "verdict": "Malicious",
+  "risk_score": "85"
+}

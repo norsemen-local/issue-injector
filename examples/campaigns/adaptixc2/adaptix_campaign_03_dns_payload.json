@@ -1,0 +1,41 @@
+{
+  "vendor": "Palo Alto Networks",
+  "product": "Advanced DNS Security",
+  "severity": "High",
+  "category": "Command and Control",
+  "alert_name": "DNS Query to Malicious Payload Hosting Domain",
+  "description": "Advanced DNS Security detected suspicious DNS query from workstation FIN-WKS-087 to cdn-legitimate-updates[.]com, newly registered domain (2025-05-09, 1 day old) hosting AdaptixC2 shellcode payloads. DNS analytics: (1) Domain registered via Namecheap with privacy protection, (2) Hosted on Cloudflare (104.21.78[.]134), (3) No legitimate web presence, (4) Query initiated by powershell.exe process, (5) Resolved immediately before HTTPS download of Base64-encoded shellcode. Threat intelligence shows domain matching AdaptixC2 infrastructure patterns: subdomain /payload/loader.txt serving encoded PowerShell payloads. Query timestamp 04:05 AM correlates with Quick Assist RMM session activity.",
+  "relative_timestamp_hours": 95.5,
+  "campaign_name": "AdaptixC2-FinancialCorp",
+  "host_name": "FIN-WKS-087",
+  "host_ip": [
+    171540703
+  ],
+  "user_name": [
+    "rbrown@financialcorp.com"
+  ],
+  "domain": "financialcorp.com",
+  "local_ip": [
+    171540703
+  ],
+  "remote_ip": [
+    1756033670
+  ],
+  "dns_query_name": [
+    "cdn-legitimate-updates.com"
+  ],
+  "threat_name": "Payload Hosting Domain",
+  "attack_mode": "Shellcode Payload Delivery",
+  "verdict": "Malicious",
+  "risk_score": "91",
+  "risk_rating": "High",
+  "policy_type": "DNS Security",
+  "policy_description": "DNS query to newly registered AdaptixC2 payload hosting domain",
+  "policy_severity": "High",
+  "policy_recommendation": "HIGH: Block cdn-legitimate-updates[.]com via DNS sinkholing, hunt for PowerShell processes querying this domain, enable inline DNS blocking for domains <7 days old",
+  "log_source": "Advanced DNS Security",
+  "event_id": "DNS_QUERY_MALICIOUS",
+  "external_link": "https://unit42.paloaltonetworks.com/adaptixc2-post-exploitation-framework/",
+  "mitre_att&ck_tactic": "TA0011 - Command and Control",
+  "mitre_att&ck_technique": "T1071.004 - Application Layer Protocol: DNS"
+}

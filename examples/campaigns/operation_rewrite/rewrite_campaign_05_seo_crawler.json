@@ -1,0 +1,48 @@
+{
+  "vendor": "Palo Alto Networks",
+  "product": "Advanced URL Filtering",
+  "severity": "High",
+  "category": "Command and Control",
+  "alert_name": "SEO Poisoning - Search Engine Crawler Serving Malicious Vietnamese Keywords",
+  "description": "Advanced URL Filtering detected SEO poisoning activity from government web server govagency[.]vn (10.30.25.112) where BadIIS module served keyword-stuffed malicious HTML to Googlebot search engine crawler. Traffic analysis shows HTTP request with User-Agent 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)' to govagency[.]vn receiving anomalous response containing Vietnamese gambling-related keywords and spam links. Response payload inspection (deep packet analysis) revealed 47KB HTML document filled with illegal streaming service terms: 'x\u00f4i l\u1ea1c tv tr\u1ef1c ti\u1ebfp b\u00f3ng \u0111\u00e1 h\u00f4m nay' (illegal soccer streaming), 'c\u00e1 c\u01b0\u1ee3c b\u00f3ng \u0111\u00e1 tr\u1ef1c tuy\u1ebfn' (online soccer betting), 'casino tr\u1ef1c tuy\u1ebfn vi\u1ec7t nam' (Vietnamese online casino), 'xem b\u00f3ng \u0111\u00e1 mi\u1ec5n ph\u00ed' (free soccer streaming). Content analysis detected 187 embedded hyperlinks pointing to attacker-controlled gambling domains: bet365-vn[.]com, xoilac-tv[.]net, casino88[.]asia, representing coordinated SEO manipulation campaign. The HTML contains hidden <div> elements (display:none) stuffed with keyword combinations to maximize search engine indexing without affecting legitimate user experience. URL Filtering categorized response as 'online-gambling' and 'phishing' based on content signatures. Network forensics show web server (govagency[.]vn) contacting upstream C2 server 404.008php[.]com (103.6.235[.]26) immediately before serving poisoned content to Googlebot, confirming BadIIS reverse proxy behavior - legitimate government server acting as intermediary for attacker's scam infrastructure. Threat intelligence correlation: domain 404.008php[.]com linked to CL-UNK-1037 (DragonRank/Group 9) SEO poisoning operations targeting Southeast Asian governments and businesses. Expected impact: Google search results for Vietnamese queries will rank govagency[.]vn for gambling/streaming keywords, exploiting government domain's high trust reputation to drive traffic to scam sites.",
+  "relative_timestamp_hours": 93.5,
+  "campaign_name": "OperationRewrite-GovEntity",
+  "host_name": "WEB-PROD-03",
+  "host_ip": [
+    171540592
+  ],
+  "user_name": [
+    "webadmin@govagency.vn"
+  ],
+  "domain": "govagency.vn",
+  "local_ip": [
+    171540592
+  ],
+  "remote_ip": [
+    1726594560
+  ],
+  "local_port": [
+    80
+  ],
+  "remote_port": [
+    52341
+  ],
+  "dns_query_name": [
+    "govagency.vn",
+    "404.008php.com"
+  ],
+  "threat_name": "BadIIS - SEO Poisoning Crawler Lure",
+  "attack_mode": "SEO Poisoning - Phase 1 (Crawler Detection)",
+  "verdict": "Malicious",
+  "risk_score": "85",
+  "risk_rating": "High",
+  "policy_type": "Web Security",
+  "policy_description": "Government web server serving SEO-poisoned content with Vietnamese gambling keywords to search engine crawlers",
+  "policy_severity": "High",
+  "policy_recommendation": "HIGH: Block C2 domain 404.008php[.]com and IP 103.6.235[.]26 at firewall, remove BadIIS module from WEB-PROD-03, request Google Search Console to remove poisoned indexed pages for govagency[.]vn, monitor search engine rankings for government domain (check Google/Bing/C\u1ed1c C\u1ed1c for gambling keyword associations), implement Content Security Policy (CSP) headers to prevent injection, enable IIS request/response logging with full content capture, deploy WAF rules to detect User-Agent spoofing, analyze IIS logs for additional crawler interactions, engage Google/Bing Webmaster support for emergency de-indexing of compromised pages",
+  "log_source": "Advanced URL Filtering",
+  "event_id": "URL_FILTER_SEO_POISON",
+  "external_link": "https://unit42.paloaltonetworks.com/operation-rewrite-seo-poisoning-campaign/",
+  "mitre_att&ck_tactic": "TA0011 - Command and Control",
+  "mitre_att&ck_technique": "T1102 - Web Service"
+}

@@ -1,0 +1,59 @@
+{
+  "vendor": "Cortex",
+  "product": "XDR Agent",
+  "severity": "High",
+  "category": "Command and Control",
+  "description": "DNS Tunneling C2 Communication detected. Abnormal DNS query pattern detected from workstation LAPTOP-FIN-087. Host generated 342 DNS queries to suspicious domain data-exfil-server.tk within 2 minutes exhibiting characteristics of DNS tunneling for command and control communication. Query subdomains contain Base64-encoded data suggesting data exfiltration. Domain has low reputation score and was registered 3 days ago. Firewall blocked subsequent connections after DNS sinkhole activation.",
+  "alert_name": "DNS Tunneling C2 Communication",
+  "threat_name": "DNS Tunneling",
+  "user_name": [
+    "amartinez@finance.local"
+  ],
+  "host_name": "LAPTOP-FIN-087",
+  "host_ip": [
+    "10.20.30.87"
+  ],
+  "host_os": "AGENT_OS_WINDOWS",
+  "remote_ip": [
+    "45.142.212.61"
+  ],
+  "remote_port": [
+    53
+  ],
+  "remote_host": [
+    "dns-resolver-evil.tk"
+  ],
+  "local_ip": [
+    "10.20.30.87"
+  ],
+  "local_port": [
+    49832
+  ],
+  "domain": "data-exfil-server.tk",
+  "dns_query_name": [
+    "aGVsbG8td29ybGQtZGF0YQ.data-exfil-server.tk"
+  ],
+  "url": [
+    "data-exfil-server.tk",
+    "dns-resolver-evil.tk"
+  ],
+  "fw_name": [
+    "firewall-corp-primary"
+  ],
+  "fw_rule_name": [
+    "DNS Anomaly Detection"
+  ],
+  "fw_rule_id": [
+    "dns-tunnel-block-v2"
+  ],
+  "fw_serial_number": [
+    "PA-5220-SN12345"
+  ],
+  "ngfw_vsys_name": [
+    "vsys1"
+  ],
+  "mitre_att&ck_tactic": "TA0011 - Command and Control",
+  "mitre_att&ck_technique": "T1071.004 - Application Layer Protocol: DNS",
+  "verdict": "Malicious",
+  "risk_score": "85"
+}

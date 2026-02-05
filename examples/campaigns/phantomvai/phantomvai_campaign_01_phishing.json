@@ -1,0 +1,58 @@
+{
+  "vendor": "Proofpoint",
+  "product": "Email Security Gateway",
+  "severity": "Medium",
+  "category": "Initial Access",
+  "alert_name": "Suspicious Payment Invoice Email with JavaScript Attachment",
+  "description": "Phishing email detected targeting user mthomas@techcorp.local with subject 'URGENT: Outstanding Invoice #INV-2024-8821 - Payment Required'. The email impersonates legitimate vendor 'Global Suppliers Ltd' and contains malicious ZIP attachment 'Invoice_8821.zip' (12KB) with obfuscated JavaScript file inside. Email originated from spoofed sender payment-dept@global-suppliers[.]net (actual source: 185.220.101.42, known malicious infrastructure). The email body uses urgency and payment themes to trick the recipient into opening the attachment: 'Your payment of $4,892.50 is overdue by 15 days. Please review the attached invoice immediately to avoid service interruption.' The ZIP archive contains heavily obfuscated JavaScript file 'Invoice_8821_Details.js' (SHA256: 02aa167e4bb41e3e40a75954f5a0bd5915f9a16fd6c21b544a557f2a7df3c89b) which is the first stage of PhantomVAI Loader infection chain. Email passed SPF checks but failed DMARC validation.",
+  "relative_timestamp_hours": 48.0,
+  "campaign_name": "PhantomVAI-TechCorp",
+  "user_name": [
+    "mthomas@techcorp.local"
+  ],
+  "account_id": "mthomas@techcorp.local",
+  "domain": "techcorp.local",
+  "email_subject": [
+    "URGENT: Outstanding Invoice #INV-2024-8821 - Payment Required"
+  ],
+  "email_sender": [
+    "payment-dept@global-suppliers.net"
+  ],
+  "email_recipient": [
+    "mthomas@techcorp.local"
+  ],
+  "emailbody": "Your payment of $4,892.50 is overdue by 15 days. Please review the attached invoice immediately to avoid service interruption. Click to download: Invoice_8821.zip",
+  "email_sender_ip": "185.220.101.42",
+  "attachment_name": "Invoice_8821.zip",
+  "attachment_size": "12288",
+  "attachment_hash": "02aa167e4bb41e3e40a75954f5a0bd5915f9a16fd6c21b544a557f2a7df3c89b",
+  "attachment_type": "application/zip",
+  "file_name": [
+    "Invoice_8821.zip",
+    "Invoice_8821_Details.js"
+  ],
+  "file_hash": "02aa167e4bb41e3e40a75954f5a0bd5915f9a16fd6c21b544a557f2a7df3c89b",
+  "file_sha256": [
+    "02aa167e4bb41e3e40a75954f5a0bd5915f9a16fd6c21b544a557f2a7df3c89b"
+  ],
+  "initiator_sha256": [
+    "02aa167e4bb41e3e40a75954f5a0bd5915f9a16fd6c21b544a557f2a7df3c89b"
+  ],
+  "threat_name": "PhantomVAI Loader - Initial Vector",
+  "attack_mode": "Phishing with Malicious JavaScript",
+  "verdict": "Malicious",
+  "risk_score": "72",
+  "risk_rating": "High",
+  "is_phishing": [
+    "YES"
+  ],
+  "policy_type": "Email Security",
+  "policy_description": "Phishing email with obfuscated JavaScript - PhantomVAI Loader campaign",
+  "policy_severity": "High",
+  "policy_recommendation": "Quarantine email, block sender domain global-suppliers[.]net, alert user mthomas, scan workstation for subsequent infection stages, implement JavaScript attachment blocking policy, enhance DMARC enforcement",
+  "log_source": "Proofpoint Email Gateway",
+  "event_id": "EMAIL_THREAT_DETECTED",
+  "external_link": "https://unit42.paloaltonetworks.com/phantomvai-loader-delivers-infostealers/",
+  "mitre_att&ck_tactic": "TA0001 - Initial Access",
+  "mitre_att&ck_technique": "T1566.001 - Phishing: Spearphishing Attachment"
+}

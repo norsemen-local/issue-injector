@@ -1,0 +1,46 @@
+{
+  "vendor": "Microsoft",
+  "product": "Azure Active Directory",
+  "severity": "High",
+  "category": "Identity Threat",
+  "alert_name": "Multi-Factor Authentication Disabled for Azure Identity",
+  "description": "Administrator admin@company.com disabled Multi-Factor Authentication (MFA) for privileged user account david.chen@company.com at 2024-11-27 07:48:33 UTC via Azure Portal. The target account has Global Administrator privileges with access to critical Azure resources including production subscriptions, Key Vault secrets, and Azure AD tenant configuration. MFA was disabled using Azure PowerShell cmdlet 'Set-MsolUser -UserPrincipalName -StrongAuthenticationRequirements @()' from IP address 185.220.101.47, which is a known Tor exit node located in Romania. This activity occurred outside business hours (07:48 UTC / 02:48 EST) and immediately followed a suspicious sign-in to the admin account from the same IP address. Disabling MFA for privileged accounts significantly increases risk of account takeover and unauthorized access to sensitive cloud resources.",
+  "cloud_provider": [
+    "Microsoft"
+  ],
+  "cloud_service_name": "Azure Active Directory",
+  "cloud_operation_type": [
+    "Update"
+  ],
+  "cloud_resource_type": [
+    "User Identity"
+  ],
+  "cloud_identity_type": [
+    "Global Administrator"
+  ],
+  "user_name": [
+    "david.chen@company.com"
+  ],
+  "email": "david.chen@company.com",
+  "initiated_by": [
+    "admin@company.com"
+  ],
+  "account_status": "Active",
+  "remote_ip": [
+    3116969263
+  ],
+  "threat_name": "Privilege Persistence",
+  "attack_mode": "Defense Evasion",
+  "verdict": "Suspicious",
+  "risk_score": "82",
+  "risk_rating": "High",
+  "user_risk_level": "High",
+  "policy_type": "Conditional Access Policy",
+  "policy_description": "MFA disabled for Global Administrator account",
+  "policy_severity": "High",
+  "policy_recommendation": "Re-enable MFA immediately, investigate admin account compromise, review Azure AD audit logs",
+  "log_source": "Azure AD Audit Logs",
+  "external_link": "https://portal.azure.com/#view/Microsoft_AAD_IAM/IdentityProtectionMenuBlade/~/RiskyUsers",
+  "mitre_att&ck_tactic": "TA0003 - Persistence",
+  "mitre_att&ck_technique": "T1098 - Account Manipulation"
+}

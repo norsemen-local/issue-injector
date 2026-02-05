@@ -1,0 +1,70 @@
+{
+  "vendor": "Palo Alto Networks",
+  "product": "Cortex XDR",
+  "severity": "Medium",
+  "category": "Discovery",
+  "alert_name": "Network Scanning and SMB Share Enumeration",
+  "description": "Extensive network reconnaissance activity detected on file server FS-PROD-01 (10.50.20.10) 36 minutes after lateral movement. The Medusa threat actor executed automated network scanning to identify additional targets and map valuable data repositories. Activity includes: (1) SMB share enumeration using net.exe commands targeting 47 hosts in the 10.50.0.0/16 network, (2) Active Directory query via nltest.exe to enumerate domain controllers and trust relationships, (3) Network mapping using ping sweeps across production subnets. Commands observed: 'net view /domain', 'nltest /dclist:victimcorp.local', 'net share', and custom PowerShell script scanning for open SMB shares. The reconnaissance identified 23 Windows servers with accessible file shares containing total 47TB of data including financial records, customer databases, source code repositories, and executive communications. This discovery phase mapped the target landscape before data exfiltration and ransomware deployment phases.",
+  "relative_timestamp_hours": 69.92,
+  "campaign_name": "Medusa-VictimCorp",
+  "host_name": "FS-PROD-01",
+  "host_ip": [
+    172305930
+  ],
+  "host_os": "AGENT_OS_WINDOWS",
+  "user_name": [
+    "jsmith@victimcorp.local",
+    "IT-Admin@victimcorp.local"
+  ],
+  "account_id": "S-1-5-21-2847561234-9876543210-4567123890-5001",
+  "domain": "victimcorp.local",
+  "cgo_name": [
+    "net.exe",
+    "nltest.exe",
+    "powershell.exe"
+  ],
+  "cgo_cmd": [
+    "net.exe view /domain",
+    "nltest.exe /dclist:victimcorp.local",
+    "powershell.exe -ExecutionPolicy Bypass -File C:\\Windows\\Temp\\enum.ps1"
+  ],
+  "cgo_path": [
+    "C:\\Windows\\System32\\net.exe",
+    "C:\\Windows\\System32\\nltest.exe",
+    "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+  ],
+  "cgo_pid": [
+    8734
+  ],
+  "os_parent_name": [
+    "stage2.exe"
+  ],
+  "os_parent_cmd": [
+    "C:\\Windows\\Temp\\stage2.exe"
+  ],
+  "os_parent_pid": [
+    2341
+  ],
+  "file_name": [
+    "enum.ps1"
+  ],
+  "file_path": [
+    "C:\\Windows\\Temp\\enum.ps1"
+  ],
+  "filesize": "15872",
+  "threat_name": "Discovery",
+  "attack_mode": "Network Discovery and Enumeration",
+  "verdict": "Malicious",
+  "risk_score": "78",
+  "risk_rating": "High",
+  "host_risk_level": "High",
+  "policy_type": "Network Security",
+  "policy_description": "Extensive network scanning and SMB enumeration - Medusa ransomware reconnaissance",
+  "policy_severity": "High",
+  "policy_recommendation": "Block discovery tools execution (net.exe, nltest.exe), restrict SMB share access, implement network micro-segmentation, enable SMB signing enforcement, hide shares from network enumeration, monitor for reconnaissance patterns, prepare for imminent data exfiltration and encryption phases",
+  "log_source": "Cortex XDR Agent",
+  "event_id": "PROCESS_EXECUTION",
+  "external_link": "https://unit42.paloaltonetworks.com/medusa-ransomware-escalation-new-leak-site/",
+  "mitre_att&ck_tactic": "TA0007 - Discovery",
+  "mitre_att&ck_technique": "T1046 - Network Service Scanning"
+}

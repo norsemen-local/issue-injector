@@ -1,0 +1,46 @@
+{
+  "vendor": "Palo Alto Networks",
+  "product": "Next-Generation Firewall",
+  "severity": "Critical",
+  "category": "Data Exfiltration",
+  "alert_name": "Large Volume Encrypted Data Transfer to Suspicious External IP",
+  "description": "Palo Alto Networks Next-Generation Firewall (PA-5220) detected an anomalous large-volume encrypted data transfer from internal endpoint SHERLOCK-WKS-01 (10.50.25.147) to an external IP address in Moldova (185.141.62.247). Between 2025-11-28 04:15:00 UTC and 06:47:00 UTC, a total of 2.3GB of data was transmitted via HTTPS (port 443) in a sustained upload session. This transfer volume represents a 1,200% deviation from the endpoint's normal network baseline (average daily upload: 187MB). Threat intelligence analysis identified the destination IP (185.141.62.247) as associated with known data exfiltration infrastructure, specifically linked to commodity malware C2 operations. The IP is hosted by a bulletproof hosting provider (Alexhost SRL, Moldova) commonly used by cybercriminal operations. Traffic pattern analysis revealed: 1) Continuous encrypted upload stream without corresponding download activity, 2) Transfer initiated during non-business hours (11PM - 1:47AM EST), 3) Use of non-standard user agent suggesting automated tool rather than browser, 4) Connection established immediately after SharePoint mass download activity (72h alert), 5) Endpoint bypassed corporate web proxy using direct internet connection. SSL/TLS inspection shows certificate validation to untrusted self-signed certificate, consistent with attacker-controlled infrastructure. The transfer timeline correlates directly with the 487 files (2.3GB) downloaded from SharePoint 24 hours prior, strongly suggesting staged exfiltration of stolen corporate data. Firewall application identification classified the traffic as 'ssl' with high-risk category 'command-and-control'. The session originated from the compromised user account (aisherlock@bakerstreetlabs.io) logged into endpoint SHERLOCK-WKS-01. This represents confirmed data exfiltration completing the attack chain: phishing \u2192 credential theft \u2192 cloud data theft \u2192 network exfiltration to threat actor infrastructure.",
+  "relative_timestamp_hours": 48.0,
+  "campaign_name": "SH-UserInvestigation-Nov2025",
+  "user_name": [
+    "aisherlock@bakerstreetlabs.io"
+  ],
+  "domain": "bakerstreetlabs.io",
+  "email": "aisherlock@bakerstreetlabs.io",
+  "department": "Security Research",
+  "host_name": "SHERLOCK-WKS-01",
+  "local_ip": [
+    169090451
+  ],
+  "local_port": [
+    54782
+  ],
+  "remote_ip": [
+    3112816887
+  ],
+  "remote_port": [
+    443
+  ],
+  "fw_name": [
+    "PA-5220-HQ-FW01"
+  ],
+  "fw_serial_number": [
+    "015351000098765"
+  ],
+  "asn": "AS200019",
+  "asn_name": "Alexhost SRL",
+  "threat_name": "Data Exfiltration to Moldova C2 Infrastructure",
+  "risk_score": "96",
+  "risk_rating": "Critical",
+  "verdict": "Malicious",
+  "log_source": "Palo Alto Networks Firewall Threat Logs",
+  "mitre_att&ck_tactic": "TA0010 - Exfiltration",
+  "mitre_att&ck_technique": "T1041 - Exfiltration Over C2 Channel",
+  "recommended_actions": "1. Immediately block destination IP 185.141.62.247 at perimeter firewall. 2. Isolate endpoint SHERLOCK-WKS-01 from network. 3. Block all traffic to ASN AS200019 (Alexhost SRL Moldova). 4. Capture network packet capture (PCAP) for forensic analysis of exfiltrated data. 5. Correlate exfiltrated file hashes with SharePoint download activity to determine exposure. 6. Implement DLP policies to block large encrypted uploads to external destinations. 7. Enable SSL decryption for outbound traffic inspection. 8. Review firewall logs for additional compromised endpoints with similar patterns. 9. Notify legal team and affected clients of confirmed data breach. 10. Consider law enforcement notification given foreign adversary involvement.",
+  "external_link": "https://panorama.company.local/php/pan/monitoring/index.php"
+}

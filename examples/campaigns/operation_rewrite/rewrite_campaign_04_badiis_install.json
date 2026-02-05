@@ -1,0 +1,62 @@
+{
+  "vendor": "Cortex XDR",
+  "product": "Endpoint Protection",
+  "severity": "Critical",
+  "category": "Persistence",
+  "alert_name": "Malicious IIS Module Registration - BadIIS SEO Poisoning Implant",
+  "description": "Cortex XDR detected critical persistence mechanism on compromised web server WEB-PROD-03 where attacker registered malicious native IIS module 'chongxiede.dll' (Chinese Pinyin for '\u91cd\u5199' meaning 'rewrite') into Internet Information Services pipeline for SEO poisoning attacks. File analysis shows the DLL (SHA256: c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a3b2c1d0e9f8a7b6c5d4e3f2a1b0c9d8) uploaded to C:\\Windows\\System32\\inetsrv\\ directory and registered via appcmd.exe command: 'C:\\Windows\\System32\\inetsrv\\appcmd.exe install module /name:chongxiede /image:C:\\Windows\\System32\\inetsrv\\chongxiede.dll /add:true'. The module exports RegisterModule function implementing OnBeginRequest and OnSendResponse handlers, enabling interception and manipulation of all HTTP traffic. Static analysis reveals BadIIS functionality: (1) XOR-encrypted configuration embedded in .data section containing C2 servers (hxxp://404.008php[.]com/, hxxp://103.6.235[.]26/), (2) User-Agent keyword list for search engine detection (google|yahoo|bing|viet|coccoc|timkhap|tuugo), (3) Referer header inspection logic for victim identification, (4) Built-in reverse proxy for traffic tunneling. The module's core logic: when search engine crawler detected (User-Agent match) \u2192 contact C2 \u2192 fetch SEO-poisoned HTML with Vietnamese keywords ('x\u00f4i l\u1ea1c tv tr\u1ef1c ti\u1ebfp b\u00f3ng \u0111\u00e1 h\u00f4m nay' - illegal soccer streaming terms) \u2192 serve to crawler for indexing; when victim detected (Referer from search engine) \u2192 contact C2 \u2192 proxy redirect to gambling/scam sites. Code contains Vietnamese search engine targeting: C\u1ed1c C\u1ed1c (popular Vietnamese browser/search), Timkhap (Vietnamese search aggregator), demonstrating Southeast Asia geographic focus. PE metadata shows suspicious compile timestamp (2025-03-15 18:34:22 UTC) and missing digital signature. IIS configuration modified to load module globally across all application pools (preCondition=\"\"), ensuring persistence across reboots. W3SVC service restart detected at 04:27 AM confirming module activation.",
+  "relative_timestamp_hours": 94.2,
+  "campaign_name": "OperationRewrite-GovEntity",
+  "host_name": "WEB-PROD-03",
+  "host_ip": [
+    171540592
+  ],
+  "user_name": [
+    "webadmin@govagency.vn"
+  ],
+  "domain": "govagency.vn",
+  "file_path": [
+    "C:\\Windows\\System32\\inetsrv\\chongxiede.dll"
+  ],
+  "file_name": [
+    "chongxiede.dll"
+  ],
+  "file_hash": "c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a3b2c1d0e9f8a7b6c5d4e3f2a1b0c9d8",
+  "file_sha256": [
+    "c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a3b2c1d0e9f8a7b6c5d4e3f2a1b0c9d8"
+  ],
+  "file_hash_sha256": "c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a3b2c1d0e9f8a7b6c5d4e3f2a1b0c9d8",
+  "initiator_sha256": [
+    "c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a3b2c1d0e9f8a7b6c5d4e3f2a1b0c9d8"
+  ],
+  "filesize": "147456",
+  "process_name": [
+    "appcmd.exe"
+  ],
+  "process_path": [
+    "C:\\Windows\\System32\\inetsrv\\appcmd.exe"
+  ],
+  "process_cmd": [
+    "C:\\Windows\\System32\\inetsrv\\appcmd.exe install module /name:chongxiede /image:C:\\Windows\\System32\\inetsrv\\chongxiede.dll /add:true"
+  ],
+  "parent_process_name": [
+    "cmd.exe"
+  ],
+  "parent_process_path": [
+    "C:\\Windows\\System32\\cmd.exe"
+  ],
+  "threat_name": "BadIIS - SEO Poisoning Module",
+  "attack_mode": "IIS Module Persistence",
+  "verdict": "Malicious",
+  "risk_score": "97",
+  "risk_rating": "Critical",
+  "policy_type": "Malware Protection",
+  "policy_description": "BadIIS malicious IIS module registered for SEO poisoning - targeting Vietnamese search engines",
+  "policy_severity": "Critical",
+  "policy_recommendation": "CRITICAL: Immediately uninstall IIS module via 'appcmd.exe delete module chongxiede', delete C:\\Windows\\System32\\inetsrv\\chongxiede.dll, restart IIS (iisreset), block C2 infrastructure (404.008php[.]com, 103.6.235[.]26), review applicationHost.config for unauthorized module entries, audit IIS logs for SEO poisoning indicators (Vietnamese keywords in responses, redirects to gambling sites), search for additional BadIIS variants (managed .NET modules, ASP.NET handlers, PHP scripts), monitor search engine rankings for government domain to detect poisoned results, implement IIS module whitelisting, enable Windows Defender Application Control, conduct forensic memory dump of w3wp.exe for injected code analysis",
+  "log_source": "Cortex XDR Agent - Malware Protection",
+  "event_id": "MALWARE_IIS_MODULE",
+  "external_link": "https://unit42.paloaltonetworks.com/operation-rewrite-seo-poisoning-campaign/",
+  "mitre_att&ck_tactic": "TA0003 - Persistence",
+  "mitre_att&ck_technique": "T1505 - Server Software Component"
+}

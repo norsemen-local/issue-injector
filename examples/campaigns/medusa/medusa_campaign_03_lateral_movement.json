@@ -1,0 +1,92 @@
+{
+  "vendor": "Palo Alto Networks",
+  "product": "Cortex XDR",
+  "severity": "High",
+  "category": "Lateral Movement",
+  "alert_name": "PSExec Lateral Movement to File Server",
+  "description": "Suspicious PSExec-based lateral movement detected from compromised workstation HR-WKS-089 (10.50.15.142) to production file server FS-PROD-01 (10.50.20.10) 75 minutes after credential dumping. The attacker used stolen Domain Admin credentials (IT-Admin@victimcorp.local) to remotely execute malicious payload via PsExec.exe service. Command: 'psexec.exe \\\\FS-PROD-01 -accepteula -s -d C:\\Windows\\Temp\\stage2.exe'. The remote service PSEXESVC was installed on FS-PROD-01 and executed payload with SYSTEM privileges. Network traffic shows SMB connections on port 445 and named pipe \\pipe\\PSEXESVC communication. The stage2.exe payload (SHA256: 7d68da8aa78929bb467682ddb080e750ed07cd21b1ee7a9f38cf2810eeb9cb95) is confirmed Medusa ransomware second-stage loader. This lateral movement technique leveraged legitimate Windows Admin Shares (C$, ADMIN$) to propagate the attack from the initial compromised workstation to critical file server infrastructure, enabling access to 15TB of sensitive corporate data.",
+  "relative_timestamp_hours": 70.52,
+  "campaign_name": "Medusa-VictimCorp",
+  "host_name": "FS-PROD-01",
+  "host_ip": [
+    172305930
+  ],
+  "host_os": "AGENT_OS_WINDOWS",
+  "user_name": [
+    "jsmith@victimcorp.local",
+    "IT-Admin@victimcorp.local",
+    "SYSTEM"
+  ],
+  "account_id": "S-1-5-21-2847561234-9876543210-4567123890-5001",
+  "domain": "victimcorp.local",
+  "cgo_name": [
+    "stage2.exe",
+    "psexesvc.exe"
+  ],
+  "cgo_cmd": [
+    "C:\\Windows\\Temp\\stage2.exe",
+    "C:\\Windows\\PSEXESVC.exe"
+  ],
+  "cgo_path": [
+    "C:\\Windows\\Temp\\stage2.exe",
+    "C:\\Windows\\PSEXESVC.exe"
+  ],
+  "cgo_sha256": [
+    "7d68da8aa78929bb467682ddb080e750ed07cd21b1ee7a9f38cf2810eeb9cb95"
+  ],
+  "cgo_pid": [
+    2341
+  ],
+  "initiator_sha256": [
+    "7d68da8aa78929bb467682ddb080e750ed07cd21b1ee7a9f38cf2810eeb9cb95"
+  ],
+  "os_parent_name": [
+    "services.exe"
+  ],
+  "os_parent_cmd": [
+    "C:\\Windows\\System32\\services.exe"
+  ],
+  "os_parent_pid": [
+    656
+  ],
+  "file_name": [
+    "stage2.exe",
+    "psexesvc.exe"
+  ],
+  "file_path": [
+    "C:\\Windows\\Temp\\stage2.exe",
+    "C:\\Windows\\PSEXESVC.exe"
+  ],
+  "file_hash": "7d68da8aa78929bb467682ddb080e750ed07cd21b1ee7a9f38cf2810eeb9cb95",
+  "file_sha256": [
+    "7d68da8aa78929bb467682ddb080e750ed07cd21b1ee7a9f38cf2810eeb9cb95"
+  ],
+  "filesize": "2458624",
+  "remote_ip": [
+    172298126
+  ],
+  "local_ip": [
+    172305930
+  ],
+  "remote_port": [
+    49876
+  ],
+  "local_port": [
+    445
+  ],
+  "threat_name": "Lateral Movement",
+  "attack_mode": "Lateral Movement via PSExec",
+  "verdict": "Malicious",
+  "risk_score": "92",
+  "risk_rating": "Critical",
+  "host_risk_level": "Critical",
+  "policy_type": "Network Security",
+  "policy_description": "PSExec lateral movement - Medusa ransomware propagation to file server",
+  "policy_severity": "Critical",
+  "policy_recommendation": "Isolate FS-PROD-01 immediately, kill PSEXESVC service, remove stage2.exe payload, disable IT-Admin account and force password reset, block SMB traffic from HR-WKS-089, enable Admin Share restrictions, audit all systems for PSEXESVC service, implement network segmentation",
+  "log_source": "Windows Security Event Log",
+  "event_id": "7045",
+  "external_link": "https://unit42.paloaltonetworks.com/medusa-ransomware-escalation-new-leak-site/",
+  "mitre_att&ck_tactic": "TA0008 - Lateral Movement",
+  "mitre_att&ck_technique": "T1021.002 - Remote Services: SMB/Windows Admin Shares"
+}

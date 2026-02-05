@@ -1,0 +1,48 @@
+{
+  "vendor": "Palo Alto Networks",
+  "product": "Advanced URL Filtering",
+  "severity": "High",
+  "category": "Impact",
+  "alert_name": "SEO Poisoning Victim Redirection - Government Domain Redirecting to Gambling Site",
+  "description": "Advanced URL Filtering detected SEO poisoning victim redirection where legitimate Vietnamese user searching for 'xoi lac tv truc tiep bong da' (illegal soccer streaming) clicked poisoned Google search result pointing to govagency[.]vn and was immediately redirected to attacker-controlled gambling website bet365-vn[.]com (194.147.32[.]58). Traffic analysis shows HTTP request from Vietnamese residential IP 113.161.92[.]18 (AS7552, Viettel) with Referer header 'https://www.google.com.vn/search?q=xoi+lac+tv+truc+tiep+bong+da' indicating victim arrived from Google search results. BadIIS module on govagency[.]vn detected Referer keyword match ('google'), classified visitor as victim (not crawler), contacted C2 server 404.008php[.]com, and proxied HTTP 302 redirect response: 'HTTP/1.1 302 Found\\r\\nLocation: https://bet365-vn[.]com/live-soccer?ref=seo_poisoning&campaign=operation_rewrite\\r\\n'. The redirect URL contains tracking parameters (ref=seo_poisoning, campaign=operation_rewrite) for attribution tracking by CL-UNK-1037 threat actor. URL Filtering categorized destination bet365-vn[.]com as 'online-gambling' (Category: gambling, Risk: high) and blocked access, preventing victim from reaching scam site. However, blocking occurred AFTER redirect was initiated, meaning government domain reputation already exploited. User experience: victim clicked govagency[.]vn in Google results \u2192 brief loading indicator \u2192 blocked by corporate firewall with message 'Access to gambling sites prohibited'. Destination analysis: bet365-vn[.]com is typosquatting legitimate betting site bet365.com, registered 2025-03-08 via NameSilo (Panama registrar favored by cybercriminals), hosting Vietnamese-language gambling content without proper licensing. Threat impact assessment: government domain govagency[.]vn appearing in Google results for illegal streaming keywords severely damages public trust in government web presence. Expected victim count: Google Search Console data shows govagency[.]vn receiving 2,847 clicks for gambling/streaming keywords in past 14 days since BadIIS installation.",
+  "relative_timestamp_hours": 92.8,
+  "campaign_name": "OperationRewrite-GovEntity",
+  "host_name": "WEB-PROD-03",
+  "host_ip": [
+    171540592
+  ],
+  "user_name": [
+    "webadmin@govagency.vn"
+  ],
+  "domain": "govagency.vn",
+  "local_ip": [
+    171540592
+  ],
+  "remote_ip": [
+    1908118546
+  ],
+  "local_port": [
+    80
+  ],
+  "remote_port": [
+    53214
+  ],
+  "dns_query_name": [
+    "govagency.vn",
+    "bet365-vn.com"
+  ],
+  "threat_name": "BadIIS - Victim Redirection",
+  "attack_mode": "SEO Poisoning - Phase 2 (Victim Trap)",
+  "verdict": "Malicious",
+  "risk_score": "88",
+  "risk_rating": "High",
+  "policy_type": "Web Security",
+  "policy_description": "Government web server redirecting search engine victims to gambling scam sites",
+  "policy_severity": "High",
+  "policy_recommendation": "HIGH: Remove BadIIS module from WEB-PROD-03 immediately, block bet365-vn[.]com and destination IP 194.147.32[.]58, submit Google abuse report for govagency[.]vn poisoning (Search Console \u2192 Security & Manual Actions \u2192 Report issue), request emergency de-indexing of poisoned pages, monitor URL Filtering logs for additional gambling redirects from government domain (search for HTTP 302 responses from govagency[.]vn), calculate victim impact using Google Search Console impression/click data for gambling keywords, issue public advisory warning citizens about government domain compromise, engage public relations team for reputation management, implement WAF rules to block Referer-based redirects",
+  "log_source": "Advanced URL Filtering",
+  "event_id": "URL_FILTER_REDIRECT",
+  "external_link": "https://unit42.paloaltonetworks.com/operation-rewrite-seo-poisoning-campaign/",
+  "mitre_att&ck_tactic": "TA0040 - Impact",
+  "mitre_att&ck_technique": "T1496 - Resource Hijacking"
+}

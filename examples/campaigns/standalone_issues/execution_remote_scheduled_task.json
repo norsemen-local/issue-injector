@@ -1,0 +1,72 @@
+{
+  "vendor": "Microsoft",
+  "product": "Microsoft Defender for Endpoint",
+  "severity": "High",
+  "category": "Execution",
+  "alert_name": "Uncommon Remote Scheduled Task Creation for Lateral Movement",
+  "description": "Suspicious remote scheduled task creation detected on production server WEB-APP-02 (10.10.40.75) at 2024-11-10 16:18:33 UTC using schtasks.exe. The command 'schtasks.exe /Create /S WEB-APP-02 /TN \"WindowsUpdateCheck\" /TR \"C:\\Windows\\Temp\\update.exe\" /SC ONCE /ST 16:30 /RU SYSTEM' was executed from workstation IT-ADMIN-05 (10.10.10.99) by user itadmin@company.local. The scheduled task 'WindowsUpdateCheck' was configured to run malicious payload 'update.exe' with SYSTEM privileges at 16:30 UTC. The payload is identified as Cobalt Strike beacon (SHA256: a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8) previously unseen in the environment. At execution time 16:30, the task successfully launched establishing C2 communication with 203.0.113.45:8443 (bulletproof hosting, Netherlands). This lateral movement technique leverages legitimate Windows Task Scheduler to achieve persistence and remote code execution. Network logs show the attacker used compromised Domain Admin credentials (DA-BACKUP) obtained 3 hours earlier via credential dumping on DC01. The scheduled task bypassed application whitelisting by executing from trusted Windows directory. Five additional servers (DB-PROD-01, DB-PROD-02, APP-SERVER-01, APP-SERVER-02, FILE-SERVER-03) show similar suspicious tasks created within 10-minute window.",
+  "host_name": "WEB-APP-02",
+  "host_ip": [
+    168434763
+  ],
+  "host_os": "AGENT_OS_WINDOWS",
+  "user_name": [
+    "itadmin@company.local",
+    "SYSTEM"
+  ],
+  "account_id": "S-1-5-21-3623811015-3361044348-30300820-9001",
+  "domain": "company.local",
+  "cgo_name": [
+    "update.exe",
+    "schtasks.exe"
+  ],
+  "cgo_cmd": [
+    "C:\\Windows\\Temp\\update.exe",
+    "schtasks.exe /Create /S WEB-APP-02 /TN \"WindowsUpdateCheck\" /TR \"C:\\Windows\\Temp\\update.exe\" /SC ONCE /ST 16:30 /RU SYSTEM"
+  ],
+  "cgo_path": [
+    "C:\\Windows\\Temp\\update.exe",
+    "C:\\Windows\\System32\\schtasks.exe"
+  ],
+  "cgo_pid": [
+    8912
+  ],
+  "os_parent_name": [
+    "powershell.exe"
+  ],
+  "os_parent_cmd": [
+    "powershell.exe -NoProfile -WindowStyle Hidden"
+  ],
+  "os_parent_pid": [
+    7234
+  ],
+  "file_name": [
+    "update.exe"
+  ],
+  "file_path": [
+    "C:\\Windows\\Temp\\update.exe"
+  ],
+  "file_hash": "a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8",
+  "file_sha256": [
+    "a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8"
+  ],
+  "initiator_sha256": [
+    "a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8"
+  ],
+  "filesize": "245760",
+  "threat_name": "Remote Scheduled Task - Lateral Movement",
+  "attack_mode": "Lateral Movement via Scheduled Task",
+  "verdict": "Malicious",
+  "risk_score": "94",
+  "risk_rating": "Critical",
+  "host_risk_level": "Critical",
+  "policy_type": "Endpoint Protection",
+  "policy_description": "Remote scheduled task creation for lateral movement and persistence",
+  "policy_severity": "Critical",
+  "policy_recommendation": "Delete scheduled task immediately on all 6 affected servers, quarantine update.exe, isolate affected servers from network, block C2 IP 203.0.113.45, reset DA-BACKUP credentials and all Domain Admin passwords, investigate credential dumping on DC01, enable scheduled task creation auditing, review Task Scheduler logs across all domain systems",
+  "log_source": "Windows Security Event Log",
+  "event_id": "4698",
+  "external_link": "https://attack.mitre.org/techniques/T1053/",
+  "mitre_att&ck_tactic": "TA0002 - Execution",
+  "mitre_att&ck_technique": "T1053.005 - Scheduled Task/Job: Scheduled Task"
+}

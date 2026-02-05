@@ -1,0 +1,57 @@
+{
+  "vendor": "Microsoft",
+  "product": "Microsoft Defender for Endpoint",
+  "severity": "High",
+  "category": "Impact",
+  "alert_name": "Wbadmin Deleted System Backups in Quiet Mode",
+  "description": "The Windows Backup utility (wbadmin.exe) was executed with delete catalog command in quiet mode on server FILE-SRV-05 (172.16.95.220) at 2024-11-12 18:42:33 UTC. The command 'wbadmin delete catalog -quiet' was used to silently delete all Windows Server backup catalogs, preventing system recovery. This technique is commonly employed by ransomware operators to inhibit system recovery and maximize damage before deploying encryption payloads. The command was executed with SYSTEM privileges and ran in quiet mode (-quiet flag) to avoid user prompts. The deletion affected 3 backup catalogs containing 47 restore points spanning 90 days of backups. The wbadmin process was spawned by powershell.exe which was launched from a suspicious scheduled task 'WindowsUpdateCheck' created 15 minutes earlier. Network analysis shows the server communicated with known ransomware C2 infrastructure (45.142.214.98) immediately before backup deletion. This activity strongly indicates pre-ransomware preparation phase.",
+  "host_name": "FILE-SRV-05",
+  "host_ip": [
+    2886781404
+  ],
+  "host_os": "AGENT_OS_WINDOWS",
+  "user_name": [
+    "SYSTEM"
+  ],
+  "account_id": "S-1-5-18",
+  "domain": "company.local",
+  "cgo_name": [
+    "wbadmin.exe"
+  ],
+  "cgo_cmd": [
+    "wbadmin delete catalog -quiet"
+  ],
+  "cgo_path": [
+    "C:\\Windows\\System32\\wbadmin.exe"
+  ],
+  "os_parent_name": [
+    "powershell.exe"
+  ],
+  "os_parent_cmd": [
+    "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\\ProgramData\\update.ps1"
+  ],
+  "os_parent_pid": [
+    8745
+  ],
+  "remote_ip": [
+    766405730
+  ],
+  "remote_port": [
+    443
+  ],
+  "threat_name": "Ransomware Preparation",
+  "attack_mode": "Impact",
+  "verdict": "Malicious",
+  "risk_score": "93",
+  "risk_rating": "High",
+  "host_risk_level": "Critical",
+  "policy_type": "Endpoint Protection",
+  "policy_description": "System backup deletion - ransomware inhibit recovery tactic",
+  "policy_severity": "High",
+  "policy_recommendation": "Isolate server immediately, terminate all suspicious processes, restore from offsite backups, investigate scheduled task creation, block C2 IP address, scan for ransomware payload",
+  "log_source": "Windows Security Event Log",
+  "event_id": "4688",
+  "external_link": "https://security.microsoft.com/machines",
+  "mitre_att&ck_tactic": "TA0040 - Impact",
+  "mitre_att&ck_technique": "T1490 - Inhibit System Recovery"
+}

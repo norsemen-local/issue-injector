@@ -1,0 +1,365 @@
+{
+  "working": [
+    {
+      "field": "user_id",
+      "value": "user-12345",
+      "type": "str",
+      "category": "User/Identity Fields"
+    },
+    {
+      "field": "display_name",
+      "value": "John Doe",
+      "type": "str",
+      "category": "User/Identity Fields"
+    },
+    {
+      "field": "department",
+      "value": "IT Security",
+      "type": "str",
+      "category": "User/Identity Fields"
+    },
+    {
+      "field": "given_name",
+      "value": "John",
+      "type": "str",
+      "category": "User/Identity Fields"
+    },
+    {
+      "field": "surname",
+      "value": "Doe",
+      "type": "str",
+      "category": "User/Identity Fields"
+    },
+    {
+      "field": "manager_name",
+      "value": "Jane Smith",
+      "type": "str",
+      "category": "User/Identity Fields"
+    },
+    {
+      "field": "asset_name",
+      "value": "LAPTOP-ABC123",
+      "type": "str",
+      "category": "Device/Asset Fields"
+    },
+    {
+      "field": "attachment_count",
+      "value": 2,
+      "type": "int",
+      "category": "Email/Phishing Fields"
+    },
+    {
+      "field": "attachment_name",
+      "value": "invoice.pdf",
+      "type": "str",
+      "category": "Email/Phishing Fields"
+    },
+    {
+      "field": "attachment_size",
+      "value": "1024000",
+      "type": "str",
+      "category": "Email/Phishing Fields"
+    },
+    {
+      "field": "email_sender_ip",
+      "value": "203.0.113.5",
+      "type": "str",
+      "category": "Email/Phishing Fields"
+    },
+    {
+      "field": "email_size",
+      "value": 50000,
+      "type": "int",
+      "category": "Email/Phishing Fields"
+    },
+    {
+      "field": "email_internal_message_id",
+      "value": "msg-id-12345",
+      "type": "str",
+      "category": "Email/Phishing Fields"
+    },
+    {
+      "field": "email_recipients_count",
+      "value": 5,
+      "type": "int",
+      "category": "Email/Phishing Fields"
+    },
+    {
+      "field": "email_to_count",
+      "value": "3",
+      "type": "str",
+      "category": "Email/Phishing Fields"
+    },
+    {
+      "field": "detection_id",
+      "value": 99887766,
+      "type": "int",
+      "category": "Threat/Detection Fields"
+    },
+    {
+      "field": "bugtraq",
+      "value": "BID-12345",
+      "type": "str",
+      "category": "Threat/Detection Fields"
+    },
+    {
+      "field": "cve",
+      "value": "CVE-2024-1234",
+      "type": "str",
+      "category": "Threat/Detection Fields"
+    },
+    {
+      "field": "cve_id",
+      "value": "CVE-2024-1234",
+      "type": "str",
+      "category": "Threat/Detection Fields"
+    },
+    {
+      "field": "threat_actor",
+      "value": "APT29",
+      "type": "str",
+      "category": "Threat/Detection Fields"
+    },
+    {
+      "field": "policy_details",
+      "value": "Policy requires MFA for admin access",
+      "type": "str",
+      "category": "Policy/Compliance Fields"
+    },
+    {
+      "field": "policy_description",
+      "value": "Multi-factor authentication policy",
+      "type": "str",
+      "category": "Policy/Compliance Fields"
+    },
+    {
+      "field": "policy_severity",
+      "value": "High",
+      "type": "str",
+      "category": "Policy/Compliance Fields"
+    },
+    {
+      "field": "policy_type",
+      "value": "Security",
+      "type": "str",
+      "category": "Policy/Compliance Fields"
+    }
+  ],
+  "failed": [
+    {
+      "field": "parent_process_ids",
+      "value": [
+        "12345",
+        "67890"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The parent_process_ids parameter value ['12345', '67890'] is invalid.\"}}",
+      "category": "Process Fields"
+    },
+    {
+      "field": "parent_process_cmd",
+      "value": [
+        "C:\\Windows\\explorer.exe"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The parent_process_cmd parameter value ['C:\\\\\\\\Windows\\\\\\\\explorer.exe'] is invalid.\"}}",
+      "category": "Process Fields"
+    },
+    {
+      "field": "parent_process_file_path",
+      "value": [
+        "C:\\Windows\\explorer.exe"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The parent_process_file_path parameter value ['C:\\\\\\\\Windows\\\\\\\\explorer.exe'] is invalid.\"}}",
+      "category": "Process Fields"
+    },
+    {
+      "field": "parent_process_md5",
+      "value": [
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The parent_process_md5 parameter value ['d41d8cd98f00b204e9800998ecf8427e'] is invalid.\"}}",
+      "category": "Process Fields"
+    },
+    {
+      "field": "parent_process_name",
+      "value": [
+        "explorer.exe"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The parent_process_name parameter value ['explorer.exe'] is invalid.\"}}",
+      "category": "Process Fields"
+    },
+    {
+      "field": "parent_process_path",
+      "value": [
+        "C:\\Windows"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The parent_process_path parameter value ['C:\\\\\\\\Windows'] is invalid.\"}}",
+      "category": "Process Fields"
+    },
+    {
+      "field": "parent_process_sha256",
+      "value": [
+        "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The parent_process_sha256 parameter value ['e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'] is invalid.\"}}",
+      "category": "Process Fields"
+    },
+    {
+      "field": "process_id",
+      "value": [
+        "1001",
+        "1002"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The process_id parameter value ['1001', '1002'] is invalid.\"}}",
+      "category": "Process Fields"
+    },
+    {
+      "field": "process_cmd",
+      "value": [
+        "notepad.exe"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The process_cmd parameter value ['notepad.exe'] is invalid.\"}}",
+      "category": "Process Fields"
+    },
+    {
+      "field": "process_md5",
+      "value": [
+        "abc123def456"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The process_md5 parameter value ['abc123def456'] is invalid.\"}}",
+      "category": "Process Fields"
+    },
+    {
+      "field": "user_groups",
+      "value": [
+        "Domain Users",
+        "Administrators"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The user_groups parameter value ['Domain Users', 'Administrators'] is invalid.\"}}",
+      "category": "User/Identity Fields"
+    },
+    {
+      "field": "user_sid",
+      "value": [
+        "S-1-5-21-123456789-123456789-123456789-1001"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The user_sid parameter value ['S-1-5-21-123456789-123456789-123456789-1001'] is invalid.\"}}",
+      "category": "User/Identity Fields"
+    },
+    {
+      "field": "source_geolocation",
+      "value": [
+        "US",
+        "United States"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The source_geolocation parameter value ['US', 'United States'] is invalid.\"}}",
+      "category": "Network Fields"
+    },
+    {
+      "field": "destination_geolocation",
+      "value": [
+        "CN",
+        "China"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The destination_geolocation parameter value ['CN', 'China'] is invalid.\"}}",
+      "category": "Network Fields"
+    },
+    {
+      "field": "destination_networks",
+      "value": [
+        "10.0.0.0/8"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The destination_networks parameter value ['10.0.0.0/8'] is invalid.\"}}",
+      "category": "Network Fields"
+    },
+    {
+      "field": "source_networks",
+      "value": [
+        "192.168.0.0/16"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The source_networks parameter value ['192.168.0.0/16'] is invalid.\"}}",
+      "category": "Network Fields"
+    },
+    {
+      "field": "traffic_direction",
+      "value": [
+        "OUTBOUND"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The traffic_direction parameter value ['OUTBOUND'] is invalid.\"}}",
+      "category": "Network Fields"
+    },
+    {
+      "field": "protocol_names",
+      "value": [
+        "TCP",
+        "HTTPS"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The protocol_names parameter value ['TCP', 'HTTPS'] is invalid.\"}}",
+      "category": "Network Fields"
+    },
+    {
+      "field": "device_os_name",
+      "value": [
+        "Windows 10 Pro"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The device_os_name parameter value ['Windows 10 Pro'] is invalid.\"}}",
+      "category": "Device/Asset Fields"
+    },
+    {
+      "field": "device_os_version",
+      "value": [
+        "10.0.19045"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The device_os_version parameter value ['10.0.19045'] is invalid.\"}}",
+      "category": "Device/Asset Fields"
+    },
+    {
+      "field": "device_ou",
+      "value": [
+        "CN=Computers,DC=corp,DC=local"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The device_ou parameter value ['CN=Computers,DC=corp,DC=local'] is invalid.\"}}",
+      "category": "Device/Asset Fields"
+    },
+    {
+      "field": "agent_id",
+      "value": "agent-uuid-12345",
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The agent_id parameter value agent-uuid-12345 is invalid.\"}}",
+      "category": "Device/Asset Fields"
+    },
+    {
+      "field": "agents_id",
+      "value": [
+        "agent-001",
+        "agent-002"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The agents_id parameter value ['agent-001', 'agent-002'] is invalid.\"}}",
+      "category": "Device/Asset Fields"
+    },
+    {
+      "field": "log_source_name",
+      "value": [
+        "Firewall-PA-220"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The log_source_name parameter value ['Firewall-PA-220'] is invalid.\"}}",
+      "category": "Threat/Detection Fields"
+    },
+    {
+      "field": "log_source_type",
+      "value": [
+        "NGFW"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The log_source_type parameter value ['NGFW'] is invalid.\"}}",
+      "category": "Threat/Detection Fields"
+    },
+    {
+      "field": "policy_actions",
+      "value": [
+        "ALERT",
+        "BLOCK"
+      ],
+      "error": "{\"reply\": {\"err_code\": 500, \"err_msg\": \"Got an invalid input while processing XDR public API\", \"err_extra\": \"The policy_actions parameter value ['ALERT', 'BLOCK'] is invalid.\"}}",
+      "category": "Policy/Compliance Fields"
+    }
+  ],
+  "errors": []
+}

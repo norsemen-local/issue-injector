@@ -1,0 +1,164 @@
+{
+  "$schema": "http://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cortex.xsiam/alert-schema/v1.0",
+  "title": "Cortex XSIAM Alert Schema",
+  "description": "JSON Schema for alerts to be injected into Cortex XSIAM. Validates that required fields are present and properly formatted.",
+  
+  "type": "object",
+  
+  "required": [
+    "vendor",
+    "product",
+    "severity",
+    "category"
+  ],
+  
+  "properties": {
+    "vendor": {
+      "type": "string",
+      "description": "Alert vendor/source (e.g., 'Cortex', 'Splunk', 'Microsoft', 'DemoIncidentGenerator')",
+      "minLength": 1
+    },
+    
+    "product": {
+      "type": "string",
+      "description": "Alert product/source instance (e.g., 'XDR', 'SOAR', 'Splunk Integration 1')",
+      "minLength": 1
+    },
+    
+    "severity": {
+      "type": "string",
+      "enum": ["Informational", "Low", "Medium", "High", "Critical"],
+      "description": "Alert severity level. Must be one of the predefined values."
+    },
+    
+    "category": {
+      "type": "string",
+      "description": "Alert category/classification. Can be a MITRE attack category or custom value. Examples: Phishing, Lateral Movement, Privilege Escalation, Reconnaissance, etc.",
+      "minLength": 1
+    },
+    
+    "title": {
+      "type": "string",
+      "description": "Alert title/name - brief summary of the alert",
+      "minLength": 1
+    },
+    
+    "details": {
+      "type": "string",
+      "description": "Detailed description of the alert - what triggered it and why it's important"
+    },
+    
+    "alert_id": {
+      "type": "string",
+      "description": "External/source alert identifier for tracking purposes"
+    },
+    
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp when the alert was detected (e.g., '2025-11-23T05:20:00.976Z')"
+    },
+    
+    "remote_ip": {
+      "type": "string",
+      "description": "Source IP address involved in the alert"
+    },
+    
+    "remote_host": {
+      "type": "string",
+      "description": "Source hostname/domain involved in the alert"
+    },
+    
+    "host_name": {
+      "type": "string",
+      "description": "Target hostname affected by the alert"
+    },
+    
+    "initiated_by": {
+      "type": "string",
+      "description": "Username of the user who initiated the action"
+    },
+    
+    "group_id": {
+      "type": "string",
+      "description": "Group or organization ID relevant to the alert"
+    },
+    
+    "initiator_sha256": {
+      "type": "string",
+      "description": "SHA256 hash of the initiating process/file",
+      "pattern": "^[a-fA-F0-9]{64}$"
+    },
+    
+    "target_process_sha256": {
+      "type": "string",
+      "description": "SHA256 hash of the target process",
+      "pattern": "^[a-fA-F0-9]{64}$"
+    },
+    
+    "file_sha256": {
+      "type": "string",
+      "description": "SHA256 hash of relevant file",
+      "pattern": "^[a-fA-F0-9]{64}$"
+    },
+    
+    "os_parent_cmd": {
+      "type": "string",
+      "description": "Parent command line"
+    },
+    
+    "os_parent_user_name": {
+      "type": "string",
+      "description": "Parent process owner username"
+    },
+    
+    "mitre_defs": {
+      "type": "object",
+      "description": "MITRE ATT&CK tactics and techniques. Format: { 'TA0001': ['T1234', 'T1235'] }",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    
+    "source": {
+      "type": "string",
+      "description": "Source system or integration that generated the alert"
+    },
+    
+    "status": {
+      "type": "integer",
+      "description": "Alert status code (e.g., 0=pending, 1=active, 2=resolved)"
+    }
+  },
+  
+  "additionalProperties": true,
+  
+  "examples": [
+    {
+      "vendor": "Cortex",
+      "product": "XDR",
+      "severity": "High",
+      "category": "Phishing",
+      "title": "Phishing Email Detected",
+      "details": "User received phishing email attempting credential theft",
+      "initiated_by": "doris_moreno",
+      "host_name": "DMORENO-LT81571",
+      "remote_ip": "192.168.1.100"
+    },
+    {
+      "vendor": "DemoIncidentGenerator",
+      "product": "Splunk Integration 1",
+      "severity": "High",
+      "category": "Lateral Movement",
+      "title": "Impossible Travel Detected",
+      "details": "User logged in from impossible location in short time window",
+      "initiated_by": "karen_castro",
+      "timestamp": "2022-05-04T19:35:49.587134Z",
+      "remote_ip": "176.10.104.240"
+    }
+  ]
+}

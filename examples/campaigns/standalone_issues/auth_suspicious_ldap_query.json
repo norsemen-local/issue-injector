@@ -1,0 +1,41 @@
+{
+  "vendor": "Microsoft",
+  "product": "Microsoft Defender for Identity",
+  "severity": "Medium",
+  "category": "Identity Threat",
+  "alert_name": "Suspicious LDAP Enumeration Query Executed",
+  "description": "Service account svc_monitoring@company.local executed an unusual LDAP search query targeting Active Directory from host WORKSTATION-789 (10.20.15.88) at 2024-11-23 09:45:12 UTC. The LDAP query '(&(objectCategory=person)(objectClass=user)(adminCount=1))' was designed to enumerate all privileged accounts with administrative rights in the domain. This query returned 47 privileged user accounts including Domain Admins, Enterprise Admins, and Schema Admins. The service account typically performs only basic LDAP lookups for authentication purposes and has never executed enumeration queries in the past 90 days. This activity pattern is consistent with Active Directory reconnaissance techniques used by attackers to identify high-value targets for credential theft or lateral movement. The query was executed using PowerShell's DirectorySearcher class, which is commonly used in post-exploitation frameworks like PowerView and BloodHound.",
+  "host_name": "WORKSTATION-789",
+  "host_ip": [
+    169100120
+  ],
+  "host_os": "AGENT_OS_WINDOWS",
+  "user_name": [
+    "svc_monitoring@company.local"
+  ],
+  "account_id": "S-1-5-21-3623811015-3361044348-30300820-2145",
+  "domain": "company.local",
+  "cgo_name": [
+    "powershell.exe"
+  ],
+  "cgo_cmd": [
+    "powershell.exe -ExecutionPolicy Bypass -NoProfile"
+  ],
+  "cgo_path": [
+    "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+  ],
+  "threat_name": "Active Directory Reconnaissance",
+  "attack_mode": "Discovery",
+  "verdict": "Suspicious",
+  "risk_score": "71",
+  "risk_rating": "Medium",
+  "policy_type": "Anomaly Detection",
+  "policy_description": "Unusual LDAP enumeration query by service account",
+  "policy_severity": "Medium",
+  "policy_recommendation": "Investigate service account usage, review PowerShell command history, check for lateral movement indicators",
+  "log_source": "Windows Security Event Log",
+  "event_id": "4662",
+  "detection_url": "https://portal.atp.azure.com/alerts",
+  "mitre_att&ck_tactic": "TA0007 - Discovery",
+  "mitre_att&ck_technique": "T1087.002 - Account Discovery: Domain Account"
+}

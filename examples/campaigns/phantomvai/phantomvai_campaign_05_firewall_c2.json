@@ -1,0 +1,65 @@
+{
+  "vendor": "Palo Alto Networks",
+  "product": "Next-Generation Firewall",
+  "severity": "High",
+  "category": "Command and Control",
+  "alert_name": "Command-and-Control Beacon Traffic to Known Malicious Infrastructure",
+  "description": "Palo Alto Networks firewall PA-3220-FW01 detected suspicious C2 beacon communication from compromised workstation ACCT-WKS-047 (10.30.25.88) to known malicious IP address 91.218.114.77:8443 (AS201133, Russia) 11 minutes after PhantomVAI Loader execution. The workstation initiated HTTPS connection with non-standard SSL certificate (self-signed, issued to 'localhost') displaying classic C2 beacon pattern: regular 60-second intervals with small encrypted payloads (avg 487 bytes request, 1.2KB response). Advanced Threat Prevention engine identified the traffic as matching PhantomVAI Loader C2 communication signatures based on SSL fingerprint, beacon timing, and TLS SNI anomalies. The destination IP 91.218.114.77 is flagged in Palo Alto Networks threat intelligence feeds as active malware command-and-control infrastructure associated with AsyncRAT, XWorm, and Katz Stealer campaigns. Network forensics show 17 successful beacon exchanges before firewall blocking was enabled. User-Agent string 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' attempts to mimic legitimate browser traffic but originates from non-browser process. Threat severity escalated from Medium to High due to active data exfiltration indicators.",
+  "relative_timestamp_hours": 47.4,
+  "campaign_name": "PhantomVAI-TechCorp",
+  "host_name": "ACCT-WKS-047",
+  "host_ip": [
+    171540568
+  ],
+  "user_name": [
+    "mthomas@techcorp.local"
+  ],
+  "domain": "techcorp.local",
+  "local_ip": [
+    171540568
+  ],
+  "remote_ip": [
+    1541010029
+  ],
+  "local_port": [
+    54782
+  ],
+  "remote_port": [
+    8443
+  ],
+  "dns_query_name": [
+    "update-services.net"
+  ],
+  "source_zone_name": [
+    "Trust"
+  ],
+  "destination_zone_name": [
+    "Untrust"
+  ],
+  "fw_name": [
+    "PA-3220-FW01"
+  ],
+  "fw_rule_name": [
+    "Outbound-Internet-Access"
+  ],
+  "fw_rule_id": [
+    "rule-587"
+  ],
+  "fw_serial_number": [
+    "015351000012345"
+  ],
+  "threat_name": "PhantomVAI Loader - C2 Beacon",
+  "attack_mode": "Command and Control Communication",
+  "verdict": "Malicious",
+  "risk_score": "93",
+  "risk_rating": "Critical",
+  "policy_type": "Network Security",
+  "policy_description": "Active C2 beacon communication - PhantomVAI Loader infrastructure",
+  "policy_severity": "Critical",
+  "policy_recommendation": "CRITICAL: Block IP 91.218.114.77 immediately, reset TCP sessions from ACCT-WKS-047, isolate workstation from network, enable DNS sinkholing for update-services[.]net, create firewall policy blocking AS201133 (Russia hosting), review firewall logs for lateral movement attempts, analyze 17 beacon responses for exfiltrated data, engage incident response team",
+  "log_source": "PA-3220 Firewall Threat Log",
+  "event_id": "THREAT",
+  "external_link": "https://unit42.paloaltonetworks.com/phantomvai-loader-delivers-infostealers/",
+  "mitre_att&ck_tactic": "TA0011 - Command and Control",
+  "mitre_att&ck_technique": "T1071.001 - Application Layer Protocol: Web Protocols"
+}

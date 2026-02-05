@@ -1,0 +1,563 @@
+{
+  "working": [
+    {
+      "field": "event_type",
+      "variant": "Array of integers",
+      "value": [
+        1,
+        2
+      ],
+      "value_type": "list",
+      "status_code": 200,
+      "success": true,
+      "response": {
+        "reply": "cf53cefc-8ab9-43d4-a6e6-5d8e90b69af6"
+      }
+    },
+    {
+      "field": "event_type",
+      "variant": "Empty array",
+      "value": [],
+      "value_type": "list",
+      "status_code": 200,
+      "success": true,
+      "response": {
+        "reply": "2bfbc0d0-e884-4c8c-baf2-8852555cfae8"
+      }
+    }
+  ],
+  "failed": [
+    {
+      "field": "mitre_tactic_id",
+      "variant": "String - Single ID",
+      "value": "TA0001",
+      "value_type": "str",
+      "status_code": 500,
+      "success": false,
+      "response": {
+        "err_code": 500,
+        "err_msg": "An unexpected error occurred by XDR public API",
+        "err_extra": "field mitretacticid should be type of List, got TA0001"
+      }
+    },
+    {
+      "field": "mitre_tactic_id",
+      "variant": "String - Multiple IDs comma",
+      "value": "TA0001,TA0002",
+      "value_type": "str",
+      "status_code": 500,
+      "success": false,
+      "response": {
+        "err_code": 500,
+        "err_msg": "An unexpected error occurred by XDR public API",
+        "err_extra": "field mitretacticid should be type of List, got TA0001,TA0002"
+      }
+    },
+    {
+      "field": "mitre_tactic_id",
+      "variant": "String - Multiple IDs space",
+      "value": "TA0001 TA0002",
+      "value_type": "str",
+      "status_code": 500,
+      "success": false,
+      "response": {
+        "err_code": 500,
+        "err_msg": "An unexpected error occurred by XDR public API",
+        "err_extra": "field mitretacticid should be type of List, got TA0001 TA0002"
+      }
+    },
+    {
+      "field": "mitre_tactic_id",
+      "variant": "Array - Single ID",
+      "value": [
+        "TA0001"
+      ],
+      "value_type": "list",
+      "status_code": 500,
+      "success": false,
+      "response": {
+        "err_code": 500,
+        "err_msg": "Got an invalid input while processing XDR public API",
+        "err_extra": "The mitre_tactic_id parameter value ['TA0001'] is invalid."
+      }
+    },
+    {
+      "field": "mitre_tactic_id",
+      "variant": "Array - Multiple IDs",
+      "value": [
+        "TA0001",
+        "TA0002"
+      ],
+      "value_type": "list",
+      "status_code": 500,
+      "success": false,
+      "response": {
+        "err_code": 500,
+        "err_msg": "Got an invalid input while processing XDR public API",
+        "err_extra": "The mitre_tactic_id parameter value ['TA0001', 'TA0002'] is invalid."
+      }
+    },
+    {
+      "field": "mitre_tactic_id",
+      "variant": "String - With description",
+      "value": "TA0001 - Initial Access",
+      "value_type": "str",
+      "status_code": 500,
+      "success": false,
+      "response": {
+        "err_code": 500,
+        "err_msg": "An unexpected error occurred by XDR public API",
+        "err_extra": "field mitretacticid should be type of List, got TA0001 - Initial Access"
+      }
+    },
+    {
+      "field": "mitre_tactic_id",
+      "variant": "Array - With descriptions",
+      "value": [
+        "TA0001 - Initial Access",
+        "TA0002 - Execution"
+      ],
+      "value_type": "list",
+      "status_code": 500,
+      "success": false,
+      "response": {
+        "err_code": 500,
+        "err_msg": "Got an invalid input while processing XDR public API",
+        "err_extra": "The mitre_tactic_id parameter value ['TA0001 - Initial Access', 'TA0002 - Execution'] is invalid."
+      }
+    },
+    {
+      "field": "mitre_tactic_id",
+      "variant": "Empty string",
+      "value": "",
+      "value_type": "str",
+      "status_code": 500,
+      "success": false,
+      "response": {
+        "err_code": 500,
+        "err_msg": "An unexpected error occurred by XDR public API",
+        "err_extra": "field mitretacticid should be type of List, got "
+      }
+    },
+    {
+      "field": "mitre_tactic_id",
+      "variant": "Empty array",
+      "value": [],
+      "value_type": "list",
+      "status_code": 500,
+      "success": false,
+      "response": {
+        "err_code": 500,
+        "err_msg": "Got an invalid input while processing XDR public API",
+        "err_extra": "The mitre_tactic_id parameter value [] is invalid."
+      }
+    },
+    {
+      "field": "mitre_tactic_id",
+      "variant": "Just number",
+      "value": "1",
+      "value_type": "str",
+      "status_code": 500,
+      "success": false,
+      "response": {
+        "err_code": 500,
+        "err_msg": "An unexpected error occurred by XDR public API",
+        "err_extra": "field mitretacticid should be type of List, got 1"
+      }
+    },
+    {
+      "field": "mitre_tactic_id",
+      "variant": "Array of numbers",
+      "value": [
+        1,
+        2
+      ],
+      "value_type": "list",
+      "status_code": 500,
+      "success": false,
+      "response": {
+        "err_code": 500,
+        "err_msg": "An unexpected error occurred by XDR public API",
+        "err_extra": "field mitretacticid should be type of string, got 1"
+      }
+    },
+    {
+      "field": "mitre_technique_id",
+      "variant": "String - Single ID",
+      "value": "T1078",
+      "value_type": "str",
+      "status_code": 500,
+      "success": false,
+      "response": {
+        "err_code": 500,
+        "err_msg": "An unexpected error occurred by XDR public API",
+        "err_extra": "field mitretechniqueid should be type of List, got T1078"
+      }
+    },
+    {
+      "field": "mitre_technique_id",
+      "variant": "String - Multiple IDs comma",
+      "value": "T1078,T1059",
+      "value_type": "str",
+      "status_code": 500,
+      "success": false,
+      "response": {
+        "err_code": 500,
+        "err_msg": "An unexpected error occurred by XDR public API",
+        "err_extra": "field mitretechniqueid should be type of List, got T1078,T1059"
+      }
+    },
+    {
+      "field": "mitre_technique_id",
+      "variant": "String - Sub-technique",
+      "value": "T1078.002",
+      "value_type": "str",
+      "status_code": 500,
+      "success": false,
+      "response": {
+        "err_code": 500,
+        "err_msg": "An unexpected error occurred by XDR public API",
+        "err_extra": "field mitretechniqueid should be type of List, got T1078.002"
+      }
+    },
+    {
+      "field": "mitre_technique_id",
+      "variant": "Array - Single ID",
+      "value": [
+        "T1078"
+      ],
+      "value_type": "list",
+      "status_code": 500,
+      "success": false,
+      "response": {
+        "err_code": 500,
+        "err_msg": "Got an invalid input while processing XDR public API",
+        "err_extra": "The mitre_technique_id parameter value ['T1078'] is invalid."
+      }
+    },
+    {
+      "field": "mitre_technique_id",
+      "variant": "Array - Multiple IDs",
+      "value": [
+        "T1078",
+        "T1059"
+      ],
+      "value_type": "list",
+      "status_code": 500,
+      "success": false,
+      "response": {
+        "err_code": 500,
+        "err_msg": "Got an invalid input while processing XDR public API",
+        "err_extra": "The mitre_technique_id parameter value ['T1078', 'T1059'] is invalid."
+      }
+    },
+    {
+      "field": "mitre_technique_id",
+      "variant": "Array - Sub-techniques",
+      "value": [
+        "T1078.002",
+        "T1059.001"
+      ],
+      "value_type": "list",
+      "status_code": 500,
+      "success": false,
+      "response": {
+        "err_code": 500,
+        "err_msg": "Got an invalid input while processing XDR public API",
+        "err_extra": "The mitre_technique_id parameter value ['T1078.002', 'T1059.001'] is invalid."
+      }
+    },
+    {
+      "field": "mitre_technique_id",
+      "variant": "String - With description",
+      "value": "T1078 - Valid Accounts",
+      "value_type": "str",
+      "status_code": 500,
+      "success": false,
+      "response": {
+        "err_code": 500,
+        "err_msg": "An unexpected error occurred by XDR public API",
+        "err_extra": "field mitretechniqueid should be type of List, got T1078 - Valid Accounts"
+      }
+    },
+    {
+      "field": "mitre_technique_id",
+      "variant": "Array - With descriptions",
+      "value": [
+        "T1078 - Valid Accounts",
+        "T1059 - Command and Scripting"
+      ],
+      "value_type": "list",
+      "status_code": 500,
+      "success": false,
+      "response": {
+        "err_code": 500,
+        "err_msg": "Got an invalid input while processing XDR public API",
+        "err_extra": "The mitre_technique_id parameter value ['T1078 - Valid Accounts', 'T1059 - Command and Scripting'] is invalid."
+      }
+    },
+    {
+      "field": "mitre_technique_id",
+      "variant": "Empty string",
+      "value": "",
+      "value_type": "str",
+      "status_code": 500,
+      "success": false,
+      "response": {
+        "err_code": 500,
+        "err_msg": "An unexpected error occurred by XDR public API",
+        "err_extra": "field mitretechniqueid should be type of List, got "
+      }
+    },
+    {
+      "field": "mitre_technique_id",
+      "variant": "Empty array",
+      "value": [],
+      "value_type": "list",
+      "status_code": 500,
+      "success": false,
+      "response": {
+        "err_code": 500,
+        "err_msg": "Got an invalid input while processing XDR public API",
+        "err_extra": "The mitre_technique_id parameter value [] is invalid."
+      }
+    },
+    {
+      "field": "event_type",
+      "variant": "String - Simple",
+      "value": "PROCESS_START",
+      "value_type": "str",
+      "status_code": 500,
+      "success": false,
+      "response": {
+        "err_code": 500,
+        "err_msg": "An unexpected error occurred by XDR public API",
+        "err_extra": "field event_type should be type of List, got PROCESS_START"
+      }
+    },
+    {
+      "field": "event_type",
+      "variant": "String - Lowercase",
+      "value": "process_start",
+      "value_type": "str",
+      "status_code": 500,
+      "success": false,
+      "response": {
+        "err_code": 500,
+        "err_msg": "An unexpected error occurred by XDR public API",
+        "err_extra": "field event_type should be type of List, got process_start"
+      }
+    },
+    {
+      "field": "event_type",
+      "variant": "String - Mixed case",
+      "value": "Process_Start",
+      "value_type": "str",
+      "status_code": 500,
+      "success": false,
+      "response": {
+        "err_code": 500,
+        "err_msg": "An unexpected error occurred by XDR public API",
+        "err_extra": "field event_type should be type of List, got Process_Start"
+      }
+    },
+    {
+      "field": "event_type",
+      "variant": "Array - Single",
+      "value": [
+        "PROCESS_START"
+      ],
+      "value_type": "list",
+      "status_code": 500,
+      "success": false,
+      "response": {
+        "err_code": 500,
+        "err_msg": "An unexpected error occurred by XDR public API",
+        "err_extra": "field event_type should be type of int, got PROCESS_START"
+      }
+    },
+    {
+      "field": "event_type",
+      "variant": "Array - Multiple",
+      "value": [
+        "PROCESS_START",
+        "NETWORK_CONNECTION"
+      ],
+      "value_type": "list",
+      "status_code": 500,
+      "success": false,
+      "response": {
+        "err_code": 500,
+        "err_msg": "An unexpected error occurred by XDR public API",
+        "err_extra": "field event_type should be type of int, got PROCESS_START"
+      }
+    },
+    {
+      "field": "event_type",
+      "variant": "Integer",
+      "value": 1,
+      "value_type": "int",
+      "status_code": 500,
+      "success": false,
+      "response": {
+        "err_code": 500,
+        "err_msg": "An unexpected error occurred by XDR public API",
+        "err_extra": "field event_type should be type of List, got 1"
+      }
+    },
+    {
+      "field": "event_type",
+      "variant": "String number",
+      "value": "1",
+      "value_type": "str",
+      "status_code": 500,
+      "success": false,
+      "response": {
+        "err_code": 500,
+        "err_msg": "An unexpected error occurred by XDR public API",
+        "err_extra": "field event_type should be type of List, got 1"
+      }
+    },
+    {
+      "field": "event_type",
+      "variant": "Array of string numbers",
+      "value": [
+        "1",
+        "2"
+      ],
+      "value_type": "list",
+      "status_code": 500,
+      "success": false,
+      "response": {
+        "err_code": 500,
+        "err_msg": "An unexpected error occurred by XDR public API",
+        "err_extra": "field event_type should be type of int, got 1"
+      }
+    },
+    {
+      "field": "event_type",
+      "variant": "Empty string",
+      "value": "",
+      "value_type": "str",
+      "status_code": 500,
+      "success": false,
+      "response": {
+        "err_code": 500,
+        "err_msg": "An unexpected error occurred by XDR public API",
+        "err_extra": "field event_type should be type of List, got "
+      }
+    },
+    {
+      "field": "country",
+      "variant": "String - ISO Code",
+      "value": "US",
+      "value_type": "str",
+      "status_code": 500,
+      "success": false,
+      "response": {
+        "err_code": 500,
+        "err_msg": "Got an invalid input while processing XDR public API",
+        "err_extra": "Invalid parameter names: country"
+      }
+    },
+    {
+      "field": "country",
+      "variant": "String - Full name",
+      "value": "United States",
+      "value_type": "str",
+      "status_code": 500,
+      "success": false,
+      "response": {
+        "err_code": 500,
+        "err_msg": "Got an invalid input while processing XDR public API",
+        "err_extra": "Invalid parameter names: country"
+      }
+    },
+    {
+      "field": "country",
+      "variant": "Array - ISO Code",
+      "value": [
+        "US"
+      ],
+      "value_type": "list",
+      "status_code": 500,
+      "success": false,
+      "response": {
+        "err_code": 500,
+        "err_msg": "Got an invalid input while processing XDR public API",
+        "err_extra": "Invalid parameter names: country"
+      }
+    },
+    {
+      "field": "country",
+      "variant": "Array - Full names",
+      "value": [
+        "United States"
+      ],
+      "value_type": "list",
+      "status_code": 500,
+      "success": false,
+      "response": {
+        "err_code": 500,
+        "err_msg": "Got an invalid input while processing XDR public API",
+        "err_extra": "Invalid parameter names: country"
+      }
+    },
+    {
+      "field": "country",
+      "variant": "Array - Multiple ISO",
+      "value": [
+        "US",
+        "CN",
+        "RU"
+      ],
+      "value_type": "list",
+      "status_code": 500,
+      "success": false,
+      "response": {
+        "err_code": 500,
+        "err_msg": "Got an invalid input while processing XDR public API",
+        "err_extra": "Invalid parameter names: country"
+      }
+    },
+    {
+      "field": "country",
+      "variant": "String - Mixed",
+      "value": "United States (US)",
+      "value_type": "str",
+      "status_code": 500,
+      "success": false,
+      "response": {
+        "err_code": 500,
+        "err_msg": "Got an invalid input while processing XDR public API",
+        "err_extra": "Invalid parameter names: country"
+      }
+    },
+    {
+      "field": "country",
+      "variant": "Empty string",
+      "value": "",
+      "value_type": "str",
+      "status_code": 500,
+      "success": false,
+      "response": {
+        "err_code": 500,
+        "err_msg": "Got an invalid input while processing XDR public API",
+        "err_extra": "Invalid parameter names: country"
+      }
+    },
+    {
+      "field": "country",
+      "variant": "Empty array",
+      "value": [],
+      "value_type": "list",
+      "status_code": 500,
+      "success": false,
+      "response": {
+        "err_code": 500,
+        "err_msg": "Got an invalid input while processing XDR public API",
+        "err_extra": "Invalid parameter names: country"
+      }
+    }
+  ]
+}

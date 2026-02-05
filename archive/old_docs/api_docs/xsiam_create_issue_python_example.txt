@@ -1,0 +1,19 @@
+import http.client
+
+conn = http.client.HTTPSConnection("api-yourfqdn")
+
+payload = "{\n  \"request_data\": {\n    \"alert\": {\n      \"vendor\": \"string\",\n      \"product\": \"string\",\n      \"severity\": \"Informational\",\n      \"category\": \"string\",\n      \"mitre_defs\": {}\n    }\n  }\n}"
+
+headers = {
+    'Authorization': "",
+    'x-xdr-auth-id': "",
+    'Content-Type': "application/json",
+    'Accept': "application/json"
+}
+
+conn.request("POST", "/public_api/v1/alerts/create_alert", payload, headers)
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))

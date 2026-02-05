@@ -1,0 +1,43 @@
+{
+  "vendor": "Cortex",
+  "product": "XDR Agent",
+  "severity": "Critical",
+  "category": "Phishing",
+  "description": "Business Email Compromise (BEC) attack detected. Attacker spoofed executive email address to request fraudulent wire transfer of $450,000. Email bypassed initial filters but was caught by behavioral analysis showing impossible travel and unusual financial request pattern. Target user (finance manager) did not respond to fraudulent request. Account temporarily locked pending security review.",
+  "alert_name": "BEC - Executive Impersonation Wire Transfer Fraud",
+  "threat_name": "Business Email Compromise",
+  "user_name": [
+    "finance.manager@company.com"
+  ],
+  "host_name": "FINANCE-WS-001",
+  "host_ip": [
+    "192.168.1.105"
+  ],
+  "host_os": "AGENT_OS_WINDOWS",
+  "email_subject": [
+    "Urgent: Wire Transfer Required - Confidential"
+  ],
+  "email_sender": [
+    "ceo@company-finance-dept.com"
+  ],
+  "email_recipient": [
+    "finance.manager@company.com"
+  ],
+  "remote_ip": [
+    "185.220.101.68"
+  ],
+  "remote_port": [
+    25
+  ],
+  "local_ip": [
+    "192.168.1.105"
+  ],
+  "local_port": [
+    443
+  ],
+  "domain": "company-finance-dept.com",
+  "mitre_att&ck_tactic": "TA0001 - Initial Access",
+  "mitre_att&ck_technique": "T1566.002 - Phishing: Spearphishing Link",
+  "verdict": "Malicious",
+  "risk_score": "95"
+}

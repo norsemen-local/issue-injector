@@ -1,0 +1,44 @@
+{
+  "vendor": "Okta",
+  "product": "Okta Identity Cloud",
+  "severity": "Medium",
+  "category": "Identity Threat",
+  "alert_name": "User Accessed Multiple Unusual Cloud Resources via SSO",
+  "description": "User account kevin.martinez@company.com accessed 12 different cloud applications via SSO within a 15-minute window at 2024-11-17 05:30:00 UTC that the user has never accessed before in the past 180 days. The accessed applications include AWS Production Console, Azure DevOps, GitHub Enterprise, Salesforce Admin Console, Jira Administrative Settings, Confluence Admin, Okta Admin Console, Slack Enterprise Grid Admin, Google Workspace Admin, Office 365 Exchange Admin, Splunk Admin, and PagerDuty. This rapid sequential access to administrative interfaces across multiple SaaS platforms is highly unusual for a marketing department user. The access originated from IP address 45.155.205.77 (Moldova) which is a datacenter IP associated with VPN exit nodes. Normal user behavior shows access to only 2-3 marketing-related applications daily. This pattern suggests account compromise with an attacker performing reconnaissance across the organization's cloud infrastructure to identify privilege escalation opportunities.",
+  "cloud_provider": [
+    "Okta"
+  ],
+  "cloud_service_name": "Okta SSO",
+  "cloud_operation_type": [
+    "Authentication"
+  ],
+  "user_name": [
+    "kevin.martinez@company.com"
+  ],
+  "email": "kevin.martinez@company.com",
+  "department": "Marketing",
+  "account_status": "Active",
+  "remote_ip": [
+    761857357
+  ],
+  "city": "Chisinau",
+  "region": [
+    "Moldova"
+  ],
+  "location": "Moldova",
+  "threat_name": "Account Takeover",
+  "attack_mode": "Reconnaissance",
+  "verdict": "Suspicious",
+  "risk_score": "73",
+  "risk_rating": "Medium",
+  "user_risk_level": "High",
+  "policy_type": "User Behavior Analytics",
+  "policy_description": "Anomalous access to multiple administrative applications",
+  "policy_severity": "Medium",
+  "policy_recommendation": "Force password reset, terminate active SSO sessions, enable MFA, investigate account compromise vector",
+  "log_source": "Okta System Log",
+  "event_id": "user.authentication.sso",
+  "external_link": "https://company-admin.okta.com/admin/reports/system-log",
+  "mitre_att&ck_tactic": "TA0007 - Discovery",
+  "mitre_att&ck_technique": "T1087 - Account Discovery"
+}

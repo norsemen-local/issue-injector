@@ -1,0 +1,71 @@
+{
+  "vendor": "Cortex XDR",
+  "product": "Endpoint Protection",
+  "severity": "Critical",
+  "category": "Exfiltration",
+  "alert_name": "Mass Credential and Cryptocurrency Wallet Exfiltration via HTTPS",
+  "description": "Cortex XDR detected critical data exfiltration event from compromised workstation ACCT-WKS-047 where injected Katz Stealer payload (running inside MSBuild.exe PID 8764) successfully exfiltrated 47.3MB of sensitive data to attacker-controlled infrastructure at exfil-cdn[.]top:443 (185.225.73.242, AS49505, Netherlands). Network behavior analysis identified 5 distinct exfiltration phases over 12-minute window: (1) Browser credentials - Chrome Login Data (sqlite, 8.2MB, 247 saved passwords), Firefox logins.json (3.1MB, 89 credentials), Edge Login Data (5.7MB, 152 passwords); (2) Cryptocurrency wallets - Bitcoin Core wallet.dat (1.2MB), Ethereum keystore files (782KB, 3 wallets), Exodus wallet data (4.3MB); (3) Browser session tokens - Chrome Cookies (6.8MB), Firefox cookies.sqlite (2.4MB) enabling session hijacking; (4) Keylogger cache - 45 minutes of captured keystrokes (1.1MB) including banking credentials typed during incident window; (5) System reconnaissance data - installed software list, network configuration, saved Wi-Fi passwords via netsh wlan export. All data encrypted with ChaCha20 cipher before transmission and sent via POST requests to /api/v2/upload endpoint with custom User-Agent 'SystemUpdater/2.1'. HTTPS inspection revealed self-signed certificate (CN=cdn-services, issued to attacker infrastructure) and non-standard TLS parameters. Total 187 HTTP POST requests completed successfully before detection, each carrying 200-300KB encrypted chunks. Destination IP 185.225.73.242 flagged in threat intelligence as bulletproof hosting provider used by multiple infostealer operations. Temporal correlation shows exfiltration began 45 minutes after initial PhantomVAI Loader execution and 9 minutes after successful process injection into MSBuild.exe.",
+  "relative_timestamp_hours": 46.5,
+  "campaign_name": "PhantomVAI-TechCorp",
+  "host_name": "ACCT-WKS-047",
+  "host_ip": [
+    171540568
+  ],
+  "user_name": [
+    "mthomas@techcorp.local"
+  ],
+  "domain": "techcorp.local",
+  "local_ip": [
+    171540568
+  ],
+  "remote_ip": [
+    3118851314
+  ],
+  "local_port": [
+    54891
+  ],
+  "remote_port": [
+    443
+  ],
+  "dns_query_name": [
+    "exfil-cdn.top"
+  ],
+  "process_name": [
+    "MSBuild.exe"
+  ],
+  "process_path": [
+    "C:\\Program Files\\Microsoft Visual Studio\\2022\\BuildTools\\MSBuild\\Current\\Bin\\MSBuild.exe"
+  ],
+  "process_hash": [
+    "45fddf55acb50df5b027701073dee604b4135f750c585b29d6dcac824f26ae00"
+  ],
+  "process_hash_sha256": [
+    "45fddf55acb50df5b027701073dee604b4135f750c585b29d6dcac824f26ae00"
+  ],
+  "file_path": [
+    "C:\\ProgramData\\SystemCache\\temp_9f2a.dat"
+  ],
+  "filesize": "49623040",
+  "file_hash": "9f28f82d21fe99d0efdcab403f73870d68fd94e6d0f762e658d923ccd1e7424c",
+  "file_sha256": [
+    "9f28f82d21fe99d0efdcab403f73870d68fd94e6d0f762e658d923ccd1e7424c"
+  ],
+  "file_hash_sha256": "9f28f82d21fe99d0efdcab403f73870d68fd94e6d0f762e658d923ccd1e7424c",
+  "initiator_sha256": [
+    "9f28f82d21fe99d0efdcab403f73870d68fd94e6d0f762e658d923ccd1e7424c"
+  ],
+  "threat_name": "Katz Stealer - Data Exfiltration",
+  "attack_mode": "Credential Theft + Cryptocurrency Theft",
+  "verdict": "Malicious",
+  "risk_score": "100",
+  "risk_rating": "Critical",
+  "policy_type": "Data Loss Prevention",
+  "policy_description": "Mass credential and cryptocurrency exfiltration - 47.3MB sensitive data stolen",
+  "policy_severity": "Critical",
+  "policy_recommendation": "CRITICAL BREACH: Block exfil-cdn[.]top and IP 185.225.73.242 immediately, isolate ACCT-WKS-047 from network, force password resets for mthomas@techcorp.local across all systems (247 Chrome + 89 Firefox + 152 Edge credentials compromised), invalidate all browser session tokens, contact cryptocurrency exchanges regarding Bitcoin/Ethereum wallet theft (notify exchanges: Coinbase, Binance, Kraken), analyze C:\\ProgramData\\SystemCache\\temp_9f2a.dat for full data inventory, review keylogger cache for additional credential exposure, enable MFA on all accounts, monitor for fraudulent transactions, engage legal/compliance teams for breach notification, forensic imaging of ACCT-WKS-047 required, hunt for lateral movement using compromised credentials",
+  "log_source": "Cortex XDR Agent - Data Loss Prevention",
+  "event_id": "DLP_MASS_EXFILTRATION",
+  "external_link": "https://unit42.paloaltonetworks.com/phantomvai-loader-delivers-infostealers/",
+  "mitre_att&ck_tactic": "TA0010 - Exfiltration",
+  "mitre_att&ck_technique": "T1041 - Exfiltration Over C2 Channel"
+}

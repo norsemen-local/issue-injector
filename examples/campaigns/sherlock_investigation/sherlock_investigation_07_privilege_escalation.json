@@ -1,0 +1,51 @@
+{
+  "vendor": "Palo Alto Networks",
+  "product": "Cortex XDR",
+  "severity": "High",
+  "category": "Privilege Escalation",
+  "alert_name": "UAC Bypass Attempt Using Fodhelper.exe Technique",
+  "description": "Cortex XDR detected a privilege escalation attempt on endpoint SHERLOCK-WKS-01 using the Fodhelper.exe UAC bypass technique. At 2025-11-29 02:30:15 UTC, a malicious process chain was observed: powershell.exe spawned cmd.exe, which executed fodhelper.exe (a legitimate Windows binary used for managing optional features). The attack leveraged a known UAC bypass method where the threat actor modified the registry key HKCU\\Software\\Classes\\ms-settings\\shell\\open\\command to execute an elevated command without prompting for administrator credentials. Behavioral analysis detected: 1) Registry modification to hijack fodhelper.exe execution flow, 2) PowerShell command with base64-encoded payload attempting to execute with elevated privileges, 3) Creation of scheduled task 'WindowsUpdateCheck' for persistence with SYSTEM-level permissions, 4) Attempted access to LSASS memory for credential dumping, 5) Enumeration of local administrators group and domain admin accounts. The fodhelper.exe UAC bypass is a well-documented technique (MITRE T1548.002) that exploits Windows' auto-elevation mechanism for trusted Microsoft binaries. This technique requires no administrative privileges to execute but results in elevated execution context. The attack occurred 30 hours after confirmed data exfiltration, indicating the threat actor is attempting to maintain persistence and expand access beyond the initially compromised user account. Process tree analysis shows the attack initiated from the same malicious RedLine Stealer payload (update_chrome.exe) detected 96 hours ago. Cortex XDR's behavioral threat protection blocked the privilege escalation attempt and prevented the scheduled task creation, but the registry modifications were successful before detection. The threat actor's escalation to privilege escalation techniques suggests intent for long-term access, lateral movement, and potential domain compromise.",
+  "relative_timestamp_hours": 30.0,
+  "campaign_name": "SH-UserInvestigation-Nov2025",
+  "user_name": [
+    "aisherlock@bakerstreetlabs.io"
+  ],
+  "domain": "bakerstreetlabs.io",
+  "email": "aisherlock@bakerstreetlabs.io",
+  "department": "Security Research",
+  "host_name": "SHERLOCK-WKS-01",
+  "host_os": "AGENT_OS_WINDOWS",
+  "cgo_name": [
+    "powershell.exe"
+  ],
+  "cgo_cmd": [
+    "powershell.exe -enc JABjAG0AZAA9ACIAYwBtAGQALgBlAHgAZQAgAC8AYwAgAGYAbwBkAGgAZQBsAHAAZQByAC4AZQB4AGUAIgA7ACAAUwB0AGEAcgB0AC0AUAByAG8AYwBlAHMAcwAgACQAYwBtAGQA"
+  ],
+  "cgo_sha256": [
+    "a3d8f7b2c4e1f9d0a5b8c7e2f1a9d3b6c8e4f7a1b9d2c5e8f3a7b1c9d4e6f2a8"
+  ],
+  "os_parent_name": [
+    "cmd.exe"
+  ],
+  "os_parent_cmd": [
+    "cmd.exe /c fodhelper.exe"
+  ],
+  "target_process_name": [
+    "fodhelper.exe"
+  ],
+  "target_process_cmd": [
+    "C:\\\\Windows\\\\System32\\\\fodhelper.exe"
+  ],
+  "registry_full_key": [
+    "HKEY_CURRENT_USER\\Software\\Classes\\ms-settings\\shell\\open\\command"
+  ],
+  "threat_name": "UAC Bypass - Privilege Escalation",
+  "risk_score": "88",
+  "risk_rating": "High",
+  "verdict": "Malicious",
+  "log_source": "Cortex XDR Behavioral Threat Protection",
+  "mitre_att&ck_tactic": "TA0004 - Privilege Escalation",
+  "mitre_att&ck_technique": "T1548 - Abuse Elevation Control Mechanism",
+  "recommended_actions": "1. Maintain endpoint isolation for SHERLOCK-WKS-01. 2. Remove malicious registry key HKCU\\Software\\Classes\\ms-settings\\shell\\open\\command. 3. Delete scheduled task 'WindowsUpdateCheck' if created. 4. Conduct memory forensics to determine if LSASS credential dumping was successful. 5. Reset passwords for all local administrator accounts on the endpoint. 6. Audit domain administrator accounts for unauthorized access. 7. Implement Windows Defender Application Control or AppLocker to prevent UAC bypass techniques. 8. Review security group memberships for aisherlock@bakerstreetlabs.io. 9. Enable Windows Event Logging for registry modifications to UAC-related keys. 10. Deploy EDR detections for fodhelper.exe abuse and similar UAC bypass methods.",
+  "external_link": "https://attack.mitre.org/techniques/T1548/002/"
+}

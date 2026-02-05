@@ -1,0 +1,47 @@
+{
+  "vendor": "Okta",
+  "product": "Okta Identity Cloud",
+  "severity": "Critical",
+  "category": "Identity Threat",
+  "alert_name": "Super Administrator Privilege Granted to User Account",
+  "description": "Okta administrator james.parker@company.com granted Super Administrator privileges to user account contractor_bob@company.com at 2024-11-27 06:34:18 UTC via Okta Admin Console. Super Administrator is the highest privilege level in Okta with full control over all tenant settings, applications, user accounts, and security policies. The target account contractor_bob@company.com is a contractor account with temporary access scheduled to expire in 14 days. The privilege assignment occurred from IP address 91.213.8.142 located in Ukraine, which is outside the organization's normal operational geography (United States). No change request or approval ticket exists for this privilege escalation in the ServiceNow ITSM system. This activity exhibits characteristics of an insider threat or account takeover where an attacker escalates privileges to establish persistence and maintain access to critical identity infrastructure. The super admin role assignment bypasses all conditional access policies and MFA requirements.",
+  "cloud_provider": [
+    "Okta"
+  ],
+  "cloud_service_name": "Okta Identity Management",
+  "cloud_operation_type": [
+    "Grant"
+  ],
+  "cloud_resource_type": [
+    "Admin Role"
+  ],
+  "cloud_identity_type": [
+    "Super Administrator"
+  ],
+  "user_name": [
+    "contractor_bob@company.com"
+  ],
+  "email": "contractor_bob@company.com",
+  "initiated_by": [
+    "james.parker@company.com"
+  ],
+  "account_status": "Active",
+  "remote_ip": [
+    1541655698
+  ],
+  "threat_name": "Privilege Escalation",
+  "attack_mode": "Persistence",
+  "verdict": "Malicious",
+  "risk_score": "92",
+  "risk_rating": "Critical",
+  "user_risk_level": "Critical",
+  "policy_type": "Privileged Access Management",
+  "policy_description": "Super Admin role granted to contractor account without approval",
+  "policy_severity": "Critical",
+  "policy_recommendation": "Immediately revoke super admin privileges, suspend both accounts pending investigation, enable session recording for privileged actions, implement approval workflow for admin role assignments",
+  "log_source": "Okta System Log",
+  "event_id": "user.account.privilege.grant",
+  "external_link": "https://company-admin.okta.com/admin/access/admins",
+  "mitre_att&ck_tactic": "TA0004 - Privilege Escalation",
+  "mitre_att&ck_technique": "T1078.004 - Valid Accounts: Cloud Accounts"
+}

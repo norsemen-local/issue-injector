@@ -1,0 +1,47 @@
+{
+  "vendor": "Google",
+  "product": "Google Workspace Security",
+  "severity": "Medium",
+  "category": "Data Loss Prevention",
+  "alert_name": "Sensitive File Shared Externally via Google Drive",
+  "description": "User sarah.mitchell@company.com shared a sensitive document 'Q4_Financial_Report_2024.xlsx' with an external email address (competitor@external-company.com) via Google Drive. The file contains confidential financial information and was shared with 'Editor' permissions, allowing the external recipient to view and modify the document. This sharing activity was detected by Google Workspace DLP policies and flagged as a potential data exfiltration risk. The file was shared at 2024-11-27 10:45:32 UTC from IP address 203.0.113.45. Google Drive Link: https://drive.google.com/file/d/1aB2cD3eF4gH5iJ6kL7mN8oP9qR0sT1uV2w/view?usp=sharing",
+  "cloud_provider": [
+    "Google"
+  ],
+  "cloud_service_name": "Google Drive",
+  "cloud_operation_type": [
+    "Share"
+  ],
+  "cloud_resource_type": [
+    "File"
+  ],
+  "user_name": [
+    "sarah.mitchell@company.com"
+  ],
+  "email": "sarah.mitchell@company.com",
+  "department": "Finance",
+  "file_name": [
+    "Q4_Financial_Report_2024.xlsx"
+  ],
+  "file_path": [
+    "/Finance/Reports/Q4_Financial_Report_2024.xlsx"
+  ],
+  "filesize": "2847392",
+  "resource_url": "https://drive.google.com/file/d/1aB2cD3eF4gH5iJ6kL7mN8oP9qR0sT1uV2w/view?usp=sharing",
+  "email_recipient": [
+    "competitor@external-company.com"
+  ],
+  "email_subject": [
+    "Q4 Financial Report - Shared from Google Drive"
+  ],
+  "risk_score": "65",
+  "risk_rating": "Medium",
+  "threat_name": "Potential Data Exfiltration",
+  "policy_type": "Data Loss Prevention",
+  "policy_description": "Sensitive financial data shared with external domain",
+  "policy_severity": "Medium",
+  "external_link": "https://admin.google.com/ac/security/investigation",
+  "log_source": "Google Workspace Audit Logs",
+  "mitre_att&ck_tactic": "TA0010 - Exfiltration",
+  "mitre_att&ck_technique": "T1567.002 - Exfiltration Over Web Service: Exfiltration to Cloud Storage"
+}

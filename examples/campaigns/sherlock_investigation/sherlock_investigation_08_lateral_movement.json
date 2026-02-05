@@ -1,0 +1,45 @@
+{
+  "vendor": "Palo Alto Networks",
+  "product": "Cortex XDR",
+  "severity": "Critical",
+  "category": "Lateral Movement",
+  "alert_name": "Unauthorized RDP Connection to Production File Server",
+  "description": "Cortex XDR detected unauthorized lateral movement via Remote Desktop Protocol (RDP) from compromised endpoint SHERLOCK-WKS-01 to production file server FS-PROD-01 at 2025-11-29 08:15:32 UTC. The RDP session was initiated by user aisherlock@bakerstreetlabs.io, who does not have authorized access to production file servers per corporate access control policies. Security Research department members are restricted to development and testing environments only. The RDP connection was established from source IP 10.50.25.147 (SHERLOCK-WKS-01) to destination 10.50.10.15 (FS-PROD-01) on port 3389. Behavioral analysis detected multiple suspicious indicators: 1) RDP access outside normal business hours (3:15 AM EST), 2) Source workstation is a standard user endpoint, not an IT administrative jump host, 3) User account has never previously accessed FS-PROD-01 in 18-month authentication history, 4) RDP session established only 6 hours after privilege escalation attempt, 5) Connection originated from malware-infected endpoint flagged in multiple prior alerts. Upon successful RDP authentication, the threat actor performed reconnaissance activities including: enumeration of shared folders containing financial data, customer contracts, and employee PII; execution of 'net share' and 'dir' commands to map available resources; attempted access to HR_Records and Finance_2024 shared folders. The lateral movement represents escalation from single-endpoint compromise to enterprise network infiltration. File server FS-PROD-01 contains 8.7TB of sensitive corporate data including client contracts, financial statements, employee records, and intellectual property. The compromise timeline (168h from initial phishing to lateral movement) demonstrates sophisticated persistent threat actor behavior with multiple phases: initial access, credential harvesting, data exfiltration, privilege escalation, and lateral movement. This lateral movement to production infrastructure represents critical risk for widespread data breach and potential ransomware deployment.",
+  "relative_timestamp_hours": 24.0,
+  "campaign_name": "SH-UserInvestigation-Nov2025",
+  "user_name": [
+    "aisherlock@bakerstreetlabs.io"
+  ],
+  "domain": "bakerstreetlabs.io",
+  "email": "aisherlock@bakerstreetlabs.io",
+  "department": "Security Research",
+  "host_name": "SHERLOCK-WKS-01",
+  "host_os": "AGENT_OS_WINDOWS",
+  "local_ip": [
+    169090451
+  ],
+  "local_port": [
+    49847
+  ],
+  "remote_ip": [
+    169088527
+  ],
+  "remote_port": [
+    3389
+  ],
+  "cgo_name": [
+    "mstsc.exe"
+  ],
+  "cgo_cmd": [
+    "mstsc.exe /v:FS-PROD-01.bakerstreetlabs.io"
+  ],
+  "threat_name": "Lateral Movement via RDP",
+  "risk_score": "94",
+  "risk_rating": "Critical",
+  "verdict": "Malicious",
+  "log_source": "Cortex XDR Network Analytics",
+  "mitre_att&ck_tactic": "TA0008 - Lateral Movement",
+  "mitre_att&ck_technique": "T1021.001 - Remote Services: Remote Desktop Protocol",
+  "recommended_actions": "1. IMMEDIATELY isolate file server FS-PROD-01 from network. 2. Terminate all active sessions for aisherlock@bakerstreetlabs.io across entire domain. 3. Disable RDP access on FS-PROD-01 until forensic analysis complete. 4. Reset all domain administrator credentials as precaution. 5. Conduct forensic analysis of FS-PROD-01 to determine data access scope. 6. Review file server audit logs for file copying, deletion, or encryption activities. 7. Implement network segmentation to prevent workstation-to-server RDP. 8. Deploy Group Policy to restrict RDP access to authorized jump hosts only. 9. Enable Windows Event ID 4624/4625 monitoring for anomalous RDP logons. 10. Activate incident response team for enterprise-wide compromise assessment. 11. Consider precautionary backup verification and offline storage of critical data. 12. Prepare ransomware response procedures given attack progression pattern.",
+  "external_link": "https://attack.mitre.org/techniques/T1021/001/"
+}

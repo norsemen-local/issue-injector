@@ -1,0 +1,77 @@
+{
+  "vendor": "Palo Alto Networks",
+  "product": "Next-Generation Firewall",
+  "severity": "Critical",
+  "category": "Exfiltration",
+  "alert_name": "Mass Credential Exfiltration - DeerStealer Data Upload to C2",
+  "description": "Palo Alto Networks firewall PA-3220-FW01 detected critical data exfiltration from workstation MKTG-WKS-024 (10.30.35.148) where DeerStealer infostealer uploaded 4.2MB of stolen credentials to attacker C2 server exfil-api[.]live (194.147.35[.]92, Netherlands). Network forensics show HTTPS POST request to hxxps://exfil-api[.]live/api/v2/upload at 14:27:15 UTC, 3 minutes after credential harvesting completion. Deep packet inspection revealed suspicious characteristics: (1) User-Agent header 'DeerClient/2.1.5' (custom infostealer client), (2) Content-Type: multipart/form-data containing encrypted ZIP archive (cache_tmp.zip), (3) HTTP header 'X-Campaign-ID: clickfix_nov2025' tracking infection source, (4) Request size 4.2MB single upload (no chunking), (5) TLS SNI extension to newly registered domain exfil-api[.]live (registered 2025-11-18, 9 days old). SSL decryption analysis shows encrypted payload structure: victim fingerprint (machine GUID, hostname, username), stolen credential inventory (173 browser passwords, 1,247 cookies, 2 cryptocurrency wallets, Discord tokens), system reconnaissance data (installed software, network config, screenshots). Server response HTTP 200 OK with JSON body: {'status': 'success', 'victim_id': 'a8f3e2c1-d9b4-f5a6-e7c8-d9f0a1b2c3d4', 'timestamp': 1732717635, 'data_size': 4404019} confirming successful exfiltration. Threat intelligence correlation: exfil-api[.]live shares registration infrastructure with browser-verification[.]live and cdn-updates[.]live (all Namecheap, registered 2025-11-18 through 2025-11-20), indicating coordinated ClickFix campaign infrastructure. Traffic pattern shows one-way communication: single POST upload, no subsequent C2 commands, typical fire-and-forget infostealer behavior. Firewall Advanced Threat Prevention blocked exfiltration (inline blocking enabled after Alert #6) but full 4.2MB transfer completed before block took effect - attacker received stolen data. Post-block analysis shows PowerShell attempting 3 reconnection attempts (14:27:47, 14:28:19, 14:28:51) all successfully blocked.",
+  "relative_timestamp_hours": 70.5,
+  "campaign_name": "ClickFix-DeerStealer",
+  "host_name": "MKTG-WKS-024",
+  "host_ip": [
+    171540620
+  ],
+  "user_name": [
+    "jdavis@marketingcorp.com"
+  ],
+  "domain": "marketingcorp.com",
+  "local_ip": [
+    171540620
+  ],
+  "remote_ip": [
+    3263906140
+  ],
+  "local_port": [
+    55042
+  ],
+  "remote_port": [
+    443
+  ],
+  "dns_query_name": [
+    "exfil-api.live"
+  ],
+  "source_zone_name": [
+    "Trust"
+  ],
+  "destination_zone_name": [
+    "Untrust"
+  ],
+  "fw_name": [
+    "PA-3220-FW01"
+  ],
+  "fw_rule_name": [
+    "Outbound-Internet-Access"
+  ],
+  "fw_rule_id": [
+    "rule-102"
+  ],
+  "fw_serial_number": [
+    "015351000023456"
+  ],
+  "file_hash": "397ee604eb5e20905605c9418838aadccbbbfe6a15fc9146442333cfc1516273",
+  "file_sha256": [
+    "397ee604eb5e20905605c9418838aadccbbbfe6a15fc9146442333cfc1516273"
+  ],
+  "file_hash_sha256": "397ee604eb5e20905605c9418838aadccbbbfe6a15fc9146442333cfc1516273",
+  "initiator_sha256": [
+    "397ee604eb5e20905605c9418838aadccbbbfe6a15fc9146442333cfc1516273"
+  ],
+  "filesize": "4404019",
+  "file_name": [
+    "cache_tmp.zip"
+  ],
+  "threat_name": "DeerStealer - Data Exfiltration",
+  "attack_mode": "Credential Exfiltration",
+  "verdict": "Malicious",
+  "risk_score": "100",
+  "risk_rating": "Critical",
+  "policy_type": "Network Security",
+  "policy_description": "DeerStealer exfiltration of 4.2MB stolen credentials - 173 passwords, 1,247 cookies, crypto wallets",
+  "policy_severity": "Critical",
+  "policy_recommendation": "CRITICAL BREACH CONFIRMED: Block exfil-api[.]live and IP 194.147.35[.]92 permanently, isolate MKTG-WKS-024 from network immediately, assume full credential compromise (173 browser passwords, 1,247 session cookies exfiltrated to attacker), force password resets across all corporate systems, invalidate all browser sessions, enable MFA on ALL accounts urgently, contact financial institutions regarding cryptocurrency wallet theft (2 wallets accessed), revoke Discord authentication tokens, monitor for account takeover attempts, review firewall logs for additional exfiltration attempts (3 reconnection attempts blocked), engage incident response team for breach notification assessment (GDPR/compliance), forensic analysis of cache_tmp.zip content required, hunt for additional ClickFix victims in organization",
+  "log_source": "PA-3220 Firewall Threat Log",
+  "event_id": "THREAT_DATA_EXFIL",
+  "external_link": "https://unit42.paloaltonetworks.com/clickfix-generator-first-of-its-kind/",
+  "mitre_att&ck_tactic": "TA0010 - Exfiltration",
+  "mitre_att&ck_technique": "T1041 - Exfiltration Over C2 Channel"
+}

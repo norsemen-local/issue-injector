@@ -1,0 +1,57 @@
+{
+  "vendor": "Palo Alto Networks",
+  "product": "Next-Generation Firewall",
+  "severity": "Medium",
+  "category": "Reconnaissance",
+  "alert_name": "Network Port Scan Detected from Internal Host",
+  "description": "Internal workstation WORKSTATION-QA-12 (192.168.50.78) performed systematic port scanning against production server subnet 10.20.30.0/24 from 2024-11-18 22:15:00 to 22:47:00 UTC. The scan targeted 254 IP addresses testing common service ports including 22 (SSH), 23 (Telnet), 80 (HTTP), 443 (HTTPS), 445 (SMB), 3389 (RDP), 5900 (VNC), and 8080 (HTTP-Alt). Total of 4,064 connection attempts were made with 127 successful connections to open ports. The scanning activity originated from user account contractor_mike@company.com. Port scanning is reconnaissance activity used by attackers to map network topology and identify potential targets for exploitation. The workstation has shown no prior pattern of port scanning in the past 6 months. Nmap tool signature detected in TCP packet fingerprints.",
+  "host_name": "WORKSTATION-QA-12",
+  "host_ip": [
+    3232248910
+  ],
+  "host_os": "AGENT_OS_WINDOWS",
+  "user_name": [
+    "contractor_mike@company.com"
+  ],
+  "email": "contractor_mike@company.com",
+  "department": "Quality Assurance",
+  "local_ip": [
+    3232248910
+  ],
+  "remote_ip": [
+    169099264
+  ],
+  "local_port": [
+    52341,
+    52342,
+    52343,
+    52344
+  ],
+  "remote_port": [
+    22,
+    23,
+    80,
+    443,
+    445,
+    3389,
+    5900,
+    8080
+  ],
+  "fw_name": [
+    "PA-5250-FW-01"
+  ],
+  "fw_rule_name": [
+    "Allow_Internal_to_Servers"
+  ],
+  "threat_name": "Network Reconnaissance",
+  "attack_mode": "Discovery",
+  "verdict": "Suspicious",
+  "risk_score": "69",
+  "risk_rating": "Medium",
+  "policy_type": "Network Security",
+  "policy_description": "Internal port scanning detected - potential reconnaissance",
+  "policy_severity": "Medium",
+  "policy_recommendation": "Investigate contractor account activity, review workstation for scanning tools, implement network segmentation controls",
+  "log_source": "Palo Alto NGFW",
+  "mitre_att&ck_technique": "T1046 - Network Service Scanning"
+}

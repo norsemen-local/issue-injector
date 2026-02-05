@@ -1,0 +1,72 @@
+{
+  "vendor": "Palo Alto Networks",
+  "product": "Prisma Cloud",
+  "severity": "Critical",
+  "category": "Container Security",
+  "alert_name": "Suspicious Container Runtime Connection from Kubernetes Pod",
+  "description": "A process within Kubernetes pod web-app-frontend-7d9c8bf-qx4n2 in namespace production established a connection to the Docker socket (/var/run/docker.sock) at 2024-11-14 03:17:55 UTC. The pod executed docker client binary to enumerate running containers and subsequently attempted container escape using 'docker run --privileged' command. This activity indicates container breakout attempt where an attacker with initial pod compromise is attempting to escalate privileges to the underlying Kubernetes node. The docker socket provides unrestricted access to the container runtime and can be abused to spawn privileged containers with host filesystem access. Investigation shows the pod was compromised through a vulnerable web application (CVE-2024-12345 - Apache Struts RCE). The attacker created a reverse shell connection to 198.18.0.254:443 and downloaded enumeration scripts from attacker infrastructure. This represents critical Kubernetes cluster compromise with potential for lateral movement to additional nodes.",
+  "cloud_provider": [
+    "AWS"
+  ],
+  "cloud_service_name": "Amazon EKS",
+  "cloud_resource_type": [
+    "Kubernetes Pod"
+  ],
+  "container_name": [
+    "web-app-frontend-7d9c8bf-qx4n2"
+  ],
+  "container_id": [
+    "sha256:8f3c9d5e7a1b2d4f6e8a0c2d4e6f8a0b2d4e6f8a0c2e4f6a8b0c2d4e6f8a0b2"
+  ],
+  "cluster_name": [
+    "prod-eks-cluster-01"
+  ],
+  "namespace": [
+    "production"
+  ],
+  "image_name": [
+    "company/web-frontend:v2.4.1"
+  ],
+  "host_name": "ip-10-50-20-142.ec2.internal",
+  "host_ip": [
+    170066062
+  ],
+  "cgo_name": [
+    "docker"
+  ],
+  "cgo_cmd": [
+    "docker run --privileged -v /:/hostfs alpine chroot /hostfs /bin/bash"
+  ],
+  "cgo_path": [
+    "/usr/bin/docker"
+  ],
+  "file_name": [
+    "docker.sock"
+  ],
+  "file_path": [
+    "/var/run/docker.sock"
+  ],
+  "remote_ip": [
+    3323969790
+  ],
+  "remote_port": [
+    443
+  ],
+  "local_port": [
+    58234
+  ],
+  "cve": "CVE-2024-12345",
+  "vulnerability_category": "Remote Code Execution",
+  "vulnerable_product": "Apache Struts 2",
+  "threat_name": "Container Escape",
+  "verdict": "Malicious",
+  "risk_score": "96",
+  "risk_rating": "Critical",
+  "policy_type": "Container Security Policy",
+  "policy_description": "Unauthorized docker socket access from pod - container escape attempt",
+  "policy_severity": "Critical",
+  "policy_recommendation": "Isolate affected node immediately, remove compromised pod, patch vulnerable application (CVE-2024-12345), audit pod security policies to prevent docker socket mounting, implement runtime security monitoring",
+  "log_source": "Prisma Cloud Compute",
+  "detection_url": "https://app.prismacloud.io/compute",
+  "mitre_att&ck_tactic": "TA0004 - Privilege Escalation"
+}

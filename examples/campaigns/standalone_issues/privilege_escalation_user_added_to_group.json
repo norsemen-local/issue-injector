@@ -1,0 +1,38 @@
+{
+  "vendor": "Microsoft",
+  "product": "Microsoft Defender for Identity",
+  "severity": "Medium",
+  "category": "Privilege Escalation",
+  "alert_name": "User Added to Windows Privileged Group",
+  "description": "User account new_employee@company.local was added to the local Administrators group on workstation LAPTOP-SALES-45 (192.168.75.133) at 2024-11-15 10:22:41 UTC by IT administrator itadmin_john@company.local. While this is a standard administrative action, the target account new_employee is a sales representative with no documented need for local administrator privileges per company security policy. The addition occurred outside of normal change management processes with no corresponding ServiceNow ticket. Local administrator access significantly increases attack surface and enables the account to install unauthorized software, disable security controls, and access sensitive data stored on the device. The new_employee account was created only 2 days ago and has not completed mandatory security training. This privilege assignment violates principle of least privilege and increases organizational risk.",
+  "host_name": "LAPTOP-SALES-45",
+  "host_ip": [
+    3232283525
+  ],
+  "host_os": "AGENT_OS_WINDOWS",
+  "user_name": [
+    "new_employee@company.local"
+  ],
+  "initiated_by": [
+    "itadmin_john@company.local"
+  ],
+  "email": "new_employee@company.local",
+  "department": "Sales",
+  "account_status": "Active",
+  "domain": "company.local",
+  "threat_name": "Excessive Privileges",
+  "attack_mode": "Privilege Escalation",
+  "verdict": "Suspicious",
+  "risk_score": "62",
+  "risk_rating": "Medium",
+  "user_risk_level": "Medium",
+  "policy_type": "Privileged Access Management",
+  "policy_description": "User granted local admin rights without business justification",
+  "policy_severity": "Medium",
+  "policy_recommendation": "Remove local admin privileges, create change request for privilege assignment, implement Just-In-Time admin access, enforce security training completion before privileged access",
+  "log_source": "Windows Security Event Log",
+  "event_id": "4732",
+  "detection_url": "https://portal.atp.azure.com/alerts",
+  "mitre_att&ck_tactic": "TA0004 - Privilege Escalation",
+  "mitre_att&ck_technique": "T1078.003 - Valid Accounts: Local Accounts"
+}

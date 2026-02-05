@@ -1,0 +1,47 @@
+{
+  "vendor": "Cortex",
+  "product": "XDR Agent",
+  "severity": "High",
+  "category": "Phishing",
+  "description": "Phishing email detected attempting credential harvesting targeting Google account. Email spoofs legitimate Google login page requesting user credentials. Contains malicious links to attacker-controlled domain polarpak.ca and similar domains with high similarity to Google services accounts.google.com.jezbd8kbnibm.com myaccount.google.com.jezbd8kbnibm.com. Victim Doris Moreno Legal Department. Email origin appears to be from spoofed Google address no-reply@accounts.google.com. Multiple suspicious attachments and embedded links detected. This represents a high-risk credential harvesting attack.",
+  "alert_name": "Phishing Email - Google Account Spoofing",
+  "threat_name": "Credential Harvesting Phishing",
+  "user_name": [
+    "Doris.Moreno@demistolab.com"
+  ],
+  "host_name": "DMORENO-LT81571",
+  "host_ip": [
+    "100.185.115.124"
+  ],
+  "host_os": "AGENT_OS_WINDOWS",
+  "email_subject": [
+    "Verify your Google Account - Immediate Action Required"
+  ],
+  "email_sender": [
+    "no-reply@accounts.google.com"
+  ],
+  "email_recipient": [
+    "Doris.Moreno@demistolab.com"
+  ],
+  "remote_ip": [
+    "100.185.115.124"
+  ],
+  "remote_host": [
+    "mail-server.polarpak.ca"
+  ],
+  "domain": "polarpak.ca",
+  "url": [
+    "polarpak.ca",
+    "accounts.google.com.jezbd8kbnibm.com",
+    "myaccount.google.com.jezbd8kbnibm.com"
+  ],
+  "location": "San Francisco, CA",
+  "city": "San Francisco",
+  "is_phishing": [
+    "YES"
+  ],
+  "mitre_att&ck_tactic": "TA0001 - Initial Access",
+  "mitre_att&ck_technique": "T1566.002 - Phishing: Spearphishing Link",
+  "verdict": "Malicious",
+  "risk_score": "88"
+}

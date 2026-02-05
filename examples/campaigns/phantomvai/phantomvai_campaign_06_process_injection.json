@@ -1,0 +1,59 @@
+{
+  "vendor": "Cortex XDR",
+  "product": "Endpoint Protection",
+  "severity": "Critical",
+  "category": "Defense Evasion",
+  "alert_name": "Advanced Process Injection into Microsoft Build Engine (MSBuild.exe)",
+  "description": "Cortex XDR detected sophisticated process injection attack on workstation ACCT-WKS-047 where PhantomVAI Loader injected malicious code into legitimate MSBuild.exe process (PID 8764) using advanced hollowing techniques. The malicious loader process (phantom_update.exe, SHA256: 45fddf55acb50df5b027701073dee604b4135f750c585b29d6dcac824f26ae00) spawned MSBuild.exe in suspended state, unmapped its legitimate code sections, allocated new RWX memory regions at 0x00007FF7A0000000-0x00007FF7A00FF000, injected encrypted payload via WriteProcessMemory API (742KB written across 87 calls), patched entry point to 0x00007FF7A0004C20, and resumed execution. The injected payload exhibits Katz Stealer characteristics: credential harvesting from Chrome/Firefox browsers, systematic enumeration of cryptocurrency wallet files (*.wallet, *.dat from %APPDATA%\\Bitcoin, Ethereum, Monero directories), keylogging capabilities via SetWindowsHookExA, and encrypted data staging to C:\\ProgramData\\SystemCache\\temp_9f2a.dat. Behavioral analysis detected 23 suspicious API calls including NtCreateThreadEx (remote thread creation), NtAllocateVirtualMemory (RWX memory allocation), and NtProtectVirtualMemory (permission changes). MSBuild.exe normally does not perform browser data access, cryptocurrency operations, or maintain network connections - these anomalies triggered Critical severity escalation. Memory forensics revealed decrypted C2 configuration embedded in injected payload: update-services[.]net:8443, exfil-cdn[.]top:443, backup-api[.]live:8080.",
+  "relative_timestamp_hours": 47.25,
+  "campaign_name": "PhantomVAI-TechCorp",
+  "host_name": "ACCT-WKS-047",
+  "host_ip": [
+    171540568
+  ],
+  "user_name": [
+    "mthomas@techcorp.local"
+  ],
+  "domain": "techcorp.local",
+  "process_name": [
+    "MSBuild.exe"
+  ],
+  "process_path": [
+    "C:\\Program Files\\Microsoft Visual Studio\\2022\\BuildTools\\MSBuild\\Current\\Bin\\MSBuild.exe"
+  ],
+  "process_cmd": [
+    "\"C:\\Program Files\\Microsoft Visual Studio\\2022\\BuildTools\\MSBuild\\Current\\Bin\\MSBuild.exe\""
+  ],
+  "process_hash": [
+    "45fddf55acb50df5b027701073dee604b4135f750c585b29d6dcac824f26ae00"
+  ],
+  "process_hash_sha256": [
+    "45fddf55acb50df5b027701073dee604b4135f750c585b29d6dcac824f26ae00"
+  ],
+  "parent_process_name": [
+    "phantom_update.exe"
+  ],
+  "parent_process_path": [
+    "C:\\Users\\mthomas\\AppData\\Local\\Temp\\phantom_update.exe"
+  ],
+  "parent_process_hash": [
+    "02aa167e4bb41e3e40a75954f5a0bd5915f9a16fd6c21b544a557f2a7df3c89b"
+  ],
+  "parent_process_hash_sha256": [
+    "02aa167e4bb41e3e40a75954f5a0bd5915f9a16fd6c21b544a557f2a7df3c89b"
+  ],
+  "threat_name": "PhantomVAI Loader - Process Injection",
+  "attack_mode": "Process Hollowing",
+  "verdict": "Malicious",
+  "risk_score": "98",
+  "risk_rating": "Critical",
+  "policy_type": "Behavioral Threat Protection",
+  "policy_description": "Process injection into trusted Microsoft signed binary - Katz Stealer deployment",
+  "policy_severity": "Critical",
+  "policy_recommendation": "CRITICAL: Kill MSBuild.exe PID 8764 immediately, terminate phantom_update.exe tree, quarantine C:\\ProgramData\\SystemCache\\temp_9f2a.dat, dump MSBuild.exe memory for forensics (volatility analysis), isolate workstation from network, reset all user credentials (browsers + Windows), scan for cryptocurrency wallet theft, analyze C:\\Users\\mthomas\\AppData\\Local\\Temp\\* for additional payloads, enable enhanced process monitoring, engage SOC for full compromise assessment",
+  "log_source": "Cortex XDR Agent - Behavioral Threat Protection",
+  "event_id": "BTP_PROCESS_INJECTION",
+  "external_link": "https://unit42.paloaltonetworks.com/phantomvai-loader-delivers-infostealers/",
+  "mitre_att&ck_tactic": "TA0005 - Defense Evasion",
+  "mitre_att&ck_technique": "T1055 - Process Injection"
+}

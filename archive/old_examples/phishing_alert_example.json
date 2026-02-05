@@ -1,0 +1,24 @@
+{
+  "vendor": "Proofpoint",
+  "product": "Email Security Gateway",
+  "severity": "High",
+  "category": "Phishing",
+  "title": "Phishing Email Detected - Credential Harvest Attempt",
+  "details": "Phishing email detected attempting credential harvesting. Email spoofs legitimate Google login page and requests user credentials. Contains malicious links to attacker-controlled domain (polarpak.ca) with high domain similarity to Google services. Target user: Doris Moreno (doris_moreno), Legal Department. Email originating from spoofed Google address with high phishing confidence score.",
+  "alert_id": "PROOFPOINT-PHISHING-20251123-001",
+  "timestamp": "2025-11-23T05:20:00.976Z",
+  "initiated_by": "doris_moreno",
+  "host_name": "DMORENO-LT81571",
+  "remote_ip": "100.185.115.124",
+  "remote_host": "mail-attacker.polarpak.ca",
+  "group_id": "legal-team",
+  "source": "Proofpoint",
+  "status": 1,
+  "mitre_defs": {
+    "TA0001": ["T1598.003"],
+    "TA0006": ["T1566.002"]
+  },
+  "phishing_confidence_score": 0.95,
+  "email_from": "noreply@accounts.google.com",
+  "email_subject": "Verify your Google Account - Immediate Action Required"
+}

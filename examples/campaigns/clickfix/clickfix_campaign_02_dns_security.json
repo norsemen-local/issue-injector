@@ -1,0 +1,41 @@
+{
+  "vendor": "Palo Alto Networks",
+  "product": "Advanced DNS Security",
+  "severity": "High",
+  "category": "Command and Control",
+  "alert_name": "DNS Query to Newly Registered ClickFix Phishing Domain",
+  "description": "Advanced DNS Security detected suspicious DNS query from workstation MKTG-WKS-024 (10.30.35.148) attempting to resolve browser-verification[.]live, a newly registered domain associated with IUAM ClickFix Generator phishing infrastructure. DNS analytics identified multiple risk indicators: (1) Domain age: 7 days old (registered 2025-11-20 via Namecheap), (2) Domain entropy: high randomness score 8.7/10 suggesting algorithmically generated name, (3) Hosting infrastructure: Cloudflare reverse proxy (104.21.45[.]89, ASN 13335) commonly abused for phishing campaigns due to DDoS protection and IP obfuscation, (4) Domain category: uncategorized/unknown (no legitimate web presence or business), (5) DNS request pattern: single A record query followed by immediate HTTPS connection, typical of phishing click-through behavior. Threat intelligence correlation shows browser-verification[.]live matching ClickFix infrastructure fingerprints: subdomain pattern /auth/validate used across multiple ClickFix campaigns, SSL certificate issued 2025-11-20 (same day as domain registration), WHOIS privacy protection enabled to hide registrant identity. DNS Security's machine learning model scored domain 92/100 malicious based on temporal analysis (DNS query immediately after email click), lexical features (brand impersonation: 'browser-verification' mimicking legitimate browser security), and behavioral patterns (user jdavis@marketingcorp.com has no previous queries to .live TLD domains). Query originated 15 minutes after user released phishing email from Proofpoint quarantine, confirming victim clicked malicious link. DNS response returned Cloudflare IP 104.21.45[.]89 enabling victim to reach ClickFix landing page. Advanced DNS Security allowed query to complete (inline blocking disabled) but flagged for investigation and logged for correlation with downstream URL filtering and endpoint alerts.",
+  "relative_timestamp_hours": 71.75,
+  "campaign_name": "ClickFix-DeerStealer",
+  "host_name": "MKTG-WKS-024",
+  "host_ip": [
+    171540620
+  ],
+  "user_name": [
+    "jdavis@marketingcorp.com"
+  ],
+  "domain": "marketingcorp.com",
+  "local_ip": [
+    171540620
+  ],
+  "remote_ip": [
+    1756028233
+  ],
+  "dns_query_name": [
+    "browser-verification.live"
+  ],
+  "threat_name": "ClickFix Phishing - DNS Detection",
+  "attack_mode": "Phishing Domain Access",
+  "verdict": "Malicious",
+  "risk_score": "92",
+  "risk_rating": "High",
+  "policy_type": "DNS Security",
+  "policy_description": "DNS query to newly registered ClickFix phishing domain - 7 days old",
+  "policy_severity": "High",
+  "policy_recommendation": "HIGH: Enable DNS sinkholing for browser-verification[.]live to block future queries, add domain to DNS Security blocklist, identify all workstations that queried this domain (hunt for additional victims), block entire Namecheap-registered .live TLD domains registered in last 30 days as preventive measure, enable inline DNS blocking for newly registered domains (<30 days old), correlate DNS query with email logs to confirm phishing email click-through, isolate MKTG-WKS-024 for forensic analysis, educate user on ClickFix phishing indicators",
+  "log_source": "Advanced DNS Security",
+  "event_id": "DNS_QUERY_MALICIOUS",
+  "external_link": "https://unit42.paloaltonetworks.com/clickfix-generator-first-of-its-kind/",
+  "mitre_att&ck_tactic": "TA0011 - Command and Control",
+  "mitre_att&ck_technique": "T1071.004 - Application Layer Protocol: DNS"
+}
