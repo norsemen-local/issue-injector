@@ -100,14 +100,15 @@ xsiam-alert-injector/
 │   ├── result_logger.py          # Results tracking
 │   └── api_client.py             # XSIAM API client
 │
-├── examples/                     # Alert examples and campaigns
-│   └── campaigns/                # Complete attack campaigns
-│       ├── medusa/               # Medusa ransomware (6 alerts)
-│       ├── phantomvai/           # PhantomVAI loader (7 alerts)
-│       ├── operation_rewrite/    # BadIIS SEO poisoning (8 alerts)
-│       ├── clickfix/             # ClickFix-DeerStealer (8 alerts)
-│       ├── adaptixc2/            # AdaptixC2 framework (10 alerts)
-│       └── standalone_issues/    # Individual alert examples
+├── issues/                       # Alert issues and campaigns
+│   ├── campaigns/                # Complete attack campaigns
+│   │   ├── medusa/               # Medusa ransomware (6 alerts)
+│   │   ├── phantomvai/           # PhantomVAI loader (7 alerts)
+│   │   ├── operation_rewrite/    # BadIIS SEO poisoning (8 alerts)
+│   │   ├── clickfix/             # ClickFix-DeerStealer (8 alerts)
+│   │   ├── adaptixc2/            # AdaptixC2 framework (10 alerts)
+│   │   └── sherlock_investigation/ # Sherlock investigation scenario
+│   └── standalone_issues/        # Individual alert examples
 │
 ├── docs/                         # Documentation and reference
 │   ├── schema.json               # Complete XSIAM field reference (318 fields)
@@ -133,13 +134,13 @@ xsiam-alert-injector/
 - **result_logger.py** - Tracks injection results and logs outcomes
 - **api_client.py** - Manages XSIAM API authentication and requests
 
-**`examples/campaigns/`** - Pre-built attack campaigns
+**`issues/campaigns/`** - Pre-built attack campaigns
 - Each campaign directory contains a complete attack story with multiple alerts
 - Alerts are numbered sequentially (01, 02, 03...) representing attack progression
 - All alerts use `relative_timestamp_hours` for realistic temporal sequencing
 - Campaigns correlate into single incidents in XSIAM through common grouping fields
 
-**`examples/campaigns/standalone_issues/`** - Individual alert examples
+**`issues/standalone_issues/`** - Individual alert examples
 - Single-alert scenarios for testing specific detection use cases
 - Useful for learning alert structure or testing specific field combinations
 
@@ -284,7 +285,7 @@ This allows campaigns to have proper temporal sequencing without manual timestam
 
 ## 🎯 Single Issues vs Campaigns
 
-### Single Issues (`examples/campaigns/standalone_issues/`)
+### Single Issues (`issues/standalone_issues/`)
 
 Individual alerts for testing specific scenarios:
 - `auth_brute_force_attack.json` - Brute force authentication
@@ -299,7 +300,7 @@ Individual alerts for testing specific scenarios:
 - Learning alert structure
 - Quick one-off testing
 
-### Campaigns (`examples/campaigns/<campaign_name>/`)
+### Campaigns (`issues/campaigns/<campaign_name>/`)
 
 Complete multi-alert attack stories that correlate into single incidents:
 - Multiple alerts representing attack progression
